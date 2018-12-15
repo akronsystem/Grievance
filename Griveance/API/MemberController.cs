@@ -17,24 +17,42 @@ namespace Griveance.Controllers
 {
     public class MemberController : ApiController
     {
- 
+
         [HttpGet]
         public object GetMemberInfo()
         {
-            MemberBusiness MBusiness = new MemberBusiness();
-            var member = MBusiness.GetMemberInfo();
-            return member;
+            try
+            {
+                MemberBusiness MBusiness = new MemberBusiness();
+                var member = MBusiness.GetMemberInfo();
+                return member;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
         }
 
         [HttpPut]
         public object GetSingleGrievanace([FromBody]ParamMember obj)
         {
-            MemberBusiness MBusiness = new MemberBusiness();
-            var grievance = MBusiness.GetSingleGrievanace(obj);
-            return grievance;
+            try
+            {
+                MemberBusiness MBusiness = new MemberBusiness();
+                var grievance = MBusiness.GetSingleGrievanace(obj);
+                return grievance;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
         }
-    
-         [HttpPost]
+
+        [HttpPost]
         public object SetIsLiveForMember([FromBody]ParamMember PM)
         {
             try
@@ -44,32 +62,49 @@ namespace Griveance.Controllers
                 return Status;
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
             }
         }
-   
+
         [HttpPost]
         public object MemberSave([FromBody]MemberParameter member_para)
         {
+            try
+            {
+                MemberBusiness memberbus = new MemberBusiness();
+                var result = memberbus.SaveMember(member_para);
+                //  bhobj.StudentsMethod(hobj);
 
-            MemberBusiness memberbus = new MemberBusiness();
-            var result = memberbus.SaveMember(member_para);
-            //  bhobj.StudentsMethod(hobj);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
 
-            return result;
+            }
+
         }
 
 
- 
-      [HttpPost]
+
+        [HttpPost]
         public object GriveanceStatus([FromBody]SetStatusParameters obj)
         {
-            SetGriveanceStatus Statusobj = new SetGriveanceStatus();
-             var Result = Statusobj.SetStatus(obj);
-            return Result;
-         }
-     }
+            try
+            {
+                SetGriveanceStatus Statusobj = new SetGriveanceStatus();
+                var Result = Statusobj.SetStatus(obj);
+                return Result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
+    }
  
 }
