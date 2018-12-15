@@ -11,7 +11,7 @@ namespace Griveance.BusinessLayer
 {
     public class ClassBusiness
     {
-        public object create_class([FromBody]ClassParameter obj)
+        public object CreateClass([FromBody]ClassParameter obj)
         {
             GRContext db = new GRContext();
             tbl_class tbl_member = new tbl_class();

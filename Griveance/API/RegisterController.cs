@@ -1,4 +1,5 @@
 ﻿using Griveance.BusinessLayer;
+using Griveance.Models;
 using Griveance.ParamModel;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,18 @@ namespace Griveance.Controllers
         [HttpPost]
         public object SaveRegistration([FromBody] ParamRegistration PR)
         {
-            SaveRegistrationBL OBJSAVE = new SaveRegistrationBL();
-            var result = OBJSAVE.SaveRegistration(PR);
-            return result;
+            try
+            {
+                SaveRegistrationBL OBJSAVE = new SaveRegistrationBL();
+                var result = OBJSAVE.SaveRegistration(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
         }
     }
 }

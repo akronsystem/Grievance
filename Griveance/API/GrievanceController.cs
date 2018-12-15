@@ -14,7 +14,7 @@ namespace Griveance.Controllers
     public class GrievanceController : ApiController
      {
         [HttpGet]
-        public object GetUnAssignedGrievanceType()        
+        public object GetUnAssignedGrievanceType()
         {
             try
             {
@@ -22,30 +22,48 @@ namespace Griveance.Controllers
                 var GrType = GT.GetUnassignedGrievance();
                 return GrType;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
-                
+
             }
 
         }
 
-     
+
         [HttpPost]
         public object GetAllGrievanceList([FromBody] ParamGetGrievanceList objparam)
         {
-            GetGrievanceListBL obj = new GetGrievanceListBL();
-            var GetGrievance = obj.GetGrievanceList(objparam);
+            try
+            {
+                GetGrievanceListBL obj = new GetGrievanceListBL();
+                var GetGrievance = obj.GetGrievanceList(objparam);
                 return GetGrievance;
-        } 
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
 
         [HttpGet]
         public object GriveanceTypeInfo()
         {
-            GetGriveanceInfo GetGriveanceTypeInfo = new GetGriveanceInfo();
-            var Result = GetGriveanceTypeInfo.GetGriveanceTypeInfo();
-            
-            return Result;
-        } 
-     }
+            try
+            {
+                GetGriveanceInfo GetGriveanceTypeInfo = new GetGriveanceInfo();
+                var Result = GetGriveanceTypeInfo.GetGriveanceTypeInfo();
+
+                return Result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
+    }
 }
