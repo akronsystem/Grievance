@@ -22,7 +22,7 @@ namespace Griveance.BusinessLayer
             }
             else
             {
-                return new Result() { IsSucess = true, ResultData = "Login Successfully.." };
+                return new Result() { IsSucess = true, ResultData = user };
             }
 
            

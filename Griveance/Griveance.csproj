@@ -603,7 +603,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FacultyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GriveanceController.cs" />
     <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ParentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="BusinessLayer\Class1.cs" />
@@ -836,6 +841,13 @@
     <Content Include="Areas\Admin\Views\Shared\AdminDashboardLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Member\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Faculty\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Griveance\AllGrievances.cshtml" />
+    <Content Include="Areas\Admin\Views\Griveance\GrievanceAllocation.cshtml" />
+    <Content Include="Areas\Admin\Views\Griveance\GrievanceType.cshtml" />
+    <Content Include="Areas\Admin\Views\Parent\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />

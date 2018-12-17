@@ -22,7 +22,7 @@ namespace Griveance.Controllers
         public object CreateClass([FromBody]ClassParameter obj)
         {
             ClassBusiness classB = new ClassBusiness();
-            var Result = classB.create_class(obj);
+            var Result = classB.CreateClass(obj);
             return Result;
         }
     }

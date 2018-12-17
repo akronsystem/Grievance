@@ -30,10 +30,11 @@ function LoginController($scope, Service) {
             Service.Post("api/Login/ValidateUserLogin", $scope.UserCredentialModel).then(function (rd) {
                
                 if (rd.data.IsSucess) { 
+                    console.log(rd.data.ResultData);
                     location.href = baseURL +"Admin/Dashboard/Index"
                     
                 } else { 
-                    alert(rd.data);
+                    alert(rd.data.Message);
                 }
             });
         }
