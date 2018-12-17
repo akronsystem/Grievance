@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Griveance.Areas.Admin.Controllers
 {
@@ -12,6 +13,14 @@ namespace Griveance.Areas.Admin.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        //Logout 
+        public ActionResult Logout()
+        {
+                FormsAuthentication.SignOut();
+                Session.Abandon(); // it will clear the session at the end of request
+            return View("/Views/Home/Index.cshtml");
+           
         }
     }
 }

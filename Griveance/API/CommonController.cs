@@ -15,23 +15,48 @@ namespace Griveance.Controllers
     { 
         public object SetLiveUser([FromBody]StudentParameters objhome)
         {
-             SetIsLiveForUser obj = new SetIsLiveForUser();
-            var homemworkresult = obj.UserLive(objhome);
-            return homemworkresult; 
+            try
+            {
+                SetIsLiveForUser obj = new SetIsLiveForUser();
+                var homemworkresult = obj.UserLive(objhome);
+                return homemworkresult;
+            }
+            catch(Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
         }
         [HttpPost]
         public object GetMyGrievance([FromBody]ParamGetMyGrievance objmy)
         {
-            GetMyGrievanceBL obj = new GetMyGrievanceBL();
-            var mygrievance = obj.GetMyGrievance(objmy);
-            return mygrievance;
+            try
+            {
+                GetMyGrievanceBL obj = new GetMyGrievanceBL();
+                var mygrievance = obj.GetMyGrievance(objmy);
+                return mygrievance;
+            }
+            catch(Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+          
         }
 
         public object SumbitGrievance([FromBody]ParamSaveGriveance objparam)
         {
-            PostGriveance obj = new PostGriveance();
-            var result = obj.SaveGrievance(objparam);
-            return result; 
+            try
+            {
+                PostGriveance obj = new PostGriveance();
+                var result = obj.SaveGrievance(objparam);
+                return result;
+            }
+            catch(Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+           
          }
     }
 }

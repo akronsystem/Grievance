@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Griveance.ParamModel;
+using Griveance.Models;
 
 namespace Griveance.Controllers
 {
@@ -14,16 +15,32 @@ namespace Griveance.Controllers
         [HttpGet]
         public object GetClassInfo()
         {
-            GetClassInfoBL Objclass = new GetClassInfoBL();
-            var GetClassVar = Objclass.ClassInfoBL();
-            return GetClassVar;
+            try
+            {
+                GetClassInfoBL Objclass = new GetClassInfoBL();
+                var GetClassVar = Objclass.ClassInfoBL();
+                return GetClassVar;
+            }
+            catch(Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+          
         }
         [HttpPost]
         public object CreateClass([FromBody]ClassParameter obj)
         {
-            ClassBusiness classB = new ClassBusiness();
-            var Result = classB.CreateClass(obj);
-            return Result;
+            try
+            {
+                ClassBusiness classB = new ClassBusiness();
+                var Result = classB.CreateClass(obj);
+                return Result;
+            }
+            catch(Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+          
         }
     }
 }
