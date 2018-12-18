@@ -9,6 +9,8 @@ function LoginController($scope, Service) {
         Service.Get("api/Login/GetUser").then(function (result) { 
            
             $scope.UserCredentialModel.UserName = result.data.UserName
+            $scope.UserCredentialModel.type = result.data.type
+           
         })
     }
 
@@ -29,11 +31,41 @@ function LoginController($scope, Service) {
 
             Service.Post("api/Login/ValidateUserLogin", $scope.UserCredentialModel).then(function (rd) {
                
-                if (rd.data.IsSucess) { 
+                if (rd.data.IsSucess)
+                { 
                     console.log(rd.data.ResultData);
-                    location.href = baseURL +"Admin/Dashboard/Index"
-                    
-                } else { 
+                    if (rd.data.ResultData.type == "Admin")
+                    {
+                         location.href = baseURL +"Admin/Dashboard/Index"
+                    }
+                    else if (rd.data.ResultData.type == "Student") 
+                    {
+                        location.href = baseURL + "Student/Student/Index"
+                    }
+                    else if (rd.data.ResultData.type == "Parent")
+                    {
+                        location.href = baseURL + "Parent/Parent/Index"
+                    }
+                    else if (rd.data.ResultData.type == "Member")
+                    {
+                        location.href = baseURL + "Member/Member/Index"
+                    }
+                    else if (rd.data.ResultData.type == "Faculty")
+                    {
+                        location.href = baseURL + "Faculty/Faculty/Index"
+
+                    }
+                    else if (rd.data.ResultData.type == "Staff")
+                    {
+                        location.href = baseURL + "Staff/Staff/Index"
+
+                    }
+                    else {
+                        alert('Check your Username');
+                    }
+
+                }
+                else { 
                     alert(rd.data.Message);
                 }
             });

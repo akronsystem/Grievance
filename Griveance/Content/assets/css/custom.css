@@ -14,18 +14,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Poppins-BlackItalic';
-    src: url('Poppins-BlackItalic.eot');
-    src: local('Poppins Black Italic'), local('Poppins-BlackItalic'),
-        url('../fonts/Poppins-BlackItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-BlackItalic.woff2') format('woff2'),
-        url('../fonts/Poppins-BlackItalic.woff') format('woff'),
-        url('../fonts/Poppins-BlackItalic.ttf') format('truetype'),
-        url('../fonts/Poppins-BlackItalic.svg#Poppins-BlackItalic') format('svg');
-    font-weight: 900;
-    font-style: italic;
-}
 
 @font-face {
     font-family: 'Poppins-ExtraLight';
@@ -54,19 +42,6 @@
 }
 
 @font-face {
-    font-family: 'Poppins-Italic';
-    src: url('../fonts/Poppins-Italic.eot');
-    src: local('Poppins Italic'), local('Poppins-Italic'),
-        url('../fonts/Poppins-Italic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-Italic.woff2') format('woff2'),
-        url('../fonts/Poppins-Italic.woff') format('woff'),
-        url('../fonts/Poppins-Italic.ttf') format('truetype'),
-        url('../fonts/Poppins-Italic.svg#Poppins-Italic') format('svg');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
     font-family: 'Poppins-Medium';
     src: url('../fonts/Poppins-Medium.eot');
     src: local('Poppins Medium'), local('Poppins-Medium'),
@@ -80,32 +55,6 @@
 }
 
 @font-face {
-    font-family: 'Poppins-ExtraBoldItalic';
-    src: url('../fonts/Poppins-ExtraBoldItalic.eot');
-    src: local('Poppins ExtraBold Italic'), local('Poppins-ExtraBoldItalic'),
-        url('../fonts/Poppins-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-ExtraBoldItalic.woff2') format('woff2'),
-        url('../fonts/Poppins-ExtraBoldItalic.woff') format('woff'),
-        url('../fonts/Poppins-ExtraBoldItalic.ttf') format('truetype'),
-        url('../fonts/Poppins-ExtraBoldItalic.svg#Poppins-ExtraBoldItalic') format('svg');
-    font-weight: 800;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Poppins-MediumItalic';
-    src: url('../fonts/Poppins-MediumItalic.eot');
-    src: local('Poppins Medium Italic'), local('Poppins-MediumItalic'),
-        url('../fonts/Poppins-MediumItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-MediumItalic.woff2') format('woff2'),
-        url('../fonts/Poppins-MediumItalic.woff') format('woff'),
-        url('../fonts/Poppins-MediumItalic.ttf') format('truetype'),
-        url('../fonts/Poppins-MediumItalic.svg#Poppins-MediumItalic') format('svg');
-    font-weight: 500;
-    font-style: italic;
-}
-
-@font-face {
     font-family: 'Poppins-SemiBold';
     src: url('../fonts/Poppins-SemiBold.eot');
     src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
@@ -116,32 +65,6 @@
         url('../fonts/Poppins-SemiBold.svg#Poppins-SemiBold') format('svg');
     font-weight: 600;
     font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins-ExtraLightItalic';
-    src: url('../fonts/Poppins-ExtraLightItalic.eot');
-    src: local('Poppins ExtraLight Italic'), local('Poppins-ExtraLightItalic'),
-        url('../fonts/Poppins-ExtraLightItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-ExtraLightItalic.woff2') format('woff2'),
-        url('../fonts/Poppins-ExtraLightItalic.woff') format('woff'),
-        url('../fonts/Poppins-ExtraLightItalic.ttf') format('truetype'),
-        url('../fonts/Poppins-ExtraLightItalic.svg#Poppins-ExtraLightItalic') format('svg');
-    font-weight: 200;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Poppins-SemiBoldItalic';
-    src: url('../fonts/Poppins-SemiBoldItalic.eot');
-    src: local('Poppins SemiBold Italic'), local('Poppins-SemiBoldItalic'),
-        url('../fonts/Poppins-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-SemiBoldItalic.woff2') format('woff2'),
-        url('../fonts/Poppins-SemiBoldItalic.woff') format('woff'),
-        url('../fonts/Poppins-SemiBoldItalic.ttf') format('truetype'),
-        url('../fonts/Poppins-SemiBoldItalic.svg#Poppins-SemiBoldItalic') format('svg');
-    font-weight: 600;
-    font-style: italic;
 }
 
 @font-face {
@@ -169,7 +92,7 @@
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
+/*@font-face {
     font-family: 'Poppins';
     src: url('../fonts/Poppins-Regular.eot');
     src: local('Poppins Regular'), local('Poppins-Regular'),
@@ -180,7 +103,7 @@
         url('../fonts/Poppins-Regular.svg#Poppins-Regular') format('svg');
     font-weight: normal;
     font-style: normal;
-}
+}*/
 
 @font-face {
     font-family: 'Poppins-ExtraBold';
@@ -196,19 +119,6 @@
 }
 
 @font-face {
-    font-family: 'Poppins-BoldItalic';
-    src: url('../fonts/Poppins-BoldItalic.eot');
-    src: local('Poppins Bold Italic'), local('Poppins-BoldItalic'),
-        url('../fonts/Poppins-BoldItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-BoldItalic.woff2') format('woff2'),
-        url('../fonts/Poppins-BoldItalic.woff') format('woff'),
-        url('../fonts/Poppins-BoldItalic.ttf') format('truetype'),
-        url('../fonts/Poppins-BoldItalic.svg#Poppins-BoldItalic') format('svg');
-    font-weight: bold;
-    font-style: italic;
-}
-
-@font-face {
     font-family: 'Poppins-Light';
     src: url('../fonts/Poppins-Light.eot');
     src: local('Poppins Light'), local('Poppins-Light'),
@@ -221,61 +131,59 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Poppins-LightItalic';
-    src: url('../fonts/Poppins-LightItalic.eot');
-    src: local('Poppins Light Italic'), local('Poppins-LightItalic'),
-        url('../fonts/Poppins-LightItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-LightItalic.woff2') format('woff2'),
-        url('../fonts/Poppins-LightItalic.woff') format('woff'),
-        url('../fonts/Poppins-LightItalic.ttf') format('truetype'),
-        url('../fonts/Poppins-LightItalic.svg#Poppins-LightItalic') format('svg');
-    font-weight: 300;
-    font-style: italic;
-}
 
 @font-face {
-    font-family: 'Poppins-ThinItalic';
-    src: url('../fonts/Poppins-ThinItalic.eot');
-    src: local('Poppins Thin Italic'), local('Poppins-ThinItalic'),
-        url('../fonts/Poppins-ThinItalic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Poppins-ThinItalic.woff2') format('woff2'),
-        url('../fonts/Poppins-ThinItalic.woff') format('woff'),
-        url('../fonts/Poppins-ThinItalic.ttf') format('truetype'),
-        url('../fonts/Poppins-ThinItalic.svg#Poppins-ThinItalic') format('svg');
+    font-family: 'Roboto-Medium';
+    src: url('../fonts/Roboto-Medium.eot');
+    src: local('Roboto-Medium'), local('Roboto-Medium'),
+        url('../fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+        /*url('../fonts/Roboto-Medium.woff2') format('woff2'),*/
+        url('../fonts/Roboto-Medium.woff') format('woff'),
+        url('../fonts/Roboto-Medium.ttf') format('truetype'),
+        url('../fonts/Roboto-Medium.svg#Roboto-Medium') format('svg');
     font-weight: 100;
     font-style: italic;
 }
 
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../fonts/Roboto-Bold.eot');
+    src: local('Roboto-Bold'), local('Roboto-Bold'),
+        url('../fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+        /*url('../fonts/Roboto-Bold.woff2') format('woff2'),*/
+        url('../fonts/Roboto-Bold.woff') format('woff'),
+        url('../fonts/Roboto-Bold.ttf') format('truetype'),
+        url('../fonts/Roboto-Bold.svg#Roboto-Bold') format('svg');
+    font-weight: 500;
+    font-style: italic;
+}
 
 @font-face {
-	font-family: 'Roboto-Bold';
-	src: url('../fonts/Roboto-Bold.eot');
-	src: local('?'), url('../fonts/Roboto-Bold.woff') format('woff'), url('../fonts/Roboto-Bold.ttf') format('truetype'), url('../fonts/Roboto-Bold.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'Roboto-Regular';
+    src: url('../fonts/Roboto-Regular.eot');
+    src: local('Roboto-Regular'), local('Roboto-Regular'),
+        url('../fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+        /*url('../fonts/Roboto-Regular.woff2') format('woff2'),*/
+        url('../fonts/Roboto-Regular.woff') format('woff'),
+        url('../fonts/Roboto-Regular.ttf') format('truetype'),
+        url('../fonts/Roboto-Regular.svg#Roboto-Regular') format('svg');
+    font-weight: 100;
+    font-style: italic;
 }
+
 @font-face {
-	font-family: 'Roboto-Medium';
-	src: url('../fonts/Roboto-Medium.eot');
-	src: local('?'), url('../fonts/Roboto-Medium.woff') format('woff'), url('../fonts/Roboto-Medium.ttf') format('truetype'), url('../fonts/Roboto-Medium.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'Roboto-Light';
+    src: url('../fonts/Roboto-Light.eot');
+    src: local('Roboto-Light'), local('Roboto-Light'),
+        url('../fonts/Roboto-Light.eot?#iefix') format('embedded-opentype'),
+        /*url('../fonts/Roboto-Light.woff2') format('woff2'),*/
+        url('../fonts/Roboto-Light.woff') format('woff'),
+        url('../fonts/Roboto-Light.ttf') format('truetype'),
+        url('../fonts/Roboto-Light.svg#Roboto-Light') format('svg');
+    font-weight: 100;
+    font-style: italic;
 }
-@font-face {
-	font-family: 'Roboto-Regular';
-	src: url('../fonts/Roboto-Regular.eot');
-	src: local('?'), url('../fonts/Roboto-Regular.woff') format('woff'), url('../fonts/Roboto-Regular.ttf') format('truetype'), url('../fonts/Roboto-Regular.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'Roboto-Light';
-	src: url('../fonts/Roboto-Light.eot');
-	src: local('?'), url('../fonts/Roboto-Light.woff') format('woff'), url('../fonts/Roboto-Light.ttf') format('truetype'), url('../fonts/Roboto-Light.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
+
 
 
 body{
@@ -290,7 +198,104 @@ body{
 
 /*-----------------------End Left Menu Theme 12---------------------------*/
 
+/*-----------------------Start Dashbard---------------------------*/
 
 .m-subheader .m-subheader__title{
 	font-family: 'Roboto-Medium';
 }
+
+
+.testimonial{
+    text-align: center;
+}
+.testimonial .pic{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+.testimonial .pic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.testimonial .testimonial-title{
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 600;
+    color: #0c4767;
+    margin: 0 0 70px 0;
+}
+.testimonial .testimonial-title small{
+    font-size: 15px;
+    font-weight: 600;
+    color: #787878;
+}
+.testimonial .description{
+    font-size: 14px;
+    color: #787878;
+    line-height: 27px;
+    position: relative;
+    margin: 0;
+}
+/*.testimonial .description:before{
+    content: "\f10d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: 46%;
+    font-size: 20px;
+    color: #fa7921;
+    line-height:33px;
+    border: 2px solid #fa7921;
+}*/
+.owl-theme .owl-controls .owl-page span{
+    background: #fff;
+    border: 2px solid #0c4767;
+    opacity: 1;
+}
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls .owl-page:hover span{
+    border: 2px solid #fa7921;
+}
+
+/*-----------------------End Dashbard---------------------------*/
+
+
+/*-----------------------Start Student Admission Page---------------------------*/
+
+
+.m-portlet .m-portlet__head .m-portlet__head-caption .m-portlet__head-title .m-portlet__head-text{
+	font-family: 'Roboto-Bold';
+}
+.student-admission-wrapper .select2{
+	width:100%!important;
+}
+.student-admission-wrapper ..select2-container{
+	display:block!important;
+}
+
+/*-----------------------End Student Admission Page---------------------------*/
+
+/*-----------------------Start Common CSS Page---------------------------*/
+
+.btn,
+.btn.m-btn--custom{
+	font-family: 'Poppins-Regular';
+}
+.action-link a{
+	font-size:110%;
+	color:#898b96;
+	display:inline-block;
+	margin:0px 5px;
+	text-decoration:none;
+}
+.action-link a i{
+	font-size:1.5rem;
+}
+/*-----------------------End Common CSS Page---------------------------*/
