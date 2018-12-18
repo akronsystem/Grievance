@@ -8,7 +8,11 @@ namespace Griveance.Models
 
     public partial class tbl_user
     {
+
+        public int UserId { get; set; }
+
         [StringLength(100)]
+
         public string name { get; set; }
 
         public int? code { get; set; }

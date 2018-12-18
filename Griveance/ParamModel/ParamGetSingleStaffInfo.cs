@@ -7,8 +7,8 @@ namespace Griveance.ParamModel
 {
     public class ParamGetSingleStaffInfo
     {
-        public int Code { get; set; }
-        public string UserName { get; set; }
+      
+        public int UserId { get; set; }
         public string Password { get; set; }
     }
 }

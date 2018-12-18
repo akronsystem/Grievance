@@ -16,7 +16,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var StaffData = objcontext.ViewAllStaffInfoes.Where(r => r.code == objstaff.Code).FirstOrDefault();
+                var StaffData = objcontext.ViewAllStaffInfoes.Where(r => r.UserId == objstaff.UserId).FirstOrDefault();
                 if (StaffData== null)
                 {
                     return new Error { IsError = true, Message = "Staff Data Not Found" };
