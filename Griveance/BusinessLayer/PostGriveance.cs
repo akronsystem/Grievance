@@ -16,12 +16,12 @@ namespace Griveance.BusinessLayer
 
             var Getcode =
                (from a in objcontext.tbl_user
-                where a.email == obj.UserName && a.password == obj.Password
+                where a.UserId == obj.UserId && a.password == obj.Password
                 select new { a.code }).FirstOrDefault();
 
             var Getemail =
               (from a in objcontext.tbl_user
-               where a.email == obj.UserName && a.password == obj.Password
+               where a.UserId == obj.UserId && a.password == obj.Password
                select new { a.email }).FirstOrDefault();
 
             tbl_postgriev objpost = new tbl_postgriev();

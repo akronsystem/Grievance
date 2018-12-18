@@ -9,6 +9,8 @@ namespace Griveance.Models
     [Table("ViewGetSingleParentInfo")]
     public partial class ViewGetSingleParentInfo
     {
+
+        public int? UserId { get; set; }
         [StringLength(100)]
         public string name { get; set; }
 
