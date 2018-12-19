@@ -26,7 +26,7 @@ namespace Griveance.Controllers
             return member;
         }
 
-        [HttpPut]
+        [HttpPost]
         public object GetSingleGrievanace([FromBody]ParamMember obj)
         {
             MemberBusiness MBusiness = new MemberBusiness();
