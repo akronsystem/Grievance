@@ -11,31 +11,37 @@ namespace Griveance.Models
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Expr1 { get; set; }
+        public int UserId { get; set; }
+
+        [StringLength(100)]
+        public string name { get; set; }
+
+        public int? code { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(100)]
-        public string Expr2 { get; set; }
+        public string type { get; set; }
+
+        [StringLength(20)]
+        public string gender { get; set; }
 
         [Key]
         [Column(Order = 2)]
         [StringLength(100)]
-        public string Expr3 { get; set; }
+        public string email { get; set; }
+
+        public long? contact { get; set; }
 
         [Key]
         [Column(Order = 3)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int code { get; set; }
-
-        [Key]
-        [Column(Order = 4)]
         [StringLength(100)]
         public string department { get; set; }
 
         [Key]
-        [Column(Order = 5)]
+        [Column(Order = 4)]
         [StringLength(100)]
         public string designation { get; set; }
+      
     }
 }

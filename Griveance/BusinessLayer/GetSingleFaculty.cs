@@ -14,7 +14,7 @@ namespace Griveance.BusinessLayer
         public object GetFaculty(FacultyParameters obj)
         {
 
-            var ResultGetFaculty = db.Vw_GetSingleFaculty.Where(r => r.code == obj.Code).ToList();
+            var ResultGetFaculty = db.Vw_GetSingleFaculty.Where(r => r.UserId == obj.UserId ).ToList();
             if(ResultGetFaculty.Count ==0)
             {
                 return new Error() { IsError = true, Message = "Faculty Is Not Found" };
