@@ -18,7 +18,7 @@ namespace Griveance.BusinessLayer
                 var parent = context.ViewGetSingleParentInfoes.Where(r => r.code == obj.Code).FirstOrDefault();
                 if (parent == null)
                 {
-                    return new Result { IsSucess = false, ResultData = "Parent Record Not Found" };
+                    return new Result { IsSucess = false, ResultData = "Record Not Found" };
                 }
                 else
                 {

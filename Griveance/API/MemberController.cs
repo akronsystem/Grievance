@@ -35,7 +35,7 @@ namespace Griveance.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPost]
         public object GetSingleGrievanace([FromBody]ParamMember obj)
         {
             try

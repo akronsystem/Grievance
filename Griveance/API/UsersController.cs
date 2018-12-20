@@ -17,8 +17,9 @@ namespace Griveance.Controllers
 {
     public class UsersController : ApiController
  
-    {
-        [HttpPut]
+    { 
+         [HttpPost]
+ 
         public object GetSingleParentInfo([FromBody]ParamUser code)
         {
             try
