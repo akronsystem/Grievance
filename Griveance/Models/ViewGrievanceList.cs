@@ -10,22 +10,30 @@ namespace Griveance.Models
     public partial class ViewGrievanceList
     {
         [Key]
-        [Column(Order = 0)]
-        public int grivance_id { get; set; }
-
-        [Key]
-        [Column(Order = 1)]
-        [StringLength(150)]
-        public string grivance_name { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
-        [StringLength(400)]
-        public string grivance_description { get; set; }
-
-        [Key]
-        [Column(Order = 3)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Isalloted { get; set; }
+        public int CompID { get; set; }
+
+        [StringLength(500)]
+        public string GrievanceType { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? Date { get; set; }
+
+        [StringLength(500)]
+        public string Subject { get; set; }
+
+        [StringLength(500)]
+        public string Post { get; set; }
+
+        [StringLength(500)]
+        public string GrievanceAction { get; set; }
+
+        [StringLength(100)]
+        public string status { get; set; }
+
+        public int? GrievMemID { get; set; }
+
+        [StringLength(100)]
+        public string name { get; set; }
     }
 }

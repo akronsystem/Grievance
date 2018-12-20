@@ -5,64 +5,70 @@
 }
 
 <h2>Add New Member</h2>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<body ng-app="GR">
+    <div ng-controller="MemberController">
+        <form class="m-form m-form--fit m-form--label-align-right">
+            <div class="m-portlet__body">
+                <div class="form-group m-form__group m--margin-top-10">
+                    @*<div class="alert m-alert m-alert--default" role="alert">
+                            The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                        </div>*@
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputName">Name</label>
+                    <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Name">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmpCode">Employee Code</label>
+                    <input type="text" class="form-control m-input" id="exampleInputEmpCode" placeholder="Employee Code">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleGender">Gender</label>
+                    <select class="form-control m-input" id="exampleGender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail">Email address</label>
+                    <input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <span class="m-form__help">We'll never share your email with anyone else.</span>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputNumber">Mobile Number</label>
+                    <input type="text" class="form-control m-input" id="exampleInputNumber" placeholder="Mobile Number">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputDesignation">Designation</label>
+                    <input type="text" class="form-control m-input" id="exampleInputDesignation" placeholder="Designation">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleGrievance">Grievance Type</label>
+                    <select class="form-control m-input" id="exampleGrievance">
+                        <option>Select</option>
 
-<form class="m-form m-form--fit m-form--label-align-right">
-    <div class="m-portlet__body">
-        <div class="form-group m-form__group m--margin-top-10">
-            @*<div class="alert m-alert m-alert--default" role="alert">
-                    The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                </div>*@
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputName">Name</label>
-            <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Name">
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputEmpCode">Employee Code</label>
-            <input type="text" class="form-control m-input" id="exampleInputEmpCode" placeholder="Employee Code">
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleGender">Gender</label>
-            <select class="form-control m-input" id="exampleGender">
-                <option>Male</option>
-                <option>Female</option>
-            </select>
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputEmail">Email address</label>
-            <input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <span class="m-form__help">We'll never share your email with anyone else.</span>
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputNumber">Mobile Number</label>
-            <input type="text" class="form-control m-input" id="exampleInputNumber" placeholder="Mobile Number">
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputDesignation">Designation</label>
-            <input type="text" class="form-control m-input" id="exampleInputDesignation" placeholder="Designation">
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleGrievance">Grievance Type</label>
-            <select class="form-control m-input" id="exampleGrievance">
-                <option>Select</option>
-
-            </select>
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control m-input" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputCPassword1">Confirm Password</label>
-            <input type="password" class="form-control m-input" id="exampleInputCPassword1" placeholder="Confirm Password">
-        </div>
+                    </select>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control m-input" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputCPassword1">Confirm Password</label>
+                    <input type="password" class="form-control m-input" id="exampleInputCPassword1" placeholder="Confirm Password">
+                </div>
 
 
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    <button type="reset" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="m-portlet__foot m-portlet__foot--fit">
-        <div class="m-form__actions">
-            <button type="reset" class="btn btn-primary">Submit</button>
-            <button type="reset" class="btn btn-secondary">Cancel</button>
-        </div>
-    </div>
-</form>
+</body>
+</html>

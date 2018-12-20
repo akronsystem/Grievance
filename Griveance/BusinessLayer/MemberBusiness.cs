@@ -81,7 +81,7 @@ namespace Griveance.BusinessLayer
             objuser.gender = obj.Gender.ToString();
             objuser.email = obj.EmailId.ToString();
             objuser.contact = Convert.ToInt64(obj.MobileNo);
-            objuser.password = obj.Password;
+            objuser.password = CryptIt.Encrypt( obj.Password);
             objuser.status = 1;
             objuser.Islive = 0;
 
