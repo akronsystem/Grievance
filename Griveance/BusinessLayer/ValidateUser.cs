@@ -12,9 +12,9 @@ namespace Griveance.BusinessLayer
         GRContext db = new GRContext();
         public object IsValidUser(UserCredentialModel userCredentialModel)
         {
-
+            var password = CryptIt.Encrypt(userCredentialModel.Password);
             var user = db.tbl_user.FirstOrDefault(r => r.email == userCredentialModel.UserName
-                      && r.password == userCredentialModel.Password);
+                      && r.password == password);
 
             if (user == null)
             {
