@@ -139,5 +139,24 @@ namespace Griveance.Controllers
 
         }
 
+
+        [HttpPost]
+        public object GetSingleFaculty([FromBody] FacultyParameters obj)
+        {
+            try
+            {
+                GetSingleFaculty ObjFaculty = new GetSingleFaculty();
+                var result = ObjFaculty.GetFaculty(obj);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+
+        }
+
     }
 }
