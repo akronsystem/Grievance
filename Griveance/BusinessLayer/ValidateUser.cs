@@ -14,7 +14,7 @@ namespace Griveance.BusinessLayer
         {
             var password = CryptIt.Encrypt(userCredentialModel.Password);
             var user = db.tbl_user.FirstOrDefault(r => r.email == userCredentialModel.UserName
-                      && r.password == password);
+                      && r.password == password) ;
 
             if (user == null)
             {
