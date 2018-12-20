@@ -9,6 +9,9 @@ namespace Griveance.Models
     [Table("ViewAllStaffInfo")]
     public partial class ViewAllStaffInfo
     {
+
+        public int UserId { get; set; }
+
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

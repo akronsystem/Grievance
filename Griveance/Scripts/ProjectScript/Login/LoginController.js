@@ -7,7 +7,10 @@ function LoginController($scope, Service) {
     $scope.Initialize = function () {
         
         Service.Get("api/Login/GetUser").then(function (result) { 
-            $scope.UserCredentialModel.User = result.data.User
+           
+            $scope.UserCredentialModel.UserName = result.data.UserName
+            $scope.UserCredentialModel.type = result.data.ResultData;
+           
         })
     }
 
@@ -26,13 +29,44 @@ function LoginController($scope, Service) {
             //    $scope.UserCredentialModel.Password = hash.toUpperCase();
             //}
 
-            Service.Post("api/Login/ValidateUser", $scope.UserCredentialModel).then(function (rd) {
+            Service.Post("api/Login/ValidateUserLogin", $scope.UserCredentialModel).then(function (rd) {
                
-                if (rd.data == "Success") { 
-                    location.href = baseURL +"Dashboard/Index"
-                    
-                } else { 
-                    alert(rd.data);
+                if (rd.data.IsSucess)
+                { 
+                    console.log(rd.data.ResultData);
+                    if (rd.data.ResultData.type == "Admin")
+                    {
+                         location.href = baseURL +"Admin/Dashboard/Index"
+                    }
+                    else if (rd.data.ResultData.type == "Student") 
+                    {
+                        location.href = baseURL + "Student/Student/Index"
+                    }
+                    else if (rd.data.ResultData.type == "Parent")
+                    {
+                        location.href = baseURL + "Parent/Parent/Index"
+                    }
+                    else if (rd.data.ResultData.type == "Member")
+                    {
+                        location.href = baseURL + "Member/Member/Index"
+                    }
+                    else if (rd.data.ResultData.type == "Faculty")
+                    {
+                        location.href = baseURL + "Faculty/Faculty/Index"
+
+                    }
+                    else if (rd.data.ResultData.type == "Staff")
+                    {
+                        location.href = baseURL + "Staff/Staff/Index"
+
+                    }
+                    else {
+                        alert('Check your Username');
+                    }
+
+                }
+                else { 
+                    alert(rd.data.Message);
                 }
             });
         }

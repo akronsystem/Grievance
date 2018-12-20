@@ -8,7 +8,7 @@ namespace Griveance.ParamModel
     public class ParamGetMyGrievance
     {
         public int StudentCode { get; set; }
-        public int userid { get; set; }
-        public string password { get; set; }
+        public string Userid { get; set; }
+        public string Password { get; set; }
     }
 }

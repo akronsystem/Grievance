@@ -61,27 +61,27 @@ namespace Griveance.BusinessLayer
             }
         }
 
-         public object SaveMember([FromBody]Member_parameter obj)
+         public object SaveMember([FromBody]MemberParameter obj)
         {
 
             GRContext db = new GRContext();
             tbl_member objmember = new tbl_member();
            
-            objmember.id = Convert.ToInt32(obj.id);
-            objmember.code = Convert.ToInt32(obj.code);
-            objmember.designation = obj.designation.ToString();
-            objmember.griType = obj.griType.ToString();         
+            objmember.id = Convert.ToInt32(obj.Id);
+            objmember.code = Convert.ToInt32(obj.Code);
+            objmember.designation = obj.Designation.ToString();
+            objmember.griType = obj.GriType.ToString();         
             db.tbl_member.Add(objmember);           
             db.SaveChanges();
 
             tbl_user objuser = new tbl_user();
             objuser.name = obj.Name.ToString();
-            objuser.code = obj.code;
-            objuser.type = obj.type.ToString();
+            objuser.code = obj.Code;
+            objuser.type = obj.Type.ToString();
             objuser.gender = obj.Gender.ToString();
-            objuser.email = obj.Email_id.ToString();
-            objuser.contact = Convert.ToInt64(obj.Mobile_no);
-            objuser.password = obj.Password;
+            objuser.email = obj.EmailId.ToString();
+            objuser.contact = Convert.ToInt64(obj.MobileNo);
+            objuser.password = CryptIt.Encrypt( obj.Password);
             objuser.status = 1;
             objuser.Islive = 0;
 

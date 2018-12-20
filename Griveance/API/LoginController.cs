@@ -1,4 +1,5 @@
-﻿using Griveance.Models;
+﻿using Griveance.BusinessLayer;
+using Griveance.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,29 +13,46 @@ namespace Griveance.Controllers
     {
 		
 		[HttpGet]
-		public object test()
+		public object Test()
 		{
 			return "test";
 		}
 
-		[HttpGet]
-		public object GetUser()
-		{
-			UserCredentialModel userCredentialModel = new UserCredentialModel() { User = "pradip.chougule@jjmcoe.ac.in" };
-			return userCredentialModel;
-		}
+        [HttpGet]
+        public object GetUser()
+        {
+            try
+            {
+                UserCredentialModel userCredentialModel = new UserCredentialModel() { UserName = "pradip.chougule@jjmcoe.ac.in" };
+                return userCredentialModel;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
 
-		[HttpPost]
-		public object ValidateUser(UserCredentialModel userCredentialModel)
-		{
-			GRContext context = new GRContext();
-			var user =  context.tbl_user.FirstOrDefault(r => r.email == userCredentialModel.User 
-							&& r.password == userCredentialModel.Password);
+            }
 
-			if (user == null)
-				return "User Id & Password Is Invalid";
-			  
-			return "Success";
-		}
+
+        }
+
+        [HttpPost]
+        public object ValidateUserLogin(UserCredentialModel userCredentialModel)
+        {
+            try
+            {
+                ValidateUser Validuser = new ValidateUser();
+                var result = Validuser.IsValidUser(userCredentialModel);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+           
+
+
+        }
+      
     }
 }

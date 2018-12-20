@@ -9,6 +9,9 @@ namespace Griveance.Models
     [Table("ViewGetStudentInfo")]
     public partial class ViewGetStudentInfo
     {
+
+        public int? UserId { get; set; }
+
         [StringLength(100)]
         public string name { get; set; }
 
