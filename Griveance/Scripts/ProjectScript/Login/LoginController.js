@@ -9,7 +9,7 @@ function LoginController($scope, Service) {
         Service.Get("api/Login/GetUser").then(function (result) { 
            
             $scope.UserCredentialModel.UserName = result.data.UserName
-            $scope.UserCredentialModel.type = result.data.type
+            $scope.UserCredentialModel.type = result.data.ResultData;
            
         })
     }

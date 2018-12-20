@@ -32,5 +32,25 @@ namespace Griveance.BusinessLayer
                 return new Error() { IsError = true, Message = E.Message };
             }
         }
+        public object GetGrievanceAllocation(ParamGetGrievanceList objparam)
+        {
+            try
+            {
+                var Grievancelist = db.View_MemberAllocation.ToList();
+
+                if (Grievancelist == null)
+                {
+                    return new Error() { IsError = true, Message = "Grievance List Not Found" };
+                }
+                else
+                {
+                    return new Result() { IsSucess = true, ResultData = Grievancelist };
+                }
+            }
+            catch (Exception E)
+            {
+                return new Error() { IsError = true, Message = E.Message };
+            }
+        }
     }
 }

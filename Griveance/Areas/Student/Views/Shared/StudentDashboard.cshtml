@@ -94,9 +94,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
 
                         <!-- BEGIN: Horizontal Menu -->
-                        <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-dark " id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+                        @*<button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-dark " id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>*@
                         <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark ">
-                            <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
+
+                            @*<ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
                                 <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" aria-haspopup="true">
                                     <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link">
                                         <span class="m-menu__link-text">Actions</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i>
@@ -321,21 +322,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </ul>
                                     </div>
                                 </li>
-                            </ul>
+                            </ul>*@
                         </div>
-
+                     
                         <!-- END: Horizontal Menu -->
                         <!-- BEGIN: Topbar -->
                         <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
                             <div class="m-stack__item m-topbar__nav-wrapper">
                                 <ul class="m-topbar__nav m-nav m-nav--inline">
-                                    <li class="
-	m-nav__item m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light" m-dropdown-toggle="click" m-dropdown-persistent="1"
+                                    <li class="m-nav__item m-dropdown m-dropdown--large"
                                         id="m_quicksearch" m-quicksearch-mode="dropdown">
-                                        <a href="#" class="m-nav__link m-dropdown__toggle">
-                                            <span class="m-nav__link-icon"><i class="flaticon-search-1"></i></span>
+                                        <a href="~/Home/Index" class="m-nav__link m-dropdown__toggle"data-toggle="tooltip" title="Logout!">
+                                            <span class="m-nav__link-icon"><i class="flaticon-logout"></i></span>
                                         </a>
-                                        <div class="m-dropdown__wrapper">
+                                        </li>
+                                    </ul>
+                                        @*@<div class="m-dropdown__wrapper">
                                             <span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
                                             <div class="m-dropdown__inner ">
                                                 <div class="m-dropdown__header">
@@ -613,7 +615,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>*@
 
                         <!-- END: Topbar -->
                     </div>
@@ -772,7 +774,11 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <!--end::Page Vendors -->
     <!--begin::Page Scripts -->
-    <script src="~/Content/assets/app/js/dashboard.js" type="text/javascript"></script>
+    <script src="~/Content/assets/app/js/dashboard.js" type="text/javascript"></script><script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+</script>
 
     <!--end::Page Scripts -->
 </body>
