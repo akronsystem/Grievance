@@ -4,10 +4,7 @@ using System.Linq;
 using System.Web;
 
  
-namespace Griveance.Models
- 
-namespace Griveance.ParamModel
- 
+namespace Griveance.Models	 
 {
     public class ParamUser
     {

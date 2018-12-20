@@ -576,8 +576,16 @@
     <Content Include="Scripts\Common\CoomonFunctions.js" />
     <Content Include="Scripts\Common\Module.js" />
     <Content Include="Scripts\Common\Service.js" />
+    <Content Include="Scripts\ProjectScript\Faculty\FacultyController.js" />
+    <Content Include="Scripts\ProjectScript\Faculty\FacultyModule.js" />
+    <Content Include="Scripts\ProjectScript\Grievance\GrievanceAllocation.js" />
+    <Content Include="Scripts\ProjectScript\Grievance\GrievanceType.js" />
+    <Content Include="Scripts\ProjectScript\Grievance\GrievanceTypeList.js" />
+    <Content Include="Scripts\ProjectScript\Grievance\GrievanceTypeModule.js" />
     <Content Include="Scripts\ProjectScript\Login\LoginController.js" />
     <Content Include="Scripts\ProjectScript\Login\LoginModule.js" />
+    <Content Include="Scripts\ProjectScript\Parent\ParentController.js" />
+    <Content Include="Scripts\ProjectScript\Parent\ParentModule.js" />
     <Content Include="Scripts\ProjectScript\Setting\BranchController.js" />
     <Content Include="Scripts\ProjectScript\Setting\ClientController.js" />
     <Content Include="Scripts\ProjectScript\Setting\ClientTaskController.js" />
@@ -585,6 +593,10 @@
     <Content Include="Scripts\ProjectScript\Setting\DivisionController.js" />
     <Content Include="Scripts\ProjectScript\Setting\EmployeeController.js" />
     <Content Include="Scripts\ProjectScript\Setting\EntityController.js" />
+    <Content Include="Scripts\ProjectScript\Staff\StaffController.js" />
+    <Content Include="Scripts\ProjectScript\Staff\StaffModule.js" />
+    <Content Include="Scripts\ProjectScript\Student\StudentController.js" />
+    <Content Include="Scripts\ProjectScript\Student\StudentModule.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -610,6 +622,14 @@
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Faculty\Controllers\FacultyController.cs" />
+    <Compile Include="Areas\Faculty\FacultyAreaRegistration.cs" />
+    <Compile Include="Areas\Member\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
+    <Compile Include="Areas\Parent\Controllers\ParentController.cs" />
+    <Compile Include="Areas\Parent\ParentAreaRegistration.cs" />
+    <Compile Include="Areas\Staff\Controllers\StaffController.cs" />
+    <Compile Include="Areas\Staff\StaffAreaRegistration.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="BusinessLayer\Class1.cs" />
     <Compile Include="BusinessLayer\ClassBusiness.cs" />
@@ -665,6 +685,7 @@
     <Compile Include="Models\ViewGetSingleParentInfo.cs" />
     <Compile Include="Models\ViewGetStudentInfo.cs" />
     <Compile Include="Models\ViewGrievanceList.cs" />
+    <Compile Include="Models\View_MemberAllocation.cs" />
     <Compile Include="Models\Vw_GetSingleFaculty.cs" />
     <Compile Include="ParamModel\ClassParameter.cs" />
     <Compile Include="ParamModel\CourseParameter.cs" />
@@ -682,6 +703,7 @@
     <Compile Include="ParamModel\ParamUserLogin.cs" />
     <Compile Include="ParamModel\SetStatusParameters.cs" />
     <Compile Include="ParamModel\StudentParameters.cs" />
+    <Compile Include="ParamModel\ViewGetStudentInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultModel\Error.cs" />
     <Compile Include="ResultModel\Result.cs" />
@@ -848,10 +870,30 @@
     <Content Include="Areas\Admin\Views\Parent\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Staff\Index.cshtml" />
+    <Content Include="Areas\Faculty\Views\Faculty\FacultyGrievance.cshtml" />
+    <Content Include="Areas\Faculty\Views\Faculty\Index.cshtml" />
+    <Content Include="Areas\Faculty\Views\Faculty\PostGrievance.cshtml" />
+    <Content Include="Areas\Faculty\Views\Shared\FacultyDashboard.cshtml" />
+    <Content Include="Areas\Faculty\Views\web.config" />
+    <Content Include="Areas\Member\Views\Member\Index.cshtml" />
+    <Content Include="Areas\Member\Views\Member\MemberGrievance.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\MemberDashboard.cshtml" />
+    <Content Include="Areas\Member\Views\web.config" />
+    <Content Include="Areas\Parent\Views\Parent\Index.cshtml" />
+    <Content Include="Areas\Parent\Views\Parent\ParentGrievance.cshtml" />
+    <Content Include="Areas\Parent\Views\Parent\PostGrievance.cshtml" />
+    <Content Include="Areas\Parent\Views\Shared\ParentDashboard.cshtml" />
+    <Content Include="Areas\Parent\Views\web.config" />
+    <Content Include="Areas\Staff\Views\Shared\StaffDashboard.cshtml" />
+    <Content Include="Areas\Staff\Views\Staff\Index.cshtml" />
+    <Content Include="Areas\Staff\Views\Staff\PostGrievance.cshtml" />
+    <Content Include="Areas\Staff\Views\Staff\StaffGrievance.cshtml" />
+    <Content Include="Areas\Staff\Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Home\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
