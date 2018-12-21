@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Griveance.Models;
 using Griveance.BusinessLayer;
+using Griveance.ResultModel;
 
 namespace Griveance.Controllers
 {
@@ -38,16 +39,26 @@ namespace Griveance.Controllers
         [HttpPost]
         public object GetSingleGrievanace([FromBody]ParamMember obj)
         {
+            //get single member info
             try
             {
-                MemberBusiness MBusiness = new MemberBusiness();
-                var grievance = MBusiness.GetSingleGrievanace(obj);
-                return grievance;
+                CheckUsernamePassword chkUserPassword = new CheckUsernamePassword();
+
+                var chkUser = chkUserPassword.ValidateUsernamePassword(obj.UserId, obj.Password);
+                if (chkUser)
+                {
+                    MemberBusiness MBusiness = new MemberBusiness();
+                    var grievance = MBusiness.GetSingleGrievanace(obj);
+                    return grievance;
+                }
+                else
+                {
+                    return new Result { IsSucess = false, ResultData = "Username or Password Is Invalid." };
+                }
             }
             catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
-
             }
 
         }

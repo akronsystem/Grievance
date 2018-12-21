@@ -15,7 +15,7 @@ namespace Griveance.BusinessLayer
             GRContext context = new GRContext();
             try
             {
-                var parent = context.ViewGetSingleParentInfoes.Where(r => r.code == obj.Code).FirstOrDefault();
+                var parent = context.ViewGetSingleParentInfoes.Where(r => r.UserId == obj.UserId).FirstOrDefault();
                 if (parent == null)
                 {
                     return new Result { IsSucess = false, ResultData = "Record Not Found" };
