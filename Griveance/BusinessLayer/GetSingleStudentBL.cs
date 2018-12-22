@@ -25,7 +25,8 @@ namespace Griveance.BusinessLayer
                 }
                 else
                 {
-                    return new Result() { IsSucess = true, ResultData = singlestudent };
+                    return singlestudent;
+                    //return new Result() { IsSucess = true, ResultData = singlestudent };
                 }
             }
             catch(Exception E)
