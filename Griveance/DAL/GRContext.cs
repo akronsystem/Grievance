@@ -10,8 +10,11 @@ namespace Griveance.Models
 		public GRContext()
 			: base("name=GRContext")
 		{
-		}
-        
+		} 
+        public virtual DbSet<ViewUser> ViewUsers { get; set; }
+
+        public virtual DbSet<ViewGetCourseInfo> ViewGetCourseInfoes { get; set; }
+ 
         public virtual DbSet<ViewGetMemberInfo> ViewGetMemberInfoes { get; set; }
         public virtual DbSet<ViewGetSingleParentInfo> ViewGetSingleParentInfoes { get; set; }
         
