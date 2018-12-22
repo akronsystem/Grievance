@@ -8,19 +8,20 @@ namespace Griveance.Models
 
     public partial class tbl_emailsettings
     {
-        [Key]
-        [Column(Order = 0)]
+        [Required]
         [StringLength(100)]
         public string fromid { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        [Required]
         [StringLength(100)]
         public string host { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int port { get; set; }
+
+        [StringLength(50)]
+        public string password { get; set; }
+
+        [Key]
+        public long emailsettingid { get; set; }
     }
 }
