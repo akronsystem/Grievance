@@ -4,10 +4,13 @@ function UsersController($scope, Service) {
 
     var form = $(".student-admission-wrapper");
     $scope.ViewGetStudentInfoes = {};
+    $scope.UserCredentialModel = {};
 
     $scope.Initialize = function () {
 
-        Service.Get("api/Users/GetStudentInfo").then(function (result) {
+        $scope.UserCredentialModel.UserId = "";
+        $scope.UserCredentialModel.Password = "";
+        Service.Post("api/Users/GetStudentInfo", $scope.UserCredentialModel).then(function (result) {
 
            // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGetStudentInfoes = result.data;
