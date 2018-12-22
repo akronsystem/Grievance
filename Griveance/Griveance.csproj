@@ -576,6 +576,8 @@
     <Content Include="Scripts\Common\CoomonFunctions.js" />
     <Content Include="Scripts\Common\Module.js" />
     <Content Include="Scripts\Common\Service.js" />
+    <Content Include="Scripts\ProjectScript\Class\ClassModule.js" />
+    <Content Include="Scripts\ProjectScript\Class\CourseController.js" />
     <Content Include="Scripts\ProjectScript\Faculty\FacultyController.js" />
     <Content Include="Scripts\ProjectScript\Faculty\FacultyModule.js" />
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceAllocation.js" />
@@ -584,6 +586,7 @@
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceTypeModule.js" />
     <Content Include="Scripts\ProjectScript\Login\LoginController.js" />
     <Content Include="Scripts\ProjectScript\Login\LoginModule.js" />
+    <Content Include="Scripts\ProjectScript\Member\MemberController.js" />
     <Content Include="Scripts\ProjectScript\Parent\ParentController.js" />
     <Content Include="Scripts\ProjectScript\Parent\ParentModule.js" />
     <Content Include="Scripts\ProjectScript\Setting\BranchController.js" />
@@ -660,6 +663,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="DAL\GRContext.cs" />
+    <Compile Include="Models\CheckUsernamePassword.cs" />
     <Compile Include="Models\CryptIt.cs" />
     <Compile Include="Models\tbl_class.cs" />
     <Compile Include="Models\tbl_complaintdetails.cs" />
@@ -685,6 +689,7 @@
     <Compile Include="Models\ViewGetSingleParentInfo.cs" />
     <Compile Include="Models\ViewGetStudentInfo.cs" />
     <Compile Include="Models\ViewGrievanceList.cs" />
+    <Compile Include="Models\ViewUser.cs" />
     <Compile Include="Models\View_MemberAllocation.cs" />
     <Compile Include="Models\Vw_GetSingleFaculty.cs" />
     <Compile Include="ParamModel\ClassParameter.cs" />
