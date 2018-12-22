@@ -12,7 +12,7 @@ using Griveance.BusinessLayer;
 namespace Griveance.Controllers
 {
     public class CommonController : ApiController
-    { 
+    {
         public object SetLiveUser([FromBody]StudentParameters objhome)
         {
             try
@@ -21,7 +21,7 @@ namespace Griveance.Controllers
                 var homemworkresult = obj.UserLive(objhome);
                 return homemworkresult;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
 
@@ -37,11 +37,11 @@ namespace Griveance.Controllers
                 var mygrievance = obj.GetMyGrievance(objmy);
                 return mygrievance;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
             }
-          
+
         }
 
         public object SubmitGrievance([FromBody]ParamSaveGriveance objparam)
@@ -52,11 +52,74 @@ namespace Griveance.Controllers
                 var result = obj.SaveGrievance(objparam);
                 return result;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
             }
-           
-         }
+
+        }
+
+        [HttpGet]
+        public object GetEmailInfo()
+        {
+            try
+            {
+                GetEmailSettings obj = new GetEmailSettings();
+                var EmailList = obj.GetEmailSettList();
+                return EmailList;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+        [HttpPost]
+        public object SaveEmailSettings([FromBody]ParamEmailSettings objemail)
+        {
+            try
+            {
+                SaveEmailSetting obj = new SaveEmailSetting();
+                var EmailList = obj.SaveEmail(objemail);
+                return EmailList;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+
+
+        }
+        [HttpPost]
+        public object GetSingleEmailInfo([FromBody]ParamEmailSettings objid)
+        {
+            try
+            {
+                GetEmailSettings obj = new GetEmailSettings();
+                var EmailList = obj.GetEmailData(objid);
+                return EmailList;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
+
+        [HttpPost]
+        public object UpdateEmailSettings([FromBody]ParamEmailSettings objid)
+        {
+            try
+            {
+                SaveEmailSetting obj = new SaveEmailSetting();
+                var EmailList = obj.UpdateEmail(objid);
+                return EmailList;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
+
     }
 }
