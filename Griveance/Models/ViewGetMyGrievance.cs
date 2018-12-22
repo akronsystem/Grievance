@@ -10,37 +10,24 @@ namespace Griveance.Models
     public partial class ViewGetMyGrievance
     {
         [Key]
-        [Column(Order = 0)]
-        public int PostGrievId { get; set; }
+        public int CompID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int code { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
-        [StringLength(100)]
-        public string email { get; set; }
-
-        [Key]
-        [Column(Order = 3)]
-        [StringLength(300)]
-        public string grivtype { get; set; }
-
-        [Key]
-        [Column(Order = 4)]
-        [StringLength(300)]
-        public string subject { get; set; }
-
-        [Key]
-        [Column(Order = 5)]
         [StringLength(500)]
-        public string post { get; set; }
+        public string GrievanceType { get; set; }
 
-        [Key]
-        [Column(Order = 6)]
-        [StringLength(30)]
+        [Column(TypeName = "date")]
+        public DateTime? Date { get; set; }
+
+        [StringLength(500)]
+        public string Subject { get; set; }
+
+        [StringLength(500)]
+        public string Post { get; set; }
+
+        [StringLength(500)]
+        public string GrievanceAction { get; set; }
+
+        [StringLength(100)]
         public string status { get; set; }
     }
 }

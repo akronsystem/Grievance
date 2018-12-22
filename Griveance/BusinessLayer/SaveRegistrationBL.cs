@@ -21,6 +21,7 @@ namespace Griveance.BusinessLayer
                     return new Error() { IsError = true, Message = "User Code Already Exists." };
                 }
                     tbl_user objuser = new tbl_user();
+              
                     objuser.name = PR.Name;
                     objuser.code = PR.Code;
                     objuser.type = PR.Type;

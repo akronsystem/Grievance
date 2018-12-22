@@ -10,6 +10,8 @@ namespace Griveance.Models
     {
         public int id { get; set; }
 
+        public int? UserId { get; set; }
+
         public int code { get; set; }
 
         [Required]
@@ -19,7 +21,5 @@ namespace Griveance.Models
         [Required]
         [StringLength(200)]
         public string griType { get; set; }
-
-        
     }
 }

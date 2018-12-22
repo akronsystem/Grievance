@@ -65,6 +65,11 @@ namespace Griveance.BusinessLayer
         {
 
             GRContext db = new GRContext();
+            var usercode = db.tbl_member.Where(r => r.code == obj.Code).FirstOrDefault();
+            if (usercode != null)
+            {
+                return new Error() { IsError = true, Message = "User Code Already Exists." };
+            }
             tbl_member objmember = new tbl_member();
            
             objmember.id = Convert.ToInt32(obj.Id);
@@ -77,7 +82,7 @@ namespace Griveance.BusinessLayer
             tbl_user objuser = new tbl_user();
             objuser.name = obj.Name.ToString();
             objuser.code = obj.Code;
-            objuser.type = obj.Type.ToString();
+            objuser.type = "Member";
             objuser.gender = obj.Gender.ToString();
             objuser.email = obj.EmailId.ToString();
             objuser.contact = Convert.ToInt64(obj.MobileNo);
