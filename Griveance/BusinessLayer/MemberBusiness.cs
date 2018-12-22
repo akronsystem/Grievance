@@ -45,7 +45,7 @@ namespace Griveance.BusinessLayer
             GRContext context = new GRContext();
             try
             {
-                var grievance = context.ViewGetMemberInfoes.Where(r => r.code == obj.Code).FirstOrDefault();
+                var grievance = context.ViewGetMemberInfoes.Where(r => r.UserId == obj.UserId).FirstOrDefault();
                 if (grievance == null)
                 {
                     return new Result { IsSucess = false, ResultData = "Record Not Found" };

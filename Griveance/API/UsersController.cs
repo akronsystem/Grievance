@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Griveance.ResultModel;
 
 namespace Griveance.Controllers
 {
@@ -20,18 +21,27 @@ namespace Griveance.Controllers
     { 
          [HttpPost]
  
-        public object GetSingleParentInfo([FromBody]ParamUser code)
+        public object GetSingleParentInfo([FromBody]ParamUser Obj)
         {
             try
             {
-                UsersBusiness UbObj = new UsersBusiness();
-                var parent = UbObj.GetSingleParentInfo(code);
-                return parent;
+                CheckUsernamePassword chkUserPassword = new CheckUsernamePassword();
+
+                var chkUser = chkUserPassword.ValidateUsernamePassword(Obj.UserId, Obj.Password);
+                if (chkUser)
+                {
+                    UsersBusiness UbObj = new UsersBusiness();
+                    var parent = UbObj.GetSingleParentInfo(Obj);
+                    return parent;
+                }
+                else
+                {
+                    return new Result { IsSucess = false, ResultData = "Username or Password Is Invalid." };
+                }
             }
             catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
-
             }
 
         }
@@ -57,9 +67,19 @@ namespace Griveance.Controllers
 
             try
             {
-                GetSingleStudentBL obj = new GetSingleStudentBL();
-                var singlestudentresult = obj.GetSingleStudent(objstudent);
-                return singlestudentresult;
+                CheckUsernamePassword chkUserPassword = new CheckUsernamePassword();
+
+                var chkUser = chkUserPassword.ValidateUsernamePassword(objstudent.UserId, objstudent.Password);
+                if (chkUser)
+                {
+                    GetSingleStudentBL obj = new GetSingleStudentBL();
+                    var singlestudentresult = obj.GetSingleStudent(objstudent);
+                    return singlestudentresult;
+                }
+                else
+                {
+                    return new Result { IsSucess = false, ResultData = "Username or Password Is Invalid." };
+                }
             }
             catch (Exception e)
             {
