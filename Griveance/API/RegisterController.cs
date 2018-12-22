@@ -28,5 +28,24 @@ namespace Griveance.Controllers
             }
 
         }
+
+
+
+        [HttpPost]
+        public object UpdateStudents([FromBody] ParamRegistration PR)
+        {
+            try
+            {
+                SaveRegistrationBL OBJSAVE = new SaveRegistrationBL();
+                var result = OBJSAVE.UpdateStudent(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
     }
 }
