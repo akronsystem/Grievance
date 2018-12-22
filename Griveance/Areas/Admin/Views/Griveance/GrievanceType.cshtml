@@ -10,12 +10,67 @@
 <body ng-app="GR">
     @using System.Configuration;
     <div ng-controller="GrievanceController">
+
+        <div ng-show="IsVisible">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="portlet box blue">
+
+                        <div class="portlet-body display-hide">
+
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                       Grievance Name
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" ng-model="grivance_name" value={{grivance_name}} name="FromId" class="form-control" required />
+                               
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">
+                                     Grievance Discription
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" ng-model="grivance_description" name="Host" value={{grivance_description}} class="form-control" required />
+
+                                    </div>
+                                </div>                              
+
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-4 col-md-9">
+                                        <button class="btn blue hide-portlet " ng-show="btnSave" ng-click="postdata(fromid,host,port,password)">
+                                            <i class="fa fa-database"> </i> Save
+                                        </button>
+
+                                        <button class="btn blue hide-portlet" ng-show="btnUpdate" ng-click="AddUpdate(fromid,host,port,password,emailsettingid)">
+                                            <i class="fa fa-database"> </i> Update
+                                        </button>
+                                        <button class="btn default hide-portlet" ng-click="Cancel()">
+                                            <i class="fa fa-times"> </i> Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <button class="btn btn-primary" ng-click="ShowHide()">Add</button>
         <form class="student-admission-wrapper" ng-init="Initialize()">
             <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
                 <thead>
                     <tr>
-                        <th>Name Of The Grievance</th>
                         <th>Grievance Id</th>
+                        <th>Name Of The Grievance</th>                       
                         <th>Description</th>
 
 

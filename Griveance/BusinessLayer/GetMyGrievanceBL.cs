@@ -16,7 +16,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var MyGrievance = db.ViewGetMyGrievances.Where(r => r.code == obj.StudentCode).ToList();
+                var MyGrievance = db.ViewGetMyGrievances.Where(r => r.CompID == obj.StudentCode).ToList();
 
                 if (MyGrievance == null)
                 {

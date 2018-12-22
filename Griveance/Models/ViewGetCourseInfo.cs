@@ -9,10 +9,10 @@ namespace Griveance.Models
     [Table("ViewGetCourseInfo")]
     public partial class ViewGetCourseInfo
     {
-        [Key]
-        public int course_id { get; set; }
-
         [StringLength(100)]
         public string course_name { get; set; }
+
+        [Key]
+        public int course_id { get; set; }
     }
 }
