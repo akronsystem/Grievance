@@ -62,9 +62,17 @@ function ClassYearController($scope, Service) {
         Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
-          
-            console.log(result.data);
-
+            if (result.data.IsSucess)
+            {
+                debugger;
+                console.log(result.data);
+                window.location = "./Index"
+            }
+            else
+            {
+                window.location = "./Register"
+            }
+           
         })
        
        
