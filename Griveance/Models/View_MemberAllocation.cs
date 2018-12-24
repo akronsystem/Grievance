@@ -34,5 +34,7 @@ namespace Griveance.Models
         [Column(Order = 3)]
         [StringLength(200)]
         public string griType { get; set; }
+
+        public int? status { get; set; }
     }
 }

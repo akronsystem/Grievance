@@ -576,6 +576,10 @@
     <Content Include="Scripts\Common\CoomonFunctions.js" />
     <Content Include="Scripts\Common\Module.js" />
     <Content Include="Scripts\Common\Service.js" />
+    <Content Include="Scripts\ProjectScript\Class\ClassModule.js" />
+    <Content Include="Scripts\ProjectScript\Class\CourseController.js" />
+    <Content Include="Scripts\ProjectScript\EmailSetting\EmailController.js" />
+    <Content Include="Scripts\ProjectScript\EmailSetting\EmailModule.js" />
     <Content Include="Scripts\ProjectScript\Faculty\FacultyController.js" />
     <Content Include="Scripts\ProjectScript\Faculty\FacultyModule.js" />
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceAllocation.js" />
@@ -584,6 +588,7 @@
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceTypeModule.js" />
     <Content Include="Scripts\ProjectScript\Login\LoginController.js" />
     <Content Include="Scripts\ProjectScript\Login\LoginModule.js" />
+    <Content Include="Scripts\ProjectScript\Member\MemberController.js" />
     <Content Include="Scripts\ProjectScript\Parent\ParentController.js" />
     <Content Include="Scripts\ProjectScript\Parent\ParentModule.js" />
     <Content Include="Scripts\ProjectScript\Setting\BranchController.js" />
@@ -596,6 +601,8 @@
     <Content Include="Scripts\ProjectScript\Staff\StaffController.js" />
     <Content Include="Scripts\ProjectScript\Staff\StaffModule.js" />
     <Content Include="Scripts\ProjectScript\Student\StudentController.js" />
+    <Content Include="Scripts\ProjectScript\Student\StudentInfoController.js" />
+    <Content Include="Scripts\ProjectScript\Student\StudentInfoModule.js" />
     <Content Include="Scripts\ProjectScript\Student\StudentModule.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -636,6 +643,7 @@
     <Compile Include="BusinessLayer\CourseBusiness.cs" />
     <Compile Include="BusinessLayer\GetAllStaffInfo.cs" />
     <Compile Include="BusinessLayer\GetClassInfoBL.cs" />
+    <Compile Include="BusinessLayer\GetEmailSettings.cs" />
     <Compile Include="BusinessLayer\GetFacultyInfoBL.cs" />
     <Compile Include="BusinessLayer\GetGrievanceListBL.cs" />
     <Compile Include="BusinessLayer\GetGriveanceInfo.cs" />
@@ -648,6 +656,7 @@
     <Compile Include="BusinessLayer\GetUnassignedGrievanceType.cs" />
     <Compile Include="BusinessLayer\MemberBusiness.cs" />
     <Compile Include="BusinessLayer\PostGriveance.cs" />
+    <Compile Include="BusinessLayer\SaveEmailSetting.cs" />
     <Compile Include="BusinessLayer\SaveRegistrationBL.cs" />
     <Compile Include="BusinessLayer\SetGriveanceStatus.cs" />
     <Compile Include="BusinessLayer\SetIsLiveForUser.cs" />
@@ -660,6 +669,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="DAL\GRContext.cs" />
+    <Compile Include="Models\CheckUsernamePassword.cs" />
     <Compile Include="Models\CryptIt.cs" />
     <Compile Include="Models\tbl_class.cs" />
     <Compile Include="Models\tbl_complaintdetails.cs" />
@@ -685,12 +695,14 @@
     <Compile Include="Models\ViewGetSingleParentInfo.cs" />
     <Compile Include="Models\ViewGetStudentInfo.cs" />
     <Compile Include="Models\ViewGrievanceList.cs" />
+    <Compile Include="Models\ViewUser.cs" />
     <Compile Include="Models\View_MemberAllocation.cs" />
     <Compile Include="Models\Vw_GetSingleFaculty.cs" />
     <Compile Include="ParamModel\ClassParameter.cs" />
     <Compile Include="ParamModel\CourseParameter.cs" />
     <Compile Include="ParamModel\FacultyParameters.cs" />
     <Compile Include="ParamModel\MemberParameter.cs" />
+    <Compile Include="ParamModel\ParamEmailSettings.cs" />
     <Compile Include="ParamModel\ParamGetFacultyInfo.cs" />
     <Compile Include="ParamModel\ParamGetGrievanceList.cs" />
     <Compile Include="ParamModel\ParamGetMyGrievance.cs" />

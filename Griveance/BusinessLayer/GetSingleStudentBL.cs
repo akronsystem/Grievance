@@ -17,7 +17,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var singlestudent = db.ViewGetStudentInfoes.Where(r => r.code == obj.StudentCode ).FirstOrDefault();
+                var singlestudent = db.ViewGetStudentInfoes.Where(r => r.UserId == obj.UserId ).FirstOrDefault();
 
                 if (singlestudent == null)
                 {

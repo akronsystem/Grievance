@@ -15,7 +15,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                tbl_user objTBLUSER = gc.tbl_user.Where(r => r.code == PM.Code && r.type == "Member").FirstOrDefault();
+                tbl_user objTBLUSER = gc.tbl_user.Where(r => r.UserId == PM.UserId && r.type == "Member").FirstOrDefault();
 
                 if (objTBLUSER == null)
                 { 
@@ -37,7 +37,7 @@ namespace Griveance.BusinessLayer
                     {
                         objTBLUSER.Islive = 1;
                     }
-                    objTBLUSER.code = PM.Code;
+                    //objTBLUSER.code = PM.Code;
                     gc.SaveChanges();
                     return new Result() { IsSucess = true, ResultData = "Status Updated Sucessfully!" };
                 }

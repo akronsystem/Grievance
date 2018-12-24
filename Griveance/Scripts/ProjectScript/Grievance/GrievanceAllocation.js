@@ -4,10 +4,12 @@ function GrievanceController($scope, Service) {
 
     var form = $(".student-admission-wrapper");
     $scope.ViewGrievanceList = {};
+    $scope.UserCredentialModel = {};
 
     $scope.Initialize = function () {
-
-        Service.Get("api/Grievance/GrievanceAllocation").then(function (result) {
+        $scope.UserCredentialModel.UserId = "";
+        $scope.UserCredentialModel.Password = "";
+        Service.Post("api/Grievance/GrievanceAllocation").then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGrievanceList = result.data;

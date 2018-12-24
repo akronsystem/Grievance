@@ -48,7 +48,7 @@ namespace Griveance.Controllers
 
         }
 
-        [HttpGet]
+        [HttpPost]
         public object GriveanceTypeInfo()
         {
             try

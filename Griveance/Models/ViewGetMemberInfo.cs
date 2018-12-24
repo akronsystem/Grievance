@@ -32,21 +32,26 @@ namespace Griveance.Models
         [StringLength(200)]
         public string griType { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
         [StringLength(100)]
         public string email { get; set; }
 
         public long? contact { get; set; }
 
-        [Key]
-        [Column(Order = 5)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Islive { get; set; }
+        public int? Islive { get; set; }
 
-        [Key]
-        [Column(Order = 6)]
         [StringLength(100)]
         public string password { get; set; }
+
+        [StringLength(20)]
+        public string gender { get; set; }
+
+        [StringLength(100)]
+        public string type { get; set; }
+
+        public int? status { get; set; }
+
+        public int? UserId { get; set; }
+
+        public int? Expr1 { get; set; }
     }
 }
