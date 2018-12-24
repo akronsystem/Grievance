@@ -6,6 +6,8 @@ function GrievanceController($scope, Service) {
     $scope.tbl_grievance_list = {};
     $scope.UserCredentialModel = {};
     $scope.IsVisible = false;
+    $scope.btnSave = false;
+
 
     $scope.Initialize = function () {
         $scope.UserCredentialModel.UserId = "";
@@ -22,7 +24,11 @@ function GrievanceController($scope, Service) {
     }
     $scope.ShowHide = function () {
         //If DIV is visible it will be hidden and vice versa.
-        $scope.IsVisible = $scope.IsVisible ? false : true;
+        $scope.IsVisible = true;
+        $scope.btnSave = true;
+    }
+    $scope.Save = function () {
+
     }
 
     

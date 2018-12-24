@@ -49,7 +49,7 @@ namespace Griveance.BusinessLayer
                 {
                     tbl_faculty objfaculty = new tbl_faculty();
                     objfaculty.code = PR.Code;
-                    objfaculty.department = PR.Department;
+                    objfaculty.department = PR.CourseName;
                     objfaculty.designation = PR.Designation;
                     db.tbl_faculty.Add(objfaculty);
                     db.SaveChanges();
@@ -70,7 +70,7 @@ namespace Griveance.BusinessLayer
                 {
                     tbl_staff objstaff = new tbl_staff();
                     objstaff.code = PR.Code;
-                    objstaff.department = PR.Department;
+                    objstaff.department = PR.CourseName;
                     objstaff.designation = PR.Designation;
                     db.tbl_staff.Add(objstaff);
                     db.SaveChanges();
