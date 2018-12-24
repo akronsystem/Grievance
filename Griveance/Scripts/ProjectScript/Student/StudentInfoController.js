@@ -6,7 +6,7 @@ function UsersController($scope, Service) {
     $scope.ViewGetStudentInfoes = {};
     $scope.UserCredentialModel = {};
 
-
+    $scope.btnUpdate = false;
     $scope.IsVisible = false;
     $scope.Students = {};
 
@@ -18,7 +18,7 @@ function UsersController($scope, Service) {
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Users/GetStudentInfo", $scope.UserCredentialModel).then(function (result) {
 
-            // $scope.ParamUserLogin.Name = result.data.Name
+           
             $scope.ViewGetStudentInfoes = result.data;
             $scope.Students = result.data.ResultData;
             console.log(result.data);
@@ -36,13 +36,12 @@ function UsersController($scope, Service) {
        
         Service.Post("api/Users/GetSingleStudentInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result)
         {
-        //    if (result.data)
-        //        $scope.msg = "Data Fetch Successfully!";
-        //},
-            //function (result) {
-                window.alert('hi');
-                debugger;
-                $scope.IsVisible = $scope.IsVisible ? false : true;
+       
+               
+            debugger;
+            $scope.IsVisible = true;
+            $scope.btnUpdate = true;
+            $scope.Initialize();
                 $scope.ViewGetStudentInfoes = result.data;
 
                 $scope.StudentName = result.data.name;
@@ -52,8 +51,21 @@ function UsersController($scope, Service) {
                 $scope.email = result.data.email;
                 $scope.Contact = result.data.contact;
                 $scope.Students = result.data.ResultData;
-                $scope.headers = response.headers();
+             
+                
             })
+    }
+    $scope.Clear = function ()
+    {
+       
+        $scope.StudentName = null;
+        $scope.StudentCode = null;
+        $scope.Type = null;
+        $scope.Gender = null;
+        $scope.email = null;
+        $scope.Contact = null;
+        $scope.IsVisible = false;
+        $scope.Initialize();
     }
 
 
@@ -70,8 +82,10 @@ function UsersController($scope, Service) {
 
             if (response.data)
                 $scope.Initialize();
-                $scope.msg = "Post Data Submitted Successfully!";
-
+            window.alert('Student Data Updated Successfully!')
+          
+            $scope.Clear();
+            $scope.IsVisible = false;
         });
     }
 }
