@@ -69,8 +69,13 @@ function EmailSettingController($scope, Service) {
       
     }
 
+    $scope.postdata = function (isValid)
+    {
+        if (isValid)
+        {
 
-    debugger;
+     
+   
     $scope.postdata = function (fromid, host, port, password) {
        
         var data = {
@@ -89,25 +94,31 @@ function EmailSettingController($scope, Service) {
             $scope.IsVisible = false;
         });
     }
+        }
+    }
 
+    $scope.AddUpdate = function (isValid) {
+        if (isValid) {
 
-    $scope.AddUpdate = function (fromid, host, port, password, emailsettingid) {
-        var data = {
-            fromid: fromid,
-            host: host,
-            port: port,
-            password: password,
-            emailsettingid: emailsettingid
-           
-        };
-        Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
+            $scope.AddUpdate = function (fromid, host, port, password, emailsettingid) {
+                var data = {
+                    fromid: fromid,
+                    host: host,
+                    port: port,
+                    password: password,
+                    emailsettingid: emailsettingid
 
-            if (response.data)               
-                $scope.Initialize();
-            $scope.msg = "Email Settings Updated Successfully!";
-            $scope.IsVisible = false;
-           
-        });
+                };
+                Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
+
+                    if (response.data)
+                        $scope.Initialize();
+                    $scope.msg = "Email Settings Updated Successfully!";
+                    $scope.IsVisible = false;
+
+                });
+            }
+        }
     }
 
     $scope.Cancel = function () {
