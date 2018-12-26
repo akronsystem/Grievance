@@ -600,10 +600,8 @@
     <Content Include="Scripts\ProjectScript\Setting\EntityController.js" />
     <Content Include="Scripts\ProjectScript\Staff\StaffController.js" />
     <Content Include="Scripts\ProjectScript\Staff\StaffModule.js" />
-    <Content Include="Scripts\ProjectScript\Student\StudentController.js" />
     <Content Include="Scripts\ProjectScript\Student\StudentInfoController.js" />
     <Content Include="Scripts\ProjectScript\Student\StudentInfoModule.js" />
-    <Content Include="Scripts\ProjectScript\Student\StudentModule.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

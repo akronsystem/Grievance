@@ -30,6 +30,8 @@ function UsersController($scope, Service) {
     $scope.ShowHide = function (studentcode) {
 
         var data = {
+            UserId: "",
+            Password:"",
             StudentCode: studentcode
 
         };
