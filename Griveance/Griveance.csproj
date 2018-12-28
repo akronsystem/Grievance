@@ -660,6 +660,7 @@
     <Compile Include="BusinessLayer\MemberBusiness.cs" />
     <Compile Include="BusinessLayer\PostGriveance.cs" />
     <Compile Include="BusinessLayer\SaveEmailSetting.cs" />
+    <Compile Include="BusinessLayer\SaveGrievance.cs" />
     <Compile Include="BusinessLayer\SaveRegistrationBL.cs" />
     <Compile Include="BusinessLayer\SetGriveanceStatus.cs" />
     <Compile Include="BusinessLayer\SetIsLiveForUser.cs" />
@@ -701,10 +702,12 @@
     <Compile Include="Models\ViewGrievanceList.cs" />
     <Compile Include="Models\ViewUser.cs" />
     <Compile Include="Models\View_MemberAllocation.cs" />
+    <Compile Include="Models\View_UsersGrievance.cs" />
     <Compile Include="Models\Vw_GetSingleFaculty.cs" />
     <Compile Include="ParamModel\ClassParameter.cs" />
     <Compile Include="ParamModel\CourseParameter.cs" />
     <Compile Include="ParamModel\FacultyParameters.cs" />
+    <Compile Include="ParamModel\GrievanceParam.cs" />
     <Compile Include="ParamModel\MemberParameter.cs" />
     <Compile Include="ParamModel\ParamEmailSettings.cs" />
     <Compile Include="ParamModel\ParamGetFacultyInfo.cs" />
