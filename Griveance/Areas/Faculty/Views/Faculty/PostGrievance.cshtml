@@ -5,37 +5,50 @@
 }
 
 <h2>Post Grievance</h2>
-<form class="m-form m-form--fit m-form--label-align-right">
-    <div class="m-portlet__body">
-        <div class="form-group m-form__group m--margin-top-10">
-            @*<div class="alert m-alert m-alert--default" role="alert">
-                    The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                </div>*@
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleGrievance">Grievance Type</label>
-            <select class="form-control m-input" id="exampleGrievance">
-                <option>Select</option>
+<body ng-app="GR">
+    @using System.Configuration;
+    <div ng-controller="UsersController">
+        <form class="m-form m-form--fit m-form--label-align-right">
+            <div class="m-portlet__body">
+                <div class="form-group m-form__group m--margin-top-10">
+                    @*<div class="alert m-alert m-alert--default" role="alert">
+                            The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                        </div>*@
+                </div>
+                <div class="form-group m-form__group" ng-init="GetInfo()">
+                    <label for="exampleGrievance">Grievance Type</label>
+                    <select class="form-control m-input" id="exampleGrievance" ng-model="GriveanceType">
 
-            </select>
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputName">Subject</label>
-            <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Subject">
-        </div>
-        <div class="form-group m-form__group">
-            <label for="exampleInputEmpCode">Post Details</label>
-            <input type="text" class="form-control m-input" id="exampleInputEmpCode" placeholder="Post Details">
-        </div>
+                        <option ng-repeat="s in Grievance" value="{{s.grivance_id}}">{{s.grivance_name}}</option>
+
+                    </select>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputName">Subject</label>
+                    <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Subject" ng-model="Subject">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmpCode">Post Details</label>
+                    <input type="text" class="form-control m-input" id="exampleInputEmpCode" placeholder="Post Details" ng-model="PostDetails">
+                </div>
 
 
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    <button type="reset" class="btn btn-primary" ng-click="SavePost()">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="m-portlet__foot m-portlet__foot--fit">
-        <div class="m-form__actions">
-            <button type="reset" class="btn btn-primary">Submit</button>
-            <button type="reset" class="btn btn-secondary">Reset</button>
-        </div>
-    </div>
-</form>
+    <script src="@Url.Content("~/Content/angularjs/scripts/angular.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ProjectScript/Class/ClassModule.js")"></script>
+    <script src="@Url.Content("~/Scripts/Common/Service.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ProjectScript/Faculty/FacultyController.js")" type="text/javascript"></script>
 
+    <script>
+        var baseURL = "@ConfigurationManager.AppSettings["BaseUrlPath"].ToString()";
+    </script>
+</body>
 

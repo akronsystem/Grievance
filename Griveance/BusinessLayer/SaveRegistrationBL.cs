@@ -59,12 +59,14 @@ namespace Griveance.BusinessLayer
                     tbl_parent objparent = new tbl_parent();
                     objparent.code = PR.Code;
                     objparent.relationship = PR.Relationship;
+                    tbl_user obstudent = db.tbl_user.Where(r => r.code == PR.Code).FirstOrDefault();
+                    objparent.UserId = obstudent.UserId;
                     db.tbl_parent.Add(objparent);
                     db.SaveChanges();
 
-                    tbl_student objstudent = db.tbl_student.Where(r => r.code == PR.Code).FirstOrDefault();
-                    objstudent.IsParent = 1;
-                    db.SaveChanges();
+                    //tbl_student objstudent = db.tbl_student.Where(r => r.code == PR.Code).FirstOrDefault();
+                    //objstudent.IsParent = 1;
+                    //db.SaveChanges();
                 }
                 else if (PR.Type == "Staff")
                 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Griveance.Areas.Student.Controllers
@@ -11,6 +12,7 @@ namespace Griveance.Areas.Student.Controllers
         // GET: Student/Student
         public ActionResult Index()
         {
+       
             return View();
         }
         //Student Grievance

@@ -14,9 +14,10 @@ namespace Griveance.BusinessLayer
 
         public object GetMyGrievance(ParamGetMyGrievance obj)
         {
+            var id = Convert.ToString(obj.StudentCode);
             try
             {
-                var MyGrievance = db.ViewGetMyGrievances.Where(r => r.CompID == obj.StudentCode).ToList();
+                var MyGrievance = db.ViewGetMyGrievances.Where(r => r.StackholderID ==id).ToList();
 
                 if (MyGrievance == null)
                 {

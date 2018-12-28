@@ -45,7 +45,7 @@ namespace Griveance.Controllers
             }
 
         }
-        [HttpGet]
+        [HttpPost]
         public object GetStaffInfo()
         {
             try

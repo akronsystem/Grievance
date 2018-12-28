@@ -17,5 +17,9 @@ namespace Griveance.Controllers
         {
             return View();
         }
+        public ActionResult NAdminDashboard()
+        {
+            return View();
+        }
     }
 }

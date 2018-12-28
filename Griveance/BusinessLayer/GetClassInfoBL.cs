@@ -29,5 +29,22 @@ namespace Griveance.BusinessLayer
                 return new Error { IsError = true, Message = ex.Message };
             }
         }
+        public object ClassInfo()
+        {
+            try
+            {
+                var getlist = db.tbl_class.ToList();
+
+                if (getlist == null)
+                    return new Error() { IsError = true, Message = "Class List Not Found." };
+                else
+                    return new Result() { IsSucess = true, ResultData = getlist };
+
+            }
+            catch (Exception ex)
+            {
+                return new Error { IsError = true, Message = ex.Message };
+            }
+        }
     }
 }

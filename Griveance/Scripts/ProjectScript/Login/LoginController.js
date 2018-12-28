@@ -34,6 +34,11 @@ function LoginController($scope, Service) {
                 if (rd.data.IsSucess)
                 { 
                     console.log(rd.data.ResultData);
+                    sessionStorage.setItem("emp-key", JSON.stringify(rd.data.ResultData.code));
+                    sessionStorage.setItem("userid", JSON.stringify(rd.data.ResultData.UserId));
+                    sessionStorage.setItem("Password", JSON.stringify(rd.data.ResultData.password));
+                    sessionStorage.setItem("Email", JSON.stringify(rd.data.ResultData.email));
+                    sessionStorage.setItem("Type", JSON.stringify(rd.data.ResultData.type));
                     if (rd.data.ResultData.type == "Admin")
                     {
                          location.href = baseURL +"Admin/Dashboard/Index"
@@ -41,6 +46,7 @@ function LoginController($scope, Service) {
                     else if (rd.data.ResultData.type == "Student") 
                     {
                         location.href = baseURL + "Student/Student/Index"
+                       
                     }
                     else if (rd.data.ResultData.type == "Parent")
                     {
