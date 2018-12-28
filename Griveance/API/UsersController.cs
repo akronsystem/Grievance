@@ -27,17 +27,17 @@ namespace Griveance.Controllers
             {
                 CheckUsernamePassword chkUserPassword = new CheckUsernamePassword();
 
-                var chkUser = chkUserPassword.ValidateUsernamePassword(Obj.UserId, Obj.Password);
-                if (chkUser)
-                {
+                //var chkUser = chkUserPassword.ValidateUsernamePassword(Obj.UserId, Obj.Password);
+                //if (chkUser)
+                //{
                     UsersBusiness UbObj = new UsersBusiness();
                     var parent = UbObj.GetSingleParentInfo(Obj);
                     return parent;
-                }
-                else
-                {
-                    return new Result { IsSucess = false, ResultData = "Username or Password Is Invalid." };
-                }
+                //}
+                //else
+                //{
+                //    return new Result { IsSucess = false, ResultData = "Username or Password Is Invalid." };
+                //}
             }
             catch (Exception e)
             {
@@ -45,7 +45,7 @@ namespace Griveance.Controllers
             }
 
         }
-        [HttpGet]
+        [HttpPost]
         public object GetStaffInfo()
         {
             try
@@ -69,17 +69,17 @@ namespace Griveance.Controllers
             {
                 CheckUsernamePassword chkUserPassword = new CheckUsernamePassword();
 
-                var chkUser = chkUserPassword.ValidateUsernamePassword(objstudent.UserId, objstudent.Password);
-                if (chkUser)
-                {
+                //var chkUser = chkUserPassword.ValidateUsernamePassword(objstudent.UserId, objstudent.Password);
+                //if (chkUser)
+                //{
                     GetSingleStudentBL obj = new GetSingleStudentBL();
                     var singlestudentresult = obj.GetSingleStudent(objstudent);
                     return singlestudentresult;
-                }
-                else
-                {
-                    return new Result { IsSucess = false, ResultData = "Username or Password Is Invalid." };
-                }
+                //}
+                //else
+                //{
+                //    return new Result { IsSucess = false, ResultData = "Username or Password Is Invalid." };
+                //}
             }
             catch (Exception e)
             {

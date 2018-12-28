@@ -23,7 +23,8 @@ namespace Griveance.BusinessLayer
                 }
                 else
                 {
-                    return new Result { IsSucess = true, ResultData = StaffData };
+                    //return new Result { IsSucess = true, ResultData = StaffData };
+                    return StaffData;
                 }
                 
             }

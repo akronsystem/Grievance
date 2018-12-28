@@ -13,7 +13,7 @@ function UsersController($scope, Service) {
 
 
     $scope.Initialize = function () {
-
+        debugger;
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Users/GetStudentInfo", $scope.UserCredentialModel).then(function (result) {
@@ -27,12 +27,11 @@ function UsersController($scope, Service) {
 
     }
 
-    $scope.ShowHide = function (studentcode) {
+    $scope.ShowHide = function (UserId) {
 
         var data = {
-            UserId: "",
-            Password:"",
-            StudentCode: studentcode
+           
+            UserId: UserId
 
         };
        
@@ -43,7 +42,7 @@ function UsersController($scope, Service) {
             debugger;
             $scope.IsVisible = true;
             $scope.btnUpdate = true;
-            $scope.Initialize();
+           
                 $scope.ViewGetStudentInfoes = result.data;
 
                 $scope.StudentName = result.data.name;
@@ -52,9 +51,11 @@ function UsersController($scope, Service) {
                 $scope.Gender = result.data.gender;
                 $scope.email = result.data.email;
                 $scope.Contact = result.data.contact;
-                $scope.Students = result.data.ResultData;
+               
+                $scope.UserId = result.data.UserId;
+               // $scope.Students = result.data.ResultData;
              
-                
+                $scope.Initialize();
             })
     }
     $scope.Clear = function ()
@@ -70,24 +71,25 @@ function UsersController($scope, Service) {
         $scope.Initialize();
     }
 
-
-    $scope.AddUpdate = function (StudentName, StudentCode, Type, Gender, email, Contact) {
+    $scope.AddUpdate = function (StudentName, StudentCode, Type, Gender, email, Contact, UserId) {
         var data = {
             name: StudentName,
             code: StudentCode,
             type: Type,
             gender: Gender,
             email: email,
-            contact: Contact
+            contact: Contact,
+            UserId: UserId
         };
         Service.Post("api/Register/UpdateStudents", JSON.stringify(data)).then(function (response) {
 
             if (response.data)
-                $scope.Initialize();
+             
             window.alert('Student Data Updated Successfully!')
           
             $scope.Clear();
             $scope.IsVisible = false;
+            $scope.Initialize();
         });
     }
 }

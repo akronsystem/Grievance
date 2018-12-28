@@ -47,5 +47,53 @@ namespace Griveance.Controllers
             }
 
         }
+        [HttpPost]
+        public object UpdateParentInfo([FromBody] ParamRegistration PR)
+        {
+            try
+            {
+                SaveRegistrationBL OBJSAVE = new SaveRegistrationBL();
+                var result = OBJSAVE.UpdateParent(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
+        public object UpdateFacultyInfo([FromBody] ParamRegistration PR)
+        {
+            try
+            {
+                SaveRegistrationBL OBJSAVE = new SaveRegistrationBL();
+                var result = OBJSAVE.UpdateFaculty(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
+        public object UpdateStaffInfo([FromBody] ParamRegistration PR)
+        {
+            try
+            {
+                SaveRegistrationBL OBJSAVE = new SaveRegistrationBL();
+                var result = OBJSAVE.UpdateStaff(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
+
+
     }
 }

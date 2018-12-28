@@ -25,5 +25,6 @@ namespace Griveance.Models
 
         
         public int IsParent { get; set; }
+        public int UserId { get; set; }
     }
 }

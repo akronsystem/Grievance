@@ -11,7 +11,7 @@ namespace Griveance.Models
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int code { get; set; }
+        public int UserId { get; set; }
 
        
         public string relationship { get; set; }

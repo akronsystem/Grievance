@@ -22,7 +22,8 @@ namespace Griveance.BusinessLayer
                 }
                 else
                 {
-                    return new Result { IsSucess = true, ResultData = parent };
+                    // return new Result { IsSucess = true, ResultData = parent };
+                    return parent;
                 }
             }
             catch (Exception ex)
