@@ -31,6 +31,19 @@ function ClassYearController($scope, Service) {
         })
 
     }
+    $scope.GetInfo = function () {
+
+        Service.Get("api/ClassYear/GetAllClassInfo").then(function (result) {
+            debugger;
+            // $scope.ParamUserLogin.Name = result.data.Name
+            $scope.ViewGetClassLists = result.data;
+            $scope.Class = result.data.ResultData;
+            console.log(result.data);
+
+        })
+
+    }
+
     //$scope.Save = function (data) {
 
     //    $scope.ParamRegistration.name = data.name;
@@ -70,6 +83,7 @@ function ClassYearController($scope, Service) {
             }
             else
             {
+                window.alert('Record Not Inserted.')
                 window.location = "./Register"
             }
            
@@ -79,6 +93,53 @@ function ClassYearController($scope, Service) {
     }
     $scope.Cancel = function () {
         window.location = "./Index";
+    }
+    $scope.CourseAdd = function () {
+        debugger;
+        var Course = {
+            CourseName: $scope.CourseName
+        };
+
+        Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
+            debugger;
+            // $scope.ParamUserLogin.Name = result.data.Name
+            if (result.data.IsSucess) {
+                debugger;
+                console.log(result.data);
+                window.location = "./NAdminDashboard"
+            }
+            else {
+                window.alert('Not Created Course')
+                window.location = "./NAdminDashboard"
+            }
+
+        })
+
+
+    }
+    $scope.ClassAdd = function () {
+        debugger;
+        var Class = {
+            CourseName: $scope.CourseName,
+            ClassName: $scope.ClassName
+        };
+
+        Service.Post("api/ClassYear/CreateClass", JSON.stringify(Class)).then(function (result) {
+            debugger;
+            // $scope.ParamUserLogin.Name = result.data.Name
+            if (result.data.IsSucess) {
+                debugger;
+                console.log(result.data);
+                window.location = "./NAdminDashboard"
+            }
+            else {
+                window.alert('Not Created Class')
+                window.location = "./NAdminDashboard"
+            }
+
+        })
+
+
     }
 }
 

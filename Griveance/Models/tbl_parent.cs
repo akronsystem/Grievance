@@ -9,11 +9,13 @@ namespace Griveance.Models
     public partial class tbl_parent
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ParentId { get; set; }
+
         public int code { get; set; }
 
-       
+        public int? UserId { get; set; }
+
+        [StringLength(100)]
         public string relationship { get; set; }
     }
 }

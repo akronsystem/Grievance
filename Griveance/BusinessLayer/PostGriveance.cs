@@ -13,32 +13,41 @@ namespace Griveance.BusinessLayer
         GRContext objcontext = new GRContext();
         public object SaveGrievance(ParamSaveGriveance obj)
         {
-
-            var Getcode =
-               (from a in objcontext.tbl_user
-                where a.UserId == obj.UserId && a.password == obj.Password
-                select new { a.code }).FirstOrDefault();
-
-            var Getemail =
-              (from a in objcontext.tbl_user
-               where a.UserId == obj.UserId && a.password == obj.Password
-               select new { a.email }).FirstOrDefault();
-
+           
+            int grievancetypeid = Convert.ToInt32(obj.GriveanceType);
+           
+            var grievancetypelist = objcontext.tbl_grievance_list.Where(r => r.grivance_id == grievancetypeid).First();
             tbl_postgriev objpost = new tbl_postgriev();
-            if (Getcode==null)
+            if (obj.Code==null)
             {
                 return new Result { IsSucess = false, ResultData = "Invalid User." };
             }
             else
             {
-                objpost.code =Convert.ToInt32(Getcode.code);
-                objpost.email = Getemail.email.ToString();
-                objpost.grivtype = obj.GriveanceType;
+                objpost.code = obj.Code;
+                objpost.email = obj.Email;
+                objpost.grivtype = grievancetypelist.grivance_name;
                 objpost.subject = obj.Subject;
                 objpost.post = obj.PostDetails;
                 objpost.status = "Pending";
                 objcontext.tbl_postgriev.Add(objpost);
+                //objcontext.SaveChanges();
+
+
+                tbl_complaintdetails comp = new tbl_complaintdetails();
+                comp.GrievanceType = grievancetypelist.grivance_name;
+                comp.Date =DateTime.Now.Date;
+                comp.Subject = objpost.subject;
+                comp.Post = objpost.post;
+                comp.status = objpost.status; 
+                comp.GrievanceAction = "Pending";
+                comp.GrievMemID = grievancetypeid;
+                comp.StackHolderType = obj.Type;
+                comp.StackholderID =Convert.ToString(objpost.code);
+                objcontext.tbl_complaintdetails.Add(comp);
                 objcontext.SaveChanges();
+
+
                 return new Result { IsSucess = true, ResultData = "Griveance Posted Sucessfully." };
             }
            

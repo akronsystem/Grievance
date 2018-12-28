@@ -15,14 +15,17 @@ namespace Griveance.BusinessLayer
             var password = CryptIt.Encrypt(userCredentialModel.Password);
             var user = db.tbl_user.FirstOrDefault(r => r.email == userCredentialModel.UserName
                       && r.password == password);
-
+            
             if (user == null)
             {
                 return new Error() { IsError = true, Message = "Incorrect User Or Password.." };
             }
             else
             {
+                //user.code = Convert.ToInt32(HttpContext.Current.Session["Code"]);
                 return new Result() { IsSucess = true, ResultData = user };
+                
+
             }
 
            

@@ -43,6 +43,7 @@ namespace Griveance.Models
         public virtual DbSet<ViewGetFacultyInfo> ViewGetFacultyInfoes { get; set; }  
         public virtual DbSet<ViewGetMyGrievance> ViewGetMyGrievances { get; set; }  	
         public virtual DbSet<View_MemberAllocation> View_MemberAllocation { get; set; }
+        public virtual DbSet<View_UsersGrievance> View_UsersGrievance { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{ 
 

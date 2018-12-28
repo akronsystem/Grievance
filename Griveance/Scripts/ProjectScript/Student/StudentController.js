@@ -5,7 +5,7 @@ function UsersController($scope, Service) {
     var form = $(".student-admission-wrapper");
     $scope.ViewGetStudentInfoes = {};
     $scope.UserCredentialModel = {};
-
+    $scope.ParamGetMyGrievance = {};
     $scope.Initialize = function () {
 
         $scope.UserCredentialModel.UserId = "";
@@ -22,8 +22,12 @@ function UsersController($scope, Service) {
     }
     $scope.GetData = function () {
 
-        $scope.UserCredentialModel.UserId = "";
-        $scope.UserCredentialModel.Password = "";
+        var data = sessionStorage.getItem('emp-key');
+        $scope.UserCredentialModel.StudentCode = data;
+        var userid = sessionStorage.getItem('userid');
+        $scope.UserCredentialModel.UserId = userid;
+        var password = sessionStorage.getItem('Password');
+        $scope.UserCredentialModel.Password = password;
         Service.Post("api/Common/GetMyGrievance", $scope.UserCredentialModel).then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
@@ -34,6 +38,8 @@ function UsersController($scope, Service) {
         })
 
     }
+    
+
 
   
 }

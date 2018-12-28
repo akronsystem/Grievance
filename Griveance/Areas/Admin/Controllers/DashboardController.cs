@@ -22,5 +22,9 @@ namespace Griveance.Areas.Admin.Controllers
             return View("/Views/Home/Index.cshtml");
            
         }
+        public ActionResult AdminProfile()
+        {
+            return View();
+        }
     }
 }
