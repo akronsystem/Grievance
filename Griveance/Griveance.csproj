@@ -914,6 +914,7 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\NAdminDashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
