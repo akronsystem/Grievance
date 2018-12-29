@@ -1,12 +1,14 @@
 ﻿angular.module('GR').controller('UsersController', UsersController);
 
-function UsersController($scope, Service) {
+function UsersController($scope, Service, DTOptionsBuilder) {
 
-    var form = $(".student-admission-wrapper");
+    var form = $(".m-form m-form--fit m-form--label-align-right");
     $scope.ViewAllStaffInfoes = {};
     $scope.UserCredentialModel = {};
 
     $scope.Initialize = function () {
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withPaginationType('full_numbers').withDisplayLength(10)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Users/GetStaffInfo").then(function (result) {
@@ -34,13 +36,22 @@ function UsersController($scope, Service) {
             $scope.ViewGetStudentInfoes = result.data;
             $scope.Student = result.data.ResultData;
             console.log(result.data);
+            if (result.data.IsSucess) {
+                debugger;
+                console.log(result.data);
+
+            }
+            else {
+                alert(result.data.Message);
+
+            }
 
         })
 
     }
     $scope.GetInfo = function () {
-
-        Service.Post("api/Grievance/GriveanceTypeInfo").then(function (result) {
+        $scope.dtOptions = "";
+        Service.Post("api/Grievance/GriveanceTypeInfo", $scope.UserCredentialModel).then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.tbl_grievance_list = result.data;
@@ -71,8 +82,32 @@ function UsersController($scope, Service) {
             // $scope.ParamUserLogin.Name = result.data.Name
 
             console.log(result.data);
+            console.log(result.data);
+            if (result.data.IsSucess) {
+                debugger;
+                console.log(result.data);
+                window.location = "./StaffGrievance"
+            }
+            else {
+                alert(result.data.Message);
+                window.location = "./PostGrievance"
+            }
 
         })
     }
   
 }
+//function Users($scope, Service) {
+//    $scope.GetInfo = function () {
+
+//        Service.Post("api/Grievance/GriveanceTypeInfo").then(function (result) {
+//            debugger;
+//            // $scope.ParamUserLogin.Name = result.data.Name
+//            $scope.tbl_grievance_list = result.data;
+//            $scope.Grievance = result.data.ResultData;
+//            console.log(result.data);
+
+//        })
+
+//    }
+//}

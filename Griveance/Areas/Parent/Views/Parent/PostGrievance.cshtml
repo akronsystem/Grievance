@@ -4,16 +4,25 @@
     Layout = "~/Areas/Parent/Views/Shared/ParentDashboard.cshtml";
 }
 
-<h2>Post Grievance</h2>
+@*<h2>Post Grievance</h2>*@
 <body ng-app="GR">
     @using System.Configuration;
     <div ng-controller="UsersController">
         <form class="m-form m-form--fit m-form--label-align-right" >
-            <div class="m-portlet__body">
-                <div class="form-group m-form__group m--margin-top-10">
-                    @*<div class="alert m-alert m-alert--default" role="alert">
-                            The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                        </div>*@
+            <div class="m-portlet m-portlet--tab">
+
+                <div class="m-portlet m-portlet--mobile">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Post Grievance
+                                </h3>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
                 <div class="form-group m-form__group" ng-init="GetInfo()">
                     <label for="exampleGrievance">Grievance Type</label>
@@ -25,19 +34,20 @@
                 </div>
                 <div class="form-group m-form__group">
                     <label for="exampleInputName">Subject</label>
-                    <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Subject">
+                    <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Subject" ng-model="Subject">
                 </div>
                 <div class="form-group m-form__group">
                     <label for="exampleInputEmpCode">Post Details</label>
-                    <input type="text" class="form-control m-input" id="exampleInputEmpCode" placeholder="Post Details">
+                    <input type="text" class="form-control m-input" id="exampleInputEmpCode" placeholder="Post Details" ng-model="PostDetails">
                 </div>
 
 
-            </div>
-            <div class="m-portlet__foot m-portlet__foot--fit">
-                <div class="m-form__actions">
-                    <button type="reset" class="btn btn-primary" ng-click="SavePost()">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
+
+                <div class="m-portlet__foot m-portlet__foot--fit">
+                    <div class="m-form__actions">
+                        <button type="reset" class="btn btn-primary" ng-click="SavePost()">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
                 </div>
             </div>
         </form>

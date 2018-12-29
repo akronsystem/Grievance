@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('GrievanceController', GrievanceController);
 
-function GrievanceController($scope, Service) {
+function GrievanceController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".student-admission-wrapper");
     $scope.tbl_grievance_list = {};
@@ -11,6 +11,9 @@ function GrievanceController($scope, Service) {
 
 
     $scope.Initialize = function () {
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withPaginationType('full_numbers').withDisplayLength(10)
+
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Grievance/GriveanceTypeInfo").then(function (result) {

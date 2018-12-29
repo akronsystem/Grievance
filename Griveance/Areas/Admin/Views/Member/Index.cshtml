@@ -4,19 +4,29 @@
     Layout = "~/Areas/Admin/Views/Shared/AdminDashboardLayout.cshtml";
 }
 
-<h2>Add New Member</h2>
+@*<h2>Add New Member</h2>*@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <body ng-app="GR">
     @using System.Configuration;
     <div ng-controller="MemberController">
         <form class="m-form m-form--fit m-form--label-align-right">
-            <div class="m-portlet__body">
-                <div class="form-group m-form__group m--margin-top-10">
-                    @*<div class="alert m-alert m-alert--default" role="alert">
-                            The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                        </div>*@
+            <div class="m-portlet m-portlet--tab">
+
+                <div class="m-portlet m-portlet--mobile">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Add New Member
+                                </h3>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
+
                 <div class="form-group m-form__group">
                     <label for="exampleInputName">Name</label>
                     <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Name" ng-model="Name">
@@ -45,11 +55,11 @@
                     <label for="exampleInputDesignation">Designation</label>
                     <input type="text" class="form-control m-input" id="exampleInputDesignation" placeholder="Designation" ng-model="Designation">
                 </div>
-                <div class="form-group m-form__group" ng-init="GetData()">
+                <div class="form-group m-form__group" ng-init="GetInfo()">
                     <label for="exampleGrievance">Grievance Type</label>
                     <select class="form-control m-input" id="exampleGrievance" ng-model="GriType">
                         <option ng-repeat="s in Grievance" value="{{s.grivance_name}}">{{s.grivance_name}}</option>
-                     
+
                     </select>
                 </div>
                 <div class="form-group m-form__group">
@@ -62,11 +72,12 @@
                 </div>
 
 
-            </div>
-            <div class="m-portlet__foot m-portlet__foot--fit">
-                <div class="m-form__actions">
-                    <button type="reset" class="btn btn-primary" ng-click="Add()">Submit</button>
-                    <button type="reset" class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+
+                <div class="m-portlet__foot m-portlet__foot--fit">
+                    <div class="m-form__actions">
+                        <button type="reset" class="btn btn-primary" ng-click="Add()">Submit</button>
+                        <button type="reset" class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+                    </div>
                 </div>
             </div>
         </form>

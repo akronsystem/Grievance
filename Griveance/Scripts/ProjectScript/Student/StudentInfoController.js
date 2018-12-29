@@ -92,6 +92,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             $scope.IsVisible = false;
         });
     }
+
+   
 }
 
 
