@@ -7,7 +7,7 @@ namespace Griveance.ParamModel
 {
     public class ParamGetSingleStudent
     {
-        public int StudentCode { get; set; }
+       
 
             public int UserId { get; set; }
         //public string UserName { get; set; }

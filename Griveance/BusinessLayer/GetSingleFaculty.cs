@@ -14,14 +14,15 @@ namespace Griveance.BusinessLayer
         public object GetFaculty(FacultyParameters obj)
         {
 
-            var ResultGetFaculty = db.Vw_GetSingleFaculty.Where(r => r.UserId == obj.UserId ).ToList();
-            if(ResultGetFaculty.Count ==0)
+            var ResultGetFaculty = db.Vw_GetSingleFaculty.Where(r => r.UserId == obj.UserId ).FirstOrDefault();
+            if(ResultGetFaculty==null)
             {
                 return new Error() { IsError = true, Message = "Faculty Is Not Found" };
             }
             else
             {
-                return new Result() { IsSucess = true, ResultData = ResultGetFaculty };
+                //  return new Result() { IsSucess = true, ResultData = ResultGetFaculty };
+                return ResultGetFaculty;
             }
                   
            

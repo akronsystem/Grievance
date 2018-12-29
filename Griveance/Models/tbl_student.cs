@@ -22,7 +22,7 @@ namespace Griveance.Models
         [Required]
         [StringLength(100)]
         public string class_name { get; set; }
-
-        public int? IsParent { get; set; }
+ 
+        public int? IsParent { get; set; } 
     }
 }
