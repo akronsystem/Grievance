@@ -10,6 +10,7 @@ namespace Griveance.Models
     public partial class ViewGetMyGrievance
     {
         [Key]
+        [Column(Order = 0)]
         public int CompID { get; set; }
 
         [StringLength(500)]
@@ -29,5 +30,15 @@ namespace Griveance.Models
 
         [StringLength(100)]
         public string status { get; set; }
+
+        public int? GrievMemID { get; set; }
+
+        [StringLength(100)]
+        public string StackholderID { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        [StringLength(100)]
+        public string StackHolderType { get; set; }
     }
 }

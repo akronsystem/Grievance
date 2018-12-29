@@ -1,3 +1,3 @@
 ﻿(function () {
-    angular.module('GR', []);
+    angular.module('GR', ['datatables']);
 })();

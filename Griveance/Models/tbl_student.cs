@@ -9,22 +9,20 @@ namespace Griveance.Models
     public partial class tbl_student
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int StudentId { get; set; }
+
         public int code { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        public int? UserId { get; set; }
+
+        [Required]
         [StringLength(100)]
         public string course_name { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
+        [Required]
         [StringLength(100)]
         public string class_name { get; set; }
-
-        
-        public int IsParent { get; set; }
-        public int UserId { get; set; }
+ 
+        public int? IsParent { get; set; } 
     }
 }

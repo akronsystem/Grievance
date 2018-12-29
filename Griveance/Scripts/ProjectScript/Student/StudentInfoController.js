@@ -1,6 +1,6 @@
-﻿angular.module('GR').controller('UsersController', UsersController);
+﻿var app = angular.module('GR' ).controller('UsersController', UsersController);
 
-function UsersController($scope, Service) {
+function UsersController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".student-admission-wrapper");
     $scope.ViewGetStudentInfoes = {};
@@ -8,12 +8,16 @@ function UsersController($scope, Service) {
 
     $scope.btnUpdate = false;
     $scope.IsVisible = false;
-    $scope.Students = {};
+    $scope.Students = [];
 
 
 
-    $scope.Initialize = function () {
+    $scope.Initialize = function () { 
         debugger;
+ 
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withPaginationType('full_numbers').withDisplayLength(10)
+ 
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Users/GetStudentInfo", $scope.UserCredentialModel).then(function (result) {
