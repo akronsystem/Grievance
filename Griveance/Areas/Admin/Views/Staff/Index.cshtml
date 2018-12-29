@@ -20,8 +20,7 @@
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
                                 <h3 class="m-portlet__head-text">
- 
-                                    Students
+                                    Staff
                                 </h3>
                             </div>
                         </div>
@@ -153,7 +152,7 @@
                     <p style="color:red">{{msg}}</p>
 
 
-                    <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+                    <table datatable="ng" dt-options="dtOptions" class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
                         <thead>
                             <tr>
                                 <th>Name Of The Staff</th>
@@ -169,7 +168,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="data in Staff">
+                            <tr ng-repeat="data in Staff  | filter:search">
                                 <td>
                                     {{data.name}}
                                 </td>
