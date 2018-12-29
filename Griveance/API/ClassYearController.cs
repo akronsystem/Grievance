@@ -12,7 +12,7 @@ namespace Griveance.Controllers
 {
     public class ClassYearController : ApiController
     {
-        [HttpGet]
+        [HttpPost]
         public object GetClassInfo()
         {
             try
@@ -21,11 +21,11 @@ namespace Griveance.Controllers
                 var GetClassVar = Objclass.ClassInfoBL();
                 return GetClassVar;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
             }
-          
+
         }
         [HttpPost]
         public object CreateClass([FromBody]ClassParameter obj)
@@ -36,11 +36,26 @@ namespace Griveance.Controllers
                 var Result = classB.CreateClass(obj);
                 return Result;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return new Error() { IsError = true, Message = e.Message };
             }
-          
+
+        }
+        [HttpPost]
+        public object GetAllClassInfo()
+        {
+            try
+            {
+                GetClassInfoBL Objclass = new GetClassInfoBL();
+                var GetClassVar = Objclass.ClassInfo();
+                return GetClassVar;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+
         }
     }
 }
