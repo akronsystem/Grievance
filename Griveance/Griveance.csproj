@@ -584,6 +584,7 @@
     <Content Include="Scripts\ProjectScript\EmailSetting\EmailModule.js" />
     <Content Include="Scripts\ProjectScript\Faculty\FacultyController.js" />
     <Content Include="Scripts\ProjectScript\Faculty\FacultyModule.js" />
+    <Content Include="Scripts\ProjectScript\Grievance\GetGrievanceList.js" />
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceAllocation.js" />
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceType.js" />
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceTypeList.js" />
