@@ -29,7 +29,27 @@ function MemberController($scope, Service) {
 
 
     }
+
     $scope.GetData = function () {
+
+        var data = sessionStorage.getItem('emp-key');
+        $scope.UserCredentialModel.StudentCode = data;
+        var userid = sessionStorage.getItem('userid');
+        $scope.UserCredentialModel.UserId = userid;
+        var password = sessionStorage.getItem('Password');
+        $scope.UserCredentialModel.Password = password;
+        Service.Post("api/Common/GetMyGrievance", $scope.UserCredentialModel).then(function (result) {
+
+            // $scope.ParamUserLogin.Name = result.data.Name
+            $scope.ViewGetStudentInfoes = result.data;
+            $scope.Student = result.data.ResultData;
+            console.log(result.data);
+
+        })
+
+    }
+
+    $scope.GetInfo = function () {
 
         Service.Post("api/Grievance/GriveanceTypeInfo").then(function (result) {
             debugger;
@@ -65,8 +85,17 @@ function MemberController($scope, Service) {
             // $scope.ParamUserLogin.Name = result.data.Name
 
             console.log(result.data);
-
+            if (result.data.IsSucess) {
+                debugger;
+                console.log(result.data);
+                window.location = "./StudentGrievance"
+            }
+            else {
+                window.alert('Record Not Inserted.')
+                window.location = "./PostGrievance"
+            }
         })
     }
+  
 
 }

@@ -15,6 +15,10 @@ namespace Griveance.BusinessLayer
         public object GetMyGrievance(ParamGetMyGrievance obj)
         {
             var id = Convert.ToString(obj.StudentCode);
+            if(id=="0")
+            {
+                return new Error() { IsError = true, Message = "UserCode Not Found" };
+            }
             try
             {
                 var MyGrievance = db.ViewGetMyGrievances.Where(r => r.StackholderID ==id).ToList();

@@ -26,5 +26,9 @@ namespace Griveance.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult NAdminProfile()
+        {
+            return View();
+        }
     }
 }

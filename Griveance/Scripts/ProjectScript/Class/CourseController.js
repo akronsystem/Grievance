@@ -21,7 +21,7 @@ function ClassYearController($scope, Service) {
     }
     $scope.GetData = function () {
 
-        Service.Get("api/ClassYear/GetClassInfo").then(function (result) {
+        Service.Post("api/ClassYear/GetClassInfo").then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGetClassLists = result.data;
@@ -33,7 +33,7 @@ function ClassYearController($scope, Service) {
     }
     $scope.GetInfo = function () {
 
-        Service.Get("api/ClassYear/GetAllClassInfo").then(function (result) {
+        Service.Post("api/ClassYear/GetAllClassInfo").then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGetClassLists = result.data;

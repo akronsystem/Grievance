@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('UsersController', UsersController);
 
-function UsersController($scope, Service) {
+function UsersController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".student-admission-wrapper");
     $scope.ViewGetSingleParentInfoes = {};
@@ -9,6 +9,9 @@ function UsersController($scope, Service) {
     $scope.IsVisible = false;
 
     $scope.Initialize = function () {
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withPaginationType('full_numbers').withDisplayLength(10)
+
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
        
@@ -25,7 +28,7 @@ function UsersController($scope, Service) {
 
     }
     $scope.GetData = function () {
-
+        debugger;
         var data = sessionStorage.getItem('emp-key');
         $scope.UserCredentialModel.StudentCode = data;
         var userid = sessionStorage.getItem('userid');
@@ -88,7 +91,7 @@ function UsersController($scope, Service) {
         $scope.UserId = null;
         $scope.btnUpdate = false;
         $scope.IsVisible = false;
-    }
+    } 
 
 
     $scope.AddUpdate = function (NameOfTheParent, StudentCode, RelationWithStudent, ContactNumber, Gender, Email, UserId) {
@@ -114,18 +117,11 @@ function UsersController($scope, Service) {
             $scope.Initialize();
         }); 
       
-    $scope.GetInfo = function () {
+    //$scope.GetInfo = function () { 
 
-        Service.Post("api/Grievance/GriveanceTypeInfo").then(function (result) {
-            debugger;
-            // $scope.ParamUserLogin.Name = result.data.Name
-            $scope.tbl_grievance_list = result.data;
-            $scope.Grievance = result.data.ResultData;
-            console.log(result.data);
+    //    })
 
-        })
-
-    }
+    //}
     $scope.SavePost = function () {
         var data = sessionStorage.getItem('userid');
         var Password = sessionStorage.getItem('Password');
@@ -147,8 +143,19 @@ function UsersController($scope, Service) {
             // $scope.ParamUserLogin.Name = result.data.Name
 
             console.log(result.data);
+            if (result.data.IsSucess) {
+                debugger;
+                console.log(result.data);
+                window.location = "./ParentGrievance"
+            }
+            else
+            {
+                window.alert('Record Not Inserted.')
+                window.location = "./PostGrievance"
+            }
 
         }) 
     }
     
 }
+

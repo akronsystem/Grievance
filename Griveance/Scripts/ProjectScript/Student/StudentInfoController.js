@@ -96,6 +96,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             $scope.Initialize();
         });
     }
+
+   
 }
 
 

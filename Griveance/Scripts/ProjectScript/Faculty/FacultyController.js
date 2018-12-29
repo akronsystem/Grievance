@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('UsersController', UsersController);
 
-function UsersController($scope, Service) {
+function UsersController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".student-admission-wrapper");
     $scope.ViewGetFacultyInfoes = {};
@@ -10,6 +10,9 @@ function UsersController($scope, Service) {
 
 
     $scope.Initialize = function () {
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withPaginationType('full_numbers').withDisplayLength(10)
+
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Users/GetFacultyInfo").then(function (result) {
@@ -51,7 +54,7 @@ function UsersController($scope, Service) {
             $scope.ViewGetStudentInfoes = result.data;
             $scope.Student = result.data.ResultData;
             console.log(result.data);
-
+           
         })
 
     }
@@ -63,6 +66,7 @@ function UsersController($scope, Service) {
             $scope.tbl_grievance_list = result.data;
             $scope.Grievance = result.data.ResultData;
             console.log(result.data);
+
 
         })
 
@@ -85,7 +89,7 @@ function UsersController($scope, Service) {
         };
         Service.Post("api/Grievance/PostGrievance", JSON.stringify(PostGr)).then(function (result) {
             debugger;
-            // $scope.ParamUserLogin.Name = result.data.Name
+            // $scope.ParamUserLogin.Name = result.data.Name 
           console.log(result.data);
 
         })
@@ -99,7 +103,7 @@ function UsersController($scope, Service) {
         var data = {
 
 
-            UserId: UserId
+            UserId: UserId 
 
         };
 

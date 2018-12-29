@@ -41,7 +41,7 @@ function LoginController($scope, Service) {
                     sessionStorage.setItem("Type", JSON.stringify(rd.data.ResultData.type));
                     if (rd.data.ResultData.type == "Admin")
                     {
-                         location.href = baseURL +"Admin/Dashboard/Index"
+                        location.href = baseURL +"Admin/Dashboard/NAdminProfile"
                     }
                     else if (rd.data.ResultData.type == "Student") 
                     {
