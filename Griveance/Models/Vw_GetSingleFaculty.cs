@@ -16,7 +16,7 @@ namespace Griveance.Models
         [StringLength(100)]
         public string name { get; set; }
 
-        public int? code { get; set; }
+       
 
         [Key]
         [Column(Order = 1)]

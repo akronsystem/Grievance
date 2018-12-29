@@ -8,11 +8,10 @@ namespace Griveance.Models
 
     public partial class tbl_parent
     {
-        [Key]
+        [Key] 
         public int ParentId { get; set; }
 
-        public int code { get; set; }
-
+        public int code { get; set; } 
         public int? UserId { get; set; }
 
         [StringLength(100)]

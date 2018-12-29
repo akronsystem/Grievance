@@ -9,7 +9,7 @@ namespace Griveance.Models
     [Table("ViewGetFacultyInfo")]
     public partial class ViewGetFacultyInfo
     {
-        public int? code { get; set; }
+        public int UserId { get; set; }
 
         [StringLength(100)]
         public string name { get; set; }

@@ -22,5 +22,6 @@ namespace Griveance.Models
         [Column(Order = 2)]
         [StringLength(100)]
         public string designation { get; set; }
+        public int UserId { get; set; }
     }
 }
