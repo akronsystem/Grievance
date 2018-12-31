@@ -14,7 +14,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
-       
+
         $scope.Students = {};
 
         Service.Post("api/Users/GetParentInfo").then(function (result) {
@@ -44,7 +44,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
         })
 
-    } 
+    }
 
 
 
@@ -54,18 +54,16 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.btnUpdate = true;
         $scope.IsVisible = true;
         var data = {
-            
+
 
             UserId: UserId
 
         };
 
-        Service.Post("api/Users/GetSingleParentInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) 
+        Service.Post("api/Users/GetSingleParentInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
 
-            {
-         
-          
-           
+
+
             $scope.ViewGetStudentInfoes = result.data;
             $scope.NameOfTheParent = result.data.name;
             $scope.StudentCode = result.data.code;
@@ -73,11 +71,11 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             $scope.ContactNumber = result.data.contact;
             $scope.Email = result.data.email;
             $scope.Gender = result.data.gender;
-             $scope.UserId = result.data.UserId;
-            
+            $scope.UserId = result.data.UserId;
+
             $scope.Initialize();
         })
-        
+
     }
     $scope.Clear = function () {
         debugger;
@@ -91,20 +89,20 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.UserId = null;
         $scope.btnUpdate = false;
         $scope.IsVisible = false;
-    } 
+    }
 
 
     $scope.AddUpdate = function (NameOfTheParent, StudentCode, RelationWithStudent, ContactNumber, Gender, Email, UserId) {
         debugger;
         var data = {
-          
+
             name: NameOfTheParent,
             code: StudentCode,
             relationship: RelationWithStudent,
-            contact:ContactNumber,
+            contact: ContactNumber,
             email: Email,
             gender: Gender,
-            UserId:UserId
+            UserId: UserId
         };
         Service.Post("api/Register/UpdateParentInfo", JSON.stringify(data)).then(function (response) {
 
@@ -115,47 +113,47 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             $scope.Clear();
             $scope.IsVisible = false;
             $scope.Initialize();
-        }); 
-      
-    //$scope.GetInfo = function () { 
+        });
 
-    //    })
+        //$scope.GetInfo = function () { 
 
-    //}
-    $scope.SavePost = function () {
-        var data = sessionStorage.getItem('userid');
-        var Password = sessionStorage.getItem('Password');
-        var code = sessionStorage.getItem('emp-key');
-        var email = sessionStorage.getItem('Email');
-        var type = sessionStorage.getItem('Type');
-        PostGr = {
-            GriveanceType: $scope.GriveanceType,
-            Subject: $scope.Subject,
-            PostDetails: $scope.PostDetails,
-            UserId: data,
-            Password: Password,
-            Code: code,
-            Email: email,
-            Type: type
-        };
-        Service.Post("api/Grievance/PostGrievance", JSON.stringify(PostGr)).then(function (result) {
-            debugger;
-            // $scope.ParamUserLogin.Name = result.data.Name
+        //    })
 
-            console.log(result.data);
-            if (result.data.IsSucess) {
+        //}
+        $scope.SavePost = function () {
+            var data = sessionStorage.getItem('userid');
+            var Password = sessionStorage.getItem('Password');
+            var code = sessionStorage.getItem('emp-key');
+            var email = sessionStorage.getItem('Email');
+            var type = sessionStorage.getItem('Type');
+            PostGr = {
+                GriveanceType: $scope.GriveanceType,
+                Subject: $scope.Subject,
+                PostDetails: $scope.PostDetails,
+                UserId: data,
+                Password: Password,
+                Code: code,
+                Email: email,
+                Type: type
+            };
+            Service.Post("api/Grievance/PostGrievance", JSON.stringify(PostGr)).then(function (result) {
                 debugger;
-                console.log(result.data);
-                window.location = "./ParentGrievance"
-            }
-            else
-            {
-                window.alert('Record Not Inserted.')
-                window.location = "./PostGrievance"
-            }
+                // $scope.ParamUserLogin.Name = result.data.Name
 
-        }) 
+                console.log(result.data);
+                if (result.data.IsSucess) {
+                    debugger;
+                    console.log(result.data);
+                    window.location = "./ParentGrievance"
+                }
+                else {
+                    window.alert('Record Not Inserted.')
+                    window.location = "./PostGrievance"
+                }
+
+            })
+        }
+
     }
-    
 }
 
