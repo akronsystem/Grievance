@@ -120,6 +120,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             $scope.IsVisible = false;
             $scope.Initialize();
         });
+    }
+
         $scope.GetInfo = function () {
             $scope.dtOptions = "";
             Service.Post("api/Grievance/GriveanceTypeInfo", $scope.UserCredentialModel).then(function (result) {
@@ -167,19 +169,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             })
         }
 
-    }
+    
 }
-//function Users($scope, Service) {
-//    $scope.GetInfo = function () {
+UsersController.$inject = ['$scope', 'Service'];
+UsersController.$inject = ['$scope', 'Service', 'DTOptionsBuilder'];
 
-//        Service.Post("api/Grievance/GriveanceTypeInfo").then(function (result) {
-//            debugger;
-//            // $scope.ParamUserLogin.Name = result.data.Name
-//            $scope.tbl_grievance_list = result.data;
-//            $scope.Grievance = result.data.ResultData;
-//            console.log(result.data);
-
-//        })
-
-//    }
-//}

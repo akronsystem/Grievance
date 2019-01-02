@@ -15,7 +15,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var usercode = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                var usercode = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
                 if (usercode != null)
                 {
                     return new Error() { IsError = true, Message = "User Code Already Exists." };
@@ -26,6 +26,7 @@ namespace Griveance.BusinessLayer
                 objuser.UserId = PR.UserId;
                 objuser.type = PR.Type;
                 objuser.gender = PR.Gender;
+                objuser.code = PR.code;
                 objuser.email = PR.Email;
                 objuser.contact = PR.Contact;
                 string EncryptedPassword = CryptIt.Encrypt(PR.Password);
@@ -39,6 +40,9 @@ namespace Griveance.BusinessLayer
                 {
                     tbl_student objstudent = new tbl_student();
                     objstudent.UserId = PR.UserId;
+                    tbl_user obstudent = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
+                    objstudent.UserId = obstudent.UserId;
+                    objstudent.code = PR.code;
                     objstudent.course_name = PR.CourseName;
                     objstudent.class_name = PR.ClassName;
                     objstudent.IsParent = 0;
@@ -49,6 +53,9 @@ namespace Griveance.BusinessLayer
                 {
                     tbl_faculty objfaculty = new tbl_faculty();
                     objfaculty.UserId = PR.UserId;
+                    tbl_user obfaculty = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
+                    objfaculty.UserId = objfaculty.UserId;
+                    objfaculty.code = PR.code;
                     objfaculty.department = PR.CourseName;
                     objfaculty.designation = PR.Designation;
                     db.tbl_faculty.Add(objfaculty);
@@ -59,18 +66,22 @@ namespace Griveance.BusinessLayer
                     tbl_parent objparent = new tbl_parent();
                     objparent.UserId = PR.UserId;
                     objparent.relationship = PR.Relationship;
-                    tbl_user obstudent = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                    tbl_user obstudent = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
                     objparent.UserId = obstudent.UserId;
+                    objparent.code = PR.code;
                     db.tbl_parent.Add(objparent);
                     db.SaveChanges(); 
-                    tbl_student objstudent = db.tbl_student.Where(r => r.UserId == PR.UserId).FirstOrDefault();
-                    objstudent.IsParent = 1;
-                    db.SaveChanges(); 
+                    //tbl_student objstudent = db.tbl_student.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                    //objstudent.IsParent = 1;
+                    //db.SaveChanges(); 
                 }
                 else if (PR.Type == "Staff")
                 {
                     tbl_staff objstaff = new tbl_staff();
-                    objstaff.UserId = PR.UserId;
+                    objstaff.UserId = objuser.UserId;
+                    tbl_user obstaff = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
+                    objstaff.UserId = objstaff.UserId;
+                    objstaff.code = PR.code;
                     objstaff.department = PR.CourseName;
                     objstaff.designation = PR.Designation;
                     db.tbl_staff.Add(objstaff);

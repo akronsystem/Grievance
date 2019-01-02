@@ -90,7 +90,18 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.btnUpdate = false;
         $scope.IsVisible = false;
     }
+    $scope.GetInfo = function () {
+        $scope.dtOptions = "";
+        Service.Post("api/Grievance/GriveanceTypeInfo", $scope.UserCredentialModel).then(function (result) {
+            debugger;
+            // $scope.ParamUserLogin.Name = result.data.Name
+            $scope.tbl_grievance_list = result.data;
+            $scope.Grievance = result.data.ResultData;
+            console.log(result.data);
 
+        })
+
+    }
 
     $scope.AddUpdate = function (NameOfTheParent, StudentCode, RelationWithStudent, ContactNumber, Gender, Email, UserId) {
         debugger;
@@ -115,11 +126,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             $scope.Initialize();
         });
 
-        //$scope.GetInfo = function () { 
-
-        //    })
-
-        //}
+    }
         $scope.SavePost = function () {
             var data = sessionStorage.getItem('userid');
             var Password = sessionStorage.getItem('Password');
@@ -154,6 +161,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             })
         }
 
-    }
+   
 }
+UsersController.$inject = ['$scope', 'Service'];
+UsersController.$inject = ['$scope', 'Service','DTOptionsBuilder'];
 

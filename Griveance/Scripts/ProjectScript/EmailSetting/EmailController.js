@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('EmailSettingController', EmailSettingController);
 
-function EmailSettingController($scope, Service) {
+function EmailSettingController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".student-admission-wrapper");
     $scope.tbl_emailsettings = {};
@@ -14,6 +14,8 @@ function EmailSettingController($scope, Service) {
     $scope.password = null;
 
     $scope.Initialize = function () {
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withPaginationType('full_numbers').withDisplayLength(10)
 
         Service.Get("api/Common/GetEmailInfo").then(function (result) {
 

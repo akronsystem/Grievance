@@ -9,17 +9,17 @@ namespace Griveance.Models
     public partial class tbl_staff
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int UserId { get; set; }
+        public int StaffId { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        public int code { get; set; }
+
+        public int? UserId { get; set; }
+
+        [Required]
         [StringLength(100)]
         public string department { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
+        [Required]
         [StringLength(100)]
         public string designation { get; set; }
     }

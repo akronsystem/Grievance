@@ -10,6 +10,7 @@ namespace Griveance.ParamModel
         public string Name { get; set; }
 
         public int UserId { get; set; }
+        public int code { get; set; }
         public string Type { get; set; }
 
         public string Gender { get; set; }
