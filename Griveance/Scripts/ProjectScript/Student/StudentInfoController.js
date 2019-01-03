@@ -99,6 +99,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
    
 }
+UsersController.$inject = ['$scope', 'Service'];
+UsersController.$inject = ['$scope', 'Service','DTOptionsBuilder'];
 
 
 

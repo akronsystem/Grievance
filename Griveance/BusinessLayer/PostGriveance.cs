@@ -13,7 +13,10 @@ namespace Griveance.BusinessLayer
         GRContext objcontext = new GRContext();
         public object SaveGrievance(ParamSaveGriveance obj)
         {
-           
+            if (obj.UserId == null)
+            {
+                return new Result { IsSucess = false, ResultData = "Invalid User." };
+            }
             int grievancetypeid = Convert.ToInt32(obj.GriveanceType);
            
             var grievancetypelist = objcontext.tbl_grievance_list.Where(r => r.grivance_id == grievancetypeid).First();

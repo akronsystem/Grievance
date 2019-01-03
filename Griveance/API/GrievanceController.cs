@@ -66,7 +66,7 @@ namespace Griveance.Controllers
 
         }
         [HttpPost]
-        public object SaveGrievance([FromBody] GrievanceParam objparam)
+        public object SaveGrievanceType([FromBody] GrievanceParam objparam)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace Griveance.Controllers
             }
         }
         [HttpPost]
-        public object UpdateGrievance([FromBody] GrievanceParam PR)
+        public object UpdateGrievanceType([FromBody] GrievanceParam PR)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace Griveance.Controllers
 
         }
         [HttpPost]
-        public object GetSingleGrievanceInfo([FromBody]GrievanceParam objid)
+        public object GetSingleGrievanceTypeInfo([FromBody]GrievanceParam objid)
         {
             try
             {

@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('SmsSettingController', SmsSettingController);
 
-function SmsSettingController($scope, Service) {
+function SmsSettingController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".student-admission-wrapper");
     $scope.tbl_smssettings = {};
@@ -11,6 +11,8 @@ function SmsSettingController($scope, Service) {
     $scope.CHECKBALANCEAPI = null;
     $scope.SETTINGID = null;
     $scope.Initialize = function () {
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withPaginationType('full_numbers').withDisplayLength(10)
 
         Service.Get("api/Common/SmsSettingList").then(function (result) {
 
