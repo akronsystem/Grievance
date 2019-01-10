@@ -2,7 +2,7 @@
 
 function EmailSettingController($scope, Service, DTOptionsBuilder) {
 
-    var form = $(".student-admission-wrapper");
+    var form = $(".m-form m-form--fit m-form--label-align-right");
     $scope.tbl_emailsettings = {};
     $scope.IsVisible = false;
     $scope.btnSave = false;
@@ -71,13 +71,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
       
     }
 
-    $scope.postdata = function (isValid)
-    {
-        if (isValid)
-        {
-
-     
-   
+  
     $scope.postdata = function (fromid, host, port, password) {
        
         var data = {
@@ -88,21 +82,17 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
 
         };
 
-
-        Service.Post("api/Common/SaveEmailSettings", JSON.stringify(data)).then(function (response) {
-            if (response.data)
-                $scope.Initialize();
-            $scope.msg = "Email Settings Saved Successfully!";
-            $scope.IsVisible = false;
-        });
-    }
+        if ($scope.form.$valid) {
+            Service.Post("api/Common/SaveEmailSettings", JSON.stringify(data)).then(function (response) {
+                if (response.data)
+                    $scope.Initialize();
+                $scope.msg = "Email Settings Saved Successfully!";
+                $scope.IsVisible = false;
+            });
         }
     }
-
-    $scope.AddUpdate = function (isValid) {
-        if (isValid) {
-
-            $scope.AddUpdate = function (fromid, host, port, password, emailsettingid) {
+        
+     $scope.AddUpdate = function (fromid, host, port, password, emailsettingid) {
                 var data = {
                     fromid: fromid,
                     host: host,
@@ -111,17 +101,20 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
                     emailsettingid: emailsettingid
 
                 };
-                Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
+                if ($scope.form.$valid) {
+                    Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
 
-                    if (response.data)
-                        $scope.Initialize();
-                    $scope.msg = "Email Settings Updated Successfully!";
-                    $scope.IsVisible = false;
+                        if (response.data)
+                            $scope.Initialize();
+                        $scope.msg = "Email Settings Updated Successfully!";
+                        $scope.IsVisible = false;
 
-                });
-            }
-        }
-    }
+                    });
+                }
+     }
+
+        
+    
 
     $scope.Cancel = function () {
       

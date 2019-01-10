@@ -116,6 +116,23 @@ namespace Griveance.Controllers
             }
 
         }
+        [HttpPost]
+        public object MemberInfo()
+        {
+            try
+            {
+                MemberBusiness member = new MemberBusiness();
+                var Result = member.MemberList();
+
+                return Result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
     }
  
 }

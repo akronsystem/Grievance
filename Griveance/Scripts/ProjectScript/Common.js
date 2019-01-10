@@ -2,7 +2,9 @@
 
 function UsersController($scope, Service) {
 
-    var form = $(".student-admission-wrapper");
+    var form = $(".m-form m-form--fit m-form--label");
+
+
     $scope.ViewAllStaffInfoes = {};
     $scope.UserCredentialModel = {};
 
@@ -34,19 +36,22 @@ function UsersController($scope, Service) {
             Email: email,
             Type: type
         };
-        Service.Post("api/Grievance/PostGrievance", JSON.stringify(PostGr)).then(function (result) {
-            debugger;
-            // $scope.ParamUserLogin.Name = result.data.Name 
-            console.log(result.data);
-            if (result.data.IsSucess) {
+
+        if ($scope.form.$valid) {
+            Service.Post("api/Grievance/PostGrievance", JSON.stringify(PostGr)).then(function (result) {
                 debugger;
+                // $scope.ParamUserLogin.Name = result.data.Name 
                 console.log(result.data);
-                window.alert('Posted Grievance')
-            }
-            else {
-                window.alert('Record Not Inserted.')
-                window.location = "./PostGrievance"
-            }
-        })
+                if (result.data.IsSucess) {
+                    debugger;
+                    console.log(result.data);
+                    window.alert('Posted Grievance')
+                }
+                else {
+                    window.alert('Record Not Inserted.')
+                    window.location = "./PostGrievance"
+                }
+            })
+        }
     }
 }

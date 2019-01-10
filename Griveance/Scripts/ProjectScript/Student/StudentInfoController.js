@@ -74,7 +74,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.IsVisible = false;
         $scope.Initialize();
     }
-
+   
     $scope.AddUpdate = function (StudentName, StudentCode, Type, Gender, email, Contact, UserId) {
         var data = {
             name: StudentName,
@@ -85,16 +85,18 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             contact: Contact,
             UserId: UserId
         };
-        Service.Post("api/Register/UpdateStudents", JSON.stringify(data)).then(function (response) {
+        if ($scope.form.$valid) {
+            Service.Post("api/Register/UpdateStudents", JSON.stringify(data)).then(function (response) {
 
-            if (response.data)
-             
-            window.alert('Student Data Updated Successfully!')
-          
-            $scope.Clear();
-            $scope.IsVisible = false;
-            $scope.Initialize();
-        });
+                if (response.data)
+
+                    window.alert('Student Data Updated Successfully!')
+
+                $scope.Clear();
+                $scope.IsVisible = false;
+                $scope.Initialize();
+            });
+        }
     }
 
    
