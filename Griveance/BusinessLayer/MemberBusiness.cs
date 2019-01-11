@@ -124,5 +124,26 @@ namespace Griveance.BusinessLayer
 
 
         }
-     }
+        public object MemberList()
+        {
+            GRContext db = new GRContext();
+            try
+            {
+                var member = db.View_ForMemberName.ToList();
+                if (member == null)
+                {
+                    return new Result { IsSucess = false, ResultData = "Member Record Not Found" };
+                }
+                else
+                {
+                    return new Result { IsSucess = true, ResultData = member };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Error { IsError = true, Message = ex.Message };
+            }
+
+        }
+    }
 }

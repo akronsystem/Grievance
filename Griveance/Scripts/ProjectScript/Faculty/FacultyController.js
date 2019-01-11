@@ -155,16 +155,18 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             UserId: UserId,
             type: Type
         };
-        Service.Post("api/Register/UpdateFacultyInfo", JSON.stringify(data)).then(function (response) {
+        if ($scope.form.$valid) {
+            Service.Post("api/Register/UpdateFacultyInfo", JSON.stringify(data)).then(function (response) {
 
-            if (response.data)
+                if (response.data)
 
-                window.alert('Student Data Updated Successfully!')
+                    window.alert('Student Data Updated Successfully!')
 
-            $scope.Clear();
-            $scope.IsVisible = false;
-            $scope.Initialize();
-        });
+                $scope.Clear();
+                $scope.IsVisible = false;
+                $scope.Initialize();
+            });
+        }
     }
 
  

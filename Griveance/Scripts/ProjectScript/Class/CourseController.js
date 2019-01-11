@@ -71,23 +71,22 @@ function ClassYearController($scope, Service) {
             relationship: $scope.relationship
            
         };
-       
-        Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
-            debugger;
-            // $scope.ParamUserLogin.Name = result.data.Name
-            if (result.data.IsSucess)
-            {
+        if ($scope.form.$valid) {
+            Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
                 debugger;
-                console.log(result.data);
-                window.location = "./Index"
-            }
-            else
-            {
-                window.alert('Record Not Inserted.')
-                window.location = "./Register"
-            }
-           
-        })
+                // $scope.ParamUserLogin.Name = result.data.Name
+                if (result.data.IsSucess) {
+                    debugger;
+                    console.log(result.data);
+                    window.location = "./Index"
+                }
+                else {
+                    window.alert('Record Not Inserted.')
+                    window.location = "./Register"
+                }
+
+            })
+        }
        
        
     }
@@ -99,18 +98,28 @@ function ClassYearController($scope, Service) {
         var Course = {
             CourseName: $scope.CourseName
         };
-
+        var alphabate = new RegExp(/^[a-zA-Z\s]+$/);
+        if ($scope.CourseName == undefined) {
+            $("#error").text("**CourseName Required.");
+            $("#error").css({ 'color': 'red' });
+            return false;
+        }
+        if (!$scope.CourseName.match(alphabate)) {
+            $("#error1").text("**Alphabates Required.");
+            $("#error1").css({ 'color': 'red' });
+            return false;
+        }
         Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
             if (result.data.IsSucess) {
                 debugger;
                 console.log(result.data);
-                window.location = "./NAdminDashboard"
+                window.location = "./NAdminProfile"
             }
             else {
                 window.alert('Not Created Course')
-                window.location = "./NAdminDashboard"
+                window.location = "./NAdminProfile"
             }
 
         })
@@ -123,18 +132,34 @@ function ClassYearController($scope, Service) {
             CourseName: $scope.CourseName,
             ClassName: $scope.ClassName
         };
-
+        var alphabate = new RegExp(/^[a-zA-Z\s]+$/);
+        if ($scope.CourseName == undefined) {
+            $("#error2").text("**Select Course Name.");
+            $("#error2").css({ 'color': 'red' });
+            return false;
+        }
+        $("#error2").text("");
+        if ($scope.ClassName == undefined) {
+            $("#error4").text("**ClassName Required.");
+            $("#error4").css({ 'color': 'red' });
+            return false;
+        }
+        if (!$scope.ClassName.match(alphabate)) {
+            $("#error5").text("**Alphabates Required.");
+            $("#error5").css({ 'color': 'red' });
+            return false;
+        }
         Service.Post("api/ClassYear/CreateClass", JSON.stringify(Class)).then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
             if (result.data.IsSucess) {
                 debugger;
                 console.log(result.data);
-                window.location = "./NAdminDashboard"
+                window.location = "./NAdminProfile"
             }
             else {
                 window.alert('Not Created Class')
-                window.location = "./NAdminDashboard"
+                window.location = "./NAdminProfile"
             }
 
         })

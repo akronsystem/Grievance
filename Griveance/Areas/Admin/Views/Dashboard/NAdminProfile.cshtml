@@ -73,6 +73,15 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                             </div>
+                            
+                        </div>
+
+                        <!--end:: Widgets/Stats2-1 -->
+                    </div>
+                    <div class="col-xl-4">
+
+                        <!--begin:: Widgets/Stats2-1 -->
+                        <div class="m-widget1">
                             <div class="m-widget1__item">
                                 <div class="row m-row--no-padding align-items-center">
                                     <div class="col">
@@ -95,29 +104,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <!--end:: Widgets/Stats2-1 -->
                     </div>
-                    <div class="col-xl-4">
-
-                        <!--begin:: Widgets/Daily Sales-->
-                        <div class="m-widget14">
-                            <div class="m-widget14__header m--margin-bottom-30">
-                                <h3 class="m-widget14__title">
-                                   Course
-                                </h3>
-                                <span class="m-widget14__desc">
-                                   Registerd Courses
-                                </span>
-                            </div>
-                            <div class="m-widget14__chart" style="height:120px;">
-                                <canvas id="m_chart_daily_sales"></canvas>
-                            </div>
-                        </div>
-
-                        <!--end:: Widgets/Daily Sales-->
-                    </div>
+                   
                     <div class="col-xl-4">
 
                         <!--begin:: Widgets/Profit Share-->
@@ -126,9 +118,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <h3 class="m-widget14__title">
                                    Grievance
                                 </h3>
-                                <span class="m-widget14__desc">
-                                   
-                                </span>
+                               
                             </div>
                             <div class="row  align-items-center">
                                 <div class="col">
@@ -172,7 +162,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="col-md-6">
                         <div class="m-portlet">
 
-                            <button class="accordion"><b>List Of Course</b></button>
+                            <button class="accordion"><b>List Of Course</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i id="span2" class="fa fa-plus"></i></button>
                             <div class="panel">
                                 <div class="m-portlet__body">
 
@@ -234,9 +225,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="form-group m-form__group">
                                         <label for="example_input_full_name">Course Name</label>
                                         <input type="text" ng-model="CourseName" class="form-control m-input" placeholder="Enter Course">
-
+                                        
                                     </div>
-
+                                    <span id="error"></span><span id="error1"></span>
                                 </div>
                                 <div class="m-portlet__foot m-portlet__foot--fit">
                                     <div class="m-form__actions m-form__actions">
@@ -253,7 +244,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                     <div class="col-md-6">
                         <div class="m-portlet">
-                            <button class="accordion"><b>List Of Class</b></button>
+                            <button class="accordion"><b>List Of Class</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i id="span1"  class="fa fa-plus"></i></button>
                             <div class="panel">
                                 <div class="m-portlet__body">
 
@@ -320,12 +312,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <option ng-repeat="s in Course" value="{{s.course_name}}">{{s.course_name}}</option>
                                             </select>
                                             <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-table"></i></span></span>
-                                        </div>
+                                        </div><span id="error2"></span>
                                     </div>
                                     <div class="form-group m-form__group">
                                         <label for="example_input_full_name">Class Name</label>
                                         <input type="text" class="form-control m-input" ng-model="ClassName" placeholder="Enter Class">
-
+                                        <span id="error3"></span><span id="error4"></span>
                                     </div>
 
                                 </div>
@@ -401,19 +393,31 @@ License: You must have a valid license purchased only from themeforest(the above
     <script>
         var acc = document.getElementsByClassName("accordion");
         var i;
-
+        var x = document.getElementById('span1'); 
+        var y = document.getElementById('span2'); 
         for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
                 this.classList.toggle("active");
+               
                 var panel = this.nextElementSibling;
                 if (panel.style.display === "block") {
                     panel.style.display = "none";
+                    x.classList.remove("fa-minus");
+                    x.classList.add("fa-plus");
+                    y.classList.remove("fa-minus");
+                    y.classList.add("fa-plus");
+                  
                 } else {
                     panel.style.display = "block";
+                    x.classList.remove("fa-plus");
+                    x.classList.add("fa-minus");
+                    y.classList.remove("fa-plus");
+                    y.classList.add("fa-minus");
                 }
             });
         }
     </script>
+   
     <style>
         .accordion {
             background-color: hotpink;
