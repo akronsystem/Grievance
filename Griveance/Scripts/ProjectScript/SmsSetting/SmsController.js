@@ -69,7 +69,7 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
     }
 
     $scope.postdata = function (isValid) {
-
+        debugger;
         if (isValid) {
             $scope.postdata = function (GATEWAYUSERID, GATEWAYPASSWORD, SMSSENDAPI, CHECKBALANCEAPI) {
                 debugger;

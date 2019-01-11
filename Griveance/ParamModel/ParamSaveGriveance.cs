@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace Griveance.ParamModel
 {
@@ -12,6 +13,8 @@ namespace Griveance.ParamModel
         public string Password { get; set; }
       
         public string GriveanceType { get; set; }
+        [Required]
+        [Display(Name ="Please enter subject name")]
         public string Subject { get; set; }
         public string PostDetails { get; set; }
         public int Code { get; set; }
