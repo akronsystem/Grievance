@@ -70,7 +70,7 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
         
 
          Service.Post("api/Grievance/GetSingleGrievanceTypeInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
-            window.alert('Hii');
+          
             debugger;
 
             $scope.IsVisible = true;

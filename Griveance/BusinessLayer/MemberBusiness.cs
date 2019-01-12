@@ -70,17 +70,11 @@ namespace Griveance.BusinessLayer
             {
                 return new Error() { IsError = true, Message = "User Code Already Exists." };
             }
-            tbl_member objmember = new tbl_member();
            
-            objmember.id = Convert.ToInt32(obj.Id);
-            objmember.code = Convert.ToInt32(obj.Code);
-            objmember.designation = obj.Designation.ToString();
-            objmember.griType = obj.GriType.ToString();         
-            db.tbl_member.Add(objmember);           
-            db.SaveChanges();
 
             tbl_user objuser = new tbl_user();
             objuser.name = obj.Name.ToString();
+            objuser.UserId =Convert.ToInt32(obj.UserId);
             objuser.code = obj.Code;
             objuser.type = "Member";
             objuser.gender = obj.Gender.ToString();
@@ -113,7 +107,14 @@ namespace Griveance.BusinessLayer
                 }
                 throw raise;
             }
-
+            tbl_member objmember = new tbl_member();
+            tbl_user omember = db.tbl_user.Where(r => r.code == obj.Code).FirstOrDefault();
+            objmember.UserId = omember.UserId;
+            objmember.code = Convert.ToInt32(obj.Code);
+            objmember.designation = obj.Designation.ToString();
+            objmember.griType = obj.GriType.ToString();
+            db.tbl_member.Add(objmember);
+            db.SaveChanges();
             return new Result
             {
 

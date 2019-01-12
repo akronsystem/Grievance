@@ -10,9 +10,10 @@ namespace Griveance.BusinessLayer
 {
     public class UsersBusiness
     {
+        GRContext context = new GRContext();
         public object GetSingleParentInfo(ParamUser obj)
         {
-            GRContext context = new GRContext();
+           
             try
             {
                 var parent = context.ViewGetSingleParentInfoes.Where(r => r.UserId == obj.UserId).FirstOrDefault();
@@ -31,5 +32,37 @@ namespace Griveance.BusinessLayer
                 return new Error { IsError = true, Message = ex.Message};
             }
         }
+        public object UpdateUser(ParamRegistration PR)
+        {
+            try
+            {
+
+
+                tbl_user obj = context.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+
+                if (PR.Password == null)
+                {
+                    obj.name = PR.Name;
+                    obj.email = PR.Email;
+                    obj.contact = PR.Contact;
+                    //obj.password = PR.Password;
+                }
+                else
+                {
+                    obj.name = PR.Name;
+                    obj.email = PR.Email;
+                    obj.contact = PR.Contact;
+                    obj.password =CryptIt.Encrypt(PR.Password);
+                }
+                context.SaveChanges();
+                return new Result() { IsSucess = true, ResultData = "User Updated Successfully." };
+
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
     }
 }

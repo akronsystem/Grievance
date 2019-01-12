@@ -34,18 +34,26 @@ function LoginController($scope, Service) {
                 if (rd.data.IsSucess)
                 { 
                     console.log(rd.data.ResultData);
+                    var model = new Object;
+                    model.UserId = rd.data.ResultData.UserId;
                     sessionStorage.setItem("emp-key", JSON.stringify(rd.data.ResultData.code));
                     sessionStorage.setItem("userid", JSON.stringify(rd.data.ResultData.UserId));
                     sessionStorage.setItem("Password", JSON.stringify(rd.data.ResultData.password));
                     sessionStorage.setItem("Email", JSON.stringify(rd.data.ResultData.email));
                     sessionStorage.setItem("Type", JSON.stringify(rd.data.ResultData.type));
+                    sessionStorage.setItem("Name", JSON.stringify(rd.data.ResultData.name));
+                    sessionStorage.setItem("Contact", JSON.stringify(rd.data.ResultData.contact));
                     if (rd.data.ResultData.type == "Admin")
                     {
                         location.href = baseURL +"Admin/Dashboard/NAdminProfile"
                     }
                     else if (rd.data.ResultData.type == "Student") 
                     {
-                        location.href = baseURL + "Student/Student/Index"
+                      location.href = baseURL + "Student/Student/Index"
+                        //window.open(a + '?data=' + rd.data.ResultData.name)
+                        //var url = baseURL + "Student/Student/Index?information=" + JSON.stringify(rd.data.ResultData.UserId);
+                       // var url = baseURL + "Student/Student/Index?information=" + rd.data.ResultData;
+                        //window.location.href = url; 
                        
                     }
                     else if (rd.data.ResultData.type == "Parent")

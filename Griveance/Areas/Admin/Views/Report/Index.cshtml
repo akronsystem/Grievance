@@ -22,6 +22,7 @@
                         </div>
 
                     </div>
+
                     <div class="form-group m-form__group" ng-init="Initialize()">
                         <label for="exampleGrievance">Report Type</label>
                         <select class="form-control m-input" id="report" ng-model="id">
@@ -52,12 +53,12 @@
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputEmpCode">From Date</label>
-                        <input type="text" class="form-control m-input" id="fdate" placeholder="From Date" />
+                        <input type="date" class="form-control m-input" id="fdate" ng-model="fromdate" placeholder="From Date"  required />
                        
                       </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputEmpCode">To Date</label>
-                        <input type="text" class="form-control m-input" id="todate" placeholder="To Date" />
+                        <input type="date" class="form-control m-input" id="todate" placeholder="To Date" ng-model="todate" required />
 
                     </div>
                     <div class="form-group m-form__group">

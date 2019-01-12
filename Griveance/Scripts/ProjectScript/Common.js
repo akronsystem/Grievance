@@ -9,7 +9,6 @@ function UsersController($scope, Service) {
     $scope.UserCredentialModel = {};
 
     $scope.GetInfo = function () {
-        $scope.dtOptions = "";
         Service.Post("api/Grievance/GriveanceTypeInfo", $scope.UserCredentialModel).then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
@@ -54,4 +53,64 @@ function UsersController($scope, Service) {
             })
         }
     }
+    $scope.Initialize = function () {
+        debugger;
+        var data = sessionStorage.getItem('userid');
+        var Password = sessionStorage.getItem('Password');
+        var code = sessionStorage.getItem('emp-key');
+        var email = sessionStorage.getItem('Email');
+        var type = sessionStorage.getItem('Type');
+        var name = sessionStorage.getItem('Name');
+        var contact = sessionStorage.getItem('Contact');
+        $scope.UserId = data
+        $scope.email = email.replace(/"/g, '');
+        $scope.name = name.replace(/"/g, '');
+        $scope.contact = contact;
+       
+    }
+    $scope.Setting = function () {
+        debugger;
+        var Data = {
+            name:$scope.name,
+            email:$scope.email,
+            contact:$scope.contact,
+            UserId: $scope.UserId,
+            contact: $scope.newcontact,
+            newpassword:$scope.newpassword,
+            Password:$scope.conpassword
+
+        };
+        if ($scope.newcontact == undefined)
+        {
+            Data.contact = $scope.contact;
+        }
+        if ($scope.newpassword == $scope.conpassword)
+        {
+           
+        }
+        else {
+            window.alert('Please Check Confirm Password')
+            return false;
+        }
+        
+        Service.Post("api/Common/UpdateUsers", JSON.stringify(Data)).then(function (result) {
+            debugger;
+            // $scope.ParamUserLogin.Name = result.data.Name 
+            console.log(result.data);
+            if (result.data.IsSucess) {
+                debugger;
+                console.log(result.data);
+                window.alert('Updated User')
+                //window.location = "./Index"
+            }
+            else {
+                window.alert('Record Not Inserted.')
+                window.location = "./Index"
+            }
+        })
+    }
+   
+
+  
 }
+
