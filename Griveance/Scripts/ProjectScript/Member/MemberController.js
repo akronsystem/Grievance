@@ -26,11 +26,20 @@ function MemberController($scope, Service) {
                 // $scope.ParamUserLogin.Name = result.data.Name
 
                 console.log(result.data);
+                if (result.data.IsSucess) {
+                    debugger;
+                    console.log(result.data);
+                    window.location = "Griveance/GrievanceAllocation"
+                }
+                else {
+                    window.alert('Record Not Inserted.')
+                    window.location = "Member/Index"
+                }
 
             })
         }
 
-
+ 
     }
 
     $scope.GetData = function () {

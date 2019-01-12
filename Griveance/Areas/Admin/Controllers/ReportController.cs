@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.IO;
-//using iTextSharp.text;
-//using iTextSharp.text.pdf;
-//using iTextSharp.tool.xml;
-//using iTextSharp.text.html.simpleparser;
+using System.IO;  
 using Griveance.Models;
 
 namespace Griveance.Areas.Admin.Controllers
@@ -20,9 +16,11 @@ namespace Griveance.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult ReportDwonload(int id)
+        public ActionResult ReportDwonload(int id,string fromdate,string todate)
         {
-           // int id=id;
+            ViewData["Fromdate"] = fromdate;
+            ViewData["Todate"] = todate;
+
             switch (id)
             {
                 case 1:id = 1;
@@ -101,22 +99,6 @@ namespace Griveance.Areas.Admin.Controllers
         public ActionResult ClosedRCellMember()
         {
             return View("ClosedRCellMember");
-        }
-        //[HttpPost]
-        //[ValidateInput(false)]
-        //public FileResult Export(string GridHtml)
-        //{
-        //    using (MemoryStream stream = new System.IO.MemoryStream())
-        //    {
-        //        StringReader sr = new StringReader(GridHtml);
-        //        Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
-        //        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
-        //        pdfDoc.Open();
-        //        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
-        //        pdfDoc.NewPage();
-        //        pdfDoc.Close();
-        //        return File(stream.ToArray(), "application/pdf", "Grid.pdf");
-        //    }
-        //}
+        } 
     }
 }
