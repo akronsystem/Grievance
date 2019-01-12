@@ -41,21 +41,22 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
           
 
         };
-
-        Service.Post("api/Grievance/SaveGrievance", JSON.stringify(Grievance)).then(function (result) {
-            debugger;
-            // $scope.ParamUserLogin.Name = result.data.Name
-            if (result.data.IsSucess) {
+        if ($scope.form.$valid) {
+            Service.Post("api/Grievance/SaveGrievanceType", JSON.stringify(Grievance)).then(function (result) {
                 debugger;
-                console.log(result.data);
-                window.location = "./GrievanceType"
-            }
-            else {
-                window.alert('Grievance Type does not Save')
-                window.location = "./GrievanceType"
-            }
+                // $scope.ParamUserLogin.Name = result.data.Name
+                if (result.data.IsSucess) {
+                    debugger;
+                    console.log(result.data);
+                    window.location = "./GrievanceType"
+                }
+                else {
+                    window.alert('Grievance Type does not Save')
+                    window.location = "./GrievanceType"
+                }
 
-        })
+            })
+        }
 
 
     }
@@ -68,7 +69,7 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
         };
         
 
-        Service.Post("api/Grievance/GetSingleGrievanceInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
+         Service.Post("api/Grievance/GetSingleGrievanceTypeInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
             window.alert('Hii');
             debugger;
 
@@ -92,20 +93,21 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
             GrievanceId: GrievanceId
 
         };
-
-        Service.Post("api/Grievance/UpdateGrievance", JSON.stringify(Info)).then(function (result) {
-            debugger;
-            // $scope.ParamUserLogin.Name = result.data.Name
-            if (result.data.IsSucess) {
+        if ($scope.form.$valid) {
+            Service.Post("api/Grievance/UpdateGrievanceType", JSON.stringify(Info)).then(function (result) {
                 debugger;
-                console.log(result.data);
-                window.location = "./GrievanceType"
-            }
-            else {
-                window.location = "./GrievanceType"
-            }
+                // $scope.ParamUserLogin.Name = result.data.Name
+                if (result.data.IsSucess) {
+                    debugger;
+                    console.log(result.data);
+                    window.location = "./GrievanceType"
+                }
+                else {
+                    window.location = "./GrievanceType"
+                }
 
-        })
+            })
+        }
 
 
     }

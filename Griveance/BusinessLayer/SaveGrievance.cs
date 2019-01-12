@@ -16,10 +16,10 @@ namespace Griveance.BusinessLayer
             try
             {
                 //var usercode = db.tbl_user.Where(r => r.code == PR.Code).FirstOrDefault();
-                //if (usercode != null)
-                //{
-                //    return new Error() { IsError = true, Message = "User Code Already Exists." };
-                //}
+                if (PR.GrievanceName == null)
+                {
+                    return new Error() { IsError = true, Message = "Required Grievance Name" };
+                }
                 tbl_grievance_list objuser = new tbl_grievance_list();
 
                 objuser.grivance_name = PR.GrievanceName;

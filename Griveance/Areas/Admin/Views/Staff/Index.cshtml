@@ -5,14 +5,28 @@
 }
 
 @*<h2>Staff</h2>*@
+<script type="text/javascript" src="~/Content/assets/plugins/jquery/dist/jquery.min.js"></script>
+<script type='text/javascript' src='~/Content/assets/app/datatables/jquery.dataTables.min.js'></script>
+<script src="@Url.Content("~/Content/angularjs/scripts/angular.min.js")" type="text/javascript"></script>
+<script type='text/javascript' src='~/Content/assets/app/datatables/angular-dataTables.js'></script>
+<script src="@Url.Content("~/Scripts/ProjectScript/Staff/StaffModule.js")"></script>
+<script src="@Url.Content("~/Scripts/Common/Service.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ProjectScript/Staff/StaffController.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Common/CoomonFunctions.js")"></script>
+<script src="@Url.Content("~/Scripts/Common/customize.js")"></script>
+
+
+<script>
+        var baseURL = "@ConfigurationManager.AppSettings["BaseUrlPath"].ToString()";
+</script>
 <html lang="en" class="no-js">
 
 <body ng-app="GR">
     @using System.Configuration;
     <div ng-controller="UsersController">
 
-        <form class="m-form m-form--fit m-form--label-align-right student-admission-wrapper" ng-init="Initialize()">
- 
+        <form id="frmCRUD" name="form" class="m-form m-form--fit m-form--label-align-right student-admission-wrapper" ng-init="Initialize()">
+
             <div class="m-portlet m-portlet--tab">
 
                 <div class="m-portlet m-portlet--mobile">
@@ -24,7 +38,7 @@
                                 </h3>
                             </div>
                         </div>
-                        <div class="m-portlet__head-tools">
+                        @*<div class="m-portlet__head-tools">
                             <ul class="m-portlet__nav">
                                 <li class="m-portlet__nav-item">
                                     <input type="button" style="float:right" class="btn btn-accent" value="NEW" ng-click="ShowHide()" />
@@ -33,7 +47,7 @@
 
 
                             </ul>
-                        </div>
+                        </div>*@
                     </div>
 
                 </div>
@@ -42,104 +56,104 @@
 
                 <!--begin::Form-->
                 <div ng-show="IsVisible">
-                    <div class="m-portlet__body">
+                    <div class="form-body">
+
+                        <div class="m-portlet__body">
+                            <div>
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Name Of The Staff
+                                        <span class="required"> * </span>
+                                    </label>
+
+                                    <input type="text" value={{NameOfTheStaff}} ng-model="NameOfTheStaff" name="FromId" class="form-control"  required />
+                                    <input type="hidden" value="{{UserId}}" />
+                                    <input type="hidden" value="{{Type}}" />
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Employee Code
+                                    </label>
+
+                                    <input type="text" value={{EmployeeCode}} ng-model="EmployeeCode" name="Host" class="form-control" disabled  required />
+
+
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Gender
+                                    </label>
+
+                                    <input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control"  required />
+
+
+                                </div>
+
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Department
+                                    </label>
+
+                                    <input type="text" value={{Department}} name="Port" ng-model="Department" class="form-control"  required />
+
+
+                                </div>
+
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Designation
+                                    </label>
+
+                                    <input type="text" value={{Designation}} name="Port" ng-model="Designation" class="form-control"  required />
+
+
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Email
+                                    </label>
+
+                                    <input type="text" value={{Email}} name="Port" ng-model="Email" class="form-control"  required />
+
+
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Contact Number
+                                    </label>
+
+                                    <input type="text" value={{ContactNumber}} name="Port" ng-model="ContactNumber" class="form-control"  required />
+
+
+                                </div>
 
 
 
-                        <div class="form-body">
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Name Of The Staff
-                                    <span class="required"> * </span>
-                                </label>
 
-                                <input type="text" value={{NameOfTheStaff}} ng-model="NameOfTheStaff" name="FromId" class="form-control" required />
-                                <input type="hidden" value="{{UserId}}" />
-                                <input type="hidden" value="{{Type}}" />
+
                             </div>
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Employee Code
-                                </label>
 
-                                <input type="text" value={{EmployeeCode}} ng-model="EmployeeCode" name="Host" class="form-control" disabled required />
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
 
 
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Gender
-                                </label>
 
-                                <input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control" required />
+                                <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(NameOfTheStaff, EmployeeCode, Gender, Department,Designation, Email, ContactNumber,UserId,Type)">
+                                    <i class="fa fa-database"> </i>Update
+                                </button>
+                                <button class="btn default" ng-click="Clear()">
+                                    <i class="fa fa-times"> </i> Cancel
+                                </button>
 
 
                             </div>
-
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Department
-                                </label>
-
-                                <input type="text" value={{Department}} name="Port" ng-model="Department" class="form-control" required />
-
-
-                            </div>
-
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Designation
-                                </label>
-
-                                <input type="text" value={{Designation}} name="Port" ng-model="Designation" class="form-control" required />
-
-
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Email
-                                </label>
-
-                                <input type="text" value={{Email}} name="Port" ng-model="Email" class="form-control" required />
-
-
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Contact Number
-                                </label>
-
-                                <input type="text" value={{ContactNumber}} name="Port" ng-model="ContactNumber" class="form-control" required />
-
-
-                            </div>
-
-
-
-
+                        </div>
 
                         </div>
 
+                        <!--end::Form-->
                     </div>
-                    <div class="m-portlet__foot m-portlet__foot--fit">
-                        <div class="m-form__actions">
-
-
-
-                            <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(NameOfTheStaff, EmployeeCode, Gender, Department,Designation, Email, ContactNumber,UserId,Type)">
-                                <i class="fa fa-database"> </i>Update
-                            </button>
-                            <button class="btn default" ng-click="Clear()">
-                                <i class="fa fa-times"> </i> Cancel
-                            </button>
-
-
-                        </div>
-                    </div>
-
-
-                    <!--end::Form-->
-                </div>
 
 
 
@@ -211,18 +225,7 @@
     </div>
 
 
-    <script type="text/javascript" src="~/Content/assets/plugins/jquery/dist/jquery.min.js"></script>
-    <script type='text/javascript' src='~/Content/assets/app/datatables/jquery.dataTables.min.js'></script>
-    <script src="@Url.Content("~/Content/angularjs/scripts/angular.min.js")" type="text/javascript"></script>
-    <script type='text/javascript' src='~/Content/assets/app/datatables/angular-dataTables.js'></script>
-    <script src="@Url.Content("~/Scripts/ProjectScript/Staff/StaffModule.js")"></script>
-    <script src="@Url.Content("~/Scripts/Common/Service.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/ProjectScript/Staff/StaffController.js")" type="text/javascript"></script>
-
-
-    <script>
-        var baseURL = "@ConfigurationManager.AppSettings["BaseUrlPath"].ToString()";
-    </script>
+   
 </body>
 </html>
 

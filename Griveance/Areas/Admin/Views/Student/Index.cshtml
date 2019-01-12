@@ -13,8 +13,10 @@
 <script src="@Url.Content("~/Scripts/ProjectScript/Student/StudentInfoModule.js")"></script>
 <script src="@Url.Content("~/Scripts/Common/Service.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/ProjectScript/Student/StudentInfoController.js")" type="text/javascript"></script>
-<script src="~/Scripts/Common/customize.js"></script>
-<script src="~/Scripts/Common/CoomonFunctions.js"></script>
+ 
+<script src="@Url.Content("~/Scripts/Common/CoomonFunctions.js")"></script>
+<script src="@Url.Content("~/Scripts/Common/customize.js")"></script>
+ 
 <html lang="en" class="no-js">
 <head>
 
@@ -22,8 +24,9 @@
 
 <body ng-app="GR">
     @using System.Configuration;
-    <div ng-controller="UsersController">
-        <form id="frmCRUD" class="m-form m-form--fit m-form--label-align-right student-admission-wrapper" ng-init="Initialize()">
+    <div ng-controller="UsersController"> 
+        <form id="frmCRUD" name="form" class="m-form m-form--fit m-form--label-align-right student-admission-wrapper" ng-init="Initialize()">
+ 
 
 
 
@@ -57,90 +60,91 @@
 
                 <!--begin::Form-->
                 <div ng-show="IsVisible">
-                    <div class="m-portlet__body">
+                    <div class="form-body">
+                        <div class="m-portlet__body">
 
 
 
-                        <div class="form-body">
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Name Of The Student
-                                    <span class="required"> * </span>
-                                </label>
+                            <div>
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Name Of The Student
+                                        <span class="required"> * </span>
+                                    </label>
 
-                                <input type="text" value={{StudentName}} ng-model="StudentName" name="FromId" class="form-control" required />
-                                <input type="hidden" value="{{UserId}}" />
+                                    <input type="text" value={{StudentName}} ng-model="StudentName" name="FromId" class="form-control" required />
+                                    <input type="hidden" value="{{UserId}}" />
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Code
+                                    </label>
+
+                                    <input type="text" value={{StudentCode}} ng-model="StudentCode" name="Host" class="form-control" disabled   required />
+
+
+                                </div>
+
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Type
+                                    </label>
+
+                                    <input type="text" value={{Type}} name="Port" ng-model="Type" class="form-control"  required />
+
+
+                                </div>
+
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Gender
+                                    </label>
+
+                                    <input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control"  required />
+
+
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Email
+                                    </label>
+
+                                    <input type="text" value={{email}} name="Port" ng-model="email" class="form-control"  required />
+
+
+                                </div>
+
+                                <div class="form-group m-form__group">
+                                    <label>
+                                        Contact
+                                    </label>
+
+                                    <input type="text" value={{Contact}} ng-model="Contact" name="Port" class="form-control" required />
+
+
+                                </div>
+
+
+
                             </div>
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Code
-                                </label>
-
-                                <input type="text"  value={{StudentCode}} ng-model="StudentCode" name="Host" class="form-control" disabled required />
-
-
-                            </div>
-
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Type
-                                </label>
-
-                                <input type="text" value={{Type}} name="Port" ng-model="Type" class="form-control" required />
-
-
-                            </div>
-
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Gender
-                                </label>
-
-                                <input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control" required />
-
-
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Email
-                                </label>
-
-                                <input type="text" value={{email}} name="Port" ng-model="email" class="form-control" required />
-
-
-                            </div>
-
-                            <div class="form-group m-form__group">
-                                <label>
-                                    Contact
-                                </label>
-
-                                <input type="text" value={{Contact}} ng-model="Contact" name="Port" class="form-control" required />
-
-
-                            </div>
-
-
 
                         </div>
-
-                    </div>
-                    <div class="m-portlet__foot m-portlet__foot--fit">
-                        <div class="m-form__actions">
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
 
 
 
-                            <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(StudentName,StudentCode,Type,Gender,email,Contact,UserId)">
-                                <i class="fa fa-database"> </i>Update
-                            </button>
-                            <button class="btn default" ng-click="Clear()">
-                                <i class="fa fa-times"> </i> Cancel
-                            </button>
+                                <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(StudentName,StudentCode,Type,Gender,email,Contact,UserId)">
+                                    <i class="fa fa-database"> </i>Update
+                                </button>
+                                <button class="btn default" ng-click="Clear()">
+                                    <i class="fa fa-times"> </i> Cancel
+                                </button>
 
 
+                            </div>
                         </div>
                     </div>
-
 
                     <!--end::Form-->
                 </div>

@@ -1,6 +1,7 @@
 ﻿var oldItem = null;
 
-function IntializeTable($filter, NgTableParams, data) {     
+function IntializeTable($filter, NgTableParams, data) {   
+    debugger;
     angular.forEach(data, function (value, key) {            
         angular.forEach(value, function (a, b) {
             if (b.endsWith('Date')) {                
@@ -30,6 +31,7 @@ function ActiveRow(item) {
 }
 
 function ShowMessage(result, errorList, callback) {
+    debugger;
     var title = "Message";
     if (result === 0) title = "Error";
     else if (result === -1) title = "Record not found";
