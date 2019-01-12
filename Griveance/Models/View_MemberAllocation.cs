@@ -36,5 +36,10 @@ namespace Griveance.Models
         public string griType { get; set; }
 
         public int? status { get; set; }
+
+        [Key]
+        [Column(Order = 4)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int UserId { get; set; }
     }
 }

@@ -454,6 +454,7 @@
     <Content Include="Content\assets\demo\demo12\custom\header\actions.js" />
     <Content Include="Content\assets\demo\demo12\media\img\logo\favicon.ico" />
     <Content Include="Content\assets\demo\demo12\media\img\logo\logo.png" />
+    <Content Include="Content\assets\demo\demo3\base\components.min.css" />
     <Content Include="Content\assets\demo\demo3\base\scripts.bundle.js" />
     <Content Include="Content\assets\demo\demo3\base\style.bundle.css" />
     <Content Include="Content\assets\demo\demo3\base\style.bundle.rtl.css" />
@@ -574,8 +575,15 @@
     <Content Include="Content\assets\vendors\custom\jqvmap\jqvmap.bundle.css" />
     <Content Include="Content\assets\vendors\custom\jqvmap\jqvmap.bundle.js" />
     <Content Include="Content\assets\vendors\custom\jqvmap\jqvmap.bundle.rtl.css" />
-    <Content Include="Global.asax" />
+    <Content Include="Global.asax" /> 
+    <Content Include="Scripts\Common\angular-chart.js" />
+    <Content Include="Scripts\Common\angular-chart.min.js" />
+    <Content Include="Scripts\Common\canvasjs.min.js" />
+    <Content Include="Scripts\Common\canvasjs.react.js" />
+    <Content Include="Scripts\Common\ChartjsBundle.js" /> 
+    <Content Include="Scripts\Common\bootbox.min.js" /> 
     <Content Include="Scripts\Common\CoomonFunctions.js" />
+    <Content Include="Scripts\Common\customize.js" />
     <Content Include="Scripts\Common\Module.js" />
     <Content Include="Scripts\Common\Service.js" />
     <Content Include="Scripts\ProjectScript\Class\ClassModule.js" />
@@ -596,6 +604,8 @@
     <Content Include="Scripts\ProjectScript\Member\MemberModule.js" />
     <Content Include="Scripts\ProjectScript\Parent\ParentController.js" />
     <Content Include="Scripts\ProjectScript\Parent\ParentModule.js" />
+    <Content Include="Scripts\ProjectScript\Report\ReportController.js" />
+    <Content Include="Scripts\ProjectScript\Report\ReportModule.js" />
     <Content Include="Scripts\ProjectScript\Setting\BranchController.js" />
     <Content Include="Scripts\ProjectScript\Setting\ClientController.js" />
     <Content Include="Scripts\ProjectScript\Setting\ClientTaskController.js" />
@@ -621,6 +631,7 @@
     <Compile Include="API\MemberController.cs" />
     <Compile Include="API\ParamGetGriecanceList.cs" />
     <Compile Include="API\RegisterController.cs" />
+    <Compile Include="API\ReportController.cs" />
     <Compile Include="API\UsersController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
@@ -631,6 +642,7 @@
     <Compile Include="Areas\Admin\Controllers\GriveanceController.cs" />
     <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
     <Compile Include="Areas\Admin\Controllers\ParentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
@@ -642,6 +654,7 @@
     <Compile Include="Areas\Parent\ParentAreaRegistration.cs" />
     <Compile Include="Areas\Staff\Controllers\StaffController.cs" />
     <Compile Include="Areas\Staff\StaffAreaRegistration.cs" />
+    <Compile Include="Areas\Student\Controllers\StudentController.cs" />
     <Compile Include="Areas\Student\StudentAreaRegistration.cs" />
     <Compile Include="BusinessLayer\Class1.cs" />
     <Compile Include="BusinessLayer\ClassBusiness.cs" />
@@ -655,6 +668,7 @@
     <Compile Include="BusinessLayer\GetMyGrievanceBL.cs" />
     <Compile Include="BusinessLayer\GetParentData.cs" />
     <Compile Include="BusinessLayer\GetSingleFaculty.cs" />
+    <Compile Include="BusinessLayer\GetSingleGrievanceBL.cs" />
     <Compile Include="BusinessLayer\GetSingleStaffData.cs" />
     <Compile Include="BusinessLayer\GetSingleStudentBL.cs" />
     <Compile Include="BusinessLayer\GetSmsSettingData.cs" />
@@ -662,12 +676,14 @@
     <Compile Include="BusinessLayer\GetUnassignedGrievanceType.cs" />
     <Compile Include="BusinessLayer\MemberBusiness.cs" />
     <Compile Include="BusinessLayer\PostGriveance.cs" />
+    <Compile Include="BusinessLayer\ReportBusiness.cs" />
     <Compile Include="BusinessLayer\SaveEmailSetting.cs" />
     <Compile Include="BusinessLayer\SaveGrievance.cs" />
     <Compile Include="BusinessLayer\SaveRegistrationBL.cs" />
     <Compile Include="BusinessLayer\SetGriveanceStatus.cs" />
     <Compile Include="BusinessLayer\SetIsLiveForUser.cs" />
     <Compile Include="BusinessLayer\SetMemberStatus.cs" />
+    <Compile Include="BusinessLayer\ShowGraphBL.cs" />
     <Compile Include="BusinessLayer\UsersBusiness.cs" />
     <Compile Include="BusinessLayer\ValidateUser.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -704,18 +720,21 @@
     <Compile Include="Models\ViewGetStudentInfo.cs" />
     <Compile Include="Models\ViewGrievanceList.cs" />
     <Compile Include="Models\ViewUser.cs" />
+    <Compile Include="Models\View_ForMemberName.cs" />
     <Compile Include="Models\View_MemberAllocation.cs" />
     <Compile Include="Models\View_UsersGrievance.cs" />
     <Compile Include="Models\Vw_GetSingleFaculty.cs" />
     <Compile Include="ParamModel\ClassParameter.cs" />
     <Compile Include="ParamModel\CourseParameter.cs" />
     <Compile Include="ParamModel\FacultyParameters.cs" />
+    <Compile Include="ParamModel\GrievanceAllocationParam.cs" />
     <Compile Include="ParamModel\GrievanceParam.cs" />
     <Compile Include="ParamModel\MemberParameter.cs" />
     <Compile Include="ParamModel\ParamEmailSettings.cs" />
     <Compile Include="ParamModel\ParamGetFacultyInfo.cs" />
     <Compile Include="ParamModel\ParamGetGrievanceList.cs" />
     <Compile Include="ParamModel\ParamGetMyGrievance.cs" />
+    <Compile Include="ParamModel\ParamGetSingleGrievance.cs" />
     <Compile Include="ParamModel\ParamGetSingleStaffInfo.cs" />
     <Compile Include="ParamModel\ParamGetSingleStudent.cs" />
     <Compile Include="ParamModel\ParamMember.cs" />
@@ -912,12 +931,17 @@
     <Content Include="Content\assets\vendors\base\fonts\summernote\summernote.eot" />
     <Content Include="Content\assets\vendors\base\fonts\summernote\summernote.ttf" />
     <Content Include="Content\assets\vendors\base\fonts\summernote\summernote.woff" />
+    <Content Include="Areas\Student\Views\Student\Index.cshtml" />
+    <Content Include="Areas\Student\Views\Student\PostGrievance.cshtml" />
+    <Content Include="Areas\Student\Views\Student\StudentGrievance.cshtml" />
+    <Content Include="Areas\Student\Views\Shared\StudentDashboard.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\NAdminDashboard.cshtml" />
+    <Content Include="Scripts\Common\angular-chart.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -928,9 +952,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Student\Controllers\" />
     <Folder Include="Areas\Student\Models\" />
-    <Folder Include="Areas\Student\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

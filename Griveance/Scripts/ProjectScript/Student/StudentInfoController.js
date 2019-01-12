@@ -25,7 +25,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
            
             $scope.ViewGetStudentInfoes = result.data;
             $scope.Students = result.data.ResultData;
-            console.log(result.data);
+            //console.log(result.data);
 
         })
 

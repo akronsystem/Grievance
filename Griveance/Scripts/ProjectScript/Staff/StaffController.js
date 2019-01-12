@@ -52,20 +52,17 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
     $scope.ShowHide = function (UserId) {
 
-        debugger;
+    
         $scope.btnUpdate = true;
         $scope.IsVisible = true;
         var data = {
-
-
             UserId: UserId
-
         };
 
         Service.Post("api/Users/GetSingleStaff", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
 
 
-
+            debugger;
             $scope.ViewGetStudentInfoes = result.data;
             $scope.NameOfTheStaff = result.data.name;
             $scope.EmployeeCode = result.data.code;
