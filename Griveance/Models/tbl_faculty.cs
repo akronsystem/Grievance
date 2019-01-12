@@ -9,19 +9,22 @@ namespace Griveance.Models
     public partial class tbl_faculty
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int FacultyId { get; set; }
+
         public int code { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        public int? UserId { get; set; }
+
         [StringLength(100)]
         public string department { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
         [StringLength(100)]
         public string designation { get; set; }
-        public int UserId { get; set; }
+
+        public int? Display { get; set; }
+
+        public DateTime? created_date { get; set; }
+
+        public DateTime? modified_date { get; set; }
     }
 }

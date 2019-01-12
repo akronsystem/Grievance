@@ -65,17 +65,20 @@ namespace Griveance.BusinessLayer
         {
 
             GRContext db = new GRContext();
-            var usercode = db.tbl_member.Where(r => r.code == obj.Code).FirstOrDefault();
+            var usercode = db.tbl_member.Where(r => r.code == obj.Code &&  r.Display==1);
             if (usercode != null)
             {
                 return new Error() { IsError = true, Message = "User Code Already Exists." };
             }
             tbl_member objmember = new tbl_member();
            
-            objmember.id = Convert.ToInt32(obj.Id);
+            objmember.MemberId = Convert.ToInt32(obj.Id);
             objmember.code = Convert.ToInt32(obj.Code);
             objmember.designation = obj.Designation.ToString();
-            objmember.griType = obj.GriType.ToString();         
+            objmember.griType = obj.GriType.ToString();
+            objmember.Display = 1;
+            objmember.created_date = DateTime.Now;
+           
             db.tbl_member.Add(objmember);           
             db.SaveChanges();
 
@@ -87,6 +90,9 @@ namespace Griveance.BusinessLayer
             objuser.email = obj.EmailId.ToString();
             objuser.contact = Convert.ToInt64(obj.MobileNo);
             objuser.password = CryptIt.Encrypt( obj.Password);
+            objuser.Display = 1;
+            objuser.created_date = DateTime.Now;
+
             objuser.status = 1;
             objuser.Islive = 0;
 

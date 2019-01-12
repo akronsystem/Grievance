@@ -15,7 +15,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var Smsdata = objGR.tbl_smsconfiguration.ToList();
+                var Smsdata = objGR.tbl_smsconfiguration.Where(r=>r.DISPLAY==1).ToList();
                if(Smsdata==null)
                 {
                     return new Error() { IsError = true, Message = "No Data Found." };
@@ -41,6 +41,9 @@ namespace Griveance.BusinessLayer
                 objTBL.GATEWAYPASSWORD = PS.GatewayPassword;
                 objTBL.SMSSENDAPI = PS.SmsSendApi;
                 objTBL.CHECKBALANCEAPI = PS.CheckbalanceApi;
+                objTBL.DISPLAY = 1;
+                objTBL.created_date = DateTime.Now;
+               
                 objGR.tbl_smsconfiguration.Add(objTBL);
                 objGR.SaveChanges();
                 return new Result() { IsSucess = true, ResultData = "Sms Settings Saved Succesfully!!" };
@@ -82,6 +85,7 @@ namespace Griveance.BusinessLayer
                 objTBL.GATEWAYPASSWORD = objPS.GatewayPassword;
                 objTBL.SMSSENDAPI = objPS.SmsSendApi;
                 objTBL.CHECKBALANCEAPI = objTBL.CHECKBALANCEAPI;
+                objTBL.modified_date = DateTime.Now;
                 objGR.SaveChanges();
                 return new Result() { IsSucess = true, ResultData = "Sms Settings Updated Successfully." };
 

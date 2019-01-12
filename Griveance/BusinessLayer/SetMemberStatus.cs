@@ -15,7 +15,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                tbl_user objTBLUSER = gc.tbl_user.Where(r => r.UserId == PM.UserId && r.type == "Member").FirstOrDefault();
+                tbl_user objTBLUSER = gc.tbl_user.Where(r => r.UserId == PM.UserId && r.type == "Member" && r.Display==1).FirstOrDefault();
 
                 if (objTBLUSER == null)
                 { 

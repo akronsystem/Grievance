@@ -69,9 +69,9 @@ function ClassYearController($scope, Service) {
             designation: $scope.designation,
             relationship: $scope.relationship
 
-        };
+        }; 
  
-        if ($scope.form.$valid) {
+        if ($scope.form.$valid) { 
             Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name
@@ -85,8 +85,8 @@ function ClassYearController($scope, Service) {
                     window.location = "./Register"
                 }
 
-            })
-        } 
+            }) 
+        }  
     }
     $scope.Cancel = function () {
         window.location = "./Index";

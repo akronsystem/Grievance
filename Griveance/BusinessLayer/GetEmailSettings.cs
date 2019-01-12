@@ -13,7 +13,7 @@ namespace Griveance.BusinessLayer
         GRContext obj = new GRContext();
         public object GetEmailSettList()
         {
-            var EmailList = obj.tbl_emailsettings.ToList();
+            var EmailList = obj.tbl_emailsettings.Where(r=>r.Display==1).ToList();
             return new Result() { IsSucess = true, ResultData = EmailList };
            
 
@@ -21,7 +21,7 @@ namespace Griveance.BusinessLayer
 
         public object GetEmailData(ParamEmailSettings objemail)
         {
-            var EmailData = obj.tbl_emailsettings.Where(r => r.emailsettingid == objemail.emailsettingid).SingleOrDefault();
+            var EmailData = obj.tbl_emailsettings.Where(r => r.emailsettingid == objemail.emailsettingid && r.Display==1).SingleOrDefault();
             return EmailData;
         }
     }

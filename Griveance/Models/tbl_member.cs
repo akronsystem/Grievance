@@ -8,18 +8,23 @@ namespace Griveance.Models
 
     public partial class tbl_member
     {
-        public int id { get; set; }
+        [Key]
+        public int MemberId { get; set; }
 
         public int? UserId { get; set; }
 
-        public int code { get; set; }
+        public int? code { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string designation { get; set; }
 
-        [Required]
         [StringLength(200)]
         public string griType { get; set; }
+
+        public int? Display { get; set; }
+
+        public DateTime? created_date { get; set; }
+
+        public DateTime? modified_date { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace Griveance.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    [Table("tbl_complaintdetails")]
+
     public partial class tbl_complaintdetails
     {
         [Key]
@@ -37,5 +37,11 @@ namespace Griveance.Models
         [Required]
         [StringLength(100)]
         public string StackHolderType { get; set; }
+
+        public int? Display { get; set; }
+
+        public DateTime? created_date { get; set; }
+
+        public DateTime? modified_date { get; set; }
     }
 }
