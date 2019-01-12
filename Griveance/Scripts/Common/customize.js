@@ -7,9 +7,9 @@ var recordExist = "Record(s) with the same value already exists.";
 var CustomizeApp = function () {  
 
     var handleCustomizePortletTools = function () {
-        debugger;
+        //debugger;
         $('body').on('click', '.hide-portlet', function (e) {
-            debugger;
+          //  debugger;
             e.preventDefault();
             var el = $(".portlet-hide-show").closest(".portlet").children(".portlet-body");
             if ($(".portlet-hide-show").hasClass("collapse")) {
@@ -33,7 +33,7 @@ var CustomizeApp = function () {
     };
 
     var handleValidation = function () {
-        debugger;
+       // debugger;
         $("#frmCRUD .form-body").prepend("<div class='alert alert-danger display-hide'><button class= 'close' data-close='alert' ></button >You have some form errors. Please check below.</div >");
         var form = $('#frmCRUD');
         var error = $('.alert-danger', form);

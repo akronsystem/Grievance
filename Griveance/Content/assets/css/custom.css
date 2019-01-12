@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 @font-face {
@@ -298,4 +298,5 @@ body{
 .action-link a i{
 	font-size:1.5rem;
 }
+
 /*-----------------------End Common CSS Page---------------------------*/
