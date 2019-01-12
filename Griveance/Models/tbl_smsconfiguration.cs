@@ -21,5 +21,9 @@ namespace Griveance.Models
         public string CHECKBALANCEAPI { get; set; }
 
         public long? DISPLAY { get; set; }
+
+        public DateTime? created_date { get; set; }
+
+        public DateTime? modified_date { get; set; }
     }
 }

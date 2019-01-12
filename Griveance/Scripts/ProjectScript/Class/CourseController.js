@@ -71,7 +71,7 @@ function ClassYearController($scope, Service) {
             relationship: $scope.relationship
            
         };
-        if ($scope.form.$valid) {
+       
             Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name
@@ -86,7 +86,7 @@ function ClassYearController($scope, Service) {
                 }
 
             })
-        }
+        
        
        
     }

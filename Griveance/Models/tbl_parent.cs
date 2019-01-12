@@ -8,13 +8,20 @@ namespace Griveance.Models
 
     public partial class tbl_parent
     {
-        [Key] 
+        [Key]
         public int ParentId { get; set; }
 
-        public int code { get; set; } 
+        public int code { get; set; }
+
         public int? UserId { get; set; }
 
         [StringLength(100)]
         public string relationship { get; set; }
+
+        public int? Display { get; set; }
+
+        public DateTime? created_date { get; set; }
+
+        public DateTime? modified_date { get; set; }
     }
 }

@@ -23,7 +23,10 @@ namespace Griveance.BusinessLayer
                 tbl_grievance_list objuser = new tbl_grievance_list();
 
                 objuser.grivance_name = PR.GrievanceName;
-                objuser.grivance_description = PR.GrievanceDescription;             
+                objuser.grivance_description = PR.GrievanceDescription;
+                objuser.Display = 1;
+                objuser.created_date = DateTime.Now;
+                
                 objuser.Isalloted = 0;
                 db.tbl_grievance_list.Add(objuser);
                 db.SaveChanges();

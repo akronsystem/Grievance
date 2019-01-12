@@ -22,7 +22,13 @@ namespace Griveance.Models
         [Required]
         [StringLength(100)]
         public string class_name { get; set; }
- 
-        public int? IsParent { get; set; } 
+
+        public int? IsParent { get; set; }
+
+        public int? Display { get; set; }
+
+        public DateTime? created_date { get; set; }
+
+        public DateTime? modified_date { get; set; }
     }
 }

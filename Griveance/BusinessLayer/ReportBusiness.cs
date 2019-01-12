@@ -16,7 +16,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var getlist = db.tbl_rpt.ToList();
+                var getlist = db.tbl_rpt.Where(r => r.Display == 1).ToList();
 
                 if (getlist == null)
                     return new Error() { IsError = true, Message = "Class List Not Found." };

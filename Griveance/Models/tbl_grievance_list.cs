@@ -20,5 +20,11 @@ namespace Griveance.Models
         public string grivance_description { get; set; }
 
         public int Isalloted { get; set; }
+
+        public int? Display { get; set; }
+
+        public DateTime? created_date { get; set; }
+
+        public DateTime? modified_date { get; set; }
     }
 }

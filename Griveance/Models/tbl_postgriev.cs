@@ -9,33 +9,34 @@ namespace Griveance.Models
     public partial class tbl_postgriev
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int PostGrievId { get; set; }
+
         public int code { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        [Required]
         [StringLength(100)]
         public string email { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
+        [Required]
         [StringLength(300)]
         public string grivtype { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
+        [Required]
         [StringLength(300)]
         public string subject { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
+        [Required]
         [StringLength(500)]
         public string post { get; set; }
 
-        [Key]
-        [Column(Order = 5)]
+        [Required]
         [StringLength(30)]
         public string status { get; set; }
+
+        public int? Display { get; set; }
+
+        public DateTime? created_date { get; set; }
+
+        public DateTime? modified_date { get; set; }
     }
 }
