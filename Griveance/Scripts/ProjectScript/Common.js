@@ -4,7 +4,7 @@ function UsersController($scope, Service) {
 
     var form = $(".m-form m-form--fit m-form--label");
 
-
+    
     $scope.ViewAllStaffInfoes = {};
     $scope.UserCredentialModel = {};
 

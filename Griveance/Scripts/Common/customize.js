@@ -44,7 +44,7 @@ var CustomizeApp = function () {
             ignore: "",
             invalidHandler: function (event, validator) {
                 error.show(); 
-                App.scrollTo(error, -200); 
+                //App.scrollTo(error, -200); 
             },
             highlight: function (element) {
                 $(element).closest('#frmCRUD .form-group').removeClass("has-success").addClass('has-error');                
