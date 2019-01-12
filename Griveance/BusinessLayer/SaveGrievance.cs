@@ -23,7 +23,10 @@ namespace Griveance.BusinessLayer
                 tbl_grievance_list objuser = new tbl_grievance_list();
 
                 objuser.grivance_name = PR.GrievanceName;
-                objuser.grivance_description = PR.GrievanceDescription;             
+                objuser.grivance_description = PR.GrievanceDescription;
+                objuser.Display = 1;
+                objuser.created_date = DateTime.Now;
+                
                 objuser.Isalloted = 0;
                 db.tbl_grievance_list.Add(objuser);
                 db.SaveChanges();
@@ -50,6 +53,26 @@ namespace Griveance.BusinessLayer
                
                 //db.tbl_user.Add(objuser);
                 db.SaveChanges();               
+
+                return new Result() { IsSucess = true, ResultData = "Grievance Update Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
+
+        public object UpdateGrievanceAllocation(GrievanceAllocationParam PR)
+        {
+            try
+            {
+                tbl_member obGR = db.tbl_member.Where(r => r.MemberId == PR.id).FirstOrDefault();
+
+                obGR.griType = PR.griType;
+
+                //db.tbl_user.Add(objuser);
+                db.SaveChanges();
 
                 return new Result() { IsSucess = true, ResultData = "Grievance Update Successfully." };
             }

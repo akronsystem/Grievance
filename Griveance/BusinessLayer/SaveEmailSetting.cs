@@ -23,6 +23,8 @@ namespace Griveance.BusinessLayer
                 obj.host = PR.host;
                 obj.port = PR.port;
                 obj.password = PR.password;
+                obj.Display = 1;
+                obj.created_date = DateTime.Now;
                 db.tbl_emailsettings.Add(obj);
                 db.SaveChanges();
                 return new Result() { IsSucess = true, ResultData = "Email Settings Saved Successfully." };
@@ -48,6 +50,7 @@ namespace Griveance.BusinessLayer
                 obj.host = PR.host;
                 obj.port = PR.port;
                 obj.password = PR.password;
+                obj.modified_date = DateTime.Now;
              
                 db.SaveChanges();
                 return new Result() { IsSucess = true, ResultData = "Email Settings Updated Successfully." };

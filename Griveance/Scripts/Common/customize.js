@@ -6,10 +6,10 @@ var recordExist = "Record(s) with the same value already exists.";
 
 var CustomizeApp = function () {  
 
-    var handleCustomizePortletTools = function () {
-        debugger;
+    var handleCustomizePortletTools = function () { 
+        //debugger;
         $('body').on('click', '.hide-portlet', function (e) {
-            debugger;
+          //  debugger; 
             e.preventDefault();
             var el = $(".portlet-hide-show").closest(".portlet").children(".portlet-body");
             if ($(".portlet-hide-show").hasClass("collapse")) {
@@ -33,7 +33,7 @@ var CustomizeApp = function () {
     };
 
     var handleValidation = function () {
-        debugger;
+ 
         $("#frmCRUD .form-body").prepend("<div class='alert alert-danger display-hide'><button class= 'close' data-close='alert' ></button >You have some form errors. Please check below.</div >");
         var form = $('#frmCRUD');
         var error = $('.alert-danger', form);
@@ -43,8 +43,8 @@ var CustomizeApp = function () {
             focusInvalid: false,
             ignore: "",
             invalidHandler: function (event, validator) {
-                error.show();
-                //App.scrollTo(error, -200);
+                error.show(); 
+                //App.scrollTo(error, -200); 
             },
             highlight: function (element) {
                 $(element).closest('#frmCRUD .form-group').removeClass("has-success").addClass('has-error');                

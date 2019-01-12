@@ -14,12 +14,13 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                tbl_complaintdetails cobj = db.tbl_complaintdetails.First(r => r.CompID == obj.CompId);
+                tbl_complaintdetails cobj = db.tbl_complaintdetails.First(r => r.CompID == obj.CompId && r.Display==1);
                 if (cobj != null)
                 {
                     cobj.CompID = obj.CompId;
                     cobj.GrievanceAction = obj.GrievanceAction;
                     cobj.status = obj.Status;
+                    cobj.modified_date = DateTime.Now;
                     db.SaveChanges();
                     return new Result() { IsSucess = true, ResultData = "Status Updates Successfully.." };
                 }

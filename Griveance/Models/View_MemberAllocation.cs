@@ -28,7 +28,7 @@ namespace Griveance.Models
 
         public int? status { get; set; }
 
-        [Key]
+        [Key] 
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UserId { get; set; }
@@ -36,6 +36,6 @@ namespace Griveance.Models
         [Key]
         [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Expr1 { get; set; }
+        public int Expr1 { get; set; }  
     }
 }

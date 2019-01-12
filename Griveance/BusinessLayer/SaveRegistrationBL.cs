@@ -33,6 +33,8 @@ namespace Griveance.BusinessLayer
                 objuser.password = EncryptedPassword;
                 objuser.status = 1;
                 objuser.Islive = 1;
+                objuser.Display = 1;
+                objuser.created_date = DateTime.Now;
                 db.tbl_user.Add(objuser);
                 db.SaveChanges();
 
@@ -46,6 +48,8 @@ namespace Griveance.BusinessLayer
                     objstudent.course_name = PR.CourseName;
                     objstudent.class_name = PR.ClassName;
                     objstudent.IsParent = 0;
+                    objstudent.Display = 1;
+                    objstudent.created_date = DateTime.Now;
                     db.tbl_student.Add(objstudent);
                     db.SaveChanges();
                 }
@@ -54,10 +58,12 @@ namespace Griveance.BusinessLayer
                     tbl_faculty objfaculty = new tbl_faculty();
                     objfaculty.UserId = PR.UserId;
                     tbl_user obfaculty = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
-                    objfaculty.UserId = objfaculty.UserId;
+                    objfaculty.UserId = obfaculty.UserId;
                     objfaculty.code = PR.code;
                     objfaculty.department = PR.CourseName;
                     objfaculty.designation = PR.Designation;
+                    objfaculty.Display = 1;
+                    objfaculty.created_date = DateTime.Now;
                     db.tbl_faculty.Add(objfaculty);
                     db.SaveChanges();
                 }
@@ -69,6 +75,8 @@ namespace Griveance.BusinessLayer
                     tbl_user obstudent = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
                     objparent.UserId = obstudent.UserId;
                     objparent.code = PR.code;
+                    objparent.Display = 1;
+                    objparent.created_date = DateTime.Now;
                     db.tbl_parent.Add(objparent);
                     db.SaveChanges(); 
                     //tbl_student objstudent = db.tbl_student.Where(r => r.UserId == PR.UserId).FirstOrDefault();
@@ -84,6 +92,8 @@ namespace Griveance.BusinessLayer
                     objstaff.code = PR.code;
                     objstaff.department = PR.CourseName;
                     objstaff.designation = PR.Designation;
+                    objstaff.Display = 1;
+                    objstaff.created_date = DateTime.Now;
                     db.tbl_staff.Add(objstaff);
                     db.SaveChanges();
                 }
@@ -114,6 +124,7 @@ namespace Griveance.BusinessLayer
                 objuser.gender = PR.Gender;
                 objuser.email = PR.Email;
                 objuser.contact = PR.Contact;
+                objuser.modified_date = DateTime.Now;
                
                 objuser.status = 1;
                 objuser.Islive = 1;
@@ -125,7 +136,7 @@ namespace Griveance.BusinessLayer
                     tbl_parent objparent = db.tbl_parent.Where(r => r.UserId == PR.UserId).FirstOrDefault();
                    // objparent.UserId = PR.UserId;
                     objparent.relationship = PR.Relationship;
-                    
+                    objparent.modified_date = DateTime.Now;
                     db.SaveChanges();
 
                    
@@ -152,7 +163,7 @@ namespace Griveance.BusinessLayer
                 objuser.gender = PR.Gender;
                 objuser.email = PR.Email;
                 objuser.contact = PR.Contact;
-
+                objuser.modified_date = DateTime.Now;
                 objuser.status = 1;
                 objuser.Islive = 1;
 
@@ -164,6 +175,7 @@ namespace Griveance.BusinessLayer
                     // objparent.UserId = PR.UserId;
                     objfaculty.department = PR.Department;
                     objfaculty.designation = PR.Designation;
+                    objfaculty.modified_date = DateTime.Now; 
                     db.SaveChanges();
 
 
@@ -189,7 +201,7 @@ namespace Griveance.BusinessLayer
                 objuser.gender = PR.Gender;
                 objuser.email = PR.Email;
                 objuser.contact = PR.Contact;
-               
+               objuser.modified_date = DateTime.Now;
                 objuser.status = 1;
                 objuser.Islive = 1;
               
@@ -200,7 +212,7 @@ namespace Griveance.BusinessLayer
                     tbl_student objstudent = db.tbl_student.Where(r => r.UserId == PR.UserId).FirstOrDefault();
                  
                     objstudent.IsParent = 0;
-                    
+                    objstudent.modified_date = DateTime.Now;
                     db.SaveChanges();
                 }
 
@@ -224,7 +236,7 @@ namespace Griveance.BusinessLayer
                 objuser.gender = PR.Gender;
                 objuser.email = PR.Email;
                 objuser.contact = PR.Contact;
-
+                objuser.modified_date = DateTime.Now;
                 objuser.status = 1;
                 objuser.Islive = 1;
 
@@ -236,7 +248,7 @@ namespace Griveance.BusinessLayer
 
                     objstaff.department = PR.Department;
                     objstaff.designation = PR.Designation;
-
+                    objstaff.modified_date = DateTime.Now;
                     db.SaveChanges();
                 }
 

@@ -35,6 +35,8 @@ namespace Griveance.BusinessLayer
             tbl_courses objcourse = new tbl_courses();
            // objcourse.course_id = obje.Course_id;
             objcourse.course_name = obje.CourseName.ToString();
+            objcourse.created_date = DateTime.Now;
+            objcourse.Display = 1;
             db.tbl_courses.Add(objcourse);
             db.SaveChanges();
             return new Result

@@ -4,7 +4,7 @@ function UsersController($scope, Service) {
 
     var form = $(".m-form m-form--fit m-form--label");
 
-
+    
     $scope.ViewAllStaffInfoes = {};
     $scope.UserCredentialModel = {};
 
@@ -40,19 +40,22 @@ function UsersController($scope, Service) {
             Service.Post("api/Grievance/PostGrievance", JSON.stringify(PostGr)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name 
-                console.log(result.data);
+                console.log(result.data); 
                 if (result.data.IsSucess) {
                     debugger;
-                    console.log(result.data);
-                    window.alert('Posted Grievance')
+                    CustomizeApp.AddMessage();
+                    $scope.clear();
+                    //console.log(result.data);
+                    // window.location = "./ParentGrievance"
                 }
                 else {
-                    window.alert('Record Not Inserted.')
-                    window.location = "./PostGrievance"
+                    ShowMessage(0, result.data.Message);
+                    //$scope.clear();
+                    //window.location = "./PostGrievance"
                 }
             })
         }
-    }
+    } 
     $scope.Initialize = function () {
         debugger;
         var data = sessionStorage.getItem('userid');
@@ -110,7 +113,12 @@ function UsersController($scope, Service) {
         })
     }
    
+ 
 
-  
+    $scope.clear = function () {
+        $scope.GriveanceType = 0;
+        $scope.Subject = '';
+        $scope.PostDetails = '';
+    } 
 }
 

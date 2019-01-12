@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.IO;
+using System.IO;  
 using Griveance.Models;
 
 namespace Griveance.Areas.Admin.Controllers
@@ -99,21 +99,6 @@ namespace Griveance.Areas.Admin.Controllers
         public ActionResult ClosedRCellMember()
         {
             return View("ClosedRCellMember");
-        }
-       
-        //public FileResult Export(string GridHtml)
-        //{
-        //    //using (MemoryStream stream = new System.IO.MemoryStream())
-        //    //{
-        //    //    StringReader sr = new StringReader(GridHtml);
-        //    //    Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
-        //    //    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
-        //    //    pdfDoc.Open();
-        //    //    XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
-        //    //    pdfDoc.NewPage();
-        //    //    pdfDoc.Close();
-        //    //    return File(stream.ToArray(), "application/pdf", "Grid.pdf");
-        //    //}
-        //}
+        } 
     }
 }
