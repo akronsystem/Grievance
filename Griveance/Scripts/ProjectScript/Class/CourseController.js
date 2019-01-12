@@ -5,12 +5,11 @@ function ClassYearController($scope, Service) {
     var form = $(".m-form m-form--fit m-form--label");
     $scope.ViewGetCourseInfoes = {};
     $scope.ViewGetClassLists = {};
-
+    $scope.chartContainer = {};
 
     $scope.Initialize = function () {
 
         Service.Get("api/Course/GetCourseInfo").then(function (result) {
-
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGetCourseInfoes = result.data;
             $scope.Course = result.data.ResultData;
@@ -58,7 +57,7 @@ function ClassYearController($scope, Service) {
     $scope.Add = function () {
         debugger;
         var Employee = {
-            email:$scope.email,
+            email: $scope.email,
             name: $scope.name,
             code: $scope.code,
             type: $scope.type,
@@ -69,27 +68,25 @@ function ClassYearController($scope, Service) {
             ClassName: $scope.ClassName,
             designation: $scope.designation,
             relationship: $scope.relationship
-           
+
         };
-       
+
         Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
-            if (result.data.IsSucess)
-            {
+            if (result.data.IsSucess) {
                 debugger;
                 console.log(result.data);
                 window.location = "./Index"
             }
-            else
-            {
+            else {
                 window.alert('Record Not Inserted.')
                 window.location = "./Register"
             }
-           
+
         })
-       
-       
+
+
     }
     $scope.Cancel = function () {
         window.location = "./Index";
@@ -141,5 +138,70 @@ function ClassYearController($scope, Service) {
 
 
     }
+
+
+
+
+    $scope.ShowGraph = function () {
+        debugger;
+
+        Service.Get("api/Grievance/ShowGraph").then(function (result) {
+            debugger;
+            // $scope.ParamUserLogin.Name = result.data.Name
+            if (result.data) {
+                debugger;
+                var pendingper, closedper;
+                var pending, closed;
+
+                pending = result.data[0][0];
+                pendingper = result.data[0][1];
+                closed = result.data[1][0];
+                closedper = result.data[1][1];
+
+                var DoughnutChartData =
+                {
+              labels: [pending, closed],
+              datasets: [{
+                  label: 'Grievance Status',
+                  backgroundColor: [
+                      "#f990a7",
+                      "#aad2ed",
+                      "#9966FF",
+                      "#99e5e5",
+                      "#f7bd83",
+                  ],
+                  borderWidth: 2,
+                  data: [pendingper, closedper]
+              }]
+                };
+
+
+                var ctx1 = document.getElementById("Doughnutcanvas").getContext("2d");
+                window.myBar = new Chart(ctx1,
+                    {
+                        type: 'doughnut',
+                        data: DoughnutChartData,
+                        options:
+                            {
+                                title:
+                                {
+                                    display: true,
+                                    text: "Grievance Status",
+                                    fontSize:"20"
+                                },
+                                responsive: true,
+                                maintainAspectRatio: true
+                            }
+                    });
+            }
+            else {
+                window.alert('Not Created Class')
+                window.location = "./NAdminDashboard"
+            }
+
+        })
+    }
+
+
 }
 

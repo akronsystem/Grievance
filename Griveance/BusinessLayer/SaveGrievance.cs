@@ -58,6 +58,26 @@ namespace Griveance.BusinessLayer
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+
+
+        public object UpdateGrievanceAllocation(GrievanceAllocationParam PR)
+        {
+            try
+            {
+                tbl_member obGR = db.tbl_member.Where(r => r.id == PR.id).FirstOrDefault();
+
+                obGR.griType = PR.griType;
+
+                //db.tbl_user.Add(objuser);
+                db.SaveChanges();
+
+                return new Result() { IsSucess = true, ResultData = "Grievance Update Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
         public object GetGrievanceData(GrievanceParam obj)
         {
             var GrievanceData = db.tbl_grievance_list.Where(r => r.grivance_id == obj.GrievanceId).SingleOrDefault();

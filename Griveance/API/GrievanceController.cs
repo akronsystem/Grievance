@@ -97,6 +97,22 @@ namespace Griveance.Controllers
             }
 
         }
+
+        [HttpPost]
+        public object UpdateGrievanceAllocation([FromBody] GrievanceAllocationParam PR)
+        {
+            try
+            {
+                SaveGrievance OBJSAVE = new SaveGrievance();
+                var result = OBJSAVE.UpdateGrievanceAllocation(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+        }
+
         [HttpPost]
         public object GetSingleGrievanceTypeInfo([FromBody]GrievanceParam objid)
         {
@@ -125,6 +141,22 @@ namespace Griveance.Controllers
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+
+        [HttpPost]
+        public object GetSingleGrievance([FromBody]ParamGetSingleGrievance OBJGR)
+        {
+            try
+            {
+                GetSingleGrievanceBL obj = new GetSingleGrievanceBL();
+                var SingleGR = obj.GetSingleGrievance(OBJGR);
+                return SingleGR;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
         public object PostGrievance([FromBody]ParamSaveGriveance ob)
         {
             try
@@ -132,6 +164,21 @@ namespace Griveance.Controllers
                 PostGriveance obj = new PostGriveance();
                 var GRAllocation = obj.SaveGrievance(ob);
                 return GRAllocation;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
+        [HttpGet]
+        public object ShowGraph()
+        {
+            try
+            {
+                ShowGraphBL obj = new ShowGraphBL();
+                var graph = obj.ShowGraphFunction();
+                return graph;
             }
             catch (Exception ex)
             {

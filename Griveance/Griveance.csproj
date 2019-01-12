@@ -575,7 +575,13 @@
     <Content Include="Content\assets\vendors\custom\jqvmap\jqvmap.bundle.js" />
     <Content Include="Content\assets\vendors\custom\jqvmap\jqvmap.bundle.rtl.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Common\angular-chart.js" />
+    <Content Include="Scripts\Common\angular-chart.min.js" />
+    <Content Include="Scripts\Common\canvasjs.min.js" />
+    <Content Include="Scripts\Common\canvasjs.react.js" />
+    <Content Include="Scripts\Common\ChartjsBundle.js" />
     <Content Include="Scripts\Common\CoomonFunctions.js" />
+    <Content Include="Scripts\Common\customize.js" />
     <Content Include="Scripts\Common\Module.js" />
     <Content Include="Scripts\Common\Service.js" />
     <Content Include="Scripts\ProjectScript\Class\ClassModule.js" />
@@ -653,6 +659,7 @@
     <Compile Include="BusinessLayer\GetMyGrievanceBL.cs" />
     <Compile Include="BusinessLayer\GetParentData.cs" />
     <Compile Include="BusinessLayer\GetSingleFaculty.cs" />
+    <Compile Include="BusinessLayer\GetSingleGrievanceBL.cs" />
     <Compile Include="BusinessLayer\GetSingleStaffData.cs" />
     <Compile Include="BusinessLayer\GetSingleStudentBL.cs" />
     <Compile Include="BusinessLayer\GetSmsSettingData.cs" />
@@ -666,6 +673,7 @@
     <Compile Include="BusinessLayer\SetGriveanceStatus.cs" />
     <Compile Include="BusinessLayer\SetIsLiveForUser.cs" />
     <Compile Include="BusinessLayer\SetMemberStatus.cs" />
+    <Compile Include="BusinessLayer\ShowGraphBL.cs" />
     <Compile Include="BusinessLayer\UsersBusiness.cs" />
     <Compile Include="BusinessLayer\ValidateUser.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -708,12 +716,14 @@
     <Compile Include="ParamModel\ClassParameter.cs" />
     <Compile Include="ParamModel\CourseParameter.cs" />
     <Compile Include="ParamModel\FacultyParameters.cs" />
+    <Compile Include="ParamModel\GrievanceAllocationParam.cs" />
     <Compile Include="ParamModel\GrievanceParam.cs" />
     <Compile Include="ParamModel\MemberParameter.cs" />
     <Compile Include="ParamModel\ParamEmailSettings.cs" />
     <Compile Include="ParamModel\ParamGetFacultyInfo.cs" />
     <Compile Include="ParamModel\ParamGetGrievanceList.cs" />
     <Compile Include="ParamModel\ParamGetMyGrievance.cs" />
+    <Compile Include="ParamModel\ParamGetSingleGrievance.cs" />
     <Compile Include="ParamModel\ParamGetSingleStaffInfo.cs" />
     <Compile Include="ParamModel\ParamGetSingleStudent.cs" />
     <Compile Include="ParamModel\ParamMember.cs" />
@@ -916,6 +926,7 @@
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\NAdminDashboard.cshtml" />
+    <Content Include="Scripts\Common\angular-chart.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

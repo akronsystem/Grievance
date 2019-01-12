@@ -13,7 +13,8 @@
 <script src="@Url.Content("~/Scripts/ProjectScript/Student/StudentInfoModule.js")"></script>
 <script src="@Url.Content("~/Scripts/Common/Service.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/ProjectScript/Student/StudentInfoController.js")" type="text/javascript"></script>
-
+<script src="~/Scripts/Common/customize.js"></script>
+<script src="~/Scripts/Common/CoomonFunctions.js"></script>
 <html lang="en" class="no-js">
 <head>
 
@@ -22,7 +23,7 @@
 <body ng-app="GR">
     @using System.Configuration;
     <div ng-controller="UsersController">
-        <form class="m-form m-form--fit m-form--label-align-right student-admission-wrapper" ng-init="Initialize()">
+        <form id="frmCRUD" class="m-form m-form--fit m-form--label-align-right student-admission-wrapper" ng-init="Initialize()">
 
 
 
