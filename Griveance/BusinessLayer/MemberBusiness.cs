@@ -61,83 +61,73 @@ namespace Griveance.BusinessLayer
             }
         }
 
-         public object SaveMember([FromBody]MemberParameter obj)
-        {
+		public object SaveMember([FromBody]MemberParameter obj)
+		{
 
-            GRContext db = new GRContext();
-            var usercode = db.tbl_member.Where(r => r.code == obj.Code &&  r.Display==1);
-            if (usercode != null)
-            {
-                return new Error() { IsError = true, Message = "User Code Already Exists." };
-            }
-            
-            objmember.MemberId = Convert.ToInt32(obj.Id);
-            objmember.code = Convert.ToInt32(obj.Code);
-            objmember.designation = obj.Designation.ToString();
-            objmember.griType = obj.GriType.ToString();
-            objmember.Display = 1;
-            objmember.created_date = DateTime.Now;
-           
-            db.tbl_member.Add(objmember);           
-            db.SaveChanges(); 
+			GRContext db = new GRContext();
+			var usercode = db.tbl_member.Where(r => r.code == obj.Code).FirstOrDefault();
+			if (usercode != null)
+			{
+				return new Error() { IsError = true, Message = "User Code Already Exists." };
+			}
 
-            tbl_user objuser = new tbl_user();
-            objuser.name = obj.Name.ToString();
-            objuser.UserId =Convert.ToInt32(obj.UserId);
-            objuser.code = obj.Code;
-            objuser.type = "Member";
-            objuser.gender = obj.Gender.ToString();
-            objuser.email = obj.EmailId.ToString();
-            objuser.contact = Convert.ToInt64(obj.MobileNo);
-            objuser.password = CryptIt.Encrypt( obj.Password);
-            objuser.Display = 1;
-            objuser.created_date = DateTime.Now;
 
-            objuser.status = 1;
-            objuser.Islive = 0;
+			tbl_user objuser = new tbl_user();
+			objuser.name = obj.Name.ToString();
+			objuser.UserId = Convert.ToInt32(obj.UserId);
+			objuser.code = obj.Code;
+			objuser.type = "Member";
+			objuser.gender = obj.Gender.ToString();
+			objuser.email = obj.EmailId.ToString();
+			objuser.contact = Convert.ToInt64(obj.MobileNo);
+			objuser.password = CryptIt.Encrypt(obj.Password);
+			objuser.status = 1;
+			objuser.Islive = 0;
+			objuser.Display = 1;
+			objuser.created_date = DateTime.Now;
 
-            db.tbl_user.Add(objuser);
-          
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
-            {
-                Exception raise = dbEx;
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        string message = string.Format("{0}:{1}",
-                            validationErrors.Entry.Entity.ToString(),
-                            validationError.ErrorMessage);
-                        // raise a new exception nesting  
-                        // the current instance as InnerException  
-                        raise = new InvalidOperationException(message, raise);
-                    }
-                }
-                throw raise;
-            }
-            tbl_member objmember = new tbl_member();
-            tbl_user omember = db.tbl_user.Where(r => r.code == obj.Code).FirstOrDefault();
-            objmember.UserId = omember.UserId;
-            objmember.code = Convert.ToInt32(obj.Code);
-            objmember.designation = obj.Designation.ToString();
-            objmember.griType = obj.GriType.ToString();
-            db.tbl_member.Add(objmember);
-            db.SaveChanges();
-            return new Result
-            {
+			db.tbl_user.Add(objuser);
 
-                IsSucess = true,
-                ResultData = "Member Created!"
-            };
+			try
+			{
+				db.SaveChanges();
+			}
+			catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+			{
+				Exception raise = dbEx;
+				foreach (var validationErrors in dbEx.EntityValidationErrors)
+				{
+					foreach (var validationError in validationErrors.ValidationErrors)
+					{
+						string message = string.Format("{0}:{1}",
+							validationErrors.Entry.Entity.ToString(),
+							validationError.ErrorMessage);
+						// raise a new exception nesting  
+						// the current instance as InnerException  
+						raise = new InvalidOperationException(message, raise);
+					}
+				}
+				throw raise;
+			}
+			tbl_member objmember = new tbl_member();
+			tbl_user omember = db.tbl_user.Where(r => r.code == obj.Code).FirstOrDefault();
+			objmember.UserId = omember.UserId;
+			objmember.code = Convert.ToInt32(obj.Code);
+			objmember.designation = obj.Designation.ToString();
+			objmember.griType = obj.GriType.ToString();
+			db.tbl_member.Add(objmember);
+			db.SaveChanges();
+			return new Result
+			{
+
+				IsSucess = true,
+				ResultData = "Member Created!"
+			};
 
 
 
-        }
-        public object MemberList()
+		}
+		public object MemberList()
         {
             GRContext db = new GRContext();
             try
