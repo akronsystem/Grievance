@@ -164,7 +164,17 @@ function ClassYearController($scope, Service) {
 
 
     }
-
+    $scope.GetUserCount = function () {
+        Service.Get("api/Grievance/GetUserList").then(function (result) {
+            if (result.data) {
+                debugger;
+              $scope.studcount = result.data[0][1];
+              $scope.parentcount = result.data[1][1];
+              $scope.staffcount = result.data[2][1];
+              $scope.facultycount = result.data[3][1];
+            }
+        });
+        }
 
 
 
@@ -186,19 +196,19 @@ function ClassYearController($scope, Service) {
 
                 var DoughnutChartData =
                 {
-              labels: [pending, closed],
-              datasets: [{
-                  label: 'Grievance Status',
-                  backgroundColor: [
-                      "#f990a7",
-                      "#aad2ed",
-                      "#9966FF",
-                      "#99e5e5",
-                      "#f7bd83",
-                  ],
-                  borderWidth: 2,
-                  data: [pendingper, closedper]
-              }]
+                    labels: [pending, closed],
+                    datasets: [{
+                        label: 'Grievance Status',
+                        backgroundColor: [
+                            "#f990a7",
+                            "#aad2ed",
+                            "#9966FF",
+                            "#99e5e5",
+                            "#f7bd83",
+                        ],
+                        borderWidth: 1,
+                        data: [pendingper, closedper]
+                    }]
                 };
 
 
@@ -206,6 +216,7 @@ function ClassYearController($scope, Service) {
                 window.myBar = new Chart(ctx1,
                     {
                         type: 'doughnut',
+
                         data: DoughnutChartData,
                         options:
                             {
@@ -213,10 +224,17 @@ function ClassYearController($scope, Service) {
                                 {
                                     display: true,
                                     text: "Grievance Status",
-                                    fontSize:"20"
+                                    fontSize: "20"
                                 },
                                 responsive: true,
-                                maintainAspectRatio: true
+                                maintainAspectRatio: true,
+                                cutoutPercentage: 70,
+
+
+                                legend: {
+                                    position: 'bottom'
+
+                                }
                             }
                     });
             }

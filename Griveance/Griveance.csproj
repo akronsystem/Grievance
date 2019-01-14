@@ -575,13 +575,13 @@
     <Content Include="Content\assets\vendors\custom\jqvmap\jqvmap.bundle.css" />
     <Content Include="Content\assets\vendors\custom\jqvmap\jqvmap.bundle.js" />
     <Content Include="Content\assets\vendors\custom\jqvmap\jqvmap.bundle.rtl.css" />
-    <Content Include="Global.asax" /> 
+    <Content Include="Global.asax" />
     <Content Include="Scripts\Common\angular-chart.js" />
     <Content Include="Scripts\Common\angular-chart.min.js" />
     <Content Include="Scripts\Common\canvasjs.min.js" />
     <Content Include="Scripts\Common\canvasjs.react.js" />
-    <Content Include="Scripts\Common\ChartjsBundle.js" /> 
-    <Content Include="Scripts\Common\bootbox.min.js" /> 
+    <Content Include="Scripts\Common\ChartjsBundle.js" />
+    <Content Include="Scripts\Common\bootbox.min.js" />
     <Content Include="Scripts\Common\CoomonFunctions.js" />
     <Content Include="Scripts\Common\customize.js" />
     <Content Include="Scripts\Common\Module.js" />

@@ -38,5 +38,39 @@ namespace Griveance.BusinessLayer
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+
+        
+        public object GetUSersList()
+        {
+            try
+            {
+                var usersstud = db.tbl_user.Where(r=>r.type=="Student").ToList();
+                var usersparent = db.tbl_user.Where(r => r.type == "Parent").ToList();
+                var usersstaff = db.tbl_user.Where(r => r.type == "Staff").ToList();
+                var usersfaculty = db.tbl_user.Where(r => r.type == "Faculty").ToList();
+
+                object[,] str = new object[4, 2];
+                str[0, 0] = "Student";           
+                str[0, 1] =  usersstud.Count();
+
+                str[1, 0] = "Parent";               
+                str[1, 1] = usersparent.Count();
+
+                str[2, 0] = "Staff";
+                str[2, 1] = usersstaff.Count();
+
+                str[3, 0] = "Faculty";
+                str[3, 1] = usersfaculty.Count();
+
+                return str;
+
+
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace Griveance.Models
         public int UserId { get; set; }
         public string Password { get; set; }
         
+       
     }
 }
