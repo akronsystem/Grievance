@@ -133,6 +133,54 @@ namespace Griveance.Controllers
             }
 
         }
+        [HttpPost]
+        public object GetMemberGrievance([FromBody]ParamGetMyGrievance objmy)
+        {
+            
+            try
+            {
+                GetMyGrievanceBL obj = new GetMyGrievanceBL();
+                var mygrievance = obj.GetMember(objmy);
+                return mygrievance;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+
+        }
+        [HttpPost]
+        public object GetComplaintInfo([FromBody]ParamComplaintDetails objMember)
+        {
+            try
+            {
+                MemberBusiness obj = new MemberBusiness();
+                var Memberinfo = obj.GetMemberInfo(objMember);
+                return Memberinfo;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
+        [HttpPost]
+        public object UpdateComplaints([FromBody] ParamComplaintDetails PR)
+        {
+            try
+            {
+                MemberBusiness OBJSAVE = new MemberBusiness();
+                var result = OBJSAVE.UpdateComp(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
     }
  
 }

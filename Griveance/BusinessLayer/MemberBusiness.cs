@@ -115,8 +115,10 @@ namespace Griveance.BusinessLayer
 			objmember.code = Convert.ToInt32(obj.Code);
 			objmember.designation = obj.Designation.ToString();
 			objmember.griType = obj.GriType.ToString();
-			db.tbl_member.Add(objmember);
-			db.SaveChanges();
+            objmember.Display = 1;
+            objmember.created_date = DateTime.Now;
+            db.tbl_member.Add(objmember);          
+            db.SaveChanges();
 			return new Result
 			{
 
@@ -147,6 +149,43 @@ namespace Griveance.BusinessLayer
                 return new Error { IsError = true, Message = ex.Message };
             }
 
+        }
+        public object GetMemberInfo(ParamComplaintDetails objmember)
+        {
+            GRContext db = new GRContext();
+            try
+            {
+                var getfacultyinfo = db.tbl_complaintdetails.Where(r=>r.CompID==objmember.CompID).ToList();
+                if (getfacultyinfo == null)
+                {
+                    return new Error() { IsError = true, Message = "Faculty Info Not Found" };
+                }
+                else
+                {
+                    return new Result() { IsSucess = true, ResultData = getfacultyinfo };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Error { IsError = true, Message = ex.Message };
+            }
+        }
+        public object UpdateComp(ParamComplaintDetails PR)
+        {
+            GRContext db = new GRContext();
+            try
+            {
+                tbl_complaintdetails objuser = db.tbl_complaintdetails.Where(r => r.CompID == PR.CompID).FirstOrDefault();
+                objuser.GrievanceAction = PR.GrievanceAction;
+                db.SaveChanges();
+
+
+                return new Result() { IsSucess = true, ResultData = "User Saved Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
         }
     }
 }

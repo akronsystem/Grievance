@@ -19,5 +19,10 @@ namespace Griveance.Areas.Member.Controllers
             return View();
 
         }
+        //Member Post Grievance
+        public ActionResult PostGrievance()
+        {
+            return View();
+        }
     }
 }

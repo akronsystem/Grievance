@@ -84,10 +84,20 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
 
         if ($scope.form.$valid) {
             Service.Post("api/Common/SaveEmailSettings", JSON.stringify(data)).then(function (response) {
-                if (response.data)
+                if (response.data.IsSucess) {
+                    debugger;
+                    CustomizeApp.AddMessage();
+                    $scope.Clear();
+                    $scope.IsVisible = false;
                     $scope.Initialize();
-                $scope.msg = "Email Settings Saved Successfully!";
-                $scope.IsVisible = false;
+                    //console.log(result.data);
+                    // window.location = "./ParentGrievance"
+                }
+                else {
+                    ShowMessage(0, response.data.Message);
+                    //$scope.clear();
+                    //window.location = "./PostGrievance"
+                }
             });
         }
     }
@@ -103,11 +113,20 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
                 };
                 if ($scope.form.$valid) {
                     Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
-
-                        if (response.data)
+                        if (response.data.IsSucess) {
+                            debugger;
+                            CustomizeApp.AddMessage();
+                            $scope.Clear();
+                            $scope.IsVisible = false;
                             $scope.Initialize();
-                        $scope.msg = "Email Settings Updated Successfully!";
-                        $scope.IsVisible = false;
+                            //console.log(result.data);
+                            // window.location = "./ParentGrievance"
+                        }
+                        else {
+                            ShowMessage(0, response.data.Message);
+                            //$scope.clear();
+                            //window.location = "./PostGrievance"
+                        }
 
                     });
                 }

@@ -2,6 +2,7 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/ReportLayout.cshtml";
 }
+@model IEnumerable<Griveance.Models.View_ReportViewGrievanceList>
 
 <!DOCTYPE html>
 
@@ -35,6 +36,9 @@
                     </div>
 
                 </div>
+                <div class="form-group m-form__group">
+                    &nbsp;<b>Grievance Member Name:-</b>@ViewData["MemberName"]
+                </div>
                 <table align="center" class="table table-striped- table-bordered table-hover table-checkable" border="1">
                     <tr  align="center">
                         <th>Sr.No</th>
@@ -45,33 +49,18 @@
                         <th>Date</th>
                         <th>Subject</th>
                     </tr>
-                    <tr  align="center">
-                        <td>1</td>
-                        <td>201</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>Grievance Type</td> 
-                        <td>2019-1-12</td>
-                        <td>No Subject</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>2</td>
-                        <td>202</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>Grievance Type</td>
-                        <td>2019-1-12</td>
-                        <td>No Subject</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>3</td>
-                        <td>203</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>Grievance Type</td>
-                        <td>2019-1-12</td>
-                        <td>No Subject</td>
-                    </tr>
+                    @foreach (var s in Model)
+                    {
+                        <tr align="center">
+                            <td></td>
+                            <td>@Html.DisplayFor(m => s.CompID)</td>
+                            <td>@Html.DisplayFor(m => s.StackHolderType)</td>
+                            <td>@Html.DisplayFor(m => s.name)</td>
+                            <td>@Html.DisplayFor(m => s.GrievanceType)</td>
+                            <td>@Html.DisplayFor(m => s.Date)</td>
+                            <td>@Html.DisplayFor(m => s.Subject)</td>
+                        </tr>
+                    }
                 </table>
             </div>
             </div>

@@ -45,7 +45,22 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         })
 
     }
+    $scope.GetMember = function () {
+        debugger;
+        var data = sessionStorage.getItem('emp-key');
+        $scope.UserCredentialModel.StudentCode = data;
+        var userid = sessionStorage.getItem('userid');
+        $scope.UserCredentialModel.UserId = userid;
+        var password = sessionStorage.getItem('Password');
+        $scope.UserCredentialModel.Password = password;
+        Service.Post("api/Member/GetMemberGrievance", $scope.UserCredentialModel).then(function (rd) {
 
+            $scope.Student = rd.data.ResultData;
+            console.log(rd.data);
+
+        })
+
+    }
 
 
     $scope.ShowHide = function (UserId) {
@@ -61,10 +76,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         };
 
         Service.Post("api/Users/GetSingleParentInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
-
-
-
-            $scope.ViewGetStudentInfoes = result.data;
+           
+             $scope.ViewGetStudentInfoes = result.data;
             $scope.NameOfTheParent = result.data.name;
             $scope.StudentCode = result.data.code;
             $scope.RelationWithStudent = result.data.relationship;
@@ -117,14 +130,21 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         };
         if ($scope.form.$valid) {
             Service.Post("api/Register/UpdateParentInfo", JSON.stringify(data)).then(function (response) {
+                if (response.data.IsSucess) {
+                    debugger;
+                    CustomizeApp.AddMessage();
+                    $scope.Clear();
+                    $scope.IsVisible = false;
+                    $scope.Initialize();
+                    //console.log(result.data);
+                    // window.location = "./ParentGrievance"
+                }
+                else {
+                    ShowMessage(0, response.data.Message);
+                    //$scope.clear();
+                    //window.location = "./PostGrievance"
+                }
 
-                if (response.data)
-
-                    window.alert('Student Data Updated Successfully!')
-
-                $scope.Clear();
-                $scope.IsVisible = false;
-                $scope.Initialize();
             });
         }
 
@@ -163,7 +183,66 @@ function UsersController($scope, Service, DTOptionsBuilder) {
                 }
 
             })
+    }
+        $scope.ShowHide2 = function (data) {
+
+            debugger;
+            $scope.btnUpdate = true;
+            $scope.IsVisible = true;
+            var data = {
+                CompID: data.CompID,
+                GrievanceType: data.GrievanceType,
+                Subject: data.Subject,
+                Post: data.Post,
+                GrievanceAction: data.GrievanceAction
+
+            };
+
+            Service.Post("api/Member/GetComplaintInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
+                debugger;
+                $scope.CompID = data.CompID;
+                $scope.GrievanceType =data.GrievanceType;
+                $scope.Subject = data.Subject;
+                $scope.Post = data.Post;
+                $scope.GrievanceAction = data.GrievanceAction;
+               
+                //$scope.Initialize();
+            })
+
         }
+        $scope.UPDATE = function () {
+            debugger;
+            var data = {
+                CompID: $scope.CompID,
+                GrievanceType: $scope.GrievanceType,
+                Subject: $scope.Subject,
+                Post: $scope.Post,
+                GrievanceAction: $scope.GrievanceAction
+
+            };
+
+            if ($scope.form.$valid) {
+                Service.Post("api/Member/UpdateComplaints", JSON.stringify(data)).then(function (response) {
+                    if (response.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.AddMessage();
+                        $scope.Clear();
+                        $scope.IsVisible = false;
+                        $scope.GetMember
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, response.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+
+                });
+            }
+
+        }
+
 
    
 }

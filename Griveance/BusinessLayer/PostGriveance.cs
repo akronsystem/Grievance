@@ -37,6 +37,7 @@ namespace Griveance.BusinessLayer
                 objpost.grivtype = grievancetypelist.grivance_name;
                 objpost.subject = obj.Subject;
                 objpost.post = obj.PostDetails;
+                objpost.userid = obj.UserId;
                 objpost.status = "Pending";
                 objpost.Display = 1;
                 objpost.created_date = DateTime.Now;
@@ -54,6 +55,7 @@ namespace Griveance.BusinessLayer
                 comp.GrievMemID = grievancetypeid;
                 comp.StackHolderType = obj.Type;
                 comp.StackholderID =Convert.ToString(objpost.code);
+                comp.UserId = obj.UserId;
                 comp.Display = 1;
                 comp.created_date = DateTime.Now;
                 

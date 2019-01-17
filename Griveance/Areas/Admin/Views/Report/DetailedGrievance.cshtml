@@ -2,6 +2,7 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/ReportLayout.cshtml";
 }
+@model IEnumerable<Griveance.Models.View_DetailedReport>
 
 <!DOCTYPE html>
 
@@ -46,36 +47,20 @@
                         <th>Member Name</th>
                         <th>User Name</th>
                     </tr>
-                    <tr  align="center">
-                        <td>1</td>
-                        <td>301</td>
-                        <td>Grievance Type</td>
-                        <td>2019-10-1</td>
-                        <td>No Subject</td>
-                        <td>No Post</td>
-                        <td>AAA</td>
-                        <td>BBB</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>2</td>
-                        <td>302</td>
-                        <td>Grievance Type</td>
-                        <td>2019-10-1</td>
-                        <td>No Subject</td>
-                        <td>No Post</td>
-                        <td>AAA</td>
-                        <td>BBB</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>3</td>
-                        <td>303</td>
-                        <td>Grievance Type</td>
-                        <td>2019-10-1</td>
-                        <td>No Subject</td>
-                        <td>No Post</td>
-                        <td>AAA</td>
-                        <td>BBB</td>
-                    </tr>
+                    @foreach (var s in Model)
+                    {
+                        <tr align="center">
+                            <td></td>
+                            <td>@Html.DisplayFor(m => s.CompID)</td>
+                            <td>@Html.DisplayFor(m => s.GrievanceType)</td>
+                            <td>@Html.DisplayFor(m => s.Date)</td>
+                            <td>@Html.DisplayFor(m => s.Subject)</td>
+                            <td>@Html.DisplayFor(m => s.Post)</td>
+                            <td>@Html.DisplayFor(m => s.membername)</td>
+                            <td>@Html.DisplayFor(m => s.name)</td>
+                        </tr>
+                    }
+                    
                 </table>
             </div>
             </div>

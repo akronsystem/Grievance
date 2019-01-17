@@ -44,59 +44,58 @@
                         <!--begin::Form-->
                     <div ng-show="IsVisible">
                         <div class="form-body">
-                        <div class="m-portlet__body">
+                            <div class="m-portlet__body">
 
-                            <div class="form-group m-form__group">
-                                <label> FROM ID</label>
+                                <div class="form-group m-form__group">
+                                    <label> FROM ID</label>
 
-                                <input type="text" ng-model="fromid" value={{fromid}} name="FromId" class="form-control m-input"   required />
-                                <input type="hidden" ng-model="emailsettingid" value={{emailsettingid}} name="Emailsettingid" class="form-control" />
+                                    <input type="text" ng-model="fromid" value={{fromid}} name="FromId" class="form-control m-input" required />
+                                    <input type="hidden" ng-model="emailsettingid" value={{emailsettingid}} name="Emailsettingid" class="form-control" />
+
+
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label> HOST</label>
+
+                                    <input type="text" ng-model="host" name="Host" value={{host}} class="form-control m-input" required />
+
+
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label> PORT</label>
+
+                                    <input type="text" ng-model="port" name="Port" value={{port}} class="form-control m-input" required />
+
+
+                                </div>
+                                <div class="form-group m-form__group">
+                                    <label> PASSWORD</label>
+
+                                    <input type="text" ng-model="password" name="Password" value={{password}} class="form-control m-input" required />
+
+
+                                </div>
 
 
                             </div>
-                            <div class="form-group m-form__group">
-                                <label> HOST</label>
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                <div class="m-form__actions">
+                                    <button class="btn btn-primary" ng-show="btnSave" ng-click="postdata(fromid,host,port,password)">
+                                        <i class="fa fa-database"> </i>  Save
+                                    </button>
 
-                                <input type="text" ng-model="host" name="Host" value={{host}} class="form-control m-input"   required />
+                                    <button class="btn btn-primary" ng-show="btnUpdate" ng-click="AddUpdate(fromid,host,port,password,emailsettingid)">
+                                        <i class="fa fa-database"> </i>Update
+                                    </button>
+                                    <button class="btn default" ng-click="Cancel()">
+                                        <i class="fa fa-times"> </i> Cancel
+                                    </button>
 
 
+                                </div>
                             </div>
-                            <div class="form-group m-form__group">
-                                <label> PORT</label>
-
-                                <input type="text" ng-model="port" name="Port" value={{port}} class="form-control m-input"   required />
-
-
-                            </div>
-                            <div class="form-group m-form__group">
-                                <label> PASSWORD</label>
-
-                                <input type="text" ng-model="password" name="Password" value={{password}} class="form-control m-input"   required />
-
-
-                            </div>
-
 
                         </div>
-                        <div class="m-portlet__foot m-portlet__foot--fit">
-                            <div class="m-form__actions">
-
-                                <button class="btn btn-success hide-portlet " ng-show="btnSave" ng-click="postdata(fromid,host,port,password)">
-                                    <i class="fa fa-database"> </i>  Save
-                                </button>
-
-                                <button class="btn btn-success hide-portlet" ng-show="btnUpdate" ng-click="AddUpdate(fromid,host,port,password,emailsettingid)">
-                                    <i class="fa fa-database"> </i>Update
-                                </button>
-                                <button class="btn default" ng-click="Cancel()">
-                                    <i class="fa fa-times"> </i> Cancel
-                                </button>
-
-
-                            </div>
-                        </div>
-
-                            </div>
                         <!--end::Form-->
                     </div>
           

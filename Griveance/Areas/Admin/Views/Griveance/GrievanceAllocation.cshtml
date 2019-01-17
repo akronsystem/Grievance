@@ -26,7 +26,7 @@
                     </div>
 
                 </div> 
-                <table datatable="ng" dt-options="dtOptions" class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
+                @*<table datatable="ng" dt-options="dtOptions" class="table table-striped- table-bordered table-hover table-checkable" id="m_table_1">
                     <thead>
                         <tr>
                             <th>Member Id</th>
@@ -71,8 +71,8 @@
 
 
                     </tbody>
-                </table>
-</div></form> 
+                </table>*@
+ 
 
                 <div ng-show="IsVisible">
                     <div class="m-portlet__body">
@@ -86,7 +86,7 @@
 
                                 <input type="text" value={{name}} ng-model="name" name="FromId" class="form-control" disabled required />
                                 <input type="hidden" value="{{UserId}}" />
-                                <input type="hidden" value="{{id}}" />
+                                <input type="hidden" value="{{Expr1}}" />
                             </div>
                             <div class="form-group m-form__group">
                                 <label>
@@ -146,7 +146,7 @@
 
 
 
-                            <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(name, code, designation, griType,email, contact, UserId,id)">
+                            <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(name, code, designation, griType,email, contact, UserId,Expr1)">
                                 <i class="fa fa-database"> </i>Update
                             </button>
                             <button class="btn default" ng-click="Clear()">
@@ -183,7 +183,7 @@
                         <tbody>
                             <tr ng-repeat="data in GrievanceAllocation | filter:search">
                                 <td>
-                                    {{data.id}}
+                                    {{data.Expr1}}
                                 </td>
                                 <td>
                                     {{data.code}}

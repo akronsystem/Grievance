@@ -41,22 +41,31 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
           
 
         };
-        if ($scope.form.$valid) {
+        if (GrievanceName == undefined || GrievanceDescription == undefined) {
+            ShowMessage(0, result.data.Message);
+        }
             Service.Post("api/Grievance/SaveGrievanceType", JSON.stringify(Grievance)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name
                 if (result.data.IsSucess) {
                     debugger;
-                    console.log(result.data);
-                    window.location = "./GrievanceType"
+                    CustomizeApp.AddMessage();
+                    $scope.Clear();
+                    $scope.IsVisible = false;
+                    $scope.Initialize();
+                    //console.log(result.data);
+                    // window.location = "./ParentGrievance"
                 }
                 else {
-                    window.alert('Grievance Type does not Save')
-                    window.location = "./GrievanceType"
+                    ShowMessage(0, result.data.Message);
+                    //$scope.clear();
+                    //window.location = "./PostGrievance"
                 }
 
+               
+
             })
-        }
+        
 
 
     }
@@ -93,21 +102,28 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
             GrievanceId: GrievanceId
 
         };
-        if ($scope.form.$valid) {
+        if (GrievanceName == undefined || GrievanceDescription == undefined) {
+            ShowMessage(0, result.data.Message);
+        }
             Service.Post("api/Grievance/UpdateGrievanceType", JSON.stringify(Info)).then(function (result) {
                 debugger;
-                // $scope.ParamUserLogin.Name = result.data.Name
                 if (result.data.IsSucess) {
                     debugger;
-                    console.log(result.data);
-                    window.location = "./GrievanceType"
+                    CustomizeApp.AddMessage();
+                    $scope.Clear();
+                    $scope.IsVisible = false;
+                    $scope.Initialize();
+                    //console.log(result.data);
+                    // window.location = "./ParentGrievance"
                 }
                 else {
-                    window.location = "./GrievanceType"
+                    ShowMessage(0, result.data.Message);
+                    //$scope.clear();
+                    //window.location = "./PostGrievance"
                 }
 
             })
-        }
+        
 
 
     }
