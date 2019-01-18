@@ -61,7 +61,8 @@ function ReportController($scope, Service) {
         var month1 = $scope.todate.getMonth() + 1 //getMonth is zero based;
         var day1 = $scope.todate.getDate();
         var todated = day1 + "-" + month1 + "-" + year1;
-        window.open("http://localhost:55044/Admin/Report/ReportDwonload?id=" + $scope.id + "&fromdate=" + formatted + "&todate=" + todated + "&GriveanceType=" + $scope.GriveanceType + "&CellMember=" + $scope.name);
+        window.location.href = baseURL + "Admin/Report/ReportDwonload?id=" + $scope.id + "&fromdate=" + formatted + "&todate=" + todated + "&GriveanceType=" + $scope.GriveanceType + "&CellMember=" + $scope.name
+     // window.open("http://localhost:55044/Admin/Report/ReportDwonload?id=" + $scope.id + "&fromdate=" + formatted + "&todate=" + todated + "&GriveanceType=" + $scope.GriveanceType + "&CellMember=" + $scope.name);
 
         //Service.Post("../Report/ReportDwonload",data) 
                 

@@ -16,10 +16,12 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
     $scope.Initialize = function () {
         debugger;
         $scope.dtOptions = DTOptionsBuilder.newOptions()
-            .withPaginationType('full_numbers').withDisplayLength(10)
+            .withPaginationType('full_numbers').withDisplayLength(10) 
+        if(!$scope.dtOptions)
+        Service.Get("api/Common/GetEmailInfo").then(function (result) { 
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
        
-        Service.Post("api/Common/GetEmailInformation", $scope.UserCredentialModel).then(function (result) {
+        Service.Post("api/Common/GetEmailInformation", $scope.UserCredentialModel).then(function (result) { 
 
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.tbl_emailsettings = result.data;
@@ -89,9 +91,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
                 if (response.data.IsSucess) {
                     debugger;
                     CustomizeApp.AddMessage();
-                    $scope.Clear();
-                    $scope.IsVisible = false;
-                    $scope.Initialize();
+                    $scope.Cancel();
                     //console.log(result.data);
                     // window.location = "./ParentGrievance"
                 }
@@ -117,10 +117,8 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
                     Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
                         if (response.data.IsSucess) {
                             debugger;
-                            CustomizeApp.AddMessage();
-                            $scope.Clear();
-                            $scope.IsVisible = false;
-                            $scope.Initialize();
+                            CustomizeApp.UpdateMessage();
+                            $scope.Cancel();
                             //console.log(result.data);
                             // window.location = "./ParentGrievance"
                         }
@@ -185,8 +183,9 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
         $scope.port = null;
         $scope.password = null;
         $scope.IsVisible = false;
-        $scope.msg = "";
         $scope.Initialize();
+        $scope.msg = "";
+       
     }
 
 

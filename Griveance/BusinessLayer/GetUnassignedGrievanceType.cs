@@ -14,7 +14,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var GrievanceType = obj.ViewGrievanceLists.Where(R => R.CompID == 0).ToList();
+                var GrievanceType = obj.tbl_grievance_list.Where(R => R.Isalloted == 0).ToList();
                 if (GrievanceType.Count() == 0)
                 {
                     return new Error() { IsError = true, Message = "No Unassigned Grievance Type Found." };

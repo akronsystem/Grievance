@@ -10,6 +10,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         debugger;
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
+        if (!$scope.dtOptions)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
@@ -159,10 +160,10 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             Service.Post("api/Register/UpdateStaffInfo", JSON.stringify(data)).then(function (response) {
                 if (response.data.IsSucess) {
                     debugger;
-                    CustomizeApp.AddMessage();
+                    CustomizeApp.UpdateMessage();
                     $scope.Clear();
-                    $scope.IsVisible = false;
-                    $scope.Initialize();
+                    //$scope.IsVisible = false;
+                    //$scope.Initialize();
                     //console.log(result.data);
                     // window.location = "./ParentGrievance"
                 }
@@ -207,17 +208,19 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             Service.Post("api/Grievance/PostGrievance", JSON.stringify(PostGr)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name
-
-                console.log(result.data);
-                console.log(result.data);
-                if (result.data.IsSucess) {
+                if (response.data.IsSucess) {
                     debugger;
-                    console.log(result.data);
-                    window.location = "./StaffGrievance"
+                    CustomizeApp.AddMessage();
+                    //$scope.Clear();
+                    //$scope.IsVisible = false;
+                    //$scope.Initialize();
+                    //console.log(result.data);
+                    // window.location = "./ParentGrievance"
                 }
                 else {
-                    alert(result.data.Message);
-                    window.location = "./PostGrievance"
+                    ShowMessage(0, response.data.Message);
+                    //$scope.clear();
+                    //window.location = "./PostGrievance"
                 }
 
             })

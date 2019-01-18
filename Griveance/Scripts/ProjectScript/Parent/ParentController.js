@@ -12,7 +12,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     $scope.Initialize = function () {
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-
+        if (!$scope.dtOptions)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
@@ -78,7 +78,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
                 //}
                 console.log(rd.data);
                 
-            }
+            
         })
 
     }
@@ -153,10 +153,10 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             Service.Post("api/Register/UpdateParentInfo", JSON.stringify(data)).then(function (response) {
                 if (response.data.IsSucess) {
                     debugger;
-                    CustomizeApp.AddMessage();
+                    CustomizeApp.UpdateMessage();
                     $scope.Clear();
-                    $scope.IsVisible = false;
-                    $scope.Initialize();
+                    //$scope.IsVisible = false;
+                    //$scope.Initialize();
                     //console.log(result.data);
                     // window.location = "./ParentGrievance"
                 }
@@ -294,10 +294,10 @@ function UsersController($scope, Service, DTOptionsBuilder) {
                 Service.Post("api/Member/UpdateComplaints", JSON.stringify(data)).then(function (response) {
                     if (response.data.IsSucess) {
                         debugger;
-                        CustomizeApp.AddMessage();
-                        $scope.Clear();
-                        $scope.IsVisible = false;
-                        $scope.GetMember
+                        CustomizeApp.UpdateMessage();
+                        //$scope.Clear();
+                        //$scope.IsVisible = false;
+                        //$scope.GetMember
                         //console.log(result.data);
                         // window.location = "./ParentGrievance"
                     }

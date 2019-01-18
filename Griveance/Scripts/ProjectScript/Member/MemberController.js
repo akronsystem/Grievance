@@ -63,7 +63,7 @@ function MemberController($scope, Service) {
 
     $scope.GetInfo = function () {
 
-        Service.Post("api/Grievance/GriveanceTypeInfo").then(function (result) {
+        Service.Post("api/Grievance/GetUnAssignedGrievanceType").then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.tbl_grievance_list = result.data;

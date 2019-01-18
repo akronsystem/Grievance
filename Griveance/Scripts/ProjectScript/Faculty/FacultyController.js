@@ -140,6 +140,9 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.UserId = null;
         $scope.btnUpdate = false;
         $scope.IsVisible = false;
+        $scope.Initialize();
+        
+
     }
 
     $scope.Delete = function (UserId, Type) {
@@ -209,11 +212,9 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             Service.Post("api/Register/UpdateFacultyInfo", JSON.stringify(data)).then(function (response) {
                 if (response.data.IsSucess) {
                     debugger;
-                    CustomizeApp.AddMessage();
+                    CustomizeApp.UpdateMessage();
                     $scope.Clear();
-                    $scope.IsVisible = false;
-                    $scope.Initialize();
-                    //console.log(result.data);
+                     //console.log(result.data);
                     // window.location = "./ParentGrievance"
                 }
                 else {
