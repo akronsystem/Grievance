@@ -11,11 +11,22 @@ namespace Griveance.BusinessLayer
     {
         GRContext gc = new GRContext();
 
-        public object GetStaffInfo()
+        public object GetStaffInfo(string status)
         {
             try
             {
-                var StaffInfo = gc.ViewAllStaffInfoes.ToList();
+                List<Griveance.Models.ViewAllStaffInfo> StaffInfo = null;
+
+                if (status=="Dective")
+                {
+                    StaffInfo = gc.ViewAllStaffInfoes.Where(r => r.Display != 1).ToList();
+                   
+                }
+                else
+                {
+                    StaffInfo = gc.ViewAllStaffInfoes.Where(r => r.Display == 1).ToList();
+                }
+               
                 if(StaffInfo==null)
                 {
                     return new Error() { IsError = true, Message = "Staff Info Not Found" };

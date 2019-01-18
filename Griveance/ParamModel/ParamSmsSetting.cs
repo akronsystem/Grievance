@@ -12,6 +12,7 @@ namespace Griveance.ParamModel
         public string SmsSendApi { get; set; }
         public string CheckbalanceApi { get; set; }
         public Int64 SettingId { get; set; }
+        public string DisplayStatus { get; set; }
 
     }
 }

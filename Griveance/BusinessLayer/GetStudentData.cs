@@ -12,11 +12,21 @@ namespace Griveance.BusinessLayer
     {
 
         GRContext objcontext = new GRContext();
-        public object GetStudentList()
+        public object GetStudentList(string status)
         {
             try
             {
-                var StudentData = objcontext.ViewGetStudentInfoes.ToList();
+                List<Griveance.Models.ViewGetStudentInfo> StudentData = null;
+                if(status=="Dective")
+                {
+                    StudentData = objcontext.ViewGetStudentInfoes.Where(r => r.Display != 1).ToList();
+                }
+                else
+                {
+                    StudentData = objcontext.ViewGetStudentInfoes.Where(r => r.Display == 1).ToList();
+                   
+                }
+               
                 if (StudentData == null)
                 {
                     return new Error { IsError = true, Message = "Student List Not Found." };

@@ -149,6 +149,49 @@ namespace Griveance.BusinessLayer
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+        public object DeleteParent(ParamRegistration PR)
+        {
+            try
+            {
+                tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+
+
+                if (objuser.Display == 1)
+                {
+                    objuser.Display = 0;
+                }
+                else
+                {
+                    objuser.Display = 1;
+                }
+
+
+                db.SaveChanges();
+
+                if (PR.Type == "Parent")
+                {
+                    tbl_parent objparent = db.tbl_parent.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                    // objparent.UserId = PR.UserId;
+                   if(objparent.Display==1)
+                    {
+                        objparent.Display = 0;
+                    }
+                   else
+                    {
+                        objparent.Display = 1;
+                    }
+                    db.SaveChanges();
+
+
+                }
+
+                return new Result() { IsSucess = true, ResultData = "User Updated Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
 
         public object UpdateFaculty(ParamRegistration PR)
         {
@@ -176,6 +219,51 @@ namespace Griveance.BusinessLayer
                     objfaculty.department = PR.Department;
                     objfaculty.designation = PR.Designation;
                     objfaculty.modified_date = DateTime.Now; 
+                    db.SaveChanges();
+
+
+                }
+
+                return new Result() { IsSucess = true, ResultData = "User Updated Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
+        public object DeleteFaculty(ParamRegistration PR)
+        {
+
+            try
+            {
+                tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+
+
+                if (objuser.Display == 1)
+                {
+                    objuser.Display = 0;
+                }
+                else
+                {
+                    objuser.Display = 1;
+                }
+                db.SaveChanges();
+
+                
+
+                if (PR.Type == "Faculty")
+                {
+                    tbl_faculty objfaculty = db.tbl_faculty.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                    // objparent.UserId = PR.UserId;
+                    if (objfaculty.Display == 1)
+                    {
+                        objfaculty.Display = 0;
+                    }
+                    else
+                    {
+                        objfaculty.Display = 1;
+                    }
                     db.SaveChanges();
 
 
@@ -253,6 +341,88 @@ namespace Griveance.BusinessLayer
                 }
 
                 return new Result() { IsSucess = true, ResultData = "User Saved Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+        public object DeleteStaff(ParamRegistration PR)
+        {
+            try
+            {
+                tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+
+
+                if (objuser.Display == 1)
+                {
+                    objuser.Display = 0;
+                }
+                else
+                {
+                    objuser.Display = 1;
+                }
+
+                db.SaveChanges();
+
+                if (PR.Type == "Staff")
+                {
+                    tbl_staff objstaff = db.tbl_staff.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+
+                    if (objstaff.Display == 1)
+                    {
+                        objstaff.Display = 0;
+                    }
+                    else
+                    {
+                        objstaff.Display = 1;
+                    }
+
+                    db.SaveChanges();
+                }
+
+                return new Result() { IsSucess = true, ResultData = "User Deleted Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+        public object DeleteSingleStudent(ParamRegistration PR)
+        {
+            try
+            {
+                tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+
+                if (objuser.Display == 1)
+                {
+                    objuser.Display = 0;
+                }
+                else
+                {
+                    objuser.Display = 1;
+                }
+
+             
+
+                db.SaveChanges();
+
+                if (PR.Type == "Student")
+                {
+                    tbl_student objstudent = db.tbl_student.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                    if (objstudent.Display == 1)
+                    {
+                        objstudent.Display = 0;
+                    }
+                    else
+                    {
+                        objstudent.Display = 1;
+                    }
+
+                    db.SaveChanges();
+                }
+
+                return new Result() { IsSucess = true, ResultData = "User Deleted Successfully." };
             }
             catch (Exception ex)
             {

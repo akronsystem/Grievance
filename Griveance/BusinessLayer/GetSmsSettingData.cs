@@ -11,11 +11,21 @@ namespace Griveance.BusinessLayer
     public class GetSmsSettingData
     {
         GRContext objGR = new GRContext();
-        public object GetSmsSettingsDataBL()
+        public object GetSmsSettingsDataBL( string status)
         {
             try
             {
-                var Smsdata = objGR.tbl_smsconfiguration.Where(r=>r.DISPLAY==1).ToList();
+                List<Griveance.Models.Vw_GetSmsData> Smsdata = null;
+                if(status =="Dective")
+                {
+                    Smsdata = objGR.Vw_GetSmsData.Where(r => r.DISPLAY != 1).ToList();
+                   
+                }
+                else
+                {
+                    Smsdata = objGR.Vw_GetSmsData.Where(r => r.DISPLAY == 1).ToList();
+                }
+               
                if(Smsdata==null)
                 {
                     return new Error() { IsError = true, Message = "No Data Found." };
@@ -88,6 +98,32 @@ namespace Griveance.BusinessLayer
                 objTBL.modified_date = DateTime.Now;
                 objGR.SaveChanges();
                 return new Result() { IsSucess = true, ResultData = "Sms Settings Updated Successfully." };
+
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+        }
+
+        public object DeleteSmsSetting(ParamSmsSetting objPS)
+
+        {
+            try
+            {
+                tbl_smsconfiguration objTBL = objGR.tbl_smsconfiguration.Where(r => r.SETTINGID == objPS.SettingId).First();
+               
+                if (objTBL.DISPLAY == 1)
+                {
+                    objTBL.DISPLAY = 0;
+                }
+                else
+                {
+                    objTBL.DISPLAY = 1;
+                }
+
+                objGR.SaveChanges();
+                return new Result() { IsSucess = true, ResultData = "Sms Settings Deleted Successfully." };
 
             }
             catch (Exception e)

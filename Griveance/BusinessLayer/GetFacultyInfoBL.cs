@@ -17,7 +17,18 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var getfacultyinfo = db.ViewGetFacultyInfoes.ToList();
+                List<Griveance.Models.ViewGetFacultyInfo> getfacultyinfo = null;
+
+                if (objfaculty.DisplayStatus=="Dective")
+                {
+                    getfacultyinfo = db.ViewGetFacultyInfoes.Where(r => r.Display != 1).ToList();
+                }
+                else
+                {
+                    getfacultyinfo = db.ViewGetFacultyInfoes.Where(r => r.Display == 1).ToList();
+                   
+                }
+                
                 if (getfacultyinfo == null)
                 {
                     return new Error() { IsError = true, Message = "Faculty Info Not Found" };

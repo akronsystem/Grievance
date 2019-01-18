@@ -12,12 +12,14 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
     $scope.host = null;
     $scope.port = null;
     $scope.password = null;
-
+    $scope.UserCredentialModel = {};
     $scope.Initialize = function () {
+        debugger;
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-
-        Service.Get("api/Common/GetEmailInfo").then(function (result) {
+        $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
+       
+        Service.Post("api/Common/GetEmailInformation", $scope.UserCredentialModel).then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.tbl_emailsettings = result.data;
@@ -114,7 +116,48 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
      }
 
         
-    
+     $scope.Delete = function (emailsettingid) {
+         debugger;
+         var data = {
+
+             emailsettingid: emailsettingid,
+           
+         };
+         var deactivestatus = 1;
+         if (event.target.checked == false) {
+             var confirm = window.confirm("Do you want to deactive this Entry ?");
+             var deactivestatus = 0;
+         }
+         else {
+             var confirm = window.confirm("Do you want to active this Entry ?");
+
+         }
+         if (confirm == true) {
+             Service.Post("api/Common/DeleteEmailInformation", JSON.stringify(data)).then(function (response) {
+                 debugger;
+
+
+                 if (deactivestatus == 0) {
+                     window.alert('Entry Deactive Successfully!')
+
+                 }
+                 else {
+                     window.alert('Entry Active Successfully!')
+
+                 }
+
+
+                 debugger;
+                 $scope.Cancel();
+                 $scope.IsVisible = false;
+                 $scope.Initialize();
+
+             });
+         }
+
+         $scope.Initialize();
+
+     }
 
     $scope.Cancel = function () {
       

@@ -7,6 +7,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     $scope.UserCredentialModel = {};
     $scope.btnUpdate = false;
     $scope.IsVisible = false;
+    $scope.btnactive = 'Active'
 
     $scope.Initialize = function () {
         $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -14,11 +15,13 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
-
+        $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
         $scope.Students = {};
+        debugger;
+       
 
-        Service.Post("api/Users/GetParentInfo").then(function (result) {
-
+       Service.Post("api/Users/GetParentInfo", $scope.UserCredentialModel).then(function (result) {
+           
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGetSingleParentInfoes = result.data;
             $scope.Parents = result.data.ResultData;
@@ -129,6 +132,53 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         }
 
     }
+
+    $scope.Delete = function (UserId, Type) {
+        debugger;
+        var data = {
+
+            UserId: UserId,
+            type: Type
+        };
+        var deactivestatus = 1;
+        if (event.target.checked == false) {
+            var confirm = window.confirm("Do you want to deactive this Entry ?");
+            var deactivestatus = 0;
+        }
+        else
+        {
+            var confirm = window.confirm("Do you want to active this Entry ?");
+           
+        }
+        if (confirm == true) {
+            Service.Post("api/Register/DeleteParentInfo", JSON.stringify(data)).then(function (response) {
+                debugger;
+
+               
+                if (deactivestatus == 0) 
+                    {
+                        window.alert('Entry Deactive Successfully!')
+                        
+                    }
+                    else
+                    {
+                        window.alert('Entry Active Successfully!')
+                        
+                    }
+                   
+
+                debugger;
+                $scope.Clear();
+                $scope.IsVisible = false;
+                $scope.Initialize();
+
+            });
+        }
+    
+        $scope.Initialize();
+
+    }
+
         $scope.SavePost = function () {
             var data = sessionStorage.getItem('userid');
             var Password = sessionStorage.getItem('Password');
@@ -163,7 +213,9 @@ function UsersController($scope, Service, DTOptionsBuilder) {
                 }
 
             })
-        }
+    }
+
+
 
    
 }

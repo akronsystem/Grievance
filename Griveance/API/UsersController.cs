@@ -43,12 +43,13 @@ namespace Griveance.Controllers
 
         }
         [HttpPost]
-        public object GetStaffInfo()
+        public object GetStaffInfo([FromBody]ParamGetSingleStaffInfo objstaff)
         {
             try
             {
                 GetAllStaffInfo obj = new GetAllStaffInfo();
-                var StaffInfo = obj.GetStaffInfo();
+                var status = objstaff.DisplayStatus;
+                var StaffInfo = obj.GetStaffInfo(status);
                 return StaffInfo;
             }
             catch (Exception ex)
@@ -93,6 +94,7 @@ namespace Griveance.Controllers
             try
             {
                 GetFacultyInfoBL obj = new GetFacultyInfoBL();
+                var status = objfaculty.DisplayStatus;
                 var facultyinfo = obj.GetFacultyInfo(objfaculty);
                 return facultyinfo;
             }
@@ -110,7 +112,8 @@ namespace Griveance.Controllers
             try
             {
                 GetStudentData objStudent = new GetStudentData();
-                var result = objStudent.GetStudentList();
+                var status = obj.DisplayStatus;
+                var result = objStudent.GetStudentList(status);
                 return result;
             }
             catch (Exception e)
@@ -126,8 +129,9 @@ namespace Griveance.Controllers
         {
             try
             {
+                var status = obj.DisplayStatus;
                 GetParentData objParent = new GetParentData();
-                var result = objParent.GetParentList();
+                var result = objParent.GetParentList(status);
                 return result;
             }
             catch (Exception e)

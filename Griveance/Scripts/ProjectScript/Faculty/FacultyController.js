@@ -10,12 +10,14 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
 
     $scope.Initialize = function () {
+        debugger;
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
 
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
-        Service.Post("api/Users/GetFacultyInfo").then(function (result) {
+        $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
+        Service.Post("api/Users/GetFacultyInfo",$scope.UserCredentialModel).then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGetFacultyInfoes = result.data;
@@ -138,6 +140,54 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.UserId = null;
         $scope.btnUpdate = false;
         $scope.IsVisible = false;
+    }
+
+    $scope.Delete = function (UserId, Type) {
+        debugger;
+        var data = {
+
+            UserId: UserId,
+            type: Type
+        };
+        var deactivestatus = 1;
+
+        if (event.target.checked == false) {
+            var confirm = window.confirm("Do you want to deactive this Entry ?");
+            deactivestatus = 0;
+
+        }
+        else {
+            var confirm = window.confirm("Do you want to active this Entry ?");
+        }
+        if (confirm == true)
+        {
+            Service.Post("api/Register/DeleteFacultyInformation", JSON.stringify(data)).then(function (response)
+            {
+                debugger;
+
+
+                if (deactivestatus == 0)
+                {
+                    window.alert('Entry Deactive Successfully!')
+
+                }
+                else
+                {
+                    window.alert('Entry Active Successfully!')
+
+                }
+
+
+                debugger;
+                $scope.Clear();
+                $scope.IsVisible = false;
+                $scope.Initialize();
+
+            });
+        }
+
+        $scope.Initialize();
+
     }
 
 

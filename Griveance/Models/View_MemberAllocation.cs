@@ -20,26 +20,23 @@ namespace Griveance.Models
 
         public long? contact { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
         [StringLength(100)]
         public string designation { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
         [StringLength(200)]
         public string griType { get; set; }
 
         public int? status { get; set; }
 
         [Key]
-        [Column(Order = 4)]
+        [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UserId { get; set; }
+
+        public int? Expr1 { get; set; }
+
+        public int? Display { get; set; }
+
+        public int? Expr2 { get; set; }
     }
 }

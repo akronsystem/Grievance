@@ -10,11 +10,24 @@ namespace Griveance.BusinessLayer
     public class GetParentData
     {
         GRContext objcontext = new GRContext();
-        public object GetParentList()
+        public object GetParentList( string status)
         {
             try
             {
-                var GetParent = objcontext.ViewGetSingleParentInfoes.ToList();
+                List<Griveance.Models.ViewGetSingleParentInfo> GetParent = null;
+
+
+                if (status=="Dective")
+                {
+                    GetParent = objcontext.ViewGetSingleParentInfoes.Where(r => r.Display != 1).ToList();
+                }
+                else
+
+                {
+                    GetParent = objcontext.ViewGetSingleParentInfoes.Where(r => r.Display == 1).ToList();
+                   
+                }
+               
                 if (GetParent == null)
                 {
                     return new Error { IsError = true, Message = "Parent List Not Found." };
