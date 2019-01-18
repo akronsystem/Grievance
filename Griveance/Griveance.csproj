@@ -598,6 +598,7 @@
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceType.js" />
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceTypeList.js" />
     <Content Include="Scripts\ProjectScript\Grievance\GrievanceTypeModule.js" />
+    <Content Include="Scripts\ProjectScript\Login\ForgetPassword.js" />
     <Content Include="Scripts\ProjectScript\Login\LoginController.js" />
     <Content Include="Scripts\ProjectScript\Login\LoginModule.js" />
     <Content Include="Scripts\ProjectScript\Member\MemberController.js" />
@@ -720,16 +721,21 @@
     <Compile Include="Models\ViewGetStudentInfo.cs" />
     <Compile Include="Models\ViewGrievanceList.cs" />
     <Compile Include="Models\ViewUser.cs" />
+    <Compile Include="Models\View_DetailedReport.cs" />
     <Compile Include="Models\View_ForMemberName.cs" />
     <Compile Include="Models\View_MemberAllocation.cs" />
+    <Compile Include="Models\View_ReportViewGrievanceList.cs" />
     <Compile Include="Models\View_UsersGrievance.cs" />
     <Compile Include="Models\Vw_GetSingleFaculty.cs" />
     <Compile Include="ParamModel\ClassParameter.cs" />
     <Compile Include="ParamModel\CourseParameter.cs" />
+    <Compile Include="ParamModel\Email.cs" />
     <Compile Include="ParamModel\FacultyParameters.cs" />
+    <Compile Include="ParamModel\ForgetPassword.cs" />
     <Compile Include="ParamModel\GrievanceAllocationParam.cs" />
     <Compile Include="ParamModel\GrievanceParam.cs" />
     <Compile Include="ParamModel\MemberParameter.cs" />
+    <Compile Include="ParamModel\ParamComplaintDetails.cs" />
     <Compile Include="ParamModel\ParamEmailSettings.cs" />
     <Compile Include="ParamModel\ParamGetFacultyInfo.cs" />
     <Compile Include="ParamModel\ParamGetGrievanceList.cs" />
@@ -743,6 +749,7 @@
     <Compile Include="ParamModel\ParamSmsSetting.cs" />
     <Compile Include="ParamModel\ParamUser.cs" />
     <Compile Include="ParamModel\ParamUserLogin.cs" />
+    <Compile Include="ParamModel\ReportCountParam.cs" />
     <Compile Include="ParamModel\SetStatusParameters.cs" />
     <Compile Include="ParamModel\StudentParameters.cs" />
     <Compile Include="ParamModel\ViewGetStudentInfo.cs" />
@@ -956,6 +963,7 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\NAdminDashboard.cshtml" />
     <Content Include="Scripts\Common\angular-chart.min.js.map" />
+    <Content Include="Views\Home\ForgetPass.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

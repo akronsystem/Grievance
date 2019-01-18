@@ -20,7 +20,10 @@ namespace Griveance.Areas.Admin.Controllers
             return View();
         }
 
-        public object ReportDwonload(int id,string fromdate,string todate,int GriveanceType,int CellMember)
+		 
+
+
+		public object ReportDwonload(int id,string fromdate,string todate,int GriveanceType,int CellMember)
         {
             ViewData["Fromdate"] = fromdate;
             ViewData["Todate"] = todate;

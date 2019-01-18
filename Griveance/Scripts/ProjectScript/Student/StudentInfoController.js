@@ -72,7 +72,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.email = null;
         $scope.Contact = null;
         $scope.IsVisible = false;
-        $scope.Initialize();
+       // $scope.Initialize();
     }
    
     $scope.AddUpdate = function (StudentName, StudentCode, Type, Gender, email, Contact, UserId) {
@@ -90,10 +90,10 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
                 if (response.data.IsSucess) {
                     debugger;
-                    CustomizeApp.AddMessage();
+                    CustomizeApp.UpdateMessage();
                     $scope.Clear();
-                    $scope.IsVisible = false;
-                    $scope.Initialize();
+                    //$scope.IsVisible = false;
+                    //$scope.Initialize();
                     //console.log(result.data);
                     // window.location = "./ParentGrievance"
                 }
