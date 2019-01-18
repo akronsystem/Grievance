@@ -21,5 +21,9 @@ namespace Griveance.Controllers
         {
             return View();
         }
+        public ActionResult ForgetPass()
+        {
+            return View();
+        }
     }
 }

@@ -47,6 +47,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     }
     $scope.GetMember = function () {
         debugger;
+       
         var data = sessionStorage.getItem('emp-key');
         $scope.UserCredentialModel.StudentCode = data;
         var userid = sessionStorage.getItem('userid');
@@ -54,10 +55,27 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         var password = sessionStorage.getItem('Password');
         $scope.UserCredentialModel.Password = password;
         Service.Post("api/Member/GetMemberGrievance", $scope.UserCredentialModel).then(function (rd) {
-
             $scope.Student = rd.data.ResultData;
-            console.log(rd.data);
+              debugger;
+            
+            //if (rd.data.IsSucess) {
+            //    var action = rd.data.ResultData[0].GrievanceAction;
+            //    debugger;
+            //    for (let i = 0; rd.data.ResultData[i].GrievanceAction == "Closed"; i++) {
+            //        debugger;
+            //        alert(rd.data.ResultData[i].GrievanceAction);
+            //        $scope.status2 = true;
+            //    }
 
+                //if (action == "Closed") {
+                   
+                //}
+                //else if (action == "Pending") {
+                //    $scope.status = true;
+                //}
+                console.log(rd.data);
+                
+            }
         })
 
     }

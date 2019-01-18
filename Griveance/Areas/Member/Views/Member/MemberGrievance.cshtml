@@ -136,10 +136,10 @@
                             <td>
                                 {{data.Post}}
                             </td>
-                            <td>
-                                {{data.GrievanceAction}}
-                            </td>
-                            <td><input type="button" class="btn btn-primary" value="{{data.GrievanceAction}}" ng-click="ShowHide2(data)" /></td>
+                            @*<td ng-show="status2">
+                                <span ng-style="{'color: red': data.GrievanceAction == 'Closed'}">{{data.GrievanceAction}}</span>
+                            </td>*@
+                            <td ng-show="data.GrievanceAction == 'Pending'"><input type="button"  class="btn btn-primary" value="{{data.GrievanceAction}}" ng-click="ShowHide2(data)" /></td>
                             <td>
                                 {{data.status}}
                             </td>
@@ -165,4 +165,17 @@
     </script>
 </body>
 </html>
+<style>
+    .Error {
+        color: red;
+    }
+
+    .Warning {
+        color: blue;
+    }
+
+    .Ignored {
+        color: green;
+    }
+</style>
 
