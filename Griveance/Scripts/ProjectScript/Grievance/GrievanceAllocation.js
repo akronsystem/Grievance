@@ -8,7 +8,8 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
 
     $scope.Initialize = function () {
         $scope.dtOptions = DTOptionsBuilder.newOptions()
-    .withPaginationType('full_numbers').withDisplayLength(10)
+            .withPaginationType('full_numbers').withDisplayLength(10)
+        if (!$scope.dtOptions)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Grievance/GrievanceAllocation").then(function (result) {
@@ -104,6 +105,7 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
         $scope.id = null;
         $scope.btnUpdate = false;
         $scope.IsVisible = false;
+        $scope.Initialize();
     }
 
 
@@ -129,21 +131,15 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
 
             if (response.data.IsSucess) {
                 debugger;
-                CustomizeApp.AddMessage();
-                $scope.Clear();
-                $scope.IsVisible = false;
-                $scope.Initialize();
-                //console.log(result.data);
-                // window.location = "./ParentGrievance"
+                CustomizeApp.UpdateMessage();
+               
             }
             else {
                 ShowMessage(0, response.data.Message);
                 //$scope.clear();
                 //window.location = "./PostGrievance"
             }
-            $scope.Clear();
-            $scope.IsVisible = false;
-            $scope.Initialize();
+         
         });
     }
 }

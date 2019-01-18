@@ -17,7 +17,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
  
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
- 
+        if (!$scope.dtOptions)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Users/GetStudentInfo", $scope.UserCredentialModel).then(function (result) {

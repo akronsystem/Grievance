@@ -125,6 +125,9 @@ namespace Griveance.BusinessLayer
 				IsSucess = true,
 				ResultData = "Member Created!"
 			};
+            tbl_grievance_list list = db.tbl_grievance_list.Where(r => r.grivance_name == objmember.griType).FirstOrDefault();
+            list.Isalloted = 1;
+            db.SaveChanges();
 
 
 

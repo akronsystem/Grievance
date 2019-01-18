@@ -13,7 +13,7 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
     $scope.Initialize = function () {
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-
+        if (!$scope.dtOptions)
         Service.Get("api/Common/SmsSettingList").then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
@@ -83,10 +83,20 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
 
 
                 Service.Post("api/Common/SaveSmsSettings", JSON.stringify(data)).then(function (response) {
-                    if (response.data)
-                        $scope.Initialize();
-                    $scope.msg = "Sms Settings Saved Successfully!";
-                    $scope.IsVisible = false;
+                    if (response.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.AddMessage();
+                        $scope.Cancel();
+                        //$scope.IsVisible = false;
+                        //$scope.Initialize();
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, response.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
                 });
             }
         }
@@ -105,11 +115,20 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
 
                 };
                 Service.Post("api/Common/UpdateSmsSettings", JSON.stringify(data)).then(function (response) {
-
-                    if (response.data)
-                        $scope.Initialize();
-                    $scope.msg = "Sms Setting Updated Successfully!";
-                    $scope.IsVisible = false;
+                    if (response.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.UpdateMessage();
+                        $scope.Cancel();
+                        //$scope.IsVisible = false;
+                        //$scope.Initialize();
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, response.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
 
                 });
             }

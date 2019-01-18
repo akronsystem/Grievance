@@ -7,6 +7,12 @@ function LoginController($scope, Service) {
         var Info = {
             ContactNumber: $scope.ContactNumber
         }
+        if ($scope.ContactNumber == undefined)
+        {
+            $("#error").text("Contact Number Required");
+            $("#error").css({ 'color': 'red' });
+            return false;
+        }
         Service.Post("api/Login/ForgetPassword",Info).then(function (result) {
             debugger;
             

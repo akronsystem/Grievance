@@ -16,7 +16,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
     $scope.Initialize = function () {
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-
+        if(!$scope.dtOptions)
         Service.Get("api/Common/GetEmailInfo").then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
@@ -87,9 +87,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
                 if (response.data.IsSucess) {
                     debugger;
                     CustomizeApp.AddMessage();
-                    $scope.Clear();
-                    $scope.IsVisible = false;
-                    $scope.Initialize();
+                    $scope.Cancel();
                     //console.log(result.data);
                     // window.location = "./ParentGrievance"
                 }
@@ -115,10 +113,8 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
                     Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
                         if (response.data.IsSucess) {
                             debugger;
-                            CustomizeApp.AddMessage();
-                            $scope.Clear();
-                            $scope.IsVisible = false;
-                            $scope.Initialize();
+                            CustomizeApp.UpdateMessage();
+                            $scope.Cancel();
                             //console.log(result.data);
                             // window.location = "./ParentGrievance"
                         }
@@ -142,8 +138,9 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
         $scope.port = null;
         $scope.password = null;
         $scope.IsVisible = false;
-        $scope.msg = "";
         $scope.Initialize();
+        $scope.msg = "";
+       
     }
 
 

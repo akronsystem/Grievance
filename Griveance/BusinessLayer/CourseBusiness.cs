@@ -31,9 +31,18 @@ namespace Griveance.BusinessLayer
         }
         public object NewCourse([FromBody]CourseParameter obje)
         {
+            if(obje.UserId==null)
+            {
+                return new Result { IsSucess = false, ResultData = "UserId Requird" };
+            }
             GRContext db = new GRContext();
             tbl_courses objcourse = new tbl_courses();
-           // objcourse.course_id = obje.Course_id;
+            var result = db.tbl_courses.Where(r => r.course_name == obje.CourseName);
+            if (result != null)
+            {
+                return new Error() { IsError = true, Message = "Duplicate Entry Not Allowd" };
+            }
+            // objcourse.course_id = obje.Course_id;
             objcourse.course_name = obje.CourseName.ToString();
             objcourse.created_date = DateTime.Now;
             objcourse.Display = 1;

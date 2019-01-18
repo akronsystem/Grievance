@@ -22,9 +22,10 @@ namespace Griveance.Controllers
         [HttpGet]
         public object GetUser()
         {
+            var name=CryptIt.Decrypt("vPelNrzLabeGOYF6LMYvZA==");
             try
             {
-                UserCredentialModel userCredentialModel = new UserCredentialModel() { UserName = "pradip.chougule@jjmcoe.ac.in" };
+                UserCredentialModel userCredentialModel = new UserCredentialModel() { UserName = "Admin" };
                 return userCredentialModel;
             }
             catch (Exception e)
@@ -57,9 +58,17 @@ namespace Griveance.Controllers
         [HttpPost]
         public object ForgetPassword(ForgetPassword obj)
         {
+            if(obj.ContactNumber==null)
+            {
+                return new Error() { IsError = true, Message = "Contact Number Required" };
+            }
             GRContext db = new GRContext();
             string res = "";
             var user = db.tbl_user.Where(r => r.contact == obj.ContactNumber).FirstOrDefault();
+            if(user==null)
+            {
+                return new Error() { IsError = true, Message = "Contact Number Not Found" };
+            }
             if(user.name.Length>0)
             {
                 res = "Dear <b>" + user.name + "</b> your User Name is <b>" + user.name + "</b> and Password is <b>" + CryptIt.Decrypt(user.password) + "</b>.";
