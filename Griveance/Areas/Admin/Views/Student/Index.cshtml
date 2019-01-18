@@ -90,7 +90,7 @@
                                         Type
                                     </label>
 
-                                    <input type="text" value={{Type}} name="Port" ng-model="Type" class="form-control"  required />
+                                    <input type="text" value={{Type}} name="Port" ng-model="Type" class="form-control" disabled  required />
 
 
                                 </div>
@@ -99,8 +99,11 @@
                                     <label>
                                         Gender
                                     </label>
-
-                                    <input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control"  required />
+                                    <select class="form-control" ng-model="Gender"  required>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                    @*<input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control"  required />*@
 
 
                                 </div>
@@ -109,7 +112,7 @@
                                         Email
                                     </label>
 
-                                    <input type="text" value={{email}} name="Port" ng-model="email" class="form-control"  required />
+                                    <input type="email" value={{email}} name="Port" ng-model="email" class="form-control"  required />
 
 
                                 </div>
@@ -190,8 +193,8 @@
                                 <td>
                                     {{data.class_name}}
                                 </td> 
-                                <td></td>
-                                <td></td>
+                                <td>{{data.email}}</td>
+                                <td>{{data.contact}}</td>
                                 <td><input type="button" class="btn btn-primary" value="Edit" ng-click="ShowHide(data.UserId)" /></td>
  
                             </tr>

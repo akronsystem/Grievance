@@ -2,7 +2,7 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/ReportLayout.cshtml";
 }
-
+@model IEnumerable<Griveance.Models.View_ReportViewGrievanceList>
 <!DOCTYPE html>
 
 <html>
@@ -43,33 +43,23 @@
                         <th>Date</th>
                         <th>Subject</th>
                     </tr>
+                    @*@{
+                        var data = (ViewGrievanceList)ViewData["resultData"];
+                    }*@
+                    
+                    @foreach (var s in Model)
+                    {
                     <tr  align="center">
-                        <td>1</td>
-                        <td>2015</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>Grievanve type</td>
-                        <td>2-2-2019</td>
-                        <td>No Subject</td>
+                        <td ></td>
+                        <td>@Html.DisplayFor(m => s.CompID)</td>
+                        <td>@Html.DisplayFor(m=>s.StackHolderType)</td>
+                        <td>@Html.DisplayFor(m => s.name)</td>
+                        <td>@Html.DisplayFor(m => s.GrievanceType)</td>
+                        <td>@Html.DisplayFor(m => s.Date)</td>
+                        <td>@Html.DisplayFor(m => s.Subject)</td>
                     </tr>
-                    <tr  align="center">
-                        <td>2</td>
-                        <td>2015</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>Grievanve type</td>
-                        <td>2-2-2019</td>
-                        <td>No Subject</td>
-                    </tr>
-                    <tr  align="center">
-                        <td>3</td>
-                        <td>2015</td>
-                        <td>No</td>
-                        <td>No</td>
-                        <td>Grievanve type</td>
-                        <td>2-2-2019</td>
-                        <td>No Subject</td>
-                    </tr>
+                    }
+                    
                 </table>
             </div>
             </div>

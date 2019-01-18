@@ -3,7 +3,7 @@
     Layout = "~/Areas/Admin/Views/Shared/ReportLayout.cshtml";
 
 }
-
+@model Griveance.ParamModel.ReportCountParam
 <!DOCTYPE html>
 
 <html>
@@ -37,35 +37,25 @@
 
                 </div>
                 <table align="center" class="table table-striped- table-bordered table-hover table-checkable" border="1">
-                    <tr align="center">
-                        <th>SR.No</th>
-                        <th>Type</th>
-                        <th>Grievances</th>
-                    </tr>
-                    <tr align="center">
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Type</th>
+                    <th>Grievance</th>
+                </tr>
+                    <tr>
                         <td>1</td>
-                        <td>Test Grievance</td>
-                        <td>Test Grievance Type</td>
+                        <td>Total Grievance</td>
+                        <td>@Model.Total</td>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>2</td>
-                        <td>Test Grievance</td>
-                        <td>Test Grievance Type</td>
+                        <td>Pending Grievance</td>
+                        <td>@Model.Pending</td>
                     </tr>
-                    <tr align="center">
+                    <tr>
                         <td>3</td>
-                        <td>Test Grievance</td>
-                        <td>Test Grievance Type</td>
-                    </tr>
-                    <tr align="center">
-                        <td>4</td>
-                        <td>Test Grievance</td>
-                        <td>Test Grievance Type</td>
-                    </tr>
-                    <tr align="center">
-                        <td>5</td>
-                        <td>Test Grievance</td>
-                        <td>Test Grievance Type</td>
+                        <td>Closed</td>
+                        <td>@Model.Closed</td>
                     </tr>
 
                 </table>

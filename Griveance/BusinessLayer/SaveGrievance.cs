@@ -67,7 +67,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                tbl_member obGR = db.tbl_member.Where(r => r.MemberId == PR.id).FirstOrDefault();
+                tbl_member obGR = db.tbl_member.Where(r => r.UserId == PR.UserId).FirstOrDefault();
 
                 obGR.griType = PR.griType;
 

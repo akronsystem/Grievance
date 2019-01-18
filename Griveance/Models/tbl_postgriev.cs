@@ -38,5 +38,7 @@ namespace Griveance.Models
         public DateTime? created_date { get; set; }
 
         public DateTime? modified_date { get; set; }
+
+        public long? userid { get; set; }
     }
 }

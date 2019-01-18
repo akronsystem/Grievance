@@ -37,7 +37,6 @@ namespace Griveance.BusinessLayer
             try
             {
 
-
                 tbl_user obj = context.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
 
                 if (PR.Password == null)

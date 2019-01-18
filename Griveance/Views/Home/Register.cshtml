@@ -6,17 +6,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <!-- begin::Head -->
 <head>
     <meta charset="utf-8" />
-    <title>Metronic | Input Groups</title>
-    <meta name="description" content="Base form control examples">
+    <title>Metronic | Dashboard</title>
+    <meta name="description" content="Latest updates and statistic charts">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <!--begin::Web font -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
         WebFont.load({
-            google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+            google: { "families": ["Montserrat:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
             active: function () {
                 sessionStorage.fonts = true;
             }
@@ -27,21 +28,24 @@
     <!--begin::Global Theme Styles -->
     <link href="~/Content/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
 
-    <!--RTL version:<link href="../../../assets/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-    <link href="~/Content/assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
-
-    <!--RTL version:<link href="../../../assets/demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+    <!--RTL version:<link href="~/Content/assets/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+    <link href="~/Content/assets/demo/demo3/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/demo/demo3/base/components.min.css" rel="stylesheet" />
+    <!--RTL version:<link href="~/Content/assets/demo/demo3/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
     <!--end::Global Theme Styles -->
-    <link rel="shortcut icon" href="~/Content/assets/demo/default/media/img/logo/favicon.ico" />
+    <!--begin::Page Vendors Styles -->
+    <link href="~/Content/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+
+    <!--RTL version:<link href="~/Content/assets/vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+    <!--end::Page Vendors Styles -->
+    <link rel="shortcut icon" href="~/Content/assets/demo/demo3/media/img/logo/favicon.ico" />
 </head>
 
-<!-- end::Head -->
-<!-- begin::Body -->
 
 <body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--fixed m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default" ng-app="GR">
     @using System.Configuration;
-    
- 
+
+
     <div class="m-portlet m-portlet--tab">
         <div class="m-portlet__head">
             <div class="m-portlet__head-caption">
@@ -50,7 +54,7 @@
                         <i class="la la-gear"></i>
                     </span>
                     <h3>
-                       Register
+                        Register
                     </h3>
                 </div>
             </div>
@@ -70,117 +74,117 @@
                 <!--begin::Form-->
                 <form name="form" id="frmCRUD" class="m-form m-form--fit m-form--label" ng-init="Initialize()">
                     <div class="form-body">
-                    <div class="m-portlet__body">
-                        <div class="form-group m-form__group">
+                        <div class="m-portlet__body">
+                            <div class="form-group m-form__group">
 
-                            <div class="m-input-icon m-input-icon--left">
-                                @*<select name="one" onchange="if (this.value=='10000'){userselect.style.visibility='visible'}else {userselect.style.visibility='hidden'};">*@
-                                <select class="form-control m-input" id="select"  ng-model="type">
-                                    <option>......</option>
-                                    <option value="Student" ng-model="type">Student</option>
-                                    <option value="Parent" ng-model="type">Parent</option>
-                                    <option value="Faculty" ng-model="type">Faculty</option>
-                                    <option value="Staff"ng-model="type">Staff</option>
+                                <div class="m-input-icon m-input-icon--left">
+                                    @*<select name="one" onchange="if (this.value=='10000'){userselect.style.visibility='visible'}else {userselect.style.visibility='hidden'};">*@
+                                    <select class="form-control m-input" id="select" ng-model="type">
+                                        <option>......</option>
+                                        <option value="Student" ng-model="type">Student</option>
+                                        <option value="Parent" ng-model="type">Parent</option>
+                                        <option value="Faculty" ng-model="type">Faculty</option>
+                                        <option value="Staff" ng-model="type">Staff</option>
 
-                                </select>
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-users"></i></span></span>
+                                    </select>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-users"></i></span></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group m-form__group">
-                            <div class="m-input-icon m-input-icon--left">
-                                <input type="email" class="form-control m-input" placeholder="Email" ng-model="email" title="Email" data-skin="dark" data-toggle="m-tooltip" required />
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-envelope"></i></span></span>
-                            </div>
-
-                        </div>
-                        <div class="form-group m-form__group">
-                            <div class="m-input-icon m-input-icon--left">
-                                <input type="password" class="form-control m-input" placeholder="Password" ng-model="password" title="Password" data-skin="dark" data-toggle="m-tooltip" required />
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-unlock"></i></span></span>
-                            </div>
-
-                        </div>
-                        <div class="form-group m-form__group">
-                            <div class="m-input-icon m-input-icon--left">
-                                <input type="password" class="form-control m-input" placeholder="Confirm Password" ng-model="password" title="Confirm Password" data-skin="dark" data-toggle="m-tooltip" required />
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-eye"></i></span></span>
-                            </div>
-
-                        </div>
-                        <div class="form-group m-form__group">
-                            <div class="m-input-icon m-input-icon--left">
-                                <input type="text" class="form-control m-input" placeholder="Your Name" ng-model="name" title="Name" data-skin="dark" data-toggle="m-tooltip" required />
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-user"></i></span></span>
+                            <div class="form-group m-form__group">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="email" class="form-control m-input" placeholder="Email" ng-model="email" title="Email" data-skin="dark" data-toggle="m-tooltip" required />
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-envelope"></i></span></span>
                                 </div>
 
-                        </div>
-                        <div class="form-group m-form__group">
-                            <div class="m-input-icon m-input-icon--left">
-                                <select class="form-control m-input" ng-model="gender" title="Gender" data-skin="dark" data-toggle="m-tooltip" required >
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-users"></i></span></span>
                             </div>
-                        </div>
-                        <div class="form-group m-form__group">
-                            <div class="m-input-icon m-input-icon--left">
-                                <input type="text" class="form-control m-input" placeholder="Student/Employee Code" ng-model="code" title="Student/Employee Code" data-skin="dark" data-toggle="m-tooltip" required>
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-pencil"></i></span></span>
-                              
+                            <div class="form-group m-form__group">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="password" class="form-control m-input" placeholder="Password" ng-model="password" title="Password" data-skin="dark" data-toggle="m-tooltip" required />
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-unlock"></i></span></span>
+                                </div>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="password" class="form-control m-input" placeholder="Confirm Password" ng-model="password" title="Confirm Password" data-skin="dark" data-toggle="m-tooltip" required />
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-eye"></i></span></span>
+                                </div>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="text" class="form-control m-input" placeholder="Your Name" ng-model="name" title="Name" data-skin="dark" data-toggle="m-tooltip" required />
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-user"></i></span></span>
+                                </div>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <select class="form-control m-input" ng-model="gender" title="Gender" data-skin="dark" data-toggle="m-tooltip" required>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-users"></i></span></span>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="text" class="form-control m-input" placeholder="Student/Employee Code" ng-model="code" title="Student/Employee Code" data-skin="dark" data-toggle="m-tooltip" required>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-pencil"></i></span></span>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group m-form__group">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="text" class="form-control m-input" placeholder="Contact Number" ng-model="contact" title="Contact Number" data-skin="dark" data-toggle="m-tooltip" required>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-phone-square"></i></span></span>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group m-form__group" id="relation" style="display:none">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="text" class="form-control m-input" placeholder="Relationship" ng-model="relationship" title="Relationship" data-skin="dark" data-toggle="m-tooltip" required>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-rotate-right"></i></span></span>
+                                </div>
+
+                            </div>
+                            <div class="form-group m-form__group" id="course" style="display:none">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <select class="form-control m-input" ng-model="CourseName">
+                                        <option ng-repeat="s in Course" value="{{s.course_name}}">{{s.course_name}}</option>
+                                    </select>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-table"></i></span></span>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group" id="class" style="display:none" ng-init="GetData()">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <select class="form-control m-input" ng-model="ClassName">
+                                        <option ng-repeat="data in Class" value="{{data.class_name}}">{{data.class_name}}</option>
+
+                                    </select>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-tags"></i></span></span>
+                                </div>
                             </div>
 
-                        </div>
-                        <div class="form-group m-form__group">
-                            <div class="m-input-icon m-input-icon--left">
-                                <input type="text" class="form-control m-input" placeholder="Contact Number" ng-model="contact" title="Contact Number" data-skin="dark" data-toggle="m-tooltip"  required>
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-phone-square"></i></span></span>
-                               
-                            </div>
 
-                        </div>
-                        <div class="form-group m-form__group" id="relation" style="display:none">
-                            <div class="m-input-icon m-input-icon--left">
-                                <input type="text" class="form-control m-input" placeholder="Relationship" ng-model="relationship" title="Relationship" data-skin="dark" data-toggle="m-tooltip" required>
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-rotate-right" ></i></span></span>
-                            </div>
+                            <div class="form-group m-form__group" id="designation" style="display:none">
 
-                        </div>
-                        <div class="form-group m-form__group" id="course" style="display:none">
-                            <div class="m-input-icon m-input-icon--left">
-                                <select class="form-control m-input" ng-model="CourseName">
-                                    <option ng-repeat="s in Course" value="{{s.course_name}}">{{s.course_name}}</option>
-                                </select>
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-table"></i></span></span>
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input type="text" class="form-control m-input" placeholder="Designation" ng-model="designation" data-skin="dark" data-toggle="m-tooltip" required>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-home"></i></span></span>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="form-group m-form__group" id="class" style="display:none" ng-init="GetData()">
-                            <div class="m-input-icon m-input-icon--left">
-                                <select class="form-control m-input" ng-model="ClassName">
-                                    <option ng-repeat="data in Class" value="{{data.class_name}}">{{data.class_name}}</option>
-
-                                </select>
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-tags"></i></span></span>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
+                                <button class="btn btn-primary" ng-click="Add()">Submit</button>
+                                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
                             </div>
-                        </div>
-                    
-                  
-                        <div class="form-group m-form__group" id="designation" style="display:none">
-
-                            <div class="m-input-icon m-input-icon--left">
-                                <input type="text" class="form-control m-input" placeholder="Designation" ng-model="designation" data-skin="dark" data-toggle="m-tooltip" required>
-                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-home"></i></span></span>
-                            </div>
-
                         </div>
                     </div>
-                    <div class="m-portlet__foot m-portlet__foot--fit" >
-                        <div class="m-form__actions">
-                            <button  class="btn btn-primary" ng-click="Add()">Submit</button>
-                            <button  class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
-                        </div>
-                    </div>
-                        </div>
                 </form>
 
                 <!--end::Form-->
@@ -191,30 +195,30 @@
             <!--end::Portlet-->
         </div>
 
-        </div>
-        <!-- end:: Body -->
-        <!-- begin::Footer -->
-        <!-- begin::Scroll Top -->
-        <div id="m_scroll_top" class="m-scroll-top">
-            <i class="la la-arrow-up"></i>
-        </div>
+    </div>
+    <!-- end:: Body -->
+    <!-- begin::Footer -->
+    <!-- begin::Scroll Top -->
+    <div id="m_scroll_top" class="m-scroll-top">
+        <i class="la la-arrow-up"></i>
+    </div>
 
-        <!-- end::Scroll Top -->
-        <!-- begin::Quick Nav -->
-        <ul class="m-nav-sticky" style="margin-top: 30px;">
-            <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Purchase" data-placement="left">
-                <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank"><i class="la la-cart-arrow-down"></i></a>
-            </li>
-            <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Documentation" data-placement="left">
-                <a href="https://keenthemes.com/metronic/documentation.html" target="_blank"><i class="la la-code-fork"></i></a>
-            </li>
-            <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Support" data-placement="left">
-                <a href="https://keenthemes.com/forums/forum/support/metronic5/" target="_blank"><i class="la la-life-ring"></i></a>
-            </li>
-        </ul>
+    <!-- end::Scroll Top -->
+    <!-- begin::Quick Nav -->
+    <ul class="m-nav-sticky" style="margin-top: 30px;">
+        <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Purchase" data-placement="left">
+            <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank"><i class="la la-cart-arrow-down"></i></a>
+        </li>
+        <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Documentation" data-placement="left">
+            <a href="https://keenthemes.com/metronic/documentation.html" target="_blank"><i class="la la-code-fork"></i></a>
+        </li>
+        <li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Support" data-placement="left">
+            <a href="https://keenthemes.com/forums/forum/support/metronic5/" target="_blank"><i class="la la-life-ring"></i></a>
+        </li>
+    </ul>
 
-        <!-- begin::Quick Nav -->
-        <!--begin::Global Theme Bundle -->
+    <!-- begin::Quick Nav -->
+    <!--begin::Global Theme Bundle -->
     <script type="text/javascript" src="~/Content/assets/plugins/jquery/dist/jquery.min.js"></script>
 
     <script src="@Url.Content("~/Content/angularjs/scripts/angular.min.js")" type="text/javascript"></script>
@@ -226,87 +230,87 @@
     <script>
         var baseURL = "@ConfigurationManager.AppSettings["BaseUrlPath"].ToString()";
     </script>
-        <script src="~/Content/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-        <script src="~/Content//assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
-        <script type="text/javascript">
+    <script src="~/Content/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+    <script src="~/Content//assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('#select').on('change', function () {
+            if (this.value == 'Student') {
+                $("#course").show();
+                $("#class").show();
+            } else {
+                $("#course").hide();
+                $("#class").hide();
+                $("#relation").hide();
+                $("#designation").hide();
+            }
+            if (this.value == 'Parent') {
+                $("#relation").show();
+            }
+            else {
+                $("#relation").hide();
+            }
+            if (this.value == 'Faculty') {
+                $("#designation").show();
+                $("#course").show();
+            }
+            else {
+                $("#designation").hide();
+
+            }
+            if (this.value == 'Staff') {
+                $("#designation").show();
+                $("#course").show();
+
+            }
+            else {
+
+
+            }
+
+
+        });
+    </script>
+    @*<script type="text/javascript">
             $('#select').on('change', function () {
-                if (this.value == 'Student') {
-                    $("#course").show();
-                    $("#class").show();
-                } else {
-                    $("#course").hide();
-                    $("#class").hide();
-                    $("#relation").hide();
-                    $("#designation").hide();
-                }
                 if (this.value == 'Parent') {
                     $("#relation").show();
-                }
-                else {
+
+                } else {
                     $("#relation").hide();
-                }
-                if (this.value == 'Faculty') {
-                    $("#designation").show();
-                    $("#course").show();
-                }
-                else {
-                    $("#designation").hide();
 
                 }
-                if (this.value == 'Staff') {
-                    $("#designation").show();
-                    $("#course").show();
-
-                }
-                else {
-
-
-                }
-
 
             });
         </script>
-        @*<script type="text/javascript">
-                $('#select').on('change', function () {
-                    if (this.value == 'Parent') {
-                        $("#relation").show();
+        <script type="text/javascript">
+              $('#select').on('change', function () {
+                  if (this.value == 'Faculty') {
+                      $("#designation").show();
+                      $("#course").show();
 
-                    } else {
-                        $("#relation").hide();
+                  } else {
+                      $("#designation").hide();
+                      $("#course").hide();
 
-                    }
+                  }
 
-                });
-            </script>
-            <script type="text/javascript">
-                  $('#select').on('change', function () {
-                      if (this.value == 'Faculty') {
-                          $("#designation").show();
-                          $("#course").show();
+              });
+        </script>
+        <script type="text/javascript">
+              $('#select').on('change', function () {
+                  if (this.value == 'Staff') {
+                      $("#designation").show();
+                      $("#course").show();
 
-                      } else {
-                          $("#designation").hide();
-                          $("#course").hide();
+                  } else {
+                      $("#designation").hide();
+                      $("#course").hide();
 
-                      }
+                  }
 
-                  });
-            </script>
-            <script type="text/javascript">
-                  $('#select').on('change', function () {
-                      if (this.value == 'Staff') {
-                          $("#designation").show();
-                          $("#course").show();
-
-                      } else {
-                          $("#designation").hide();
-                          $("#course").hide();
-
-                      }
-
-                  });
-            </script>*@
-        <!--end::Global Theme Bundle -->
+              });
+        </script>*@
+    <!--end::Global Theme Bundle -->
 </body>
 
 <!-- end::Body -->
