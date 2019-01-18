@@ -11,9 +11,19 @@ namespace Griveance.BusinessLayer
     public class GetEmailSettings
     {
         GRContext obj = new GRContext();
-        public object GetEmailSettList()
+        public object GetEmailSettList(string status)
         {
-            var EmailList = obj.tbl_emailsettings.Where(r=>r.Display==1).ToList();
+            List<Griveance.Models.Vw_GetEmail> EmailList = null;
+            if(status=="Dective")
+            {
+                EmailList = obj.Vw_GetEmail.Where(r => r.Display != 1).ToList();
+            }
+            else
+            {
+                EmailList = obj.Vw_GetEmail.Where(r => r.Display == 1).ToList();
+               
+            }
+           
             return new Result() { IsSucess = true, ResultData = EmailList };
            
 
@@ -24,5 +34,7 @@ namespace Griveance.BusinessLayer
             var EmailData = obj.tbl_emailsettings.Where(r => r.emailsettingid == objemail.emailsettingid && r.Display==1).SingleOrDefault();
             return EmailData;
         }
+
+       
     }
 }

@@ -10,11 +10,15 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
     $scope.SMSSENDAPI = null;
     $scope.CHECKBALANCEAPI = null;
     $scope.SETTINGID = null;
+    $scope.UserCredentialModel = {};
+    //Initialize function
     $scope.Initialize = function () {
+        debugger;
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-
-        Service.Get("api/Common/SmsSettingList").then(function (result) {
+        $scope.UserCredentialModel.DisplayStatus = $scope.ButtonActive;
+       
+        Service.Post("api/Common/SmsSettingList", $scope.UserCredentialModel).then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.tbl_smssettings = result.data;
@@ -46,12 +50,12 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
             $scope.SMSSENDAPI = result.data.SMSSENDAPI;
             $scope.CHECKBALANCEAPI = result.data.CHECKBALANCEAPI;
             $scope.SETTINGID = result.data.SETTINGID;
-           
+
             $scope.Initialize();
         })
     }
 
-    
+
 
 
     $scope.Show = function () {
@@ -121,10 +125,55 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
         $scope.GATEWAYPASSWORD = null;
         $scope.SMSSENDAPI = null;
         $scope.CHECKBALANCEAPI = null;
-      
+
         $scope.IsVisible = false;
         $scope.msg = "";
         $scope.Initialize();
     }
+
+
+    $scope.Delete = function (settingid) {
+        debugger;
+        var data = {
+
+            settingid: settingid,
+
+        };
+        var deactivestatus = 1;
+        if (event.target.checked == false) {
+            var confirm = window.confirm("Do you want to deactive this Entry ?");
+            var deactivestatus = 0;
+        }
+        else {
+            var confirm = window.confirm("Do you want to active this Entry ?");
+
+        }
+        if (confirm == true) {
+            Service.Post("api/Common/DeleteSmsInformation", JSON.stringify(data)).then(function (response) {
+                debugger;
+
+
+                if (deactivestatus == 0) {
+                    window.alert('Entry Deactive Successfully!')
+
+                }
+                else {
+                    window.alert('Entry Active Successfully!')
+
+                }
+
+
+                debugger;
+                $scope.Cancel();
+                $scope.IsVisible = false;
+                $scope.Initialize();
+
+            });
+        }
+
+        $scope.Initialize();
+
+    }
+
 
 }

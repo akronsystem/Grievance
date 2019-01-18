@@ -37,7 +37,22 @@
                                     Staff
                                 </h3>
                             </div>
+                            <div style="margin-left:850px;">
+                                <h6>Status</h6>
+                            </div>
+
+                               <div class="form-group m-form__group">
+                               
+                               
+                                    <select ng-model="btnactive" ng-init="btnactive=Active" ng-change="Initialize()" class="form-control"  >
+                                     
+                                        <option  class="form-control" value="Active" ng-selected="true" >Active</option>
+                                        <option class="form-control"  value="Deactive">Deactive</option>
+                                    </select>
+                               
+                            </div>
                         </div>
+
                         @*<div class="m-portlet__head-tools">
                             <ul class="m-portlet__nav">
                                 <li class="m-portlet__nav-item">
@@ -211,7 +226,7 @@
                                 <td>
                                     <span class="m-switch m-switch--icon m-switch--danger">
                                         <label>
-                                            <input type="checkbox" checked="checked" name="">
+                                            <input type="checkbox" ng-show="chkStatus" ng-checked="{{data.staffstatus}}" ng-click="Delete(data.UserId,data.type)">
                                             <span></span>
                                         </label>
                                     </span>

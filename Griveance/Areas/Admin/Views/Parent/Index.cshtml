@@ -23,21 +23,33 @@
                                     Parents
                                 </h3>
                             </div>
+                           <div  style="margin-left:850px;"><h6>Status</h6>
+                        </div>
+                            <div class="form-group m-form__group">
+                               
+                               
+                                    <select ng-model="btnactive"  ng-init="btnactive=Active" ng-change="Initialize()" class="form-control"  > 
+                                        <option    ng-selected="true" value="Active">Active</option>
+                                        <option  value="Deactive">Deactive</option>
+                                    </select> 
+                            </div>
+
+
+
                         </div>
                         @*<div class="m-portlet__head-tools">
-                            <ul class="m-portlet__nav">
-                                <li class="m-portlet__nav-item">
-                                    <input type="button" style="float:right" class="btn btn-accent" value="NEW" ng-click="ShowHide()" />
+                                <ul class="m-portlet__nav">
+                                    <li class="m-portlet__nav-item">
+                                        <input type="button" style="float:right" class="btn btn-accent" value="NEW" ng-click="ShowHide()" />
 
-                                </li>
+                                    </li>
 
 
-                            </ul>
-                        </div>*@
+                                </ul>
+                            </div>*@
                     </div>
 
                 </div>
-
 
 
                 <!--begin::Form-->
@@ -54,7 +66,7 @@
                                         <span class="required"> * </span>
                                     </label>
 
-                                    <input type="text" value={{NameOfTheParent}} ng-model="NameOfTheParent" name="FromId" class="form-control"   required />
+                                    <input type="text" value={{NameOfTheParent}} ng-model="NameOfTheParent" name="FromId" class="form-control" required />
                                     <input type="hidden" value="{{UserId}}" />
                                 </div>
                                 <div class="form-group m-form__group">
@@ -62,19 +74,19 @@
                                         Student Code
                                     </label>
 
-                                    <input type="text" value={{StudentCode}} ng-model="StudentCode" name="Host" class="form-control" disabled   required />
+                                    <input type="text" value={{StudentCode}} ng-model="StudentCode" name="Host" class="form-control" disabled required />
 
 
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label>
                                         Gender
-                                    </label>
+                                    </label> 
+                                    <input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control" required /> 
                                     <select class="form-control" ng-model="Gender" required>
                                         <option>Male</option>
                                         <option>Female</option>
-                                    </select>
-                                    @*<input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control"   required />*@
+                                    </select> 
 
 
                                 </div>
@@ -84,7 +96,7 @@
                                         Relation With Student
                                     </label>
 
-                                    <input type="text" value={{RelationWithStudent}} name="Port" ng-model="RelationWithStudent" class="form-control"   required />
+                                    <input type="text" value={{RelationWithStudent}} name="Port" ng-model="RelationWithStudent" class="form-control" required />
 
 
                                 </div>
@@ -93,9 +105,8 @@
                                     <label>
                                         Email
                                     </label>
-
-                                    <input type="email" value={{Email}} name="Port" ng-model="Email" class="form-control"   required />
-
+ 
+                                    <input type="email" value={{Email}} name="Port" ng-model="Email" class="form-control"   required /> 
 
                                 </div>
                                 <div class="form-group m-form__group">
@@ -103,7 +114,7 @@
                                         Contact Number
                                     </label>
 
-                                    <input type="text" value={{ContactNumber}} name="Port" ng-model="ContactNumber" class="form-control"  required />
+                                    <input type="text" value={{ContactNumber}} name="Port" ng-model="ContactNumber" class="form-control" required />
 
 
                                 </div>
@@ -123,6 +134,7 @@
                                 <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(NameOfTheParent, StudentCode, RelationWithStudent, ContactNumber,Gender, Email, UserId)">
                                     <i class="fa fa-database"> </i>Update
                                 </button>
+
                                 <button class="btn default" ng-click="Clear()">
                                     <i class="fa fa-times"> </i> Cancel
                                 </button>
@@ -176,10 +188,12 @@
                                     {{data.contact}}
                                 </td>
                                 <td><input type="button" class="btn btn-primary" value="Edit" ng-click="ShowHide(data.UserId)" /></td>
+
+
                                 <td>
                                     <span class="m-switch m-switch--icon m-switch--danger">
                                         <label>
-                                            <input type="checkbox" checked="checked" name="">
+                                            <input type="checkbox" ng-show="chkStatus" ng-checked="{{data.parentstatus}}" ng-click="Delete(data.UserId,data.type)">
                                             <span></span>
                                         </label>
                                     </span>
@@ -193,7 +207,7 @@
             </div>
 
         </form>
-    </div> 
+    </div>
 
     <script type="text/javascript" src="~/Content/assets/plugins/jquery/dist/jquery.min.js"></script>
     <script type='text/javascript' src='~/Content/assets/app/datatables/jquery.dataTables.min.js'></script>

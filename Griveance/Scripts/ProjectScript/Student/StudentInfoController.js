@@ -8,18 +8,21 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
     $scope.btnUpdate = false;
     $scope.IsVisible = false;
+    $scope.btnDelete = false;
     $scope.Students = [];
-
+   
 
 
     $scope.Initialize = function () { 
         debugger;
- 
+
+        
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
  
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
+        $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
         Service.Post("api/Users/GetStudentInfo", $scope.UserCredentialModel).then(function (result) {
 
            
@@ -32,7 +35,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     }
 
     $scope.ShowHide = function (UserId) {
-
+        debugger;
         var data = {
            
             UserId: UserId
@@ -41,11 +44,11 @@ function UsersController($scope, Service, DTOptionsBuilder) {
        
         Service.Post("api/Users/GetSingleStudentInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result)
         {
-       
-               
+          
             debugger;
-            $scope.IsVisible = true;
-            $scope.btnUpdate = true;
+         
+            
+
            
                 $scope.ViewGetStudentInfoes = result.data;
 
@@ -111,7 +114,42 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     }
   
 
-   
+    $scope.Delete = function (UserId, Type) {
+        debugger;
+        var data = {
+
+            UserId: UserId,
+            type: Type
+        };
+
+        if (event.target.checked == false) {
+            var confirm = window.confirm("Do you want to deactive the student ?");
+            
+        }
+        else {
+            var confirm =   window.confirm("Do you want to active the student ?");
+        }
+        if (confirm == true) {
+            Service.Post("api/Register/DeleteStudents", JSON.stringify(data)).then(function (response) {
+
+
+                if (response.data)
+
+                    window.alert('Student Deactive Successfully!')
+
+               
+
+            });
+        }
+        $scope.Clear();
+        $scope.IsVisible = false;
+        $scope.Initialize();
+        
+        
+    }
+        
+        
+    
 }
 UsersController.$inject = ['$scope', 'Service'];
 UsersController.$inject = ['$scope', 'Service','DTOptionsBuilder'];

@@ -48,12 +48,48 @@ namespace Griveance.Controllers
 
         }
         [HttpPost]
-        public object UpdateParentInfo([FromBody] ParamRegistration PR)
+
+        public object DeleteStudents([FromBody] ParamRegistration PR)
         {
             try
             {
                 SaveRegistrationBL OBJSAVE = new SaveRegistrationBL();
-                var result = OBJSAVE.UpdateParent(PR);
+                var result = OBJSAVE.DeleteSingleStudent(PR);
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+        }
+
+
+
+        [HttpPost]
+        public object UpdateParentInfo([FromBody] ParamRegistration PR)
+        {
+            try
+            {
+                SaveRegistrationBL ObjUpdate = new SaveRegistrationBL();
+                var result = ObjUpdate.UpdateParent(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
+
+        [HttpPost]
+        public object DeleteParentInfo([FromBody] ParamRegistration PR)
+        {
+            try
+            {
+                SaveRegistrationBL Objdelete = new SaveRegistrationBL();
+                var result = Objdelete.DeleteParent(PR);
                 return result;
             }
             catch (Exception e)
@@ -78,6 +114,22 @@ namespace Griveance.Controllers
             }
 
         }
+        [HttpPost]
+        public object DeleteFacultyInformation([FromBody] ParamRegistration PR)
+        {
+            try
+            {
+                SaveRegistrationBL objdelete = new SaveRegistrationBL();
+                var result = objdelete.DeleteFaculty(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
         public object UpdateStaffInfo([FromBody] ParamRegistration PR)
         {
             try
@@ -92,6 +144,22 @@ namespace Griveance.Controllers
 
             }
 
+        }
+        [HttpPost]
+        public object DeleteStaffInformation([FromBody] ParamRegistration PR)
+        {
+
+            try
+            {
+                SaveRegistrationBL ObjSvreg = new SaveRegistrationBL();
+                var result = ObjSvreg.DeleteStaff(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
         }
 
 
