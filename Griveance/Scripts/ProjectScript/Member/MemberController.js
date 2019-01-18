@@ -25,12 +25,21 @@ function MemberController($scope, Service) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name
 
-                console.log(result.data);
+                if (result.data.IsSucess) {
+                    debugger;
+                    CustomizeApp.AddMessage();
+                    window.location = "Griveance/GrievanceAllocation"
+                }
+                else {
+                    ShowMessage(0, result.data.Message);
+                    //$scope.clear();
+                    //window.location = "./PostGrievance"
+                }
 
             })
         }
 
-
+ 
     }
 
     $scope.GetData = function () {
@@ -109,6 +118,16 @@ function MemberController($scope, Service) {
                 })
             }
 
+    }
+    $scope.Clear = function () {
+                                        $scope.EmailId = null;
+                                        $scope.Name = null;
+                                        $scope.Code = null;
+                                        $scope.Type = null;
+                                        $scope.GriType = null;
+                                        $scope.Gender = null;
+                                        $scope.MobileNo = null;
+                                        $scope.Password = null;
     }
 
   

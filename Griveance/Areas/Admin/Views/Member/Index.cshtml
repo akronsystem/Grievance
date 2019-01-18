@@ -10,7 +10,7 @@
 <body ng-app="GR">
     @using System.Configuration;
     <div ng-controller="MemberController">
-        <form id="frmCRUD" name="form" class="m-form m-form--fit m-form--label-align-right student-admission-wrapper">
+        <form name="form" id="frmCRUD" class="m-form m-form--fit m-form--label-align-right">
             <div class="form-body">
                 <div class="m-portlet m-portlet--tab">
 
@@ -30,14 +30,14 @@
 
                     <div class="form-group m-form__group">
                         <label for="exampleInputName">Name</label>
-                        <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Name" ng-model="Name"   required />
-                       
+                        <input type="text" class="form-control m-input" id="exampleInputName" placeholder="Name" ng-model="Name" required />
+
                     </div>
 
                     <div class="form-group m-form__group">
                         <label for="exampleInputEmpCode">Employee Code</label>
-                        <input type="text" class="form-control m-input" id="exampleInputEmpCode" placeholder="Employee Code" ng-model="Code"   required />
-                       
+                        <input type="text" class="form-control m-input" id="exampleInputEmpCode" placeholder="Employee Code" ng-model="Code" required />
+
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleGender">Gender</label>
@@ -48,18 +48,18 @@
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputEmail">Email address</label>
-                        <input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model="EmailId"  required />
+                        <input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model="EmailId" required />
                         <span class="m-form__help">We'll never share your email with anyone else.</span>
-                      
+
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputNumber">Mobile Number</label>
-                        <input type="text" class="form-control m-input" id="exampleInputNumber" placeholder="Mobile Number" ng-model="MobileNo"   required />
-                      
+                        <input type="text" class="form-control m-input" id="exampleInputNumber" placeholder="Mobile Number" ng-model="MobileNo" required />
+
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputDesignation">Designation</label>
-                        <input type="text" class="form-control m-input" id="exampleInputDesignation" placeholder="Designation" ng-model="Designation"   required />
+                        <input type="text" class="form-control m-input" id="exampleInputDesignation" placeholder="Designation" ng-model="Designation" required />
                     </div>
                     <div class="form-group m-form__group" ng-init="GetInfo()">
                         <label for="exampleGrievance">Grievance Type</label>
@@ -70,18 +70,19 @@
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control m-input" id="exampleInputPassword1" placeholder="Password" ng-model="Password"   required />
+                        <input type="password" class="form-control m-input" id="exampleInputPassword1" placeholder="Password" ng-model="Password" required />
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputCPassword1">Confirm Password</label>
-                        <input type="password" class="form-control m-input" id="exampleInputCPassword1" placeholder="Confirm Password" ng-model="Password"   required />
+                        <input type="password" class="form-control m-input" id="exampleInputCPassword1" placeholder="Confirm Password" ng-model="Password" required />
                     </div>
-                    <div class="m-portlet__foot m-portlet__foot--fit">
-                        <div class="m-form__actions">                           
-                            <button type="reset" class="btn btn-primary" ng-click="Add()">Submit</button>
-                            <button type="reset" class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+                    
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions">
+                                <button class="btn btn-primary" ng-click="Add()">Submit</button>
+                                <button class="btn btn-secondary" ng-click="Cancel()">Reset</button>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </form>

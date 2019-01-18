@@ -41,10 +41,27 @@ function ReportController($scope, Service) {
     }
     $scope.Save = function (data) {
         debugger;
+        if (!$scope.GriveanceType)
+            $scope.GriveanceType = -1;
+        if (!$scope.name)
+            $scope.name = -1;
         data= {
-            id: $scope.id
+            id: $scope.id,
+            fromdate: $scope.fromdate,
+            todate: $scope.todate,
+            GriveanceType: $scope.GriveanceType,
+            name:$scope.name
         }
-        window.open("http://localhost:55044/Admin/Report/ReportDwonload?id=" + $scope.id);
+        var year = $scope.fromdate.getFullYear();
+        var month = $scope.fromdate.getMonth() + 1 //getMonth is zero based;
+        var day = $scope.fromdate.getDate();
+        var formatted = day + "-" + month + "-" + year;
+        
+        var year1 = $scope.todate.getFullYear();
+        var month1 = $scope.todate.getMonth() + 1 //getMonth is zero based;
+        var day1 = $scope.todate.getDate();
+        var todated = day1 + "-" + month1 + "-" + year1;
+        window.open("http://localhost:55044/Admin/Report/ReportDwonload?id=" + $scope.id + "&fromdate=" + formatted + "&todate=" + todated + "&GriveanceType=" + $scope.GriveanceType + "&CellMember=" + $scope.name);
 
         //Service.Post("../Report/ReportDwonload",data) 
                 

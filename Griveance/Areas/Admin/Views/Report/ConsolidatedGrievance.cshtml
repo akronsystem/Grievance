@@ -1,9 +1,9 @@
 ﻿
 @{
-    Layout = "~/Areas/Admin/Views/Shared/AdminDashboardLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/ReportLayout.cshtml";
 
 }
-
+@model Griveance.ParamModel.ReportCountParam
 <!DOCTYPE html>
 
 <html>
@@ -13,41 +13,57 @@
 </head>
 <body>
    
-                <div id="Grid">
-                    <h2 align="center">Grievance Redressal Portal</h2>
-                    <hr />
-                    <h3 align="center">Consolidated Grievance</h3>
-                    <hr />
-                    <div class="m-portlet m-portlet--tab">
+    <div id="Grid">
+       
+        <h2 align="center">Grievance Redressal Portal</h2>
+        <hr />
+        <h4 align="center">Consolidated Grievance Report</h4>
+        <hr />
+        <div class="col-xl-auto">
 
-                        <div class="m-portlet m-portlet--mobile">
-                            <div class="m-portlet__head">
-                                <div class="m-portlet__head-caption">
-                                    <div class="m-portlet__head-title">
-                                        
-                                    </div>
-                                </div>
+            <!--begin::Portlet-->
+            <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
 
+                <div class="m-portlet m-portlet--mobile">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <b>From Date-</b>&nbsp; @ViewData["Fromdate"] &nbsp;&nbsp;
+                                <b>To Date-</b>&nbsp; @ViewData["Todate"]
                             </div>
-
                         </div>
-                        <table align="center" class="table table-striped- table-bordered table-hover table-checkable" border="1">
-                            <tr>
-                                <th>SR.No</th>
-                                <th>Type</th>
-                                <th>Grievances</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
 
-                        </table>
-                        
                     </div>
-                    </div>
-               
+
+                </div>
+                <table align="center" class="table table-striped- table-bordered table-hover table-checkable" border="1">
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Type</th>
+                    <th>Grievance</th>
+                </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Total Grievance</td>
+                        <td>@Model.Total</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Pending Grievance</td>
+                        <td>@Model.Pending</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Closed</td>
+                        <td>@Model.Closed</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            </div>
+        </div>
+
 </body>
 </html>
 <script type="text/javascript">

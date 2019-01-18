@@ -107,7 +107,7 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
     }
 
 
-    $scope.AddUpdate = function (name, code, designation, griType, email, contact, UserId, id) {
+    $scope.AddUpdate = function (name, code, designation, griType, email, contact, UserId, Expr1) {
         debugger;
         var data = {
 
@@ -118,14 +118,29 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
             email: email,
             contact: contact,
             UserId: UserId,
-            id:id
+            Expr1: Expr1
         };
+        if (griType == undefined)
+        {
+            ShowMessage(0, response.data.Message);
+        }
         Service.Post("api/Grievance/UpdateGrievanceAllocation", JSON.stringify(data)).then(function (response) {
 
-            if (response.data)
 
-                window.alert('Grievance Allocation Updated Successfully!')
-
+            if (response.data.IsSucess) {
+                debugger;
+                CustomizeApp.AddMessage();
+                $scope.Clear();
+                $scope.IsVisible = false;
+                $scope.Initialize();
+                //console.log(result.data);
+                // window.location = "./ParentGrievance"
+            }
+            else {
+                ShowMessage(0, response.data.Message);
+                //$scope.clear();
+                //window.location = "./PostGrievance"
+            }
             $scope.Clear();
             $scope.IsVisible = false;
             $scope.Initialize();

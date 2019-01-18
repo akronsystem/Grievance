@@ -200,7 +200,7 @@ namespace Griveance.Controllers
             {
                 return new Error() { IsError = true, Message = e.Message };
             }
-        }
+        } 
         [HttpPost]
          public object DeleteSmsInformation([FromBody] ParamSmsSetting objsms)
         {
@@ -217,6 +217,19 @@ namespace Griveance.Controllers
                 return new Error() { IsError = true, Message = e.Message };
             }
 
+        }
+        public object UpdateUsers([FromBody]ParamRegistration objid)
+        {
+            try
+            {
+                UsersBusiness obj = new UsersBusiness();
+                var userlist = obj.UpdateUser(objid);
+                return userlist;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            } 
         }
 
     }

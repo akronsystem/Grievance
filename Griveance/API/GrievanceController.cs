@@ -185,5 +185,20 @@ namespace Griveance.Controllers
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+
+        [HttpGet]
+        public object GetUserList()
+        {
+            try
+            {
+                ShowGraphBL obj = new ShowGraphBL();
+                var userlist = obj.GetUSersList();
+                return userlist;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
     }
 }

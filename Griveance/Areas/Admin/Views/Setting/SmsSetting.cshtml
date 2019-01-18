@@ -137,16 +137,8 @@
 
                                 <td>
                                     <input type="button" class="btn btn-primary" value="Edit" ng-click="ShowHide(data.SETTINGID)" />
-                                   
-
-                                </td>
-                                <td>
-                                    <span class="m-switch m-switch--icon m-switch--danger">
-                                        <label>
-                                            <input type="checkbox" ng-show="chkStatus" ng-checked="{{data.status}}" ng-click="Delete(data.SETTINGID)">
-                                            <span></span>
-                                        </label>
-                                    </span>
+ 
+                                    <input type="button" class="btn btn-danger" value="Delete" ng-click="Delete(data.SETTINGID)" /> 
                                 </td>
 
 
@@ -156,8 +148,8 @@
                     </table>
                 </div>
             </div>
-        </form>
-    </div>
+        </form> 
+</div> 
 
     <script type="text/javascript" src="~/Content/assets/plugins/jquery/dist/jquery.min.js"></script>
     <script type='text/javascript' src='~/Content/assets/app/datatables/jquery.dataTables.min.js'></script>

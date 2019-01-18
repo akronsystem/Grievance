@@ -276,7 +276,7 @@ body{
 .student-admission-wrapper .select2{
 	width:100%!important;
 }
-.student-admission-wrapper ..select2-container{
+.student-admission-wrapper .select2-container{
 	display:block!important;
 }
 

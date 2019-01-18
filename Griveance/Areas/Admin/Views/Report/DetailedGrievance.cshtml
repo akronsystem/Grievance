@@ -1,7 +1,8 @@
 ﻿
 @{
-    Layout = "~/Areas/Admin/Views/Shared/AdminDashboardLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/ReportLayout.cshtml";
 }
+@model IEnumerable<Griveance.Models.View_DetailedReport>
 
 <!DOCTYPE html>
 
@@ -11,37 +12,58 @@
     <title>DetailedGrievance</title>
 </head>
 <body>
-    <div>
+   
+        <div id="Grid">
+      
         <h2 align="center">Grievance Redressal Portal</h2>
         <hr />
-        <h3 align="center">Detailed Grievance</h3>
+        <h4 align="center">Detailed Grievance Report</h4>
         <hr />
-        <div class="m-portlet m-portlet--tab">
+        <div class="col-xl-auto">
 
-            <div class="m-portlet m-portlet--mobile">
-                <div class="m-portlet__head">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
+            <!--begin::Portlet-->
+            <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
 
+                <div class="m-portlet m-portlet--mobile">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <b>From Date-</b>&nbsp; @ViewData["Fromdate"] &nbsp;&nbsp;
+                                <b>To Date-</b>&nbsp; @ViewData["Todate"]
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
-
+                <table align="center" class="table table-striped- table-bordered table-hover table-checkable" border="1">
+                    <tr  align="center">
+                        <th>Sr.No</th>
+                        <th>CompId</th>
+                        <th>Grievance Type</th>
+                        <th>Date</th>
+                        <th>Subject</th>
+                        <th>Post</th>
+                        <th>Member Name</th>
+                        <th>User Name</th>
+                    </tr>
+                    @foreach (var s in Model)
+                    {
+                        <tr align="center">
+                            <td></td>
+                            <td>@Html.DisplayFor(m => s.CompID)</td>
+                            <td>@Html.DisplayFor(m => s.GrievanceType)</td>
+                            <td>@Html.DisplayFor(m => s.Date)</td>
+                            <td>@Html.DisplayFor(m => s.Subject)</td>
+                            <td>@Html.DisplayFor(m => s.Post)</td>
+                            <td>@Html.DisplayFor(m => s.membername)</td>
+                            <td>@Html.DisplayFor(m => s.name)</td>
+                        </tr>
+                    }
+                    
+                </table>
             </div>
-            <table align="center" class="table table-striped- table-bordered table-hover table-checkable" border="1">
-                <tr>
-                    <td>Sr.No</td>
-                    <td>CompId</td>
-                    <td>Grievance Type</td>
-                    <td>Date</td>
-                    <td>Subject</td>
-                    <td>Post</td>
-                    <td>Member Name</td>
-                    <td>User Name</td>
-                </tr>
-            </table>
-        </div>
+            </div>
         </div>
 </body>
 </html>

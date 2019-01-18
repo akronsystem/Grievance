@@ -157,14 +157,21 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         };
         if ($scope.form.$valid) {
             Service.Post("api/Register/UpdateStaffInfo", JSON.stringify(data)).then(function (response) {
+                if (response.data.IsSucess) {
+                    debugger;
+                    CustomizeApp.AddMessage();
+                    $scope.Clear();
+                    $scope.IsVisible = false;
+                    $scope.Initialize();
+                    //console.log(result.data);
+                    // window.location = "./ParentGrievance"
+                }
+                else {
+                    ShowMessage(0, response.data.Message);
+                    //$scope.clear();
+                    //window.location = "./PostGrievance"
+                }
 
-                if (response.data)
-
-                    window.alert('Student Data Updated Successfully!')
-
-                $scope.Clear();
-                $scope.IsVisible = false;
-                $scope.Initialize();
             });
         }
     }

@@ -98,8 +98,11 @@
                                     <label>
                                         Gender
                                     </label>
-
-                                    <input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control"  required />
+                                    <select class="form-control" ng-model="Gender" required>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                    @*<input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control"  required />*@
 
 
                                 </div>
@@ -128,7 +131,7 @@
                                         Email
                                     </label>
 
-                                    <input type="text" value={{Email}} name="Port" ng-model="Email" class="form-control"  required />
+                                    <input type="email" value={{Email}} name="Port" ng-model="Email" class="form-control"  required />
 
 
                                 </div>
