@@ -11,3 +11,5 @@ bin
 obj
 /Griveance.Tests
 /Griveance/Properties/PublishProfiles
+Griveance/Web.config
+Griveance/Web.config

@@ -47,10 +47,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="m-portlet">
             <div class="m-portlet__body  m-portlet__body--no-padding">
                 <div class="row m-row--no-padding m-row--col-separator-xl">
-                    <div class="col-xl-2">
+                    <div class="col-xl-4">
 
                         <!--begin:: Widgets/Stats2-1 -->
-                        <div class="m-widget1">
+                        <div class="m-widget1" ng-i>
                             <div class="m-widget1__item">
                                 <div class="row m-row--no-padding align-items-center">
                                     <div class="col">
@@ -58,7 +58,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="m-widget1__desc">Registerd Students</span>
                                     </div>
                                     <div class="col m--align-right">
-                                        <span class="m-widget1__number m--font-brand">3500</span>
+                                        <span class="m-widget1__number m--font-brand">{{studcount}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="m-widget1__desc">Registerd Parents</span>
                                     </div>
                                     <div class="col m--align-right">
-                                        <span class="m-widget1__number m--font-danger">3400</span>
+                                        <span class="m-widget1__number m--font-danger">{{parentcount}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="m-widget1__desc">Registerd Faculty</span>
                                     </div>
                                     <div class="col m--align-right">
-                                        <span class="m-widget1__number m--font-success">500</span>
+                                        <span class="m-widget1__number m--font-warning">{{facultycount}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="m-widget1__desc">Registerd Staff</span>
                                     </div>
                                     <div class="col m--align-right">
-                                        <span class="m-widget1__number m--font-success">300</span>
+                                        <span class="m-widget1__number m--font-success">{{staffcount}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <!--end:: Widgets/Stats2-1 -->
                     </div> 
-                    <div class="col-xl-6">
+                    <div class="col-xl-4" style="padding:10px;">
                         <canvas id="Doughnutcanvas"></canvas>  
                     </div>
                 </div>
@@ -215,7 +215,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="m-portlet__body">
 
                                     <!--begin::Section-->
-                                    <div class="m-section" ng-init="GetInfo();ShowGraph()">
+                                    <div class="m-section" ng-init="GetInfo();ShowGraph();GetUserCount();">
                                         <div class="m-section__content">
                                             <table datatable="ng" dt-options="dtOptions" class="table table-striped m-table">
                                                 <thead>
