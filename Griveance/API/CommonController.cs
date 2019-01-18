@@ -59,13 +59,14 @@ namespace Griveance.Controllers
 
         }
 
-        [HttpGet]
-        public object GetEmailInfo()
+        [HttpPost]
+        public object GetEmailInformation([FromBody]ParamEmailSettings objemail)
         {
             try
             {
                 GetEmailSettings obj = new GetEmailSettings();
-                var EmailList = obj.GetEmailSettList();
+                var status = objemail.DisplayStatus;
+                var EmailList = obj.GetEmailSettList(status);
                 return EmailList;
             }
             catch (Exception ex)
@@ -103,6 +104,20 @@ namespace Griveance.Controllers
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+        [HttpPost]
+        public object DeleteEmailInformation([FromBody]ParamEmailSettings objid)
+        {
+            try
+            {
+                SaveEmailSetting obj = new SaveEmailSetting();
+                var EmailList = obj.DeleteEmailData(objid);
+                return EmailList;
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
 
 
         [HttpPost]
@@ -121,13 +136,15 @@ namespace Griveance.Controllers
         }
 
 
-        [HttpGet]
-        public object SmsSettingList()
+        [HttpPost]
+        public object SmsSettingList([FromBody]ParamSmsSetting obj)
         {
             try
             {
+
                 GetSmsSettingData objSMS = new GetSmsSettingData();
-                var SmsData = objSMS.GetSmsSettingsDataBL();
+                var status = obj.DisplayStatus;
+                var SmsData = objSMS.GetSmsSettingsDataBL(status);
                 return SmsData;
             }
             catch (Exception e)
@@ -183,6 +200,23 @@ namespace Griveance.Controllers
             {
                 return new Error() { IsError = true, Message = e.Message };
             }
+        } 
+        [HttpPost]
+         public object DeleteSmsInformation([FromBody] ParamSmsSetting objsms)
+        {
+            try
+            {
+                GetSmsSettingData objSMS = new GetSmsSettingData();
+                var result = objSMS.DeleteSmsSetting(objsms);
+                return result;
+
+
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+            }
+
         }
         public object UpdateUsers([FromBody]ParamRegistration objid)
         {
@@ -195,7 +229,7 @@ namespace Griveance.Controllers
             catch (Exception ex)
             {
                 return new Error() { IsError = true, Message = ex.Message };
-            }
+            } 
         }
 
     }

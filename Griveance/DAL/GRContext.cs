@@ -12,7 +12,8 @@ namespace Griveance.Models
 		{
 		} 
         public virtual DbSet<ViewUser> ViewUsers { get; set; }
-
+        public virtual DbSet<Vw_GetEmail> Vw_GetEmail { get; set; }
+        public virtual DbSet<Vw_GetSmsData> Vw_GetSmsData { get; set; }
         public virtual DbSet<ViewGetCourseInfo> ViewGetCourseInfoes { get; set; }
  
         public virtual DbSet<ViewGetMemberInfo> ViewGetMemberInfoes { get; set; }
@@ -32,7 +33,7 @@ namespace Griveance.Models
 		public virtual DbSet<tbl_student> tbl_student { get; set; }
 		public virtual DbSet<tbl_test> tbl_test { get; set; } 
 		public virtual DbSet<tbl_user> tbl_user { get; set; }
-
+       
         public virtual DbSet<ViewAllStaffInfo> ViewAllStaffInfoes { get; set; }
  
         public virtual DbSet<ViewGrievanceList> ViewGrievanceLists { get; set; } 

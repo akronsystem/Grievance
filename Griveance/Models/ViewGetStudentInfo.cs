@@ -9,8 +9,10 @@ namespace Griveance.Models
     [Table("ViewGetStudentInfo")]
     public partial class ViewGetStudentInfo
     {
-
-        public int? UserId { get; set; }
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int UserId { get; set; }
 
         [StringLength(100)]
         public string name { get; set; }
@@ -21,25 +23,32 @@ namespace Griveance.Models
         public string gender { get; set; }
 
         [Key]
-        [Column(Order = 0)]
+        [Column(Order = 1)]
         [StringLength(100)]
         public string course_name { get; set; }
 
         [Key]
-        [Column(Order = 1)]
+        [Column(Order = 2)]
         [StringLength(100)]
         public string class_name { get; set; }
 
         [Key]
-        [Column(Order = 2)]
+        [Column(Order = 3)]
         [StringLength(100)]
         public string email { get; set; }
 
         public long? contact { get; set; }
 
         [Key]
-        [Column(Order = 3)]
+        [Column(Order = 4)]
         [StringLength(100)]
         public string type { get; set; }
+
+        public int? Display { get; set; }
+
+        [Key]
+        [Column(Order = 5)]
+        [StringLength(5)]
+        public string Status { get; set; }
     }
 }

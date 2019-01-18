@@ -61,5 +61,33 @@ namespace Griveance.BusinessLayer
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+        public object DeleteEmailData(ParamEmailSettings objemail)
+        {
+            try
+            {
+
+
+                tbl_emailsettings obj = db.tbl_emailsettings.Where(r => r.emailsettingid == objemail.emailsettingid).FirstOrDefault();
+
+
+                if (obj.Display == 1)
+                {
+                    obj.Display = 0;
+                }
+                else
+                {
+                    obj.Display = 1;
+                }
+
+                db.SaveChanges();
+                return new Result() { IsSucess = true, ResultData = "Email Settings Updated Successfully." };
+
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
     }
 } 

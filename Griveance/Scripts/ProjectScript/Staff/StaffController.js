@@ -7,12 +7,14 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     $scope.UserCredentialModel = {};
 
     $scope.Initialize = function () {
+        debugger;
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
         if (!$scope.dtOptions)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
-        Service.Post("api/Users/GetStaffInfo").then(function (result) {
+        $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
+        Service.Post("api/Users/GetStaffInfo", $scope.UserCredentialModel).then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewAllStaffInfoes = result.data;
@@ -79,6 +81,52 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         })
 
     }
+
+    $scope.Delete = function (UserId, Type) {
+        debugger;
+        var data = {
+
+            UserId: UserId,
+            type: Type
+        };
+        var deactivestatus = 1;
+        if (event.target.checked == false) {
+            var confirm = window.confirm("Do you want to deactive this Entry ?");
+            var deactivestatus = 0;
+        }
+        else {
+            var confirm = window.confirm("Do you want to active this Entry ?");
+
+        }
+        if (confirm == true) {
+            Service.Post("api/Register/DeleteStaffInformation", JSON.stringify(data)).then(function (response) {
+                debugger;
+
+
+                if (deactivestatus == 0) {
+                    window.alert('Entry Deactive Successfully!')
+
+                }
+                else {
+                    window.alert('Entry Active Successfully!')
+
+                }
+
+
+                debugger;
+                $scope.Clear();
+                $scope.IsVisible = false;
+                $scope.Initialize();
+
+            });
+        }
+
+        $scope.Initialize();
+
+    }
+
+
+
     $scope.Clear = function () {
         debugger;
         $scope.ViewGetStudentInfoes = null;

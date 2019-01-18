@@ -27,15 +27,15 @@ namespace Griveance.Models
         public string griType { get; set; }
 
         public int? status { get; set; }
-
-        [Key] 
+ 
+        [Key]  
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int UserId { get; set; }
+        public int UserId { get; set; } 
+        public int? Expr1 { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Expr1 { get; set; }  
+        public int? Display { get; set; }
+
+        public int? Expr2 { get; set; } 
     }
 }

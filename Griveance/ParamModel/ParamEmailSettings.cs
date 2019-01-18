@@ -13,5 +13,6 @@ namespace Griveance.ParamModel
         public string password{get;set;}
 
         public Int64 emailsettingid { get; set; }
+        public string DisplayStatus { get; set; }
     }
 }

@@ -9,11 +9,13 @@ namespace Griveance.Models
     [Table("ViewAllStaffInfo")]
     public partial class ViewAllStaffInfo
     {
-
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UserId { get; set; }
 
         [Key]
-        [Column(Order = 0)]
+        [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int code { get; set; }
 
@@ -24,21 +26,18 @@ namespace Griveance.Models
         public string gender { get; set; }
 
         [Key]
-        [Column(Order = 1)]
+        [Column(Order = 2)]
         [StringLength(100)]
         public string type { get; set; }
 
         [Key]
-        [Column(Order = 2)]
+        [Column(Order = 3)]
         [StringLength(100)]
         public string email { get; set; }
 
         public long? contact { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Islive { get; set; }
+        public int? Islive { get; set; }
 
         [Key]
         [Column(Order = 4)]
@@ -49,5 +48,12 @@ namespace Griveance.Models
         [Column(Order = 5)]
         [StringLength(100)]
         public string designation { get; set; }
+
+        public int? Display { get; set; }
+
+        [Key]
+        [Column(Order = 6)]
+        [StringLength(5)]
+        public string staffstatus { get; set; }
     }
 }
