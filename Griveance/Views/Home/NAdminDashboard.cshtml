@@ -159,46 +159,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="m-content">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="m-portlet">
-                             
-                                <button class="accordion"><b>List Of Course</b><span id="sp" class="la la-arrow-down"></span></button>
-                                <div class="panel">
-                                    <div class="m-portlet__body">
-
-                                        <!--begin::Section-->
-                                        <div class="m-section" ng-init="Initialize()">
-                                            <div class="m-section__content">
-                                                <table class="table table-striped m-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Course Id</th>
-                                                            <th>Course Name</th>
-                                                           
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr ng-repeat="s in Course">
-                                                            <td>
-                                                                {{s.course_id}}
-                                                            </td>
-                                                            <td>
-                                                                {{s.course_name}}
-                                                            </td>
-                                                           
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-
-                                        <!--end::Section-->
-                                    </div>
-                                </div>
-                         
-
-                                    <!--end::Form-->
-                                </div>
+        
 
                             <!--begin::Portlet-->
                             <div class="m-portlet">
@@ -234,6 +195,46 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
                                 </form>
+
+                                <!--end::Form-->
+                            </div>
+                            <div class="m-portlet">
+
+                                <button class="accordion"><b>List Of Course</b><span id="sp" class="la la-arrow-down"></span></button>
+                                <div class="panel">
+                                    <div class="m-portlet__body">
+
+                                        <!--begin::Section-->
+                                        <div class="m-section" ng-init="Initialize()">
+                                            <div class="m-section__content">
+                                                <table class="table table-striped m-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Course Id</th>
+                                                            <th>Course Name</th>
+
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="s in Course">
+                                                            <td>
+                                                                {{s.course_id}}
+                                                            </td>
+                                                            <td>
+                                                                {{s.course_name}}
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!--end::Section-->
+                                    </div>
+                                </div>
+
 
                                 <!--end::Form-->
                             </div>

@@ -37,6 +37,7 @@ function ShowMessage(result, errorList, callback) {
     else if (result === -1) title = "Record not found";
 
     var error = "";
+   
     if (errorList !== null) {
         if (typeof (errorList) === "object") {
             if (errorList.length > 1) {
@@ -59,4 +60,6 @@ function ShowMessage(result, errorList, callback) {
         message: error,
         title: title, buttons: { main: { label: "OK", className: "blue", callback: callback } }
     });
+
+    
 }

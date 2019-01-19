@@ -143,6 +143,45 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="col-md-6">
                         <div class="m-portlet">
 
+
+                            <div class="m-portlet__head">
+                                <div class="m-portlet__head-caption">
+                                    <div class="m-portlet__head-title">
+                                        <span class="m-portlet__head-icon m--hide">
+                                            <i class="la la-gear"></i>
+                                        </span>
+                                        <h3 class="m-portlet__head-text">
+                                            Add New Courses
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--begin::Form-->
+                            <form name="form" id="frmCRUD" class="m-form m-form--fit m-form--label">
+                                <div class="form-body">
+                                    <div class="m-portlet__body">
+                                        <div class="form-group m-form__group">
+                                            <label for="example_input_full_name">Course Name</label>
+                                            <input type="text" ng-model="CourseName" class="form-control m-input" placeholder="Enter Course" required>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="m-portlet__foot m-portlet__foot--fit">
+                                        <div class="m-form__actions">
+                                            <button class="btn btn-primary" ng-click="CourseAdd()">Submit</button>
+                                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!--end::Form-->
+                        </div>
+
+                        <div class="m-portlet">
+
                             <button class="accordion"><b>List Of Course</b>
                             <i id="span2" class="fa fa-plus" style="margin-left: 290px;"></i></button>
                             <div class="panel">
@@ -184,9 +223,12 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
 
                         <!--begin::Portlet-->
-                        <div class="m-portlet">
+                  
 
 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="m-portlet m-portlet--space">
                             <div class="m-portlet__head">
                                 <div class="m-portlet__head-caption">
                                     <div class="m-portlet__head-title">
@@ -194,7 +236,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                             <i class="la la-gear"></i>
                                         </span>
                                         <h3 class="m-portlet__head-text">
-                                            Add New Courses
+                                            Add New Classes
                                         </h3>
                                     </div>
                                 </div>
@@ -204,28 +246,38 @@ License: You must have a valid license purchased only from themeforest(the above
                             <form name="form" id="frmCRUD" class="m-form m-form--fit m-form--label">
                                 <div class="form-body">
                                     <div class="m-portlet__body">
+                                        <label for="example_input_full_name">Course Name</label>
+                                        <div class="form-group m-form__group" id="course" ng-init="Initialize()">
+
+                                            <div class="m-input-icon m-input-icon--left">
+                                                <select class="form-control m-input" ng-model="CourseName1">
+                                                    <option ng-repeat="s in Course" value="{{s.course_name}}">{{s.course_name}}</option>
+                                                </select>
+                                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-table"></i></span></span>
+                                            </div><span id="error2"></span>
+                                        </div>
                                         <div class="form-group m-form__group">
-                                            <label for="example_input_full_name">Course Name</label>
-                                            <input type="text" ng-model="CourseName" class="form-control m-input" placeholder="Enter Course" required>
+                                            <label for="example_input_full_name">Class Name</label>
+                                            <input type="text" class="form-control m-input" ng-model="ClassName" placeholder="Enter Class" required>
 
                                         </div>
 
                                     </div>
                                     <div class="m-portlet__foot m-portlet__foot--fit">
                                         <div class="m-form__actions">
-                                            <button class="btn btn-primary" ng-click="CourseAdd()">Submit</button>
+                                            <button class="btn btn-primary" ng-click="ClassAdd()">Submit</button>
                                             <button type="reset" class="btn btn-secondary">Cancel</button>
                                         </div>
+
                                     </div>
+
                                 </div>
+
                             </form>
 
                             <!--end::Form-->
                         </div>
 
-
-                    </div>
-                    <div class="col-md-6">
                         <div class="m-portlet">
                             <button class="accordion"><b>List Of Class</b>
                                 <i id="span1" class="fa fa-plus" style="margin-left: 290px;"></i></button>
@@ -270,55 +322,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--end::Form-->
                         </div>
                         <!--begin::Portlet-->
-                        <div class="m-portlet m-portlet--space">
-                            <div class="m-portlet__head">
-                                <div class="m-portlet__head-caption">
-                                    <div class="m-portlet__head-title">
-                                        <span class="m-portlet__head-icon m--hide">
-                                            <i class="la la-gear"></i>
-                                        </span>
-                                        <h3 class="m-portlet__head-text">
-                                            Add New Classes
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--begin::Form-->
-                            <form name="form" id="frmCRUD" class="m-form m-form--fit m-form--label">
-                                <div class="form-body">
-                                    <div class="m-portlet__body">
-                                        <label for="example_input_full_name">Course Name</label>
-                                        <div class="form-group m-form__group" id="course" ng-init="Initialize()">
-
-                                            <div class="m-input-icon m-input-icon--left">
-                                                <select class="form-control m-input" ng-model="CourseName">
-                                                    <option ng-repeat="s in Course" value="{{s.course_name}}">{{s.course_name}}</option>
-                                                </select>
-                                                <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-table"></i></span></span>
-                                            </div><span id="error2"></span>
-                                        </div>
-                                        <div class="form-group m-form__group">
-                                            <label for="example_input_full_name">Class Name</label>
-                                            <input type="text" class="form-control m-input" ng-model="ClassName" placeholder="Enter Class" required>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="m-portlet__foot m-portlet__foot--fit">
-                                        <div class="m-form__actions">
-                                            <button class="btn btn-primary" ng-click="ClassAdd()">Submit</button>
-                                            <button type="reset" class="btn btn-secondary">Cancel</button>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </form>
-
-                            <!--end::Form-->
-                        </div>
+                    
 
                     </div>
 
