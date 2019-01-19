@@ -7,10 +7,13 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     $scope.UserCredentialModel = {};
     $scope.btnUpdate = false;
     $scope.IsVisible = false;
+    $scope.dtOptions = {};
 
 
     $scope.Initialize = function () {
         debugger;
+        if (!$scope.dtOptions)
+
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
 

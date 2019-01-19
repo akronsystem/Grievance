@@ -98,9 +98,12 @@ function ClassYearController($scope, Service) {
     $scope.CourseAdd = function () {
         debugger;
         var Course = {
-            CourseName: $scope.CourseName
+            CourseName: $scope.CourseName,
+            UserId:1333
         };
-        if ($scope.form.$valid) {
+        
+        //if ($scope.form.$valid)
+        {
             Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name
@@ -124,9 +127,11 @@ function ClassYearController($scope, Service) {
         debugger;
         var Class = {
             CourseName: $scope.CourseName,
-            ClassName: $scope.ClassName
+            ClassName: $scope.ClassName,
+            UserId:29393
         };
-        if ($scope.form.$valid) {
+        //if ($scope.form.$valid)
+        {
             Service.Post("api/ClassYear/CreateClass", JSON.stringify(Class)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name

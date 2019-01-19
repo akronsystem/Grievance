@@ -62,7 +62,7 @@ function MemberController($scope, Service) {
     }
 
     $scope.GetInfo = function () {
-
+         
         Service.Post("api/Grievance/GetUnAssignedGrievanceType").then(function (result) {
             debugger;
             // $scope.ParamUserLogin.Name = result.data.Name

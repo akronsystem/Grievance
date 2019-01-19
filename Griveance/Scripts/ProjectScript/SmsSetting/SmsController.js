@@ -11,9 +11,13 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
     $scope.CHECKBALANCEAPI = null;
     $scope.SETTINGID = null;
     $scope.UserCredentialModel = {};
+    $scope.dtOptions = {};
+
     //Initialize function
     $scope.Initialize = function () {
         debugger;
+        if (!$scope.dtOptions)
+
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10) 
         $scope.UserCredentialModel.DisplayStatus = $scope.ButtonActive;

@@ -5,12 +5,15 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     var form = $(".m-form m-form--fit m-form--label-align-right");
     $scope.ViewAllStaffInfoes = {};
     $scope.UserCredentialModel = {};
+    $scope.dtOptions = {};
+
 
     $scope.Initialize = function () {
         debugger;
+        if (!$scope.dtOptions)
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-        if (!$scope.dtOptions)
+        
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;

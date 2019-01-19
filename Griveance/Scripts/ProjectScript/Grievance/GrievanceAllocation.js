@@ -5,11 +5,13 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
     var form = $(".m-form m-form--fit m-form--label-align-right");
     $scope.ViewGrievanceList = {};
     $scope.UserCredentialModel = {};
+    $scope.dtOptions = {};
 
     $scope.Initialize = function () {
+        if (!$scope.dtOptions)
+
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-        if (!$scope.dtOptions)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Grievance/GrievanceAllocation").then(function (result) {

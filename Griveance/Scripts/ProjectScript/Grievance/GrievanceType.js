@@ -8,12 +8,15 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
     $scope.IsVisible = false;
     $scope.btnSave = false;
     $scope.btnUpdate = false;
+    $scope.dtOptions = {};
+
 
 
     $scope.Initialize = function () {
+        if (!$scope.dtOptions)
+
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-        if (!$scope.dtOptions)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         Service.Post("api/Grievance/GriveanceTypeInfo").then(function (result) {

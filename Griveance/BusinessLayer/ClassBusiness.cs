@@ -19,7 +19,7 @@ namespace Griveance.BusinessLayer
             }
             GRContext db = new GRContext();
             tbl_class objcls = new tbl_class();
-            var result = db.tbl_class.Where(r => r.class_name == obj.ClassName);
+            var result = db.tbl_class.FirstOrDefault(r => r.class_name == obj.ClassName);
             if (result != null)
             {
                 return new Error() { IsError = true, Message = "Duplicate Entry Not Allowd" };

@@ -37,7 +37,7 @@ namespace Griveance.BusinessLayer
             }
             GRContext db = new GRContext();
             tbl_courses objcourse = new tbl_courses();
-            var result = db.tbl_courses.Where(r => r.course_name == obje.CourseName);
+            var result = db.tbl_courses.FirstOrDefault(r => r.course_name == obje.CourseName);
             if (result != null)
             {
                 return new Error() { IsError = true, Message = "Duplicate Entry Not Allowd" };

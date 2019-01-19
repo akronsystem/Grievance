@@ -8,11 +8,14 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     $scope.btnUpdate = false;
     $scope.IsVisible = false;
     $scope.btnactive = 'Active'
+    $scope.dtOptions = {};
+
 
     $scope.Initialize = function () {
+        if (!$scope.dtOptions)
+
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-        if (!$scope.dtOptions)
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;

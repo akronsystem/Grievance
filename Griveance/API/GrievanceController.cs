@@ -13,7 +13,7 @@ namespace Griveance.Controllers
 
     public class GrievanceController : ApiController
      {
-        [HttpGet]
+        [HttpPost]
         public object GetUnAssignedGrievanceType()
         {
             try

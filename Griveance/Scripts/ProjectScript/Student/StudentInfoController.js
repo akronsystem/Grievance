@@ -10,16 +10,16 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     $scope.IsVisible = false;
     $scope.btnDelete = false;
     $scope.Students = [];
-   
+    $scope.dtOptions = {};
 
 
     $scope.Initialize = function () { 
         debugger;
 
-        
+        if (!$scope.dtOptions)
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
-        if (!$scope.dtOptions)
+        
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;

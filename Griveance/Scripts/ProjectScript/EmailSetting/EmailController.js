@@ -13,11 +13,14 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
     $scope.port = null;
     $scope.password = null;
     $scope.UserCredentialModel = {};
+    $scope.dtOptions={};
+
     $scope.Initialize = function () {
+        if (!$scope.dtOptions)
+
         debugger;
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10) 
-        if(!$scope.dtOptions)
         Service.Get("api/Common/GetEmailInfo").then(function (result) { 
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
        
