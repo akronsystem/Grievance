@@ -3,20 +3,43 @@
 function MemberController($scope, Service) {
 
     var form = $(".m-form m-form--fit m-form--label");
-  
-    $scope.Add = function () {
+    $scope.IsVisible = false;
+    $scope.tbl_memberinfo = {};
+    $scope.UserCredentialModel = {};
+    $scope.dtOptions = {};
+    $scope.Initialize = function () {
+       
+       
+        if (!$scope.dtOptions)
+            $scope.dtOptions = DTOptionsBuilder.newOptions()
+                .withPaginationType('full_numbers').withDisplayLength(10)
         debugger;
+        $scope.UserCredentialModel.DisplayStatus = $scope.ButtonActive;
+        Service.Post("api/Member/GetMemberInfo", $scope.UserCredentialModel).then(function (result) {
+            $scope.Clear();
+            // $scope.ParamUserLogin.Name = result.data.Name
+            $scope.tbl_memberinfo = result.data;
+            $scope.Member = result.data.ResultData;
+            console.log(result.data);
+
+        })
+
+    }
+    $scope.Add = function () {
+      
        
         var Member = {
-            EmailId: $scope.EmailId,
-            Name: $scope.Name,
-            Code: $scope.Code,
-            Type: $scope.Type,
-            GriType: $scope.GriType,
-            Gender: $scope.Gender,
-            MobileNo: $scope.MobileNo,
+            
+
+            EmailId: $scope.EMAILID,
+            Name: $scope.NAME,
+            Code: $scope.EMPLOYEECODE,
+            Type: $scope.TYPE,
+            GRIEVANCETYPE: $scope.GRIEVANCETYPE,
+            Gender: $scope.GENDER,
+            MobileNo: $scope.MOBILENO,
             Password: $scope.Password,
-            Designation: $scope.Designation           
+            Designation: $scope.DESIGNATION           
 
         };
         if ($scope.form.$valid) {
@@ -28,7 +51,9 @@ function MemberController($scope, Service) {
                 if (result.data.IsSucess) {
                     debugger;
                     CustomizeApp.AddMessage();
-                    window.location = "Griveance/GrievanceAllocation"
+                    $scope.IsVisible = false;
+
+                    //window.location = "Griveance/GrievanceAllocation"
                 }
                 else {
                     ShowMessage(0, result.data.Message);
@@ -40,6 +65,53 @@ function MemberController($scope, Service) {
         }
 
  
+    }
+
+    $scope.Show = function () {
+        $scope.IsVisible = true;
+        $scope.txtPASSSOWRD = true;
+        $scope.txtCONFIRMPASSWORD = true;
+        $scope.btnUpdate = false;
+        $scope.btnSave = true;
+        $scope.empcode = false;
+        $scope.Clear();
+        $scope.msg = "";
+        $scope.Initialize();
+
+    }
+
+   
+
+    $scope.ShowHide = function (UserId) {
+        //$scope.Cancel();
+        debugger;
+        var data = {
+            UserId: UserId
+
+        };
+        $scope.IsVisible = true;
+        Service.Post("api/Grievance/GetSingleGrievance", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
+            $scope.txtPASSSOWRD = false;
+            $scope.txtCONFIRMPASSWORD = false;
+
+          
+
+            $scope.IsVisible = true;
+            $scope.btnUpdate = true;
+            $scope.btnSave = false;
+            $scope.tbl_memberinfo = result.data;
+
+            $scope.EMAILID = result.data.email;
+            $scope.NAME = result.data.name;
+            $scope.EMPLOYEECODE = result.data.code;
+            $scope.GENDER = result.data.gender;
+            $scope.MOBILENO = result.data.contact;
+            $scope.DESIGNATION = result.data.designation;
+            $scope.GRIEVANCETYPE = result.data.griType;
+            $scope.USERID = result.data.UserId;
+            $scope.empcode= true ;
+           
+        })
     }
 
     $scope.GetData = function () {
@@ -61,6 +133,82 @@ function MemberController($scope, Service) {
 
     }
 
+    //$scope.Update = function (isValid) {
+    //    debugger;
+    //    if (isValid) {
+    $scope.Update = function (NAME, GENDER, EMPLOYEECODE, EMAILID, MOBILENO, DESIGNATION, USERID, GRIEVANCETYPE) {
+                var data = {
+                    name: NAME,
+                    gender: GENDER,
+                    code: EMPLOYEECODE,
+                    EmailId: EMAILID,
+                    MobileNo: MOBILENO,
+                    designation: DESIGNATION,
+                    UserId: USERID,
+                    GriType: GRIEVANCETYPE
+
+                };
+                Service.Post("api/Grievance/UpdateMemberInfo", JSON.stringify(data)).then(function (response) {
+                    if (response.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.UpdateMessage();
+                        $scope.Cancel();
+                        //$scope.IsVisible = false;
+                        //$scope.Initialize();
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, response.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+
+                });
+            }
+    //    }
+    //}
+
+
+    $scope.Delete = function (UserId) {
+        debugger;
+        var data = {
+
+            UserId: UserId,
+            
+        };
+        var deactivestatus = 1;
+        if (event.target.checked == false) {
+            var confirm = window.confirm("Do you want to change the status to deactive of this member ?");
+            deactivestatus = 0;
+        }
+        else {
+            var confirm = window.confirm("Do you want to change the status to active of this member ?");
+        }
+        if (confirm == true) {
+            Service.Post("api/Grievance/DeleteMemberInfo", JSON.stringify(data)).then(function (response) {
+
+                $scope.Initialize();
+
+
+                if (deactivestatus == 0) {
+                    window.alert('Member Deactived Successfully!')
+
+                }
+                else {
+                    window.alert('Member Actived Successfully!')
+
+                }
+
+            });
+        }
+        $scope.Clear();
+        $scope.IsVisible = false;
+    
+
+
+    }
+
     $scope.GetInfo = function () {
          
         Service.Post("api/Grievance/GetUnAssignedGrievanceType").then(function (result) {
@@ -74,7 +222,10 @@ function MemberController($scope, Service) {
 
     }
     $scope.Cancel = function () {
-        Member={};
+        $scope.Clear();
+        $scope.IsVisible = false;
+        $scope.msg = "";
+        $scope.Initialize();
     }
 
     
@@ -120,14 +271,17 @@ function MemberController($scope, Service) {
 
     }
     $scope.Clear = function () {
-                                        $scope.EmailId = null;
-                                        $scope.Name = null;
-                                        $scope.Code = null;
-                                        $scope.Type = null;
-                                        $scope.GriType = null;
-                                        $scope.Gender = null;
-                                        $scope.MobileNo = null;
-                                        $scope.Password = null;
+                                       
+
+
+                                        $scope.EMAILID = null;
+                                        $scope.NAME = null;
+                                        $scope.EMPLOYEECODE = null;
+                                        $scope.GENDER = null;
+                                        $scope.MOBILENO = null;
+                                        $scope.DESIGNATION = null;
+                                        $scope.GRIEVANCETYPE = null;
+                                        $scope.USERID = null;
     }
 
   
