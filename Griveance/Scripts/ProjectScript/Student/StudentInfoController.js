@@ -15,8 +15,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
     $scope.Initialize = function () { 
         debugger;
-
-        if (!$scope.dtOptions)
+        
+       // if (!$scope.dtOptions)
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
         
@@ -45,11 +45,9 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         Service.Post("api/Users/GetSingleStudentInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result)
         {
           
-            debugger;
-         
-            
-
-           
+            debugger; 
+            $scope.IsVisible = true;
+            $scope.btnUpdate = true;
                 $scope.ViewGetStudentInfoes = result.data;
 
                 $scope.StudentName = result.data.name;
@@ -134,7 +132,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
 
                 if (response.data)
-
+                    $scope.Initialize();
                     window.alert('Student Deactive Successfully!')
 
                
@@ -143,7 +141,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         }
         $scope.Clear();
         $scope.IsVisible = false;
-        $scope.Initialize();
+       
         
         
     }

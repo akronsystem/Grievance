@@ -3,6 +3,7 @@ using Griveance.ParamModel;
 using Griveance.ResultModel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -21,7 +22,7 @@ namespace Griveance.BusinessLayer
                     return new Error() { IsError = true, Message = "User Code Already Exists." };
                 }
                 tbl_user objuser = new tbl_user();
-              
+
                 objuser.name = PR.Name;
                 objuser.UserId = PR.UserId;
                 objuser.type = PR.Type;
@@ -78,7 +79,7 @@ namespace Griveance.BusinessLayer
                     objparent.Display = 1;
                     objparent.created_date = DateTime.Now;
                     db.tbl_parent.Add(objparent);
-                    db.SaveChanges(); 
+                    db.SaveChanges();
                     //tbl_student objstudent = db.tbl_student.Where(r => r.UserId == PR.UserId).FirstOrDefault();
                     //objstudent.IsParent = 1;
                     //db.SaveChanges(); 
@@ -120,26 +121,26 @@ namespace Griveance.BusinessLayer
 
 
                 objuser.name = PR.Name;
-            
+
                 objuser.gender = PR.Gender;
                 objuser.email = PR.Email;
                 objuser.contact = PR.Contact;
                 objuser.modified_date = DateTime.Now;
-               
+
                 objuser.status = 1;
                 objuser.Islive = 1;
-               
+
                 db.SaveChanges();
 
                 if (PR.Type == "Parent")
                 {
                     tbl_parent objparent = db.tbl_parent.Where(r => r.UserId == PR.UserId).FirstOrDefault();
-                   // objparent.UserId = PR.UserId;
+                    // objparent.UserId = PR.UserId;
                     objparent.relationship = PR.Relationship;
                     objparent.modified_date = DateTime.Now;
                     db.SaveChanges();
 
-                   
+
                 }
 
                 return new Result() { IsSucess = true, ResultData = "User Updated Successfully." };
@@ -153,6 +154,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
+                String res = "";
                 tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
 
 
@@ -172,18 +174,54 @@ namespace Griveance.BusinessLayer
                 {
                     tbl_parent objparent = db.tbl_parent.Where(r => r.UserId == PR.UserId).FirstOrDefault();
                     // objparent.UserId = PR.UserId;
-                   if(objparent.Display==1)
+                    if (objparent.Display == 1)
                     {
                         objparent.Display = 0;
                     }
-                   else
+                    else
                     {
                         objparent.Display = 1;
                     }
                     db.SaveChanges();
 
+                    if (objparent.Display==1)
+                    { 
+                    if (objuser.name.Length > 0)
+                    {
+
+                            string appset = ConfigurationManager.AppSettings["BaseEmailUrl"];
+                            res = " <b>Dear " + objuser.name + "</b>, Your account for griveance redressal system has been activated by the admin,<a href='" + appset + "'>click here</a> to login your account ";
+
+                        }
+                    else
+                    {
+                        res = "Sorry we didn't find you in our system.";
+                        return res;
+                    }
+                    try
+                    {
+                        Email objemail = new Email();
+                        bool IsDelete;
+                        if (objuser.email.Length > 0)
+                        {
+                            //IsDelete = objSMS.SMSSend(MobNo, res);
+                            IsDelete = objemail.SendEmail(objuser.email, res, "Active Status", "", "", "", "");
+                            res = "User Name and Password Is Send On Your Registred Email ID. ";
+                        }
+                        else
+                        {
+                            res = "Sorry we didn't find your Email ID in our system.";
+                        }
+                        return res;
+                    }
+                    catch (Exception e)
+                    {
+                        return new Error() { IsError = true, Message = e.Message };
+
+                    }
 
                 }
+            }
 
                 return new Result() { IsSucess = true, ResultData = "User Updated Successfully." };
             }
@@ -218,7 +256,7 @@ namespace Griveance.BusinessLayer
                     // objparent.UserId = PR.UserId;
                     objfaculty.department = PR.Department;
                     objfaculty.designation = PR.Designation;
-                    objfaculty.modified_date = DateTime.Now; 
+                    objfaculty.modified_date = DateTime.Now;
                     db.SaveChanges();
 
 
@@ -237,6 +275,7 @@ namespace Griveance.BusinessLayer
 
             try
             {
+                string res = "";
                 tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
 
 
@@ -250,7 +289,7 @@ namespace Griveance.BusinessLayer
                 }
                 db.SaveChanges();
 
-                
+
 
                 if (PR.Type == "Faculty")
                 {
@@ -265,11 +304,47 @@ namespace Griveance.BusinessLayer
                         objfaculty.Display = 1;
                     }
                     db.SaveChanges();
+                    if (objfaculty.Display == 1)
+                    {
+                        if (objuser.name.Length > 0)
+                        {
+
+                            string appset = ConfigurationManager.AppSettings["BaseEmailUrl"];
+                            res = " <b>Dear " + objuser.name + "</b>, Your account for griveance redressal system has been activated by the admin,<a href='" + appset + "'>click here</a> to login your account ";
 
 
+                        }
+                        else
+                        {
+                            res = "Sorry we didn't find you in our system.";
+                            return res;
+                        }
+                        try
+                        {
+                            Email objemail = new Email();
+                            bool IsDelete;
+                            if (objuser.email.Length > 0)
+                            {
+                                //IsDelete = objSMS.SMSSend(MobNo, res);
+                                IsDelete = objemail.SendEmail(objuser.email, res, "Active Status", "", "", "", "");
+                                res = "User Name and Password Is Send On Your Registred Email ID. ";
+                            }
+                            else
+                            {
+                                res = "Sorry we didn't find your Email ID in our system.";
+                            }
+                            return res;
+                        }
+                        catch (Exception e)
+                        {
+                            return new Error() { IsError = true, Message = e.Message };
+
+                        }
+
+                    }
                 }
 
-                return new Result() { IsSucess = true, ResultData = "User Updated Successfully." };
+                return new Result() { IsSucess = true, ResultData = "User updated Successfully." };
             }
             catch (Exception ex)
             {
@@ -281,24 +356,24 @@ namespace Griveance.BusinessLayer
             try
             {
                 tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
-              
+
 
                 objuser.name = PR.Name;
-               
+
                 objuser.type = PR.Type;
                 objuser.gender = PR.Gender;
                 objuser.email = PR.Email;
                 objuser.contact = PR.Contact;
-               objuser.modified_date = DateTime.Now;
+                objuser.modified_date = DateTime.Now;
                 objuser.status = 1;
                 objuser.Islive = 1;
-              
+
                 db.SaveChanges();
 
                 if (PR.Type == "Student")
                 {
                     tbl_student objstudent = db.tbl_student.Where(r => r.UserId == PR.UserId).FirstOrDefault();
-                 
+
                     objstudent.IsParent = 0;
                     objstudent.modified_date = DateTime.Now;
                     db.SaveChanges();
@@ -351,6 +426,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
+                string res = "";
                 tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
 
 
@@ -379,6 +455,42 @@ namespace Griveance.BusinessLayer
                     }
 
                     db.SaveChanges();
+                    if (objstaff.Display == 1)
+                    {
+                        if (objuser.name.Length > 0)
+                        {
+                            string appset = ConfigurationManager.AppSettings["BaseEmailUrl"];
+                            res = " <b>Dear " + objuser.name + "</b>, Your account for griveance redressal system has been activated by the admin,<a href='" + appset + "'>click here</a> to login your account ";
+
+
+                        }
+                        else
+                        {
+                            res = "Sorry we didn't find you in our system.";
+                            return res;
+                        }
+                        try
+                        {
+                            Email objemail = new Email();
+                            bool IsDelete;
+                            if (objuser.email.Length > 0)
+                            {
+                                //IsDelete = objSMS.SMSSend(MobNo, res);
+                                IsDelete = objemail.SendEmail(objuser.email, res, "Active Status", "", "", "", "");
+                               
+                            }
+                            else
+                            {
+                                res = "Sorry we didn't find your Email ID in our system.";
+                            }
+                            return res;
+                        }
+                        catch (Exception e)
+                        {
+                            return new Error() { IsError = true, Message = e.Message };
+
+                        }
+                    }
                 }
 
                 return new Result() { IsSucess = true, ResultData = "User Deleted Successfully." };
@@ -392,6 +504,7 @@ namespace Griveance.BusinessLayer
         {
             try
             {
+                string res = "";
                 tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
 
                 if (objuser.Display == 1)
@@ -403,7 +516,7 @@ namespace Griveance.BusinessLayer
                     objuser.Display = 1;
                 }
 
-             
+
 
                 db.SaveChanges();
 
@@ -420,9 +533,43 @@ namespace Griveance.BusinessLayer
                     }
 
                     db.SaveChanges();
-                }
 
+                    if (objstudent.Display == 1)
+                    {
+
+                        if (objuser.name.Length > 0)
+                        {
+                            string appset = ConfigurationManager.AppSettings["BaseEmailUrl"];
+                            res = " <b>Dear " + objuser.name + "</b>, Your account for griveance redressal system has been activated by the admin,<a href='"+ appset + "'>click here</a> to login your account ";
+
+                        }
+                       
+                        try
+                        {
+                            Email objemail = new Email();
+                            bool IsDelete;
+                            if (objuser.email.Length > 0)
+                            {
+                                //IsDelete = objSMS.SMSSend(MobNo, res);
+                                IsDelete = objemail.SendEmail(objuser.email, res, "Active Status", "", "", "", "");
+                               
+                            }
+                           
+                            return res;
+                        }
+                        catch (Exception e)
+                        {
+                            return new Error() { IsError = true, Message = e.Message };
+
+                        }
+
+
+                    }
+                }
                 return new Result() { IsSucess = true, ResultData = "User Deleted Successfully." };
+
+
+
             }
             catch (Exception ex)
             {

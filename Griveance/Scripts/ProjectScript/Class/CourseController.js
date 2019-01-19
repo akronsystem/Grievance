@@ -101,8 +101,8 @@ function ClassYearController($scope, Service) {
             CourseName: $scope.CourseName,
             UserId:1333
         };
-        
-        //if ($scope.form.$valid)
+
+        if (form.valid())
         {
             Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
                 debugger;

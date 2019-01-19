@@ -17,14 +17,16 @@ namespace Griveance.BusinessLayer
             try
             {
                 List<Griveance.Models.ViewGetStudentInfo> StudentData = null;
-                if(status=="Dective")
+                if(status=="Deactive" )
                 {
-                    StudentData = objcontext.ViewGetStudentInfoes.Where(r => r.Display != 1).ToList();
+                    StudentData = objcontext.ViewGetStudentInfoes.Where(r => r.Display == 0).ToList();
+                   
+                   
                 }
                 else
                 {
+
                     StudentData = objcontext.ViewGetStudentInfoes.Where(r => r.Display == 1).ToList();
-                   
                 }
                
                 if (StudentData == null)
