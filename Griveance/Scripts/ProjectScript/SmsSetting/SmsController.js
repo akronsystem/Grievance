@@ -40,6 +40,7 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
 
         };
         $scope.IsVisible = true;
+        
         Service.Post("api/Common/GetSingleSmsSetting", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
 
             debugger;

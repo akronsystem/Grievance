@@ -175,7 +175,7 @@ namespace Griveance.Controllers
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
-
+      
         public object PostGrievance([FromBody]ParamSaveGriveance ob)
         {
             try
@@ -220,7 +220,39 @@ namespace Griveance.Controllers
             }
         }
 
+        [HttpPost] 
+        public object UpdateMemberInfo([FromBody]MemberParameter pm)
+        {
+            try
+            {
+                MemberBusiness mb = new MemberBusiness();
+                var Result = mb.UpdateMemberDetail(pm);
+
+                return Result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
         [HttpPost]
+        public object DeleteMemberInfo([FromBody]MemberParameter pm)
+        {
+            try
+            {
+                MemberBusiness mb = new MemberBusiness();
+                var Result = mb.DeleteMember(pm);
+
+                return Result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            } 
+        }
         public object GetAllPostGrevience([FromBody] ParamGetGrievanceList objparam)
         {
             try
@@ -232,7 +264,8 @@ namespace Griveance.Controllers
             catch(Exception ex)
             {
                 return new Error() { IsError = true, Message = ex.Message };
-            }
+            } 
+            
         }
     }
 }

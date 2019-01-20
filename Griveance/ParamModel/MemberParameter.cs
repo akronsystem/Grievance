@@ -15,9 +15,13 @@ namespace Griveance.ParamModel
         public string Type { get; set; }
         public string Gender { get; set; }
         public string EmailId { get; set; }
-        public string MobileNo { get; set; }
+        public long MobileNo { get; set; }
         public string Password { get; set; }
         public string ConPassword { get; set; }
         public Int64 UserId { get; set; }
+
+        public string DisplayStatus { get; set; }
+
+
     }
 }

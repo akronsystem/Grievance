@@ -9,26 +9,14 @@ namespace Griveance.Models
     [Table("ViewGetMemberInfo")]
     public partial class ViewGetMemberInfo
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id { get; set; }
-
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int code { get; set; }
+        public int? code { get; set; }
 
         [StringLength(100)]
         public string name { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
         [StringLength(100)]
         public string designation { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
         [StringLength(200)]
         public string griType { get; set; }
 
@@ -53,5 +41,17 @@ namespace Griveance.Models
         public int? UserId { get; set; }
 
         public int? Expr1 { get; set; }
+
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MemberId { get; set; }
+
+        public int? Display { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        [StringLength(5)]
+        public string DisplayStatus { get; set; }
     }
 }

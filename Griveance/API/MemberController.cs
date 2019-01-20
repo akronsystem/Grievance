@@ -19,13 +19,14 @@ namespace Griveance.Controllers
     public class MemberController : ApiController
     {
 
-        [HttpGet]
-        public object GetMemberInfo()
+        [HttpPost]
+        public object GetMemberInfo([FromBody]MemberParameter objmem)
         {
             try
             {
+                string status = objmem.DisplayStatus;
                 MemberBusiness MBusiness = new MemberBusiness();
-                var member = MBusiness.GetMemberInfo();
+                var member = MBusiness.GetMemberInfo(status);
                 return member;
             }
             catch (Exception e)

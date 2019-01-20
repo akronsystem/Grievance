@@ -18,12 +18,22 @@ namespace Griveance.BusinessLayer
 {
     public class MemberBusiness
     {
-         public object GetMemberInfo()
+         public object GetMemberInfo(string status)
         {
             GRContext context = new GRContext();
             try
             {
-                var member = context.ViewGetMemberInfoes.ToList();
+               List<Griveance.Models.ViewGetMemberInfo> member = null;
+           
+                if (status=="Deactive")
+                {
+                    
+                    member = context.ViewGetMemberInfoes.Where(r => r.Display == 0).ToList();
+                }
+               else
+                {
+                    member = context.ViewGetMemberInfoes.Where(r => r.Display == 1).ToList();
+                }
                 if (member == null)
                 {
                     return new Result { IsSucess = false, ResultData = "Member Record Not Found" };
@@ -114,20 +124,29 @@ namespace Griveance.BusinessLayer
 			objmember.UserId = omember.UserId;
 			objmember.code = Convert.ToInt32(obj.Code);
 			objmember.designation = obj.Designation.ToString();
-			objmember.griType = obj.GriType.ToString();
+            if (obj.GriType != null)
+            {
+                objmember.griType = obj.GriType.ToString();
+            }
+
             objmember.Display = 1;
             objmember.created_date = DateTime.Now;
             db.tbl_member.Add(objmember);          
             db.SaveChanges();
-			return new Result
+            if (obj.GriType != null)
+            {
+                tbl_grievance_list list = db.tbl_grievance_list.Where(r => r.grivance_name == objmember.griType).FirstOrDefault();
+                list.Isalloted = 1;
+                db.SaveChanges();
+            }
+            return new Result
 			{
 
 				IsSucess = true,
 				ResultData = "Member Created!"
 			};
-            tbl_grievance_list list = db.tbl_grievance_list.Where(r => r.grivance_name == objmember.griType).FirstOrDefault();
-            list.Isalloted = 1;
-            db.SaveChanges();
+           
+            
 
 
 
@@ -171,6 +190,82 @@ namespace Griveance.BusinessLayer
             catch (Exception ex)
             {
                 return new Error { IsError = true, Message = ex.Message };
+            }
+        }
+
+        public object UpdateMemberDetail(MemberParameter PR)
+        {
+            GRContext db = new GRContext();
+            try
+            {
+                tbl_member objmember = db.tbl_member.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+
+                objmember.griType = PR.GriType;
+                objmember.designation = PR.Designation;
+                objmember.modified_date = DateTime.Now;
+                if (PR.GriType != null)
+                {
+                    objmember.griType = PR.GriType;
+                }
+                db.SaveChanges();
+
+                tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                objuser.name = PR.Name;
+                objuser.gender = PR.Gender;
+                objuser.email = PR.EmailId;
+                objuser.contact = PR.MobileNo; 
+               
+                db.SaveChanges();
+
+
+                return new Result() { IsSucess = true, ResultData = "Member Updated Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
+        public object DeleteMember(MemberParameter PR)
+        {
+            GRContext db = new GRContext();
+            try
+            {
+                tbl_member objmember = db.tbl_member.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+               if( objmember.Display==1)
+                {
+                    objmember.Display = 0;
+
+                }
+                else
+                {
+                    objmember.Display = 1;
+
+                }
+               
+               
+                db.SaveChanges();
+
+                tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                if (objuser.Display == 1)
+                {
+                    objuser.Display = 0;
+
+                }
+                else
+                {
+                    objuser.Display = 1;
+
+                }
+
+                db.SaveChanges();
+
+
+                return new Result() { IsSucess = true, ResultData = "Member Updated Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
             }
         }
         public object UpdateComp(ParamComplaintDetails PR)
