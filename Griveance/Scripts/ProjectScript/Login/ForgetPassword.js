@@ -2,6 +2,7 @@
 
 function LoginController($scope, Service) {
     var form = $(".m-login__form m-form");
+    var form1 = $("#frmCRUD");
     $scope.UserCredentialModel = {};
     $scope.Verify = function () {
         var Info = {
@@ -13,10 +14,23 @@ function LoginController($scope, Service) {
             $("#error").css({ 'color': 'red' });
             return false;
         }
-        Service.Post("api/Login/ForgetPassword",Info).then(function (result) {
+       
+        Service.Post("api/Login/ForgetPassword", Info).then(function (result) {
             debugger;
-            
-        })
+                if (result.data.IsSucess) {
+                   
+                    CustomizeApp.UpdateMessage();
+
+                }
+                else
+                {
+                    ShowMessage(0, result.data.Message);
+
+                }
+
+
+            })
+        
     }
     $scope.Close = function () {    
         $scope.ContactNumber = {};

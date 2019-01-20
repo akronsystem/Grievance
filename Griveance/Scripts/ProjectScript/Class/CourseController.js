@@ -4,7 +4,7 @@ function ClassYearController($scope, Service) {
 
     var form = $(".m-form m-form--fit m-form--label");
     var form1 = $("#frmCRUD");
-    
+
     $scope.ViewGetCourseInfoes = {};
     $scope.ViewGetClassLists = {};
     $scope.chartContainer = {};
@@ -62,13 +62,39 @@ function ClassYearController($scope, Service) {
             gender: $scope.gender,
             contact: $scope.contact,
             password: $scope.password,
+            Confirmpassword: $scope.Confirmpassword,
             CourseName: $scope.CourseName,
             ClassName: $scope.ClassName,
             designation: $scope.designation,
             relationship: $scope.relationship
 
-        }; 
- 
+        };  
+        if ($scope.password == $scope.Confirmpassword) {
+            var reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
+            //if (!$scope.password.test(reg))
+            //{
+            //    alert('Password must be 8 Characters');
+            //    return false;
+            //}
+            errors = [];
+            if ($scope.password.length < 8) {
+                alert("Your password must be at least 8 characters");
+                return false;
+            }
+            if ($scope.password.search(/[a-z]/i) < 0) {
+                alert("Your password must contain at least one letter.");
+                return false;
+            }
+            if ($scope.password.search(/[0-9]/) < 0) {
+                alert("Your password must contain at least one digit.");
+                return false;
+            }
+        }
+        else {
+            alert('Please Check ConfirmPassword')
+            return false;
+        } 
+      
         if (form1.valid()) {
             Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
                
@@ -88,60 +114,62 @@ function ClassYearController($scope, Service) {
 
 
             })
-        }
+        } 
     }
     $scope.Cancel = function () {
         window.location = "./Index";
     }
-    $scope.CourseAdd = function () {
+    $scope.CourseAdd = function ()  
        
         $scope.UserId = sessionStorage.getItem('userid').replace(/"/g, '');
         $scope.password = sessionStorage.getItem('Password').replace(/"/g, '');
+
         var Course = {
             CourseName: $scope.CourseName,
             UserId: $scope.UserId,
             Password: $scope.password
         };
         
-        //if ($scope.form.$valid)
+        if (form1.valid())
         {
             Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
-                
+
+             
                 // $scope.ParamUserLogin.Name = result.data.Name
                 if (result.data.IsSucess) {
-                  
-                    CustomizeApp.AddMessage();
-                    window.location = "./NAdminProfile"
+                     CustomizeApp.AddMessage();
+                    $scope.Initialize();
                 }
                 else {
                     ShowMessage(0, result.data.Message);
-                     //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
-              
-
+                    $scope.Initialize();
+                    //$scope.clear();
+ 
             })
         }
 
     }
     $scope.ClassAdd = function () {
-        
-        
+ 
         var Class = {
-            CourseName: $scope.CourseName,
+            CourseName: $scope.CourseName1,
             ClassName: $scope.ClassName,
             UserId: sessionStorage.getItem('userid').replace(/"/g, ''),
             Password: sessionStorage.getItem('Password').replace(/"/g, '')
         };
-        //if ($scope.form.$valid)
+        if ($scope.ClassName == undefined)
+        {
+            ShowMessage(0, 'Reqired Class Name');
+        }
+    else
         {
             Service.Post("api/ClassYear/CreateClass", JSON.stringify(Class)).then(function (result) {
+ 
                 
                 // $scope.ParamUserLogin.Name = result.data.Name
-                if (result.data.IsSucess) {
-                   
+                if (result.data.IsSucess) { 
                     CustomizeApp.AddMessage();
-                    window.location = "./NAdminProfile"
+                    $scope.Close();
                 }
                 else {
                     ShowMessage(0, result.data.Message);
@@ -154,10 +182,16 @@ function ClassYearController($scope, Service) {
         }
 
     }
+    $scope.Close=function()
+    {
+        $scope.CourseName1 = null;
+        $scope.ClassName = null;
+        $scope.GetInfo();
+    }
     $scope.GetUserCount = function () {
         Service.Get("api/Grievance/GetUserList").then(function (result) {
             if (result.data) {
-                
+ 
               $scope.studcount = result.data[0][1];
               $scope.parentcount = result.data[1][1];
               $scope.staffcount = result.data[2][1];
