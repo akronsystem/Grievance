@@ -219,5 +219,20 @@ namespace Griveance.Controllers
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+
+        [HttpPost]
+        public object GetAllPostGrevience([FromBody] ParamGetGrievanceList objparam)
+        {
+            try
+            {
+                GetGrievanceListBL obj = new GetGrievanceListBL();
+                var GetGrievance = obj.GetAllPostGrievanceList(objparam);
+                return GetGrievance;
+            }
+            catch(Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
     }
 }

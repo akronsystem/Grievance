@@ -13,13 +13,13 @@ namespace Griveance.BusinessLayer
     {
         public object CreateClass([FromBody]ClassParameter obj)
         {
-            if (obj.UserId == null)
+            if (obj.UserId == null && obj.Password==null)
             {
                 return new Result { IsSucess = false, ResultData = "UserId Requird" };
             }
             GRContext db = new GRContext();
             tbl_class objcls = new tbl_class();
-            var result = db.tbl_class.FirstOrDefault(r => r.class_name == obj.ClassName);
+            var result = db.tbl_class.FirstOrDefault(r => r.class_name == obj.ClassName && r.course_name== obj.CourseName);
             if (result != null)
             {
                 return new Error() { IsError = true, Message = "Duplicate Entry Not Allowd" };

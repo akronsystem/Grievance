@@ -10,7 +10,10 @@ namespace Griveance.Models
 		public GRContext()
 			: base("name=GRContext")
 		{
-		} 
+		}
+        public virtual DbSet<ViewGetAllPostGrievanceList> ViewGetAllPostGrievanceLists { get; set; }
+      
+
         public virtual DbSet<ViewUser> ViewUsers { get; set; }
         public virtual DbSet<Vw_GetEmail> Vw_GetEmail { get; set; }
         public virtual DbSet<Vw_GetSmsData> Vw_GetSmsData { get; set; }
