@@ -75,10 +75,21 @@ namespace Griveance.BusinessLayer
                 tbl_member obGR = db.tbl_member.Where(r => r.UserId == PR.UserId).FirstOrDefault();
 
                 obGR.griType = PR.griType;
-
+                obGR.designation = PR.designation;
+                obGR.modified_date = DateTime.Now;
                 //db.tbl_user.Add(objuser);
                 db.SaveChanges();
 
+                tbl_grievance_list objgrlist= db.tbl_grievance_list.Where(r => r.grivance_name == PR.griType).FirstOrDefault();
+                objgrlist.Isalloted = 1;
+                db.SaveChanges();
+
+                tbl_user objuser = db.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+                objuser.name = PR.name;
+                objuser.code = PR.code;
+                objuser.email = PR.email;
+                objuser.contact = PR.contact;
+                db.SaveChanges();
                 return new Result() { IsSucess = true, ResultData = "Grievance Update Successfully." };
             }
             catch (Exception ex)
@@ -86,6 +97,34 @@ namespace Griveance.BusinessLayer
                 return new Error() { IsError = true, Message = ex.Message };
             }
         }
+
+
+        public object DeleteGrievanceAllocation(ParamRegistration PR)
+        {
+            try
+            {
+                tbl_member objmember = db.tbl_member.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+
+                if (objmember.Display == 1)
+                {
+                    objmember.Display = 0;
+                }
+                else
+                {
+                    objmember.Display = 1;
+                }
+
+                db.SaveChanges();
+
+                return new Result() { IsSucess = true, ResultData = "Member Updated Successfully." };
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
+
         public object GetGrievanceData(GrievanceParam obj)
         {
             var GrievanceData = db.tbl_grievance_list.Where(r => r.grivance_id == obj.GrievanceId).SingleOrDefault();

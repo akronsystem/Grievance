@@ -113,6 +113,24 @@ namespace Griveance.Controllers
             }
         }
 
+
+        [HttpPost]
+        public object DeleteGrievanceAllocation([FromBody] ParamRegistration PR)
+        {
+            try
+            {
+                SaveGrievance Objdelete = new SaveGrievance();
+                var result = Objdelete.DeleteGrievanceAllocation(PR);
+                return result;
+            }
+            catch (Exception e)
+            {
+                return new Error() { IsError = true, Message = e.Message };
+
+            }
+
+        }
+
         [HttpPost]
         public object GetSingleGrievanceTypeInfo([FromBody]GrievanceParam objid)
         {
@@ -132,8 +150,9 @@ namespace Griveance.Controllers
         {
             try
             {
+                var status = objid.DisplayStatus;
                 GetGrievanceListBL obj = new GetGrievanceListBL();
-                var GRAllocation = obj.GetGrievanceAllocation(objid);
+                var GRAllocation = obj.GetGrievanceAllocation(status);
                 return GRAllocation;
             }
             catch (Exception ex)
@@ -196,6 +215,21 @@ namespace Griveance.Controllers
                 return userlist;
             }
             catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        }
+
+        [HttpPost]
+        public object GetAllPostGrevience([FromBody] ParamGetGrievanceList objparam)
+        {
+            try
+            {
+                GetGrievanceListBL obj = new GetGrievanceListBL();
+                var GetGrievance = obj.GetAllPostGrievanceList(objparam);
+                return GetGrievance;
+            }
+            catch(Exception ex)
             {
                 return new Error() { IsError = true, Message = ex.Message };
             }

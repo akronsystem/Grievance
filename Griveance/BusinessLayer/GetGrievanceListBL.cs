@@ -31,20 +31,64 @@ namespace Griveance.BusinessLayer
             {
                 return new Error() { IsError = true, Message = E.Message };
             }
-        }
-        public object GetGrievanceAllocation(ParamGetGrievanceList objparam)
+        } 
+        public object GetAllPostGrievanceList(ParamGetGrievanceList objparam)
         {
             try
             {
-                var Grievancelist = db.View_MemberAllocation.ToList();
-
-                if (Grievancelist == null)
+                var Grievancelist = db.ViewGetAllPostGrievanceLists.ToList();
+                if(Grievancelist == null)
                 {
-                    return new Error() { IsError = true, Message = "Grievance List Not Found" };
+                    return new Result() { IsSucess = true, ResultData = "Grievance List Not Found!" };
                 }
                 else
                 {
                     return new Result() { IsSucess = true, ResultData = Grievancelist };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Error() { IsError = true, Message = ex.Message };
+            }
+        } 
+      
+        public object GetGrievanceAllocation(string status) 
+        {
+            try
+            {
+                //var Grievancelist = db.View_MemberAllocation.ToList();
+
+                //if (Grievancelist == null)
+                //{
+                //    return new Error() { IsError = true, Message = "Grievance List Not Found" };
+                //}
+                //else
+                //{
+                //    return new Result() { IsSucess = true, ResultData = Grievancelist };
+                //}
+
+
+                List<Griveance.Models.View_MemberAllocation> GetMember = null;
+
+
+                if (status == "Deactive")
+                {
+                    GetMember = db.View_MemberAllocation.Where(r => r.Display != 1).ToList();
+                }
+                else
+
+                {
+                    GetMember = db.View_MemberAllocation.Where(r => r.Display == 1).ToList();
+
+                }
+
+                if (GetMember == null)
+                {
+                    return new Error { IsError = true, Message = "Member List Not Found." };
+                }
+                else
+                {
+                    return new Result { IsSucess = true, ResultData = GetMember };
                 }
             }
             catch (Exception E)
