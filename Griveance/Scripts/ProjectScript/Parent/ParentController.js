@@ -160,7 +160,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
                     CustomizeApp.UpdateMessage();
                     $scope.Clear();
                     //$scope.IsVisible = false;
-                    //$scope.Initialize();
+                    $scope.Initialize();
                     //console.log(result.data);
                     // window.location = "./ParentGrievance"
                 }

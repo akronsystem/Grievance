@@ -17,7 +17,7 @@ namespace Griveance.BusinessLayer
             {
                 List<Griveance.Models.ViewAllStaffInfo> StaffInfo = null;
 
-                if (status=="Dective")
+                if (status=="Deactive")
                 {
                     StaffInfo = gc.ViewAllStaffInfoes.Where(r => r.Display != 1).ToList();
                    

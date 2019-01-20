@@ -19,7 +19,7 @@ namespace Griveance.BusinessLayer
             {
                 List<Griveance.Models.ViewGetFacultyInfo> getfacultyinfo = null;
 
-                if (objfaculty.DisplayStatus=="Dective")
+                if (objfaculty.DisplayStatus=="Deactive")
                 {
                     getfacultyinfo = db.ViewGetFacultyInfoes.Where(r => r.Display != 1).ToList();
                 }

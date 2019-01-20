@@ -17,7 +17,7 @@ namespace Griveance.BusinessLayer
                 List<Griveance.Models.ViewGetSingleParentInfo> GetParent = null;
 
 
-                if (status=="Dective")
+                if (status=="Deactive")
                 {
                     GetParent = objcontext.ViewGetSingleParentInfoes.Where(r => r.Display != 1).ToList();
                 }

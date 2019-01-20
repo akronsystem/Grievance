@@ -129,8 +129,9 @@ function ClassYearController($scope, Service) {
             UserId: $scope.UserId,
             Password: $scope.password
         };
+ 
         
-        if (form1.valid())
+        if (form1.valid()) 
         {
             Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
 
