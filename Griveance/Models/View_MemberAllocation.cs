@@ -45,9 +45,9 @@ namespace Griveance.Models
         [Key]
         [Column(Order = 2)]
         [StringLength(5)]
-        public string memberstatus { get; set; }
+        public string memberstatus { get; set; } 
 
         [StringLength(20)]
-        public string gender { get; set; }
+        public string gender { get; set; } 
     }
 }

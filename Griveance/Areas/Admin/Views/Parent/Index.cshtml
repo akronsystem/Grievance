@@ -10,7 +10,7 @@
 
 <body ng-app="GR">
     @using System.Configuration;
-    <div ng-controller="UsersController">
+    <div ng-controller="ParentController">
         <form id="frmCRUD" name="form" class="m-form m-form--fit m-form--label-align-right student-admission-wrapper" ng-init="Initialize()">
 
             <div class="m-portlet m-portlet--tab">
@@ -82,8 +82,8 @@
                                     <label>
                                         Gender
                                     </label> 
-                                    <input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control" required /> 
-                                    <select class="form-control" ng-model="Gender" required>
+                                    @*<input type="text" value={{Gender}} name="Port" ng-model="Gender" class="form-control" required />*@ 
+                                    <select class="form-control" ng-model="Gender" ng-selected="Gender" required>
                                         <option>Male</option>
                                         <option>Female</option>
                                     </select> 

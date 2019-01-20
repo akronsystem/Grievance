@@ -7,6 +7,7 @@ function UsersController($scope, Service) {
     
     $scope.ViewAllStaffInfoes = {};
     $scope.UserCredentialModel = {};
+    $scope.UserName = sessionStorage.getItem('Email');
 
     $scope.GetInfo = function () {
         Service.Post("api/Grievance/GriveanceTypeInfo", $scope.UserCredentialModel).then(function (result) {

@@ -275,6 +275,7 @@ namespace Griveance.BusinessLayer
             {
                 tbl_complaintdetails objuser = db.tbl_complaintdetails.Where(r => r.CompID == PR.CompID).FirstOrDefault();
                 objuser.GrievanceAction = PR.GrievanceAction;
+                objuser.status = PR.status;
                 db.SaveChanges();
 
 
