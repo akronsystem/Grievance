@@ -3,6 +3,8 @@
 function ClassYearController($scope, Service) {
 
     var form = $(".m-form m-form--fit m-form--label");
+    var form1 = $("#frmCRUD");
+    
     $scope.ViewGetCourseInfoes = {};
     $scope.ViewGetClassLists = {};
     $scope.chartContainer = {};
@@ -63,7 +65,7 @@ function ClassYearController($scope, Service) {
 
         }; 
  
-       
+        if (form1.valid()) {
             Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
                
                 if (result.data.IsSucess) {
@@ -79,10 +81,10 @@ function ClassYearController($scope, Service) {
                     //window.location = "./PostGrievance"
                 }
                 // $scope.ParamUserLogin.Name = result.data.Name
-               
 
-            }) 
-          
+
+            })
+        }
     }
     $scope.Cancel = function () {
         window.location = "./Index";
