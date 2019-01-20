@@ -8,6 +8,7 @@ function ClassYearController($scope, Service) {
     $scope.ViewGetCourseInfoes = {};
     $scope.ViewGetClassLists = {};
     $scope.chartContainer = {};
+   
 
     $scope.UserCredentialModel = {};
 
@@ -15,8 +16,11 @@ function ClassYearController($scope, Service) {
 
         Service.Get("api/Course/GetCourseInfo").then(function (result) {
             // $scope.ParamUserLogin.Name = result.data.Name
+           
+          
             $scope.ViewGetCourseInfoes = result.data;
             $scope.Course = result.data.ResultData;
+          
             console.log(result.data);
 
         })
