@@ -39,7 +39,7 @@ function LoginController($scope, Service) {
                     sessionStorage.setItem("emp-key", JSON.stringify(rd.data.ResultData.code));
                     sessionStorage.setItem("userid", JSON.stringify(rd.data.ResultData.UserId));
                     sessionStorage.setItem("Password", JSON.stringify(rd.data.ResultData.password));
-                    sessionStorage.setItem("Email", JSON.stringify(rd.data.ResultData.email));
+                    sessionStorage.setItem("Email", JSON.stringify(rd.data.ResultData.email).replace(/"/g, ''));
                     sessionStorage.setItem("Type", JSON.stringify(rd.data.ResultData.type));
                     sessionStorage.setItem("Name", JSON.stringify(rd.data.ResultData.name));
                     sessionStorage.setItem("Contact", JSON.stringify(rd.data.ResultData.contact));

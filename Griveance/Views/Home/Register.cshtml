@@ -76,9 +76,10 @@
                     <div class="form-body">
                         <div class="m-portlet__body">
                             <div class="form-group m-form__group">
-
+                                <label>Type</label>
                                 <div class="m-input-icon m-input-icon--left">
                                     @*<select name="one" onchange="if (this.value=='10000'){userselect.style.visibility='visible'}else {userselect.style.visibility='hidden'};">*@
+                                   
                                     <select class="form-control m-input" id="select" ng-model="type">
                                         <option>......</option>
                                         <option value="Student" ng-model="type">Student</option>
@@ -91,59 +92,86 @@
                                 </div>
                             </div>
                             <div class="form-group m-form__group">
-                                <div class="m-input-icon m-input-icon--left">
-                                    <input type="email" class="form-control m-input" placeholder="Email" ng-model="email" title="Email" data-skin="dark" data-toggle="m-tooltip" required />
-                                    
+                                <label>Email</label>
+                                <div class="m-input-icon m-input-icon--left"> 
+                                    <input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model="email" required />
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-envelope"></i></span></span> 
                                 </div>
 
                             </div>
                             <div class="form-group m-form__group">
+                                <label>Password</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <input type="password" class="form-control m-input" placeholder="Password" ng-model="password" title="Password" data-skin="dark" data-toggle="m-tooltip" required />
+ 
+                                    <input type="password" class="form-control m-input" placeholder="Password" ng-model="password"  data-skin="dark"  required />
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-unlock"></i></span></span>
+ 
                                 </div>
 
                             </div>
                             <div class="form-group m-form__group">
+                                <label>Confirm Password</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <input type="password" class="form-control m-input" placeholder="Confirm Password"  ng-model="Confirmpassword" title="Confirm Password"  data-skin="dark" data-toggle="m-tooltip" required />
+ 
+                                    <input type="password" class="form-control m-input" placeholder="Confirm Password" ng-model="password"  data-skin="dark"  required />
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-eye"></i></span></span>
+ 
                                 </div>
 
                             </div>
                             <div class="form-group m-form__group">
+                                <label>Your Name</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <input type="text" class="form-control m-input" placeholder="Your Name" ng-model="name" title="Name" data-skin="dark" data-toggle="m-tooltip" required />
+ 
+                                    <input type="text" class="form-control m-input" placeholder="Your Name" ng-model="name"  data-skin="dark"  required />
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-user"></i></span></span>
+ 
                                 </div>
 
                             </div>
                             <div class="form-group m-form__group">
+                                <label>Gender</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <select class="form-control m-input" ng-model="gender" title="Gender" data-skin="dark" data-toggle="m-tooltip" required>
+                                    <select class="form-control m-input" ng-model="gender"  data-skin="dark"  required>
                                         <option>Male</option>
                                         <option>Female</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group m-form__group">
+                                <label>Student/Employee Code</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <input type="text" class="form-control m-input" placeholder="Student/Employee Code" ng-model="code" title="Student/Employee Code" data-skin="dark" data-toggle="m-tooltip" required>
+ 
+                                    <input type="text" class="form-control m-input" placeholder="Student/Employee Code" ng-model="code"  data-skin="dark"  required>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-pencil"></i></span></span>
+ 
 
                                 </div>
 
                             </div>
                             <div class="form-group m-form__group">
+                                <label>Contact Number</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <input type="text" class="form-control m-input" maxlength="10" min="10" placeholder="Contact Number" ng-model="contact" title="Contact Number" data-skin="dark" data-toggle="m-tooltip" required>
+ 
+                                    <input type="text" class="form-control m-input" placeholder="Contact Number" ng-model="contact" data-skin="dark" required>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-phone-square"></i></span></span>
+ 
 
                                 </div>
 
                             </div>
                             <div class="form-group m-form__group" id="relation" style="display:none">
+                                <label>Relationship</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <input type="text" class="form-control m-input"  placeholder="Relationship" ng-model="relationship" title="Relationship" data-skin="dark" data-toggle="m-tooltip" required>
+ 
+                                    <input type="text" class="form-control m-input" placeholder="Relationship" ng-model="relationship" data-skin="dark" required>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-rotate-right"></i></span></span>
+ 
                                 </div>
 
                             </div>
                             <div class="form-group m-form__group" id="course" style="display:none">
+                                <label>Course</label>
                                 <div class="m-input-icon m-input-icon--left">
                                     <select class="form-control m-input" ng-model="CourseName">
                                         <option ng-repeat="s in Course" value="{{s.course_name}}">{{s.course_name}}</option>
@@ -151,6 +179,7 @@
                                 </div>
                             </div>
                             <div class="form-group m-form__group" id="class" style="display:none" ng-init="GetData()">
+                                <label>Class</label>
                                 <div class="m-input-icon m-input-icon--left">
                                     <select class="form-control m-input" ng-model="ClassName">
                                         <option ng-repeat="data in Class" value="{{data.class_name}}">{{data.class_name}}</option>
@@ -161,19 +190,25 @@
 
 
                             <div class="form-group m-form__group" id="designation" style="display:none">
-
+                                <label>Designation</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <input type="text" class="form-control m-input" placeholder="Designation" ng-model="designation" data-skin="dark" data-toggle="m-tooltip" required>
+ 
+                                    <input type="text" class="form-control m-input" placeholder="Designation" ng-model="designation" data-skin="dark" required>
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-home"></i></span></span>
+ 
                                 </div>
 
                             </div>
-                        </div>
-                        <div class="m-portlet__foot m-portlet__foot--fit">
-                            <div class="m-form__actions">
-                                <button class="btn btn-primary" ng-click="Add()">Submit</button>
-                                <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+                                <div class="m-form__actions">
+                                    <button class="btn btn-primary" ng-click="Add()">Submit</button>
+                                    <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+                                </div>
                             </div>
+
                         </div>
+                       
                     </div>
                 </form>
 
