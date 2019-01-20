@@ -712,6 +712,7 @@
     <Compile Include="Models\tbl_user.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\ViewAllStaffInfo.cs" />
+    <Compile Include="Models\ViewGetAllPostGrievanceList.cs" />
     <Compile Include="Models\ViewGetClassList.cs" />
     <Compile Include="Models\ViewGetCourseInfo.cs" />
     <Compile Include="Models\ViewGetFacultyInfo.cs" />
