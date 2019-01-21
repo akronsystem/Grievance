@@ -14,7 +14,7 @@ namespace Griveance.BusinessLayer
         public object GetEmailSettList(string status)
         {
             List<Griveance.Models.Vw_GetEmail> EmailList = null;
-            if(status=="Dective")
+            if(status=="Deactive")
             {
                 EmailList = obj.Vw_GetEmail.Where(r => r.Display != 1).ToList();
             }

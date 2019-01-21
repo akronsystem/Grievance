@@ -3,6 +3,7 @@
 function EmailSettingController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".m-form m-form--fit m-form--label-align-right");
+    var form1 = $("#frmCRUD");
     $scope.tbl_emailsettings = {};
     $scope.IsVisible = false;
     $scope.btnSave = false;
@@ -16,23 +17,25 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
     $scope.dtOptions={};
 
     $scope.Initialize = function () {
+       
+
         if (!$scope.dtOptions)
 
-        debugger;
-        $scope.dtOptions = DTOptionsBuilder.newOptions()
-            .withPaginationType('full_numbers').withDisplayLength(10) 
-        Service.Get("api/Common/GetEmailInfo").then(function (result) { 
+            $scope.dtOptions = DTOptionsBuilder.newOptions()
+                .withPaginationType('full_numbers').withDisplayLength(10)
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
-       
-        Service.Post("api/Common/GetEmailInformation", $scope.UserCredentialModel).then(function (result) { 
+
+        Service.Post("api/Common/GetEmailInformation", $scope.UserCredentialModel).then(function (result) {
 
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.tbl_emailsettings = result.data;
             $scope.Email = result.data.ResultData;
             console.log(result.data);
 
-        })
 
+            })
+
+       
     }
 
     $scope.ShowHide = function (emailsettingid) {
@@ -89,7 +92,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
 
         };
 
-        if ($scope.form.$valid) {
+        if (form.valid()) {
             Service.Post("api/Common/SaveEmailSettings", JSON.stringify(data)).then(function (response) {
                 if (response.data.IsSucess) {
                     debugger;
@@ -116,7 +119,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
                     emailsettingid: emailsettingid
 
                 };
-                if ($scope.form.$valid) {
+                if (form1.valid()) {
                     Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
                         if (response.data.IsSucess) {
                             debugger;

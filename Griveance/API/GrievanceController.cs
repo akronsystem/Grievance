@@ -253,6 +253,7 @@ namespace Griveance.Controllers
 
             } 
         }
+        [HttpPost]
         public object GetAllPostGrevience([FromBody] ParamGetGrievanceList objparam)
         {
             try

@@ -21,7 +21,7 @@ namespace Griveance.BusinessLayer
                     return new Error() { IsError = true, Message = "Required Grievance Name" };
                 }
                 tbl_grievance_list objuser = new tbl_grievance_list();
-                var result = db.tbl_grievance_list.Where(r => r.grivance_name == PR.GrievanceName);
+                var result = db.tbl_grievance_list.FirstOrDefault(r => r.grivance_name == PR.GrievanceName);
                 if (result != null)
                 {
                     return new Error() { IsError = true, Message = "Duplicate Entry Not Allowd" };
@@ -45,7 +45,7 @@ namespace Griveance.BusinessLayer
             {
                 return new Error() { IsError = true, Message = ex.Message };
             }
-        }
+         }
         public object UpdateGrievance(GrievanceParam PR)
         {
             try

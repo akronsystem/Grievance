@@ -23,15 +23,17 @@
                                     Parents
                                 </h3>
                             </div>
-                           <div  style="margin-left:850px;"><h6>Status</h6>
-                        </div>
+
+                            <div style="margin-left:780px;margin-top: 17px;" class="StatusCustom">
+                                <label id="lblstaus">Status</label>
+                            </div>
                             <div class="form-group m-form__group">
                                
                                
-                                    <select ng-model="btnactive"  ng-init="btnactive=Active" ng-change="Initialize()" class="form-control"  > 
-                                        <option    ng-selected="true" value="Active">Active</option>
-                                        <option  value="Deactive">Deactive</option>
-                                    </select> 
+                                <select ng-model="btnactive" ng-change="Initialize()" class="m-dropdown__toggle dropdown-toggle">
+                                    <option ng-selected="true" value="Active">Active</option>
+                                    <option value="Deactive">Deactive</option>
+                                </select> 
                             </div>
 
 
@@ -167,6 +169,7 @@
                                 <th>Contact Number</th>
                                 <th>Action</th>
                                 <th>Status</th>
+                                
 
                             </tr>
                         </thead>
@@ -187,8 +190,10 @@
                                 <td>
                                     {{data.contact}}
                                 </td>
-                                <td><input type="button" class="btn btn-primary" value="Edit" ng-click="ShowHide(data.UserId)" /></td>
-
+                                <td>
+                                    <i class="fa fa-edit  fa-edit Edit_Student" value="Edit" ng-click="ShowHide(data.UserId)" style=""></i>
+                                </td>
+                               
 
                                 <td>
                                     <span class="m-switch m-switch--icon m-switch--danger">
@@ -209,14 +214,24 @@
         </form>
     </div>
 
+
+  
+
+
     <script type="text/javascript" src="~/Content/assets/plugins/jquery/dist/jquery.min.js"></script>
     <script type='text/javascript' src='~/Content/assets/app/datatables/jquery.dataTables.min.js'></script>
+    <link href="~/Content/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+
 
     <script src="@Url.Content("~/Content/angularjs/scripts/angular.min.js")" type="text/javascript"></script>
 
     <script type='text/javascript' src='~/Content/assets/app/datatables/angular-dataTables.js'></script>
+    <script src="~/Content/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+
+
     <script src="@Url.Content("~/Scripts/ProjectScript/Parent/ParentModule.js")"></script>
     <script src="@Url.Content("~/Scripts/Common/Service.js")" type="text/javascript"></script>
+   
     <script src="@Url.Content("~/Scripts/ProjectScript/Parent/ParentController.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/Common/CoomonFunctions.js")"></script>
     <script src="@Url.Content("~/Scripts/Common/customize.js")"></script>

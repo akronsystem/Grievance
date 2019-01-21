@@ -53,7 +53,7 @@ function ClassYearController($scope, Service) {
 
    
     $scope.Add = function () {
-       
+        debugger;
         var Employee = {
             email: $scope.email,
             name: $scope.name,
@@ -68,7 +68,7 @@ function ClassYearController($scope, Service) {
             designation: $scope.designation,
             relationship: $scope.relationship
 
-        };  
+        };
         if ($scope.password == $scope.Confirmpassword) {
             var reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
             //if (!$scope.password.test(reg))
@@ -93,13 +93,12 @@ function ClassYearController($scope, Service) {
         else {
             alert('Please Check ConfirmPassword')
             return false;
-        } 
-      
+        }
         if (form1.valid()) {
             Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
-               
+                debugger;
                 if (result.data.IsSucess) {
-                    
+                    debugger;
                     CustomizeApp.AddMessage();
                     window.location = "./Index"
                     //console.log(result.data);
@@ -114,13 +113,13 @@ function ClassYearController($scope, Service) {
 
 
             })
-        } 
+        }
+
     }
     $scope.Cancel = function () {
         window.location = "./Index";
     }
-    $scope.CourseAdd = function ()  
-       
+    $scope.CourseAdd = function () {
         $scope.UserId = sessionStorage.getItem('userid').replace(/"/g, '');
         $scope.password = sessionStorage.getItem('Password').replace(/"/g, '');
 
@@ -129,27 +128,28 @@ function ClassYearController($scope, Service) {
             UserId: $scope.UserId,
             Password: $scope.password
         };
- 
-        
-        if (form1.valid()) 
-        {
+
+
+        if (form1.valid()) {
             Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
 
-             
+
                 // $scope.ParamUserLogin.Name = result.data.Name
                 if (result.data.IsSucess) {
-                     CustomizeApp.AddMessage();
+                    CustomizeApp.AddMessage();
                     $scope.Initialize();
                 }
                 else {
                     ShowMessage(0, result.data.Message);
                     $scope.Initialize();
                     //$scope.clear();
- 
+                }
+
             })
         }
-
     }
+
+ 
     $scope.ClassAdd = function () {
  
         var Class = {
@@ -199,7 +199,8 @@ function ClassYearController($scope, Service) {
               $scope.facultycount = result.data[3][1];
             }
         });
-        }
+
+    }
 
 
 
@@ -270,7 +271,7 @@ function ClassYearController($scope, Service) {
 
         })
     }
-
-
 }
+
+
 

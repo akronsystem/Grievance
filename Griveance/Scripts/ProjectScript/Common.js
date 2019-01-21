@@ -3,7 +3,7 @@
 function UsersController($scope, Service) {
 
     var form = $(".m-form m-form--fit m-form--label");
-
+    var form1 = $("#frmCRUD");
     
     $scope.ViewAllStaffInfoes = {};
     $scope.UserCredentialModel = {};
@@ -37,7 +37,7 @@ function UsersController($scope, Service) {
             Type: type
         };
 
-        if ($scope.form.$valid) {
+        if (form1.valid()) {
             Service.Post("api/Grievance/PostGrievance", JSON.stringify(PostGr)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name 
@@ -80,7 +80,8 @@ function UsersController($scope, Service) {
             contact:$scope.contact,
             UserId: $scope.UserId,
             contact: $scope.newcontact,
-            newpassword:$scope.newpassword,
+            newpassword: $scope.newpassword,
+            OldPassword: $scope.oldpassword,
             Password:$scope.conpassword
 
         };
@@ -96,24 +97,44 @@ function UsersController($scope, Service) {
             window.alert('Please Check Confirm Password')
             return false;
         }
-        
-        Service.Post("api/Common/UpdateUsers", JSON.stringify(Data)).then(function (result) {
-            debugger;
-            // $scope.ParamUserLogin.Name = result.data.Name 
-            console.log(result.data);
-            if (result.data.IsSucess) {
+        if (form1.valid()) {
+
+
+            Service.Post("api/Common/UpdateUsers", JSON.stringify(Data)).then(function (result) {
                 debugger;
+                // $scope.ParamUserLogin.Name = result.data.Name 
                 console.log(result.data);
-                window.alert('Updated User')
-                //window.location = "./Index"
-            }
-            else {
-                window.alert('Record Not Inserted.')
-                window.location = "./Index"
-            }
-        })
+                if (result.data.IsSucess) {
+                    debugger;
+                    console.log(result.data);
+                    window.alert('Updated User')
+                    //window.location = "./Index"
+                }
+                else {
+                    ShowMessage(0, result.data.Message);
+                    //window.location = "./Index"
+                }
+            })
+        }
     }
-   
+    $scope.GetData = function () {
+        debugger;
+        var data = sessionStorage.getItem('emp-key');
+        $scope.UserCredentialModel.StudentCode = data;
+        var userid = sessionStorage.getItem('userid');
+        $scope.UserCredentialModel.UserId = userid;
+        var password = sessionStorage.getItem('Password');
+        $scope.UserCredentialModel.Password = password;
+        Service.Post("api/Common/GetMyGrievance", $scope.UserCredentialModel).then(function (result) {
+
+            // $scope.ParamUserLogin.Name = result.data.Name
+            $scope.ViewGetStudentInfoes = result.data;
+            $scope.Student = result.data.ResultData;
+            console.log(result.data);
+
+        })
+
+    }
  
 
     $scope.clear = function () {
