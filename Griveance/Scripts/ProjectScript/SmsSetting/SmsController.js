@@ -114,6 +114,7 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
     $scope.Update = function (isValid) {
 
         if (isValid) {
+            alert("hello")
             $scope.Update = function (GATEWAYUSERID, GATEWAYPASSWORD, SMSSENDAPI, CHECKBALANCEAPI, SETTINGID) {
                 var data = {
                     GatewayUserId: GATEWAYUSERID,

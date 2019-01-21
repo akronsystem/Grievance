@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('MemberController', MemberController);
 
-function MemberController($scope, Service) {
+function MemberController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".m-form m-form--fit m-form--label");
     $scope.IsVisible = false;
@@ -13,7 +13,7 @@ function MemberController($scope, Service) {
         if (!$scope.dtOptions)
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withPaginationType('full_numbers').withDisplayLength(10)
-        debugger;
+        
         $scope.UserCredentialModel.DisplayStatus = $scope.ButtonActive;
         Service.Post("api/Member/GetMemberInfo", $scope.UserCredentialModel).then(function (result) {
             $scope.Clear();

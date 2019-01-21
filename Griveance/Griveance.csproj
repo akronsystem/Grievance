@@ -959,6 +959,7 @@
     <Content Include="Areas\Admin\Views\Shared\ReportLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\AdminProfile.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\NAdminProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\SmsSetting.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
