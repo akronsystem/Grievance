@@ -16,7 +16,7 @@ namespace Griveance.BusinessLayer
             try
             {
                 List<Griveance.Models.Vw_GetSmsData> Smsdata = null;
-                if(status =="Dective")
+                if(status == "Deactive")
                 {
                     Smsdata = objGR.Vw_GetSmsData.Where(r => r.DISPLAY != 1).ToList();
                    

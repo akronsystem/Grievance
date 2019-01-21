@@ -8,7 +8,7 @@ namespace Griveance.ParamModel
     public class ParamRegistration
     {
         public string Name { get; set; }
-
+        public string OldPassword { get; set; }
         public int UserId { get; set; }
         public int code { get; set; }
         public string Type { get; set; }

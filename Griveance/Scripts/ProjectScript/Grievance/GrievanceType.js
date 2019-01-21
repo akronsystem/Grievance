@@ -3,6 +3,7 @@
 function GrievanceController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".student-admission-wrapper");
+    var form1 = $("#frmCRUD");
     $scope.tbl_grievance_list = {};
     $scope.UserCredentialModel = {};
     $scope.IsVisible = false;
@@ -44,9 +45,7 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
           
 
         };
-        if (GrievanceName == undefined || GrievanceDescription == undefined) {
-            ShowMessage(0, result.data.Message);
-        }
+        if (form1.valid()) {
             Service.Post("api/Grievance/SaveGrievanceType", JSON.stringify(Grievance)).then(function (result) {
                 debugger;
                 // $scope.ParamUserLogin.Name = result.data.Name
@@ -54,7 +53,7 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
                     debugger;
                     CustomizeApp.AddMessage();
                     $scope.Clear();
-                  
+
                     //console.log(result.data);
                     // window.location = "./ParentGrievance"
                 }
@@ -64,9 +63,10 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
                     //window.location = "./PostGrievance"
                 }
 
-               
+
 
             })
+        }
         
 
 

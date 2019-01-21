@@ -38,9 +38,11 @@ namespace Griveance.BusinessLayer
             {
 
                 tbl_user obj = context.tbl_user.Where(r => r.UserId == PR.UserId).FirstOrDefault();
+         
 
                 if (PR.Password == null)
                 {
+
                     obj.name = PR.Name;
                     obj.email = PR.Email;
                     obj.contact = PR.Contact;
@@ -48,10 +50,19 @@ namespace Griveance.BusinessLayer
                 }
                 else
                 {
-                    obj.name = PR.Name;
-                    obj.email = PR.Email;
-                    obj.contact = PR.Contact;
-                    obj.password =CryptIt.Encrypt(PR.Password);
+                    var oldpassword = context.tbl_user.FirstOrDefault(r => r.UserId == PR.UserId);
+                if(CryptIt.Decrypt(oldpassword.password) == PR.OldPassword)
+                    {
+                        obj.name = PR.Name;
+                        obj.email = PR.Email;
+                        obj.contact = PR.Contact;
+                        obj.password = CryptIt.Encrypt(PR.Password);
+                    }
+                else
+                    {
+                        return new Error() { IsError = true, Message = "Please Check old password." };
+                    }
+                    
                 }
                 context.SaveChanges();
                 return new Result() { IsSucess = true, ResultData = "User Updated Successfully." };

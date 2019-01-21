@@ -3,6 +3,7 @@
 function GrievanceController($scope, Service, DTOptionsBuilder) {
 
     var form = $(".m-form m-form--fit m-form--label-align-right");
+    var form1 = $("#frmCRUD");
     $scope.ViewGrievanceList = {};
     $scope.UserCredentialModel = {};
     $scope.dtOptions = {};
@@ -127,10 +128,9 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
             UserId: UserId,
             Expr1: Expr1
         };
-        if (griType == undefined)
-        {
-            ShowMessage(0, response.data.Message);
-        }
+        if (form1.valid()) {
+
+       
         Service.Post("api/Grievance/UpdateGrievanceAllocation", JSON.stringify(data)).then(function (response) {
 
 
@@ -147,7 +147,8 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
                 //window.location = "./PostGrievance"
             }
          
-        });
+            });
+        }
     }
 
 

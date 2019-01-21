@@ -35,7 +35,7 @@ function MemberController($scope, Service) {
             Name: $scope.NAME,
             Code: $scope.EMPLOYEECODE,
             Type: $scope.TYPE,
-            GRIEVANCETYPE: $scope.GRIEVANCETYPE,
+            GriType: $scope.GRIEVANCETYPE,
             Gender: $scope.GENDER,
             MobileNo: $scope.MOBILENO,
             Password: $scope.Password,
@@ -107,9 +107,10 @@ function MemberController($scope, Service) {
             $scope.GENDER = result.data.gender;
             $scope.MOBILENO = result.data.contact;
             $scope.DESIGNATION = result.data.designation;
-            $scope.GRIEVANCETYPE = result.data.griType;
+            $scope.griType = result.data.griType;
             $scope.USERID = result.data.UserId;
-            $scope.empcode= true ;
+            $scope.empcode = true;
+           
            
         })
     }
