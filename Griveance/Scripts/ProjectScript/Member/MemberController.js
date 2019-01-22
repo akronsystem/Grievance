@@ -14,7 +14,7 @@ function MemberController($scope, Service, DTOptionsBuilder) {
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withPaginationType('full_numbers').withDisplayLength(10)
         
-        $scope.UserCredentialModel.DisplayStatus = $scope.ButtonActive;
+        $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
         Service.Post("api/Member/GetMemberInfo", $scope.UserCredentialModel).then(function (result) {
             $scope.Clear();
             // $scope.ParamUserLogin.Name = result.data.Name

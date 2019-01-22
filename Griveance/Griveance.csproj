@@ -586,6 +586,7 @@
     <Content Include="Scripts\Common\customize.js" />
     <Content Include="Scripts\Common\Module.js" />
     <Content Include="Scripts\Common\Service.js" />
+    <Content Include="Scripts\ProjectScript\Class\RegisterModule.js" />
     <Content Include="Scripts\ProjectScript\Class\ClassModule.js" />
     <Content Include="Scripts\ProjectScript\Class\CourseController.js" />
     <Content Include="Scripts\ProjectScript\Common.js" />
@@ -620,6 +621,7 @@
     <Content Include="Scripts\ProjectScript\Staff\StaffModule.js" />
     <Content Include="Scripts\ProjectScript\Student\StudentInfoController.js" />
     <Content Include="Scripts\ProjectScript\Student\StudentInfoModule.js" />
+    <Content Include="Scripts\ProjectScript\Username.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -995,7 +997,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55043</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55045/</IISUrl>
+          <IISUrl>http://localhost:55044/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

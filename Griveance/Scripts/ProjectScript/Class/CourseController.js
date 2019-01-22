@@ -13,7 +13,7 @@ function ClassYearController($scope, Service) {
     $scope.UserCredentialModel = {};
 
     $scope.Initialize = function () {
-
+       
         Service.Get("api/Course/GetCourseInfo").then(function (result) {
             // $scope.ParamUserLogin.Name = result.data.Name
            
