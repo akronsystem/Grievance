@@ -142,6 +142,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.UserId = null;
         $scope.btnUpdate = false;
         $scope.IsVisible = false;
+        $scope.Initialize();
     }
 
 
@@ -163,7 +164,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             Service.Post("api/Register/UpdateStaffInfo", JSON.stringify(data)).then(function (response) {
                 if (response.data.IsSucess) {
                     debugger;
-                    $scope.Initialize();
+                   
                     CustomizeApp.UpdateMessage();
                     $scope.Clear();
                     //$scope.IsVisible = false;

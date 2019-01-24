@@ -97,7 +97,7 @@ function UsersController($scope, Service) {
             window.alert('Please Check Confirm Password')
             return false;
         }
-        if (form1.valid()) {
+        if ($scope.form.$valid) {
 
 
             Service.Post("api/Common/UpdateUsers", JSON.stringify(Data)).then(function (result) {
@@ -107,7 +107,7 @@ function UsersController($scope, Service) {
                 if (result.data.IsSucess) {
                     debugger;
                     console.log(result.data);
-                    window.alert('Updated User')
+                    CustomizeApp.UpdateMessage();
                     //window.location = "./Index"
                 }
                 else {

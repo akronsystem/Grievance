@@ -26,7 +26,7 @@
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
                                 <h3 class="m-portlet__head-text">
-                                    Member Grievance
+                                   List Of Member Grievance
                                 </h3>
                             </div>
                         </div>
@@ -168,10 +168,11 @@
                             <span ng-style="{'color: red': data.GrievanceAction == 'Closed'}">{{data.GrievanceAction}}</span>
                         </td>*@
                                 <td>
+
                                     {{data.status}}
                                 </td>
-
-                                <td><input type="button" class="btn btn-primary" ng-click="ShowHide2(data)" value="Edit" /></td>
+                              
+                                <td><input type="button" class="btn btn-primary" ng-click="ShowHide2(data)" ng-disabled="{{data.status=='Closed'}}" value="Edit"/></td>
 
 
 

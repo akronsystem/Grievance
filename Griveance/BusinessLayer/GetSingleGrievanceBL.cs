@@ -17,6 +17,8 @@ namespace Griveance.BusinessLayer
             try
             {
                 var SingleGrievancelist = db.View_MemberAllocation.Where(r => r.UserId == objgr.UserId).FirstOrDefault();
+
+
                 return SingleGrievancelist;
                 //if (SingleGrievancelist == null)
                 //{

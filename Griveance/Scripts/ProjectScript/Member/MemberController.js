@@ -8,7 +8,7 @@ function MemberController($scope, Service, DTOptionsBuilder) {
     $scope.UserCredentialModel = {};
     $scope.dtOptions = {};
     $scope.Initialize = function () {
-       
+        debugger;
        
         if (!$scope.dtOptions)
             $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -17,6 +17,8 @@ function MemberController($scope, Service, DTOptionsBuilder) {
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
         Service.Post("api/Member/GetMemberInfo", $scope.UserCredentialModel).then(function (result) {
             $scope.Clear();
+            $scope.GetInfo();
+            console.log(result.data)
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.tbl_memberinfo = result.data;
             $scope.Member = result.data.ResultData;
@@ -138,7 +140,8 @@ function MemberController($scope, Service, DTOptionsBuilder) {
     //    debugger;
     //    if (isValid) {
     $scope.Update = function (NAME, GENDER, EMPLOYEECODE, EMAILID, MOBILENO, DESIGNATION, USERID, GRIEVANCETYPE) {
-                var data = {
+        debugger;
+        var data = {
                     name: NAME,
                     gender: GENDER,
                     code: EMPLOYEECODE,

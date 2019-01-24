@@ -39,6 +39,13 @@ function ReportController($scope, Service) {
         })
 
     }
+    $scope.clear = function () {
+        $scope.GriveanceType = null;
+        $scope.fromdate = null;
+        $scope.name = null;
+        $scope.todate = null;
+    }
+
     $scope.Save = function (data) {
         debugger;
         if (!$scope.GriveanceType)

@@ -132,7 +132,7 @@ namespace Griveance.BusinessLayer
 
                 db.SaveChanges();
 
-                if (PR.Type == "Parent")
+                if (objuser.type == "Parent")
                 {
                     tbl_parent objparent = db.tbl_parent.Where(r => r.UserId == PR.UserId).FirstOrDefault();
                     // objparent.UserId = PR.UserId;
