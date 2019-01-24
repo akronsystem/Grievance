@@ -16,8 +16,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
     $scope.Initialize = function () { 
         debugger;
-        
-       // if (!$scope.dtOptions)
+       // alert('hi')
+       if (!$scope.dtOptions)
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)
         
@@ -75,7 +75,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.email = null;
         $scope.Contact = null;
         $scope.IsVisible = false;
-       $scope.Initialize();
+       //$scope.Initialize();
     }
    
     $scope.AddUpdate = function (StudentName, StudentCode, Type, Gender, email, Contact, UserId) {

@@ -135,8 +135,11 @@
                                     <label>
                                         Email
                                     </label>
+                                    @{
+                                        var email = "[a-z0-9!#$%&'*+\\/=?^_`{|}~.-]+@[a-z0-9-]+(\\.[a-z0-9-]+)*";
+                                    }
 
-                                    <input type="email" value={{email}} name="Port" ng-model="email" class="form-control"   title="Please Enter Valid Email" required />
+                                    <input type="email" value={{email}} name="Port" ng-model="email" class="form-control" pattern="@email" title="Please Enter Valid Email" required />
 
 
                                 </div>
