@@ -19,7 +19,7 @@ function LoginController($scope, Service) {
             debugger;
                 if (result.data.IsSucess) {
                    
-                    CustomizeApp.UpdateMessage();
+                    ShowMessage(1, "Email Send successfully");
 
                 }
                 else

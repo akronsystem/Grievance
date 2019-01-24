@@ -60,9 +60,10 @@
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="exampleInputEmpCode">To Date</label>
-                                    <input type="date" class="form-control m-input" id="todate" placeholder="To Date" ng-model="todate" required />
+                                    <input type="date" class="form-control m-input" id="fdate" ng-model="todate" placeholder="To Date" required />
 
                                 </div>
+                               
                                 <div class="m-portlet__foot m-portlet__foot--fit">
                                     <div class="m-form__actions">
                                         <button class="btn btn-info m-btn m-btn--icon" ng-click="Save(s.id)">
@@ -73,7 +74,7 @@
                                             </span>
                                         </button>
 
-                                        <button class="btn btn-danger m-btn m-btn--icon">
+                                        <button class="btn btn-danger m-btn m-btn--icon" ng-click="clear()">
                                             <span>
                                                 <i class="la la-refresh"></i>
                                                 <span>Reset</span>

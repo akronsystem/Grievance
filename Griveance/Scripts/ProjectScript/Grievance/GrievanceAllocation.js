@@ -7,9 +7,9 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
     $scope.ViewGrievanceList = {};
     $scope.UserCredentialModel = {};
     $scope.dtOptions = {};
-    $scope.btnactive = 'Active'
+   
 
-    $scope.Initialize = function (status) {
+    $scope.Initialize = function () {
         debugger;
         if (!$scope.dtOptions)
 
@@ -23,6 +23,7 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGrievanceList = result.data;
             $scope.GrievanceAllocation = result.data.ResultData;
+            $scope.GetInfo();
             console.log(result.data);
 
         })

@@ -9,6 +9,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     $scope.btnUpdate = false;
     $scope.IsVisible = false;
     $scope.btnDelete = false;
+    
     $scope.Students = [];
     $scope.dtOptions = {};
 
@@ -22,6 +23,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         
         $scope.UserCredentialModel.UserId = "";
         $scope.UserCredentialModel.Password = "";
+        $("#error1").text = "";
         $scope.UserCredentialModel.DisplayStatus = $scope.btnactive;
         Service.Post("api/Users/GetStudentInfo", $scope.UserCredentialModel).then(function (result) {
 
@@ -73,10 +75,11 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.email = null;
         $scope.Contact = null;
         $scope.IsVisible = false;
-       // $scope.Initialize();
+       $scope.Initialize();
     }
    
     $scope.AddUpdate = function (StudentName, StudentCode, Type, Gender, email, Contact, UserId) {
+        debugger;
         var data = {
             name: StudentName,
             code: StudentCode,
@@ -109,6 +112,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
                 $scope.Initialize();
             });
         }
+       
     }
   
 

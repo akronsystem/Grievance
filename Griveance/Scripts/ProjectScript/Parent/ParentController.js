@@ -127,6 +127,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         $scope.UserId = null;
         $scope.btnUpdate = false;
         $scope.IsVisible = false;
+        $scope.Initialize();
+
     }
     $scope.GetInfo = function () {
         $scope.dtOptions = "";

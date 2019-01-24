@@ -8,7 +8,7 @@ function ClassYearController($scope, Service) {
     $scope.ViewGetCourseInfoes = {};
     $scope.ViewGetClassLists = {};
     $scope.chartContainer = {};
-   
+
 
     $scope.UserCredentialModel = {};
 
@@ -16,11 +16,11 @@ function ClassYearController($scope, Service) {
 
         Service.Get("api/Course/GetCourseInfo").then(function (result) {
             // $scope.ParamUserLogin.Name = result.data.Name
-           
-          
+
+
             $scope.ViewGetCourseInfoes = result.data;
             $scope.Course = result.data.ResultData;
-          
+
             console.log(result.data);
 
         })
@@ -29,7 +29,7 @@ function ClassYearController($scope, Service) {
     $scope.GetData = function () {
 
         Service.Post("api/ClassYear/GetClassInfo").then(function (result) {
-            
+
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGetClassLists = result.data;
             $scope.Class = result.data.ResultData;
@@ -41,7 +41,7 @@ function ClassYearController($scope, Service) {
     $scope.GetInfo = function () {
 
         Service.Post("api/ClassYear/GetAllClassInfo").then(function (result) {
-         
+
             // $scope.ParamUserLogin.Name = result.data.Name
             $scope.ViewGetClassLists = result.data;
             $scope.Class = result.data.ResultData;
@@ -51,7 +51,7 @@ function ClassYearController($scope, Service) {
 
     }
 
-   
+
     $scope.Add = function () {
         debugger;
         var Employee = {
@@ -70,25 +70,25 @@ function ClassYearController($scope, Service) {
 
         };
         if ($scope.password == $scope.Confirmpassword) {
-            var reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
-            //if (!$scope.password.test(reg))
-            //{
-            //    alert('Password must be 8 Characters');
+            //var reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
+            ////if (!$scope.password.test(reg))
+            ////{
+            ////    alert('Password must be 8 Characters');
+            ////    return false;
+            ////}
+            //errors = [];
+            //if ($scope.password.length < 8) {
+            //    alert("Your password must be at least 8 characters");
             //    return false;
             //}
-            errors = [];
-            if ($scope.password.length < 8) {
-                alert("Your password must be at least 8 characters");
-                return false;
-            }
-            if ($scope.password.search(/[a-z]/i) < 0) {
-                alert("Your password must contain at least one letter.");
-                return false;
-            }
-            if ($scope.password.search(/[0-9]/) < 0) {
-                alert("Your password must contain at least one digit.");
-                return false;
-            }
+            //if ($scope.password.search(/[a-z]/i) < 0) {
+            //    alert("Your password must contain at least one letter.");
+            //    return false;
+            //}
+            //if ($scope.password.search(/[0-9]/) < 0) {
+            //    alert("Your password must contain at least one digit.");
+            //    return false;
+            //}
         }
         else {
             alert('Please Check ConfirmPassword')
@@ -149,26 +149,24 @@ function ClassYearController($scope, Service) {
         }
     }
 
- 
+
     $scope.ClassAdd = function () {
- 
+
         var Class = {
             CourseName: $scope.CourseName1,
             ClassName: $scope.ClassName,
             UserId: sessionStorage.getItem('userid').replace(/"/g, ''),
             Password: sessionStorage.getItem('Password').replace(/"/g, '')
         };
-        if ($scope.ClassName == undefined)
-        {
+        if ($scope.ClassName == undefined) {
             ShowMessage(0, 'Reqired Class Name');
         }
-    else
-        {
+        else {
             Service.Post("api/ClassYear/CreateClass", JSON.stringify(Class)).then(function (result) {
- 
-                
+
+
                 // $scope.ParamUserLogin.Name = result.data.Name
-                if (result.data.IsSucess) { 
+                if (result.data.IsSucess) {
                     CustomizeApp.AddMessage();
                     $scope.Close();
                 }
@@ -183,8 +181,7 @@ function ClassYearController($scope, Service) {
         }
 
     }
-    $scope.Close=function()
-    {
+    $scope.Close = function () {
         $scope.CourseName1 = null;
         $scope.ClassName = null;
         $scope.GetInfo();
@@ -192,11 +189,11 @@ function ClassYearController($scope, Service) {
     $scope.GetUserCount = function () {
         Service.Get("api/Grievance/GetUserList").then(function (result) {
             if (result.data) {
- 
-              $scope.studcount = result.data[0][1];
-              $scope.parentcount = result.data[1][1];
-              $scope.staffcount = result.data[2][1];
-              $scope.facultycount = result.data[3][1];
+
+                $scope.studcount = result.data[0][1];
+                $scope.parentcount = result.data[1][1];
+                $scope.staffcount = result.data[2][1];
+                $scope.facultycount = result.data[3][1];
             }
         });
 
@@ -205,13 +202,13 @@ function ClassYearController($scope, Service) {
 
 
     $scope.ShowGraph = function () {
-     
+
 
         Service.Get("api/Grievance/ShowGraph").then(function (result) {
-            
+
             // $scope.ParamUserLogin.Name = result.data.Name
             if (result.data) {
-                
+
                 var pendingper, closedper;
                 var pending, closed;
 
@@ -221,21 +218,21 @@ function ClassYearController($scope, Service) {
                 closedper = result.data[1][1];
 
                 var DoughnutChartData =
-                {
-                    labels: [pending, closed],
-                    datasets: [{
-                        label: 'Grievance Status',
-                        backgroundColor: [
-                            "#f990a7",
-                            "#aad2ed",
-                            "#9966FF",
-                            "#99e5e5",
-                            "#f7bd83",
-                        ],
-                        borderWidth: 1,
-                        data: [pendingper, closedper]
-                    }]
-                };
+                    {
+                        labels: [pending, closed],
+                        datasets: [{
+                            label: 'Grievance Status',
+                            backgroundColor: [
+                                "#f990a7",
+                                "#aad2ed",
+                                "#9966FF",
+                                "#99e5e5",
+                                "#f7bd83",
+                            ],
+                            borderWidth: 1,
+                            data: [pendingper, closedper]
+                        }]
+                    };
 
 
                 var ctx1 = document.getElementById("Doughnutcanvas").getContext("2d");
@@ -245,23 +242,23 @@ function ClassYearController($scope, Service) {
 
                         data: DoughnutChartData,
                         options:
+                        {
+                            title:
                             {
-                                title:
-                                {
-                                    display: true,
-                                    text: "Grievance Status",
-                                    fontSize: "20"
-                                },
-                                responsive: true,
-                                maintainAspectRatio: true,
-                                cutoutPercentage: 70,
+                                display: true,
+                                text: "Grievance Status",
+                                fontSize: "20"
+                            },
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            cutoutPercentage: 70,
 
 
-                                legend: {
-                                    position: 'bottom'
+                            legend: {
+                                position: 'bottom'
 
-                                }
                             }
+                        }
                     });
             }
             else {

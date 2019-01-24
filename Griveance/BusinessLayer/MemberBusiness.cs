@@ -199,13 +199,16 @@ namespace Griveance.BusinessLayer
             try
             {
                 tbl_member objmember = db.tbl_member.Where(r => r.UserId == PR.UserId).FirstOrDefault();
-
+                
                 objmember.griType = PR.GriType;
                 objmember.designation = PR.Designation;
                 objmember.modified_date = DateTime.Now;
                 if (PR.GriType != null)
                 {
                     objmember.griType = PR.GriType;
+                    tbl_grievance_list list = db.tbl_grievance_list.Where(r => r.grivance_name == objmember.griType).FirstOrDefault();
+                    list.Isalloted = 1;
+                    db.SaveChanges();
                 }
                 db.SaveChanges();
 
