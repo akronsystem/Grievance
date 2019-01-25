@@ -12,6 +12,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
     $scope.Initialize = function () {
         debugger;
+        
         if (!$scope.dtOptions)
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()

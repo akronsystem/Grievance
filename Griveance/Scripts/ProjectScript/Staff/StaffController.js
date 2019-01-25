@@ -10,6 +10,7 @@ function UsersController($scope, Service, DTOptionsBuilder) {
 
     $scope.Initialize = function () {
         debugger;
+        
         if (!$scope.dtOptions)
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withPaginationType('full_numbers').withDisplayLength(10)

@@ -98,7 +98,7 @@
                                     <span class="required"> * </span>
                                 </label>
 
-                                <input type="text" value={{name}} ng-model="name" name="name" id="name" class="form-control" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" title="Name Should be Alphabate only" required />
+                                <input type="text" value={{name}} ng-model="name" name="name" id="name" class="form-control" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" title="Name Should be Alphabate only" autocomplete="off" required />
                                 <input type="hidden" value="{{UserId}}" />
                                 <input type="hidden" value="{{Expr1}}" />
                             </div>
@@ -116,7 +116,7 @@
                                     Designation
                                 </label>
 
-                                <input type="text" value={{designation}} name="Port" ng-model="designation" class="form-control" required />
+                                <input type="text" value={{designation}} name="designation" id="designation" ng-model="designation" class="form-control" title="Designation Should be Alphabates" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" autocomplete="off"  required />
 
 
                             </div>
@@ -128,7 +128,7 @@
 
                                 @*<input type="text" value={{griType}} name="Port" ng-model="griType" class="form-control" required />*@
 
-                                <select class="form-control m-input" id="exampleGrievance" ng-model="griType">
+                                <select class="form-control m-input" id="exampleGrievance" ng-model="griType" required>
                                     <option ng-repeat="s in Grievance" value="{{s.grivance_name}}">{{s.grivance_name}}</option>
 
                                 </select>
@@ -138,8 +138,10 @@
                                 <label>
                                     Email
                                 </label>
-
-                                <input type="text" value={{email}} name="Port" ng-model="email" class="form-control" required />
+                                @{
+                                    var email = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
+                                }
+                                <input type="text" value={{email}} name="email" id="email" ng-model="email" pattern="@email" title="Please Enter Valid Email" class="form-control" autocomplete="off" required />
 
 
                             </div>
@@ -148,7 +150,7 @@
                                     Contact
                                 </label>
 
-                                <input type="text" value={{contact}} name="Port" ng-model="contact" class="form-control" required />
+                                <input type="number" value={{contact}} name="contact" id="contact" ng-model="contact" class="form-control" pattern="[0-9]{10}" title="Only 10 Digit Number" autocomplete="off" required />
 
 
                             </div>

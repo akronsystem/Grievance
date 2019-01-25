@@ -136,8 +136,10 @@
                                     <label>
                                         Email
                                     </label>
-
-                                    <input type="email" value={{Email}} name="email" id="email" ng-model="Email" class="form-control" title="Please Enter Valid Email"  required />
+                                    @{
+                                        var email = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
+                                    }
+                                    <input type="email" value={{Email}} name="email" id="email" ng-model="Email" class="form-control" pattern="@email" title="Please Enter Valid Email"  required />
 
 
                                 </div>

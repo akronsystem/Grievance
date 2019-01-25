@@ -32,5 +32,8 @@ namespace Griveance.Models
 
         [StringLength(100)]
         public string status { get; set; }
+
+        [StringLength(100)]
+        public string name { get; set; }
     }
 }

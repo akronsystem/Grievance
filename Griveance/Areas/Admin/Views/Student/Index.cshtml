@@ -96,7 +96,7 @@
                                         <span class="required"> * </span>
                                     </label>
 
-                                    <input type="text" value={{StudentName}} ng-model="StudentName" id="" name="FromId" class="form-control" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" title="Name Should be Alphabate only" required />
+                                    <input type="text" value={{StudentName}} ng-model="StudentName" id="name" name="name" class="form-control" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" title="Name Should be Alphabate only" required />
                                     <input type="hidden" value="{{UserId}}" />
                                 </div>
                                 <div class="form-group m-form__group">
@@ -104,7 +104,7 @@
                                         Code
                                     </label>
 
-                                    <input type="text" value={{StudentCode}} ng-model="StudentCode" name="Host" class="form-control" disabled required />
+                                    <input type="text" value={{StudentCode}} ng-model="StudentCode" name="studentcode" id="code" class="form-control" disabled required />
 
 
                                 </div>
@@ -114,7 +114,7 @@
                                         Type
                                     </label>
 
-                                    <input type="text" value={{Type}} name="Port" ng-model="Type" class="form-control" disabled required />
+                                    <input type="text" value={{Type}} name="type" id="type" ng-model="Type" class="form-control" disabled required />
 
 
                                 </div>
@@ -123,7 +123,7 @@
                                     <label>
                                         Gender
                                     </label>
-                                    <select class="form-control" ng-model="Gender" required>
+                                    <select class="form-control" ng-model="Gender"id="gender" required>
                                         <option>Male</option>
                                         <option>Female</option>
                                     </select>
@@ -136,10 +136,10 @@
                                         Email
                                     </label>
                                     @{
-                                        var email = "[a-z0-9!#$%&'*+\\/=?^_`{|}~.-]+@[a-z0-9-]+(\\.[a-z0-9-]+)*";
+                                        var email = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
                                     }
 
-                                    <input type="email" value={{email}} name="Port" ng-model="email" class="form-control" pattern="@email" title="Please Enter Valid Email" required />
+                                    <input type="email" value={{email}} name="email" id="email" ng-model="email" class="form-control" pattern="@email" title="Please Enter Valid Email" required />
 
 
                                 </div>
@@ -149,7 +149,7 @@
                                         Contact
                                     </label>
 
-                                    <input type="number" value={{Contact}} ng-model="Contact" name="mobile" class="form-control" pattern="[0-9]{10}" title="Only 10 Digit Number"  required />
+                                    <input type="number" value={{Contact}} ng-model="Contact" name="mobile" id="mobile" class="form-control" pattern="[0-9]{10}" title="Only 10 Digit Number"  required />
                                    
 
                                 </div>
