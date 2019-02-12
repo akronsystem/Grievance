@@ -84,7 +84,7 @@
 
                                 <div class="form-group m-form__group">
                                     <label for="exampleInputName">Name</label>
-                                    <input type="text" class="form-control m-input" id="exampleInputName" name="name" value="{{NAME}}" placeholder="Name" ng-model="NAME" pattern="^[a-zA-Z [\t]]*$" title="Name Should be Alphabate only" required />
+                                    <input type="text" class="form-control m-input" id="exampleInputName" name="name" value="{{NAME}}" placeholder="Name" ng-model="NAME" pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" title="Name Should be Alphabate only" required />
                                    
                                 </div>
 
@@ -97,7 +97,7 @@
                                     <label>
                                         Gender
                                     </label>
-                                    <select class="form-control" ng-model="GENDER" id="ddlgender"   required>
+                                    <select class="form-control" ng-model="GENDER" name="ddlgender" id="ddlgender" title="Please Select Gender"  required>
                                         <option>Male</option>
                                         <option>Female</option>
                                     </select>
@@ -106,8 +106,11 @@
 
                                 </div>
                                 <div class="form-group m-form__group">
+                                    @{
+                                        var email = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
+                                    }
                                     <label for="exampleInputEmail">Email address</label>
-                                    <input type="email" class="form-control m-input" id="exampleInputEmail12" value="{{EMAILID}}" aria-describedby="emailHelp" placeholder="Enter email" ng-model="EMAILID"    title="Please Enter Valid Email"  required />
+                                    <input type="email" class="form-control" id="Email" name="Email" value="{{EMAILID}}"  placeholder="Enter email" ng-model="EMAILID"  pattern="@email"  title="Please Enter Valid Email"  required />
                                  
                                 </div>
                                 <div class="form-group m-form__group">
@@ -132,7 +135,7 @@
                                     <label for="exampleInputPassword1">Password</label>
                                     @*<input type="password" class="form-control m-input" id="exampleInputPassword1" placeholder="Password" ng-model="Password" required />*@
 
-                                    <input type="password"  class="form-control m-input" name="Password" id="Password"  min="8" maxlength="128" ng-model="Password" onkeyup="return passwordChanged()" required />
+                                    <input type="password"  class="form-control m-input" name="Password" id="Password"  ng-model="Password" onkeyup="return passwordChanged()" required />
                                     <span id="strength">Type Password</span>
                                 </div>
                                 <div class="form-group m-form__group" ng-show="txtCONFIRMPASSWORD">

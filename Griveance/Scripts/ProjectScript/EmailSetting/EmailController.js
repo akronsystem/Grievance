@@ -17,7 +17,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
     $scope.dtOptions={};
 
     $scope.Initialize = function () {
-       
+       alert('hi')
 
         if (!$scope.dtOptions)
 
@@ -61,7 +61,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
             $scope.password = result.data.password;
             $scope.emailsettingid = result.data.emailsettingid;
             $scope.Email = result.data.ResultData;
-            $scope.Initialize();
+            
         })
     }
 
@@ -77,7 +77,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
         $scope.password = null;
        
         $scope.msg = "";
-        $scope.Initialize();
+       // $scope.Initialize();
       
     }
 

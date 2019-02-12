@@ -43,45 +43,46 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div style="display:none" id="member">
-                                    <div class="form-group m-form__group" ng-init="GetMember()">
-                                        <label for="exampleGrievance">Grievance Member List</label>
-                                        <select class="form-control m-input" id="exampleGrievance" ng-model="name">
+                                <div>
+                                    <div style="display:none" id="member">
+                                        <div class="form-group m-form__group" ng-init="GetMember()">
+                                            <label for="exampleGrievance">Grievance Member List</label>
+                                            <select class="form-control m-input" id="exampleGrievance" ng-model="name" style="width:209px;">
 
-                                            <option ng-repeat="s in Member" value="{{s.UserId}}">{{s.name}}</option>
+                                                <option ng-repeat="s in Member" value="{{s.UserId}}">{{s.name}}</option>
 
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group m-form__group">
-                                    <label for="exampleInputEmpCode">From Date</label>
-                                    <input type="date" class="form-control m-input" id="fdate" ng-model="fromdate" placeholder="From Date" required />
-
-                                </div>
-                                <div class="form-group m-form__group">
-                                    <label for="exampleInputEmpCode">To Date</label>
-                                    <input type="date" class="form-control m-input" id="fdate" ng-model="todate" placeholder="To Date" required />
-
-                                </div>
-                               
-                                <div class="m-portlet__foot m-portlet__foot--fit">
-                                    <div class="m-form__actions">
-                                        <button class="btn btn-info m-btn m-btn--icon" ng-click="Save(s.id)">
-                                            @*onclick="location.href='@Url.Action("ReportDwonload", "Report")'"*@
-                                            <span>
-                                                <i class="fa fa-print"></i>
-                                                <span>Print</span>
-                                            </span>
-                                        </button>
-
-                                        <button class="btn btn-danger m-btn m-btn--icon" ng-click="clear()">
-                                            <span>
-                                                <i class="la la-refresh"></i>
-                                                <span>Reset</span>
-                                            </span>
-                                        </button>
+                                            </select>
                                         </div>
                                     </div>
+                                    <div class="form-group m-form__group">
+                                        <label for="exampleInputEmpCode">From Date</label>
+                                        <input type="date" class="form-control m-input" id="fdate" ng-model="fromdate" placeholder="From Date" style="width: 209px;" required />
+
+
+                                        <label for="exampleInputEmpCode">To Date</label>
+                                        <input type="date" class="form-control m-input" id="fdate" ng-model="todate" placeholder="To Date" style="width: 209px;" required />
+
+                                    </div>
+
+                                    <div class="m-portlet__foot m-portlet__foot--fit">
+                                        <div class="m-form__actions">
+                                            <button class="btn btn-info m-btn m-btn--icon" ng-click="Save(s.id)">
+                                                @*onclick="location.href='@Url.Action("ReportDwonload", "Report")'"*@
+                                                <span>
+                                                    <i class="fa fa-print"></i>
+                                                    <span>Print</span>
+                                                </span>
+                                            </button>
+
+                                            <button class="btn btn-danger m-btn m-btn--icon" ng-click="clear()">
+                                                <span>
+                                                    <i class="la la-refresh"></i>
+                                                    <span>Reset</span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="m-portlet m-portlet--mobile"></div>
                             </div>

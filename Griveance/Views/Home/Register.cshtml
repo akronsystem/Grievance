@@ -95,7 +95,7 @@
                                 <label>Your Name</label>
                                 <div class="m-input-icon m-input-icon--left">
 
-                                    <input type="text" class="form-control m-input" id="name" placeholder="Your Name" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" title="Name Should be Alphabate only" ng-model="name"  required />
+                                    <input type="text" class="form-control m-input" id="name" placeholder="Your Name" pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" title="Name Should be Alphabate only" ng-model="name" autocomplete="off"  required />
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-user"></i></span></span>
 
                                 </div>
@@ -104,7 +104,10 @@
                             <div class="form-group m-form__group">
                                 <label>Email</label>
                                 <div class="m-input-icon m-input-icon--left">
-                                    <input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model="email" required />
+                                    @{
+                                        var email = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
+                                    }
+                                    <input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" pattern="@email" title="Please Enter Valid Email" ng-model="email" autocomplete="off" required />
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-envelope"></i></span></span>
                                 </div>
 
@@ -113,7 +116,7 @@
                                 <label>Password</label>
                                 <div class="m-input-icon m-input-icon--left">
 
-                                    <input type="password" class="form-control m-input" name="password" id="password" placeholder="Password" ng-model="password" data-skin="dark" onkeyup="return passwordChanged()" required />
+                                    <input type="password" class="form-control m-input" name="password" id="password" placeholder="Password" ng-model="password"  onkeyup="return passwordChanged()" autocomplete="off" required />
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-unlock"></i></span></span>
                                    
                                 </div>
@@ -123,7 +126,7 @@
                                 <label>Confirm Password</label>
                                 <div class="m-input-icon m-input-icon--left">
 
-                                    <input type="password" id="confpass" class="form-control m-input" placeholder="Confirm Password" ng-model="Confirmpassword" data-skin="dark" required />
+                                    <input type="password" id="confpass" class="form-control m-input" placeholder="Confirm Password" ng-model="Confirmpassword" autocomplete="off"  required/>
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-eye"></i></span></span>
 
                                 </div>
@@ -143,7 +146,7 @@
                                 <label>Student/Employee Code</label>
                                 <div class="m-input-icon m-input-icon--left">
 
-                                    <input type="text" id="empcode" class="form-control m-input" placeholder="Student/Employee Code" ng-model="code" data-skin="dark" required>
+                                    <input type="text" id="empcode" class="form-control m-input" placeholder="Student/Employee Code" ng-model="code" pattern="[a-zA-Z0-9 ]+" title="Employee/Student Code Should be Alphanumeric only" required>
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-pencil"></i></span></span>
 
 
@@ -154,7 +157,7 @@
                                 <label>Contact Number</label>
                                 <div class="m-input-icon m-input-icon--left">
 
-                                    <input type="number" id="phone" class="form-control m-input" placeholder="Contact Number" pattern="^[0-9_ ]*$" title="Only 10 Digit Number" maxlength="10" min="10" ng-model="contact" data-skin="dark" required>
+                                    <input type="number" id="phone" class="form-control m-input" placeholder="Contact Number" pattern="[0-9]{10}" title="Only 10 Digit Number" maxlength="10" min="10" ng-model="contact" autocomplete="off" required>
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-phone-square"></i></span></span>
 
 
@@ -164,8 +167,11 @@
                             <div class="form-group m-form__group" id="relation" style="display:none">
                                 <label>Relationship</label>
                                 <div class="m-input-icon m-input-icon--left">
-
-                                    <input type="text" class="form-control m-input" id="relation" placeholder="Relationship" ng-model="relationship" data-skin="dark" required>
+                                    <select class="form-control m-input" id="relation" ng-model="relationship" title="Select Relationship" required>
+                                        <option>Mother</option>
+                                        <option>Father</option>
+                                    </select>
+                                    @*<input type="text" class="form-control m-input" id="relation" placeholder="Relationship" ng-model="relationship" required>*@
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-rotate-right"></i></span></span>
 
                                 </div>
@@ -194,7 +200,7 @@
                                 <label>Designation</label>
                                 <div class="m-input-icon m-input-icon--left">
 
-                                    <input type="text" class="form-control m-input" placeholder="Designation" ng-model="designation" data-skin="dark" required>
+                                    <input type="text" class="form-control m-input" placeholder="Designation" ng-model="designation" autocomplete="off" required>
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-home"></i></span></span>
 
                                 </div>

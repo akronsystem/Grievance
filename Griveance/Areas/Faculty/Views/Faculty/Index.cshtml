@@ -77,7 +77,7 @@
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="m_user_profile_tab_1">
-                                    <form name="form" id="frmCRUD" class="m-form m-form--fit m-form--label-align-right">
+                                    <form name="frm" id="frmCRUD" class="m-form m-form--fit m-form--label-align-right">
                                         <div class="form-body">
                                             <div class="m-portlet__body">
 
@@ -90,20 +90,23 @@
                                                 <div class="form-group m-form__group row">
                                                     <label for="example-text-input" class="col-2 col-form-label">Full Name</label>
                                                     <div class="col-7">
-                                                        <input class="form-control m-input" type="text" value="{{name}}" ng-model="name" />
+                                                        <input class="form-control m-input" type="text"name="name" id="name" value="{{name}}" ng-model="name" pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" title="Name Should be Alphabate only" required />
                                                     </div>
                                                 </div>
                                                 <div class="form-group m-form__group row">
                                                     <label for="example-text-input" class="col-2 col-form-label">Email Id</label>
                                                     <div class="col-7">
-                                                        <input class="form-control m-input" type="text" value="{{email}}" ng-model="email">
+                                                        @{
+                                                            var email = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
+                                                        }
+                                                        <input class="form-control m-input" name="email" id="email" type="text" value="{{email}}" pattern="@email" title="Please Enter Valid Email" ng-model="email" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group m-form__group row">
                                                     <label for="example-text-input" class="col-2 col-form-label">Phone No.</label>
                                                     <div class="col-7">
-                                                        <input class="form-control m-input" type="text" value="{{contact}}" ng-model="contact">
+                                                        <input class="form-control m-input" type="text" id="contact" name="contact" value="{{contact}}" ng-model="contact" pattern="[0-9]{10}" title="Only 10 Digit Number" required>
                                                     </div>
                                                 </div>
                                                 <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
@@ -129,13 +132,15 @@
                                                 <div class="form-group m-form__group row">
                                                     <label for="example-text-input" class="col-2 col-form-label">New Contact Number</label>
                                                     <div class="col-7">
-                                                        <input class="form-control m-input" type="text" placeholder="New Contact Number" ng-model="newcontact" required>
+                                                        <input class="form-control m-input" type="number"id="newcontact" name="newcontact" placeholder="New Contact Number" ng-model="newcontact" pattern="[0-9]{10}" title="Only 10 Digit Number" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-7">
-                                                    <button  class="btn btn-primary" ng-click="Setting()">Update</button>&nbsp;&nbsp;
+                                                <div class="m-portlet__foot m-portlet__foot--fit">
+                                                    <div class="m-form__actions">
+                                                        <button class="btn btn-primary" ng-click="Setting()">Update</button>&nbsp;&nbsp;
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                </div>
                                             </div>
 
                                     </form>
@@ -153,23 +158,26 @@
                                                             <div class="form-group m-form__group row">
                                                                 <label for="example-text-input" class="col-2 col-form-label">Old Password</label>
                                                                 <div class="col-7">
-                                                                    <input class="form-control m-input" type="password" placeholder="Old Password" ng-model="oldpassword">
+                                                                    <input class="form-control m-input" type="password" id="oldpass" name="oldpass" placeholder="Old Password" ng-model="oldpassword" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group m-form__group row">
                                                                 <label for="example-text-input" class="col-2 col-form-label">New Password</label>
                                                                 <div class="col-7">
-                                                                    <input class="form-control m-input" type="password" placeholder="New Password" ng-model="newpassword">
+                                                                    <input class="form-control m-input" type="password" placeholder="New Password" id="newpass" onkeyup="return passwordChanged()" name="newpass" ng-model="newpassword" required>
+                                                                    <span id="strength"></span>
                                                                 </div>
+                                                               
                                                             </div>
+                                                          
                                                             <div class="form-group m-form__group row">
                                                                 <label for="example-text-input" class="col-2 col-form-label">Confirm Password</label>
                                                                 <div class="col-7">
-                                                                    <input class="form-control m-input" type="password" placeholder="Confirm Password" ng-model="conpassword">
+                                                                    <input class="form-control m-input" type="password" placeholder="Confirm Password" id="confpass" name="confpass" ng-model="conpassword" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-7">
-                                                                <button class="btn btn-primary" ng-click="Setting()">Update</button>&nbsp;&nbsp;
+                                                                <button class="btn btn-primary" ng-click="PasswordSetting()">Update</button>&nbsp;&nbsp;
                                                             </div>
                                                         </div>
                                                     </div>
@@ -198,6 +206,30 @@
 
 
 </html>
+<script language="javascript">
+    function passwordChanged() {
+        var strength = document.getElementById('strength');
+        var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+        var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+        var pwd = document.getElementById("newpass");
+        if (pwd.value.length == 0) {
+            strength.innerHTML = 'Type Password';
+        } else if (false == enoughRegex.test(pwd.value)) {
+            strength.innerHTML = 'More Characters';
+        } else if (strongRegex.test(pwd.value)) {
+            strength.innerHTML = '<span style="color:green">Strong!</span>';
+        } else if (mediumRegex.test(pwd.value)) {
+            strength.innerHTML = '<span style="color:orange">Medium!</span>';
+        } else {
+            strength.innerHTML = '<span style="color:red">Weak!</span>';
+        }
+    }
+</script>
+
+
+
+
 
 
 
