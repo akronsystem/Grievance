@@ -486,6 +486,12 @@
     <Content Include="Content\assets\images\1.jpg" />
     <Content Include="Content\assets\images\11.jpg" />
     <Content Include="Content\assets\images\2.jpg" />
+    <Content Include="Content\assets\images\ajax-loader.gif" />
+    <Content Include="Content\assets\images\image3.jpg" />
+    <Content Include="Content\assets\images\image4.jpg" />
+    <Content Include="Content\assets\images\image5.jpg" />
+    <Content Include="Content\assets\images\image6.jpg" />
+    <Content Include="Content\assets\images\image7.jpg" />
     <Content Include="Content\assets\images\webesk_logo.png" />
     <Content Include="Content\assets\img\arrows.png" />
     <Content Include="Content\assets\img\icon_drible.png" />
