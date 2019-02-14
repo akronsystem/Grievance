@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('GrievanceController', GrievanceController);
 
-function GrievanceController($scope, Service, DTOptionsBuilder) {
+function GrievanceController($scope, Service, DTOptionsBuilder, $timeout) {
 
     var form = $(".student-admission-wrapper");
     var form1 = $("#frmCRUD");
@@ -10,7 +10,9 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
     $scope.btnSave = false;
     $scope.btnUpdate = false;
     $scope.dtOptions = {};
-
+    $scope.myText = "/Content/assets/images/ajax-loader.gif";
+    $scope.isCheck = true;
+    $scope.btnValue = "SAVE";
 
 
     $scope.Initialize = function () {
@@ -46,26 +48,36 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
 
         };
         if (form1.valid()) {
-            Service.Post("api/Grievance/SaveGrievanceType", JSON.stringify(Grievance)).then(function (result) {
-                debugger;
-                // $scope.ParamUserLogin.Name = result.data.Name
-                if (result.data.IsSucess) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
+
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+                Service.Post("api/Grievance/SaveGrievanceType", JSON.stringify(Grievance)).then(function (result) {
                     debugger;
-                    CustomizeApp.AddMessage();
-                    $scope.Clear();
+                    // $scope.ParamUserLogin.Name = result.data.Name
+                    if (result.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.AddMessage();
+                        $scope.Clear();
 
-                    //console.log(result.data);
-                    // window.location = "./ParentGrievance"
-                }
-                else {
-                    ShowMessage(0, result.data.Message);
-                    //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, result.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
 
 
 
-            })
+                })
+            }, 3000);
         }
         
 
@@ -78,22 +90,23 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
              GrievanceId: GrievanceId
 
         };
-        
+      
 
-         Service.Post("api/Grievance/GetSingleGrievanceTypeInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
-          
-            debugger;
+                 Service.Post("api/Grievance/GetSingleGrievanceTypeInfo", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
 
-            $scope.IsVisible = true;
-            $scope.btnUpdate = true;
-            $scope.btnSave = false;
-            $scope.tbl_grievance_list = result.data;
+                     debugger;
 
-            $scope.GrievanceId = result.data.grivance_id;
-            $scope.GrievanceName = result.data.grivance_name;
-            $scope.GrievanceDescription = result.data.grivance_description;
-            $scope.Initialize();
-        })
+                     $scope.IsVisible = true;
+                     $scope.btnUpdate = true;
+                     $scope.btnSave = false;
+                     $scope.tbl_grievance_list = result.data;
+
+                     $scope.GrievanceId = result.data.grivance_id;
+                     $scope.GrievanceName = result.data.grivance_name;
+                     $scope.GrievanceDescription = result.data.grivance_description;
+                     $scope.Initialize();
+                 })
+         
     }
 
     $scope.Update = function (GrievanceName, GrievanceDescription, GrievanceId) {
@@ -107,23 +120,35 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
         if (GrievanceName == undefined || GrievanceDescription == undefined) {
             ShowMessage(0, result.data.Message);
         }
-            Service.Post("api/Grievance/UpdateGrievanceType", JSON.stringify(Info)).then(function (result) {
-                debugger;
-                if (result.data.IsSucess) {
-                    debugger;
-                    CustomizeApp.UpdateMessage();
-                    $scope.Clear();
-                   
-                    //console.log(result.data);
-                    // window.location = "./ParentGrievance"
-                }
-                else {
-                    ShowMessage(0, result.data.Message);
-                    //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
+        if (Info != null) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
 
-            })
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+                Service.Post("api/Grievance/UpdateGrievanceType", JSON.stringify(Info)).then(function (result) {
+                    debugger;
+                    if (result.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.UpdateMessage();
+                        $scope.Clear();
+
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, result.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+
+                })
+            }, 3000);
+        }
         
 
 

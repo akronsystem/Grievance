@@ -137,7 +137,10 @@
                                                 </div>
                                                 <div class="m-portlet__foot m-portlet__foot--fit">
                                                     <div class="m-form__actions">
-                                                        <button class="btn btn-primary" ng-click="Setting()">Update</button>&nbsp;&nbsp;
+                                                        <button class="btn btn-primary" value="{{btnValue}}"  ng-disabled="disableBtn" ng-click="Setting()">Update</button>&nbsp;&nbsp;
+                                                        <p ng-hide="isCheck">
+                                                            <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -177,7 +180,10 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-7">
-                                                                <button class="btn btn-primary" ng-click="PasswordSetting()">Update</button>&nbsp;&nbsp;
+                                                                <button class="btn btn-primary" ng-click="PasswordSetting()" value="{{btnValue}}"  ng-disabled="disableBtn">Update</button>&nbsp;&nbsp;
+                                                                <p ng-hide="isCheck">
+                                                                    <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>

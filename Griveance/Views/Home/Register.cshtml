@@ -209,8 +209,11 @@
 
                             <div class="m-portlet__foot m-portlet__foot--fit">
                                 <div class="m-form__actions">
-                                    <button class="btn btn-primary" ng-click="Add()">Submit</button>
+                                    <button class="btn btn-primary" ng-click="Add()"  value="{{btnValue}}"  ng-disabled="disableBtn">Submit</button>
                                     <button class="btn btn-secondary" ng-click="Cancel()">Cancel</button>
+                                    <p ng-hide="isCheck">
+                                        <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                    </p>
                                 </div>
                             </div>
 

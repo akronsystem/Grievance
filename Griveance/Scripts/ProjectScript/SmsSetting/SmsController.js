@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('SmsSettingController', SmsSettingController);
 
-function SmsSettingController($scope, Service, DTOptionsBuilder) {
+function SmsSettingController($scope, Service, DTOptionsBuilder, $timeout) {
 
     var form = $(".student-admission-wrapper");
     $scope.tbl_smssettings = {};
@@ -12,6 +12,9 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
     $scope.SETTINGID = null;
     $scope.UserCredentialModel = {};
     $scope.dtOptions = {};
+    $scope.myText = "/Content/assets/images/ajax-loader.gif";
+    $scope.isCheck = true;
+    $scope.btnValue = "SAVE";
 
     //Initialize function
     $scope.Initialize = function () {
@@ -80,6 +83,7 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
     $scope.postdata = function (isValid) {
         debugger;
         if (isValid) {
+
             $scope.postdata = function (GATEWAYUSERID, GATEWAYPASSWORD, SMSSENDAPI, CHECKBALANCEAPI) {
                 debugger;
                 var data = {
@@ -89,24 +93,33 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
                     CheckbalanceApi: CHECKBALANCEAPI
 
                 };
+                $scope.disableBtn = true;
+                $scope.isCheck = false;
+                $scope.btnValue = "SAVING.........";
 
+                $timeout(function () {
+                    $scope.isCheck = true;
+                    $scope.disableBtn = false;
+                    $scope.btnValue = "SAVE";
+                    $scope.btnStyle = "";
 
-                Service.Post("api/Common/SaveSmsSettings", JSON.stringify(data)).then(function (response) {
-                    if (response.data.IsSucess) {
-                        debugger;
-                        CustomizeApp.AddMessage();
-                        $scope.Cancel();
-                        //$scope.IsVisible = false;
-                        //$scope.Initialize();
-                        //console.log(result.data);
-                        // window.location = "./ParentGrievance"
-                    }
-                    else {
-                        ShowMessage(0, response.data.Message);
-                        //$scope.clear();
-                        //window.location = "./PostGrievance"
-                    }
-                });
+                    Service.Post("api/Common/SaveSmsSettings", JSON.stringify(data)).then(function (response) {
+                        if (response.data.IsSucess) {
+                            debugger;
+                            CustomizeApp.AddMessage();
+                            $scope.Cancel();
+                            //$scope.IsVisible = false;
+                            //$scope.Initialize();
+                            //console.log(result.data);
+                            // window.location = "./ParentGrievance"
+                        }
+                        else {
+                            ShowMessage(0, response.data.Message);
+                            //$scope.clear();
+                            //window.location = "./PostGrievance"
+                        }
+                    });
+                }, 3000);
             }
         }
     }
@@ -124,23 +137,33 @@ function SmsSettingController($scope, Service, DTOptionsBuilder) {
                     SettingId: SETTINGID
 
                 };
-                Service.Post("api/Common/UpdateSmsSettings", JSON.stringify(data)).then(function (response) {
-                    if (response.data.IsSucess) {
-                        debugger;
-                        CustomizeApp.UpdateMessage();
-                        $scope.Cancel();
-                        //$scope.IsVisible = false;
-                        //$scope.Initialize();
-                        //console.log(result.data);
-                        // window.location = "./ParentGrievance"
-                    }
-                    else {
-                        ShowMessage(0, response.data.Message);
-                        //$scope.clear();
-                        //window.location = "./PostGrievance"
-                    }
+                $scope.disableBtn = true;
+                $scope.isCheck = false;
+                $scope.btnValue = "SAVING.........";
 
-                });
+                $timeout(function () {
+                    $scope.isCheck = true;
+                    $scope.disableBtn = false;
+                    $scope.btnValue = "SAVE";
+                    $scope.btnStyle = "";
+                    Service.Post("api/Common/UpdateSmsSettings", JSON.stringify(data)).then(function (response) {
+                        if (response.data.IsSucess) {
+                            debugger;
+                            CustomizeApp.UpdateMessage();
+                            $scope.Cancel();
+                            //$scope.IsVisible = false;
+                            //$scope.Initialize();
+                            //console.log(result.data);
+                            // window.location = "./ParentGrievance"
+                        }
+                        else {
+                            ShowMessage(0, response.data.Message);
+                            //$scope.clear();
+                            //window.location = "./PostGrievance"
+                        }
+
+                    });
+                }, 3000);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿var app = angular.module('GR' ).controller('UsersController', UsersController);
 
-function UsersController($scope, Service, DTOptionsBuilder) {
+function UsersController($scope, Service, $timeout,DTOptionsBuilder) {
 
     var form = $(".student-admission-wrapper");
     $scope.ViewGetStudentInfoes = {};
@@ -9,7 +9,9 @@ function UsersController($scope, Service, DTOptionsBuilder) {
     $scope.btnUpdate = false;
     $scope.IsVisible = false;
     $scope.btnDelete = false;
-    
+    $scope.myText = "/Content/assets/images/ajax-loader.gif";
+    $scope.isCheck = true;
+    $scope.btnValue = "SAVE";
     $scope.Students = [];
     $scope.dtOptions = {};
 
@@ -90,27 +92,37 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             UserId: UserId
         };
         if ($scope.form.$valid) {
-            Service.Post("api/Register/UpdateStudents", JSON.stringify(data)).then(function (response) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
 
-                if (response.data.IsSucess) {
-                    debugger;
-                    CustomizeApp.UpdateMessage();
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+                Service.Post("api/Register/UpdateStudents", JSON.stringify(data)).then(function (response) {
+
+                    if (response.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.UpdateMessage();
+                        $scope.Clear();
+                        //$scope.IsVisible = false;
+                        //$scope.Initialize();
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, response.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+
                     $scope.Clear();
-                    //$scope.IsVisible = false;
-                    //$scope.Initialize();
-                    //console.log(result.data);
-                    // window.location = "./ParentGrievance"
-                }
-                else {
-                    ShowMessage(0, response.data.Message);
-                    //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
-
-                $scope.Clear();
-                $scope.IsVisible = false;
-                $scope.Initialize();
-            });
+                    $scope.IsVisible = false;
+                    $scope.Initialize();
+                });
+            }, 3000);
         }
        
     }
@@ -153,8 +165,8 @@ function UsersController($scope, Service, DTOptionsBuilder) {
         
     
 }
-UsersController.$inject = ['$scope', 'Service'];
-UsersController.$inject = ['$scope', 'Service','DTOptionsBuilder'];
+UsersController.$inject = ['$scope', 'Service', '$timeout'];
+UsersController.$inject = ['$scope', 'Service', '$timeout','DTOptionsBuilder'];
 
 
 

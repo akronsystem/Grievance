@@ -138,9 +138,12 @@
                                                 </div>
                                                 <div class="m-portlet__foot m-portlet__foot--fit">
                                                     <div class="m-form__actions">
-                                                        <button class="btn btn-primary" ng-click="Setting()">Update</button>&nbsp;&nbsp;
+                                                        <button class="btn btn-primary" value="{{btnValue}}" ng-disabled="disableBtn" ng-click="Setting()">Update</button>&nbsp;&nbsp;
+                                                        <p ng-hide="isCheck">
+                                                            <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                                        </p>
                                                     </div>
-                                                    </div>
+                                                </div>
                                                 </div>
                                             </div>
                                     </form>
@@ -165,6 +168,7 @@
                                                                 <label for="example-text-input" class="col-2 col-form-label">New Password</label>
                                                                 <div class="col-7">
                                                                     <input class="form-control m-input" type="password" name="newpass" id="newpass" placeholder="New Password" ng-model="newpassword" required>
+                                                                    <span id="strength"></span>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group m-form__group row">
@@ -174,7 +178,10 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-7">
-                                                                <button class="btn btn-primary" ng-click="PasswordSetting()">Update</button>&nbsp;&nbsp;
+                                                                <button class="btn btn-primary" ng-click="PasswordSetting()" value="{{btnValue}}" ng-disabled="disableBtn">Update</button>&nbsp;&nbsp;
+                                                                <p ng-hide="isCheck">
+                                                                    <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -203,5 +210,25 @@
 
 
 </html>
+<script language="javascript">
+    function passwordChanged() {
+        var strength = document.getElementById('strength');
+        var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+        var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+        var pwd = document.getElementById("newpass");
+        if (pwd.value.length == 0) {
+            strength.innerHTML = 'Type Password';
+        } else if (false == enoughRegex.test(pwd.value)) {
+            strength.innerHTML = 'More Characters';
+        } else if (strongRegex.test(pwd.value)) {
+            strength.innerHTML = '<span style="color:green">Strong!</span>';
+        } else if (mediumRegex.test(pwd.value)) {
+            strength.innerHTML = '<span style="color:orange">Medium!</span>';
+        } else {
+            strength.innerHTML = '<span style="color:red">Weak!</span>';
+        }
+    }
+</script>
 
 

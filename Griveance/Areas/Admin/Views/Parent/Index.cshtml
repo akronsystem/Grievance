@@ -138,14 +138,16 @@
 
 
 
-                                <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(NameOfTheParent, StudentCode, RelationWithStudent, ContactNumber,Gender, Email, UserId)">
+                                <button class="btn btn-success " ng-show="btnUpdate" ng-click="AddUpdate(NameOfTheParent, StudentCode, RelationWithStudent, ContactNumber,Gender, Email, UserId)" value="{{btnValue}}"  ng-disabled="disableBtn">
                                     <i class="fa fa-database"> </i>Update
                                 </button>
 
                                 <button class="btn default" ng-click="Clear()">
                                     <i class="fa fa-times"> </i> Cancel
                                 </button>
-
+                                <p ng-hide="isCheck">
+                                    <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                </p>
 
                             </div>
                         </div>

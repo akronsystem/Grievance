@@ -1,12 +1,15 @@
 ﻿angular.module('GR').controller('MemberController', MemberController);
 
-function MemberController($scope, Service, DTOptionsBuilder) {
+function MemberController($scope, Service, DTOptionsBuilder, $timeout) {
 
     var form = $(".m-form m-form--fit m-form--label");
     $scope.IsVisible = false;
     $scope.tbl_memberinfo = {};
     $scope.UserCredentialModel = {};
     $scope.dtOptions = {};
+    $scope.myText = "/Content/assets/images/ajax-loader.gif";
+    $scope.isCheck = true;
+    $scope.btnValue = "SAVE";
     $scope.Initialize = function () {
         debugger;
        
@@ -28,7 +31,7 @@ function MemberController($scope, Service, DTOptionsBuilder) {
 
     }
     $scope.Add = function () {
-      
+        debugger;
        
         var Member = {
             
@@ -45,25 +48,35 @@ function MemberController($scope, Service, DTOptionsBuilder) {
 
         };
         if ($scope.form.$valid) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
 
-            Service.Post("api/Member/MemberSave", JSON.stringify(Member)).then(function (result) {
-                debugger;
-                // $scope.ParamUserLogin.Name = result.data.Name
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
 
-                if (result.data.IsSucess) {
+                Service.Post("api/Member/MemberSave", JSON.stringify(Member)).then(function (result) {
                     debugger;
-                    CustomizeApp.AddMessage();
-                    $scope.IsVisible = false;
+                    // $scope.ParamUserLogin.Name = result.data.Name
 
-                    //window.location = "Griveance/GrievanceAllocation"
-                }
-                else {
-                    ShowMessage(0, result.data.Message);
-                    //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
+                    if (result.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.AddMessage();
+                        $scope.IsVisible = false;
 
-            })
+                        //window.location = "Griveance/GrievanceAllocation"
+                    }
+                    else {
+                        ShowMessage(0, result.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+
+                })
+            }, 3000);
         }
 
  
@@ -142,16 +155,26 @@ function MemberController($scope, Service, DTOptionsBuilder) {
     $scope.Update = function (NAME, GENDER, EMPLOYEECODE, EMAILID, MOBILENO, DESIGNATION, USERID, GRIEVANCETYPE) {
         debugger;
         var data = {
-                    name: NAME,
-                    gender: GENDER,
-                    code: EMPLOYEECODE,
-                    EmailId: EMAILID,
-                    MobileNo: MOBILENO,
-                    designation: DESIGNATION,
-                    UserId: USERID,
-                    GriType: GRIEVANCETYPE
+            name: NAME,
+            gender: GENDER,
+            code: EMPLOYEECODE,
+            EmailId: EMAILID,
+            MobileNo: MOBILENO,
+            designation: DESIGNATION,
+            UserId: USERID,
+            GriType: GRIEVANCETYPE
 
-                };
+        };
+        if (data!=null) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
+
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
                 Service.Post("api/Grievance/UpdateMemberInfo", JSON.stringify(data)).then(function (response) {
                     if (response.data.IsSucess) {
                         debugger;
@@ -169,7 +192,9 @@ function MemberController($scope, Service, DTOptionsBuilder) {
                     }
 
                 });
-            }
+            }, 3000);
+        }
+    }
     //    }
     //}
 

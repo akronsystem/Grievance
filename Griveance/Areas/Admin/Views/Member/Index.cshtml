@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="form-group m-form__group" ng-init="GetInfo()">
                                     <label for="exampleGrievance">Grievance Type</label>
-                                    <select class="form-control m-input" id="ddlGrtype" value="{{griType}}" ng-model="GRIEVANCETYPE">
+                                    <select class="form-control m-input" id="ddlGrtype" value="{{griType}}" ng-model="GRIEVANCETYPE" title="Select Grievance Type" required>
                                         <option ng-repeat="s in Grievance" ng-selected="true" value="{{s.grivance_name}}">{{s.grivance_name}}</option>
                                        
                                     </select>
@@ -145,18 +145,21 @@
 
                                 <div class="m-portlet__foot m-portlet__foot--fit">
                                     <div class="m-form__actions">
-                                        <button class="btn btn-primary " ng-show="btnSave"  ng-click="Add()">
+                                        <button class="btn btn-primary " ng-show="btnSave" value="{{btnValue}}"  ng-disabled="disableBtn" ng-click="Add()">
                                             <i class="fa fa-database"> </i>  Save
-                                        </button>
 
-                                        <button class="btn btn-primary" ng-show="btnUpdate" ng-click="Update(NAME,GENDER,EMPLOYEECODE,EMAILID,MOBILENO,DESIGNATION,USERID,GRIEVANCETYPE)">
+                                        </button>
+                                      
+                                        <button class="btn btn-primary" ng-show="btnUpdate"  value="{{btnValue}}"  ng-disabled="disableBtn" ng-click="Update(NAME,GENDER,EMPLOYEECODE,EMAILID,MOBILENO,DESIGNATION,USERID,GRIEVANCETYPE)">
                                             <i class="fa fa-database"> </i> Update
                                         </button>
 
                                         <button class="btn default" ng-click="Cancel()">
                                             <i class="fa fa-times"> </i> Cancel
                                         </button>
-
+                                        <p ng-hide="isCheck">
+                                            <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                        </p>
 
 
                                     </div>
