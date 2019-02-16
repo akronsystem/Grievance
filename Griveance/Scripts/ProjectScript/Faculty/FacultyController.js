@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('UsersController', UsersController);
 
-function UsersController($scope, Service, DTOptionsBuilder) {
+function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
 
     var form = $(".student-admission-wrapper");
     $scope.ViewGetFacultyInfoes = {};
@@ -213,27 +213,37 @@ function UsersController($scope, Service, DTOptionsBuilder) {
             type: Type
         };
         if ($scope.form.$valid) {
-            Service.Post("api/Register/UpdateFacultyInfo", JSON.stringify(data)).then(function (response) {
-                if (response.data.IsSucess) {
-                    debugger;
-                    CustomizeApp.UpdateMessage();
-                    $scope.Clear();
-                     //console.log(result.data);
-                    // window.location = "./ParentGrievance"
-                }
-                else {
-                    ShowMessage(0, response.data.Message);
-                    //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
 
-            });
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+                Service.Post("api/Register/UpdateFacultyInfo", JSON.stringify(data)).then(function (response) {
+                    if (response.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.UpdateMessage();
+                        $scope.Clear();
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, response.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+
+                });
+            }, 3000);
         }
     }
 
  
 }
 
-UsersController.$inject = ['$scope', 'Service'];
-UsersController.$inject = ['$scope', 'Service','DTOptionsBuilder'];
+UsersController.$inject = ['$scope', 'Service','$timeout'];
+UsersController.$inject = ['$scope', 'Service', 'DTOptionsBuilder','$timeout'];
 

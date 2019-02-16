@@ -170,8 +170,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                     <div class="m-portlet__foot m-portlet__foot--fit">
                                         <div class="m-form__actions">
-                                            <button class="btn btn-primary" ng-click="CourseAdd()">Submit</button>
+                                            <button class="btn btn-primary" ng-click="CourseAdd()" value="{{btnValue}}"  ng-disabled="disableBtn">Submit</button>
                                             <button type="reset" class="btn btn-secondary">Cancel</button>
+                                            <p ng-hide="isCheck">
+                                                <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +189,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <b>List Of Course</b>
                                 <span class="float-right"><i id="span2" class="fa fa-plus"></i></span>
                             </button>
-                            <div class="panel">
+                            <div class="panel" id="panel1" style="display:none">
                                 <div class="m-portlet__body">
 
                                     <!--begin::Section-->
@@ -265,8 +268,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                     <div class="m-portlet__foot m-portlet__foot--fit">
                                         <div class="m-form__actions">
-                                            <button class="btn btn-primary" ng-click="ClassAdd()">Submit</button>
+                                            <button class="btn btn-primary" ng-click="ClassAdd()" value="{{btnValue}}"  ng-disabled="disableBtn">Submit</button>
                                             <button type="reset" class="btn btn-secondary">Cancel</button>
+                                            <p ng-hide="isCheck">
+                                                <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                            </p>
                                         </div>
 
                                     </div>
@@ -280,8 +286,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         <div class="m-portlet">
                             <button class="accordion"><b>List Of Class</b>
-                                <i id="span1" class="fa fa-plus" style="margin-left: 290px;"></i></button>
-                            <div class="panel">
+                                @*<i id="span1" class="fa fa-plus" style="margin-left: 290px;"></i>*@
+                                <span class="float-right"><i id="span1" class="fa fa-plus"></i></span>
+                            </button>
+                            <div class="panel" id="panel2" style="display:none">
                                 <div class="m-portlet__body">
 
                                     <!--begin::Section-->
@@ -368,42 +376,20 @@ License: You must have a valid license purchased only from themeforest(the above
         var baseURL = "@ConfigurationManager.AppSettings["BaseUrlPath"].ToString()";
     </script>
     <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-        var x = document.getElementById('span1'); 
-        var y = document.getElementById('span2'); 
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-               
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                  
-                    if (y.classList.value == " fa fa-minus") {
-                        y.classList.remove("fa-minus");
-                        y.classList.add("fa-plus");
-                    }
-                    else {
-                        x.classList.remove("fa-minus");
-                        x.classList.add("fa-plus");
-                    }
-                  
-                } else {
-                    panel.style.display = "block";
-                    if (x.classList.value == "fa fa-plus") {
-                        x.classList.remove("fa-plus");
-                        x.classList.add("fa-minus");
-                    }
-                    else {
-                        y.classList.remove("fa-plus");
-                        y.classList.add("fa-minus");
-                    }
-                   
-                   
-                }
-            });
-        }
+       var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
     </script>
    
     <style>

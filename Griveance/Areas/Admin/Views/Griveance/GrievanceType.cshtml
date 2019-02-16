@@ -65,17 +65,19 @@
                             <div class="m-portlet__foot m-portlet__foot--fit">
                                 <div class="m-form__actions">
 
-                                    <button class="btn btn-info" ng-show="btnSave" ng-click="Save(grivance_name,grivance_description)">
+                                    <button class="btn btn-info" ng-show="btnSave" value="{{btnValue}}"  ng-disabled="disableBtn" ng-click="Save(grivance_name,grivance_description)">
                                         <i class="fa fa-database"> </i> Save
                                     </button>
 
-                                    <button class="btn btn-success" ng-show="btnUpdate" ng-click="Update(GrievanceName,GrievanceDescription,GrievanceId)">
+                                    <button class="btn btn-success" ng-show="btnUpdate" value="{{btnValue}}" ng-disabled="disableBtn" ng-click="Update(GrievanceName,GrievanceDescription,GrievanceId)">
                                         <i class="fa fa-database"> </i> Update
                                     </button>
                                     <button class="btn default" ng-click="Cancel()">
                                         <i class="fa fa-times"> </i> Cancel
                                     </button>
-
+                                    <p ng-hide="isCheck">
+                                        <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                    </p>
                                 </div>
 
 

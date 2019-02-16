@@ -39,7 +39,8 @@
                     </span>
 
                     <div class="form-group m-form__group m--margin-top-50">
-                        <input required class="form-control m-input form-control-lg" type="text" value="" ng-model="UserCredentialModel.UserName"   placeholder="Username">
+                        <input required class="form-control m-input form-control-lg" id="myInput" type="text" value="" ng-model="UserCredentialModel.UserName"   placeholder="Username" >
+                        <p id="text" style="display:none;color:red">Caps lock is ON</p>
                     </div>
                     <div class="form-group m-form__group">
                         <input required class="form-control m-input  form-control-lg" type="password" ng-model="UserCredentialModel.Password" value=""   placeholder="Password">
@@ -98,6 +99,18 @@
     <script>
         $(function () {
             cbpBGSlideshow.init();
+        });
+    </script>
+    <script>
+        var input = document.getElementById("myInput");
+        var text = document.getElementById("text");
+        input.addEventListener("keyup", function (event) {
+           
+            if (event.getModifierState("CapsLock")) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none"
+            }
         });
     </script>
 </body>

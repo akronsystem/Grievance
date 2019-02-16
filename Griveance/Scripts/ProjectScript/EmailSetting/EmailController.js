@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('EmailSettingController', EmailSettingController);
 
-function EmailSettingController($scope, Service, DTOptionsBuilder) {
+function EmailSettingController($scope, Service, DTOptionsBuilder, $timeout) {
 
     var form = $(".m-form m-form--fit m-form--label-align-right");
     var form1 = $("#frmCRUD");
@@ -15,11 +15,12 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
     $scope.password = null;
     $scope.UserCredentialModel = {};
     $scope.dtOptions={};
-
+    $scope.myText = "/Content/assets/images/ajax-loader.gif";
+    $scope.isCheck = true;
+    $scope.btnValue = "SAVE";
     $scope.Initialize = function () {
-       alert('hi')
-
-        if (!$scope.dtOptions)
+        alert('hiiii')
+             if (!$scope.dtOptions)
 
             $scope.dtOptions = DTOptionsBuilder.newOptions()
                 .withPaginationType('full_numbers').withDisplayLength(10)
@@ -83,7 +84,7 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
 
   
     $scope.postdata = function (fromid, host, port, password) {
-       
+       debugger
         var data = {
             fromid: fromid,
             host: host,
@@ -92,21 +93,32 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
 
         };
 
-        if (form.valid()) {
-            Service.Post("api/Common/SaveEmailSettings", JSON.stringify(data)).then(function (response) {
-                if (response.data.IsSucess) {
-                    debugger;
-                    CustomizeApp.AddMessage();
-                    $scope.Cancel();
-                    //console.log(result.data);
-                    // window.location = "./ParentGrievance"
-                }
-                else {
-                    ShowMessage(0, response.data.Message);
-                    //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
-            });
+        if ($scope.form.$dirty) {
+            debugger;
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
+
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+                Service.Post("api/Common/SaveEmailSettings", JSON.stringify(data)).then(function (response) {
+                    if (response.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.AddMessage();
+                        $scope.Cancel();
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, response.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+                });
+            }, 3000);
         }
     }
         
@@ -119,22 +131,32 @@ function EmailSettingController($scope, Service, DTOptionsBuilder) {
                     emailsettingid: emailsettingid
 
                 };
-                if (form1.valid()) {
-                    Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
-                        if (response.data.IsSucess) {
-                            debugger;
-                            CustomizeApp.UpdateMessage();
-                            $scope.Cancel();
-                            //console.log(result.data);
-                            // window.location = "./ParentGrievance"
-                        }
-                        else {
-                            ShowMessage(0, response.data.Message);
-                            //$scope.clear();
-                            //window.location = "./PostGrievance"
-                        }
+                if (fromid != undefined && host != undefined && port != undefined && emailsettingid !=undefined) {
+                    $scope.disableBtn = true;
+                    $scope.isCheck = false;
+                    $scope.btnValue = "SAVING.........";
 
-                    });
+                    $timeout(function () {
+                        $scope.isCheck = true;
+                        $scope.disableBtn = false;
+                        $scope.btnValue = "SAVE";
+                        $scope.btnStyle = "";
+                        Service.Post("api/Common/UpdateEmailSettings", JSON.stringify(data)).then(function (response) {
+                            if (response.data.IsSucess) {
+                                debugger;
+                                CustomizeApp.UpdateMessage();
+                                $scope.Cancel();
+                                //console.log(result.data);
+                                // window.location = "./ParentGrievance"
+                            }
+                            else {
+                                ShowMessage(0, response.data.Message);
+                                //$scope.clear();
+                                //window.location = "./PostGrievance"
+                            }
+
+                        });
+                    }, 3000);
                 }
      }
 

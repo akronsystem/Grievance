@@ -5,7 +5,6 @@ function UsersController($scope, Service, $timeout) {
     var form = $(".m-form m-form--fit m-form--label");
     var form1 = $("#frmCRUD");
     $scope.myText = "/Content/assets/images/ajax-loader.gif";
-
     $scope.isCheck = true;
     $scope.btnValue = "SAVE";
     $scope.ViewAllStaffInfoes = {};
@@ -118,23 +117,32 @@ function UsersController($scope, Service, $timeout) {
             return false;
         }
         if ($scope.frm.$valid) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
 
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
 
-            Service.Post("api/Common/UpdateUsers", JSON.stringify(Data)).then(function (result) {
-                debugger;
-                // $scope.ParamUserLogin.Name = result.data.Name 
-                console.log(result.data);
-                if (result.data.IsSucess) {
+                Service.Post("api/Common/UpdateUsers", JSON.stringify(Data)).then(function (result) {
                     debugger;
+                    // $scope.ParamUserLogin.Name = result.data.Name 
                     console.log(result.data);
-                    CustomizeApp.UpdateMessage();
-                    //window.location = "./Index"
-                }
-                else {
-                    ShowMessage(0, result.data.Message);
-                    //window.location = "./Index"
-                }
-            })
+                    if (result.data.IsSucess) {
+                        debugger;
+                        console.log(result.data);
+                        CustomizeApp.UpdateMessage();
+                        //window.location = "./Index"
+                    }
+                    else {
+                        ShowMessage(0, result.data.Message);
+                        //window.location = "./Index"
+                    }
+                })
+            } , 3000);
         }
     }
     $scope.PasswordSetting = function () {
@@ -161,23 +169,32 @@ function UsersController($scope, Service, $timeout) {
             return false;
         }
         if ($scope.form.$valid) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
 
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
 
-            Service.Post("api/Common/UpdateUsers", JSON.stringify(Data)).then(function (result) {
-                debugger;
-                // $scope.ParamUserLogin.Name = result.data.Name 
-                console.log(result.data);
-                if (result.data.IsSucess) {
+                Service.Post("api/Common/UpdateUsers", JSON.stringify(Data)).then(function (result) {
                     debugger;
+                    // $scope.ParamUserLogin.Name = result.data.Name 
                     console.log(result.data);
-                    CustomizeApp.UpdateMessage();
-                    //window.location = "./Index"
-                }
-                else {
-                    ShowMessage(0, result.data.Message);
-                    //window.location = "./Index"
-                }
-            })
+                    if (result.data.IsSucess) {
+                        debugger;
+                        console.log(result.data);
+                        CustomizeApp.UpdateMessage();
+                        //window.location = "./Index"
+                    }
+                    else {
+                        ShowMessage(0, result.data.Message);
+                        //window.location = "./Index"
+                    }
+                })
+            }, 3000);
         }
     }
     $scope.GetData = function () {

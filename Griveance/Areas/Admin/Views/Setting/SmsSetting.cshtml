@@ -91,18 +91,20 @@
                         <div class="m-portlet__foot m-portlet__foot--fit">
                             <div class="m-form__actions">
 
-                                <button class="btn btn-primary " ng-show="btnSave" ng-click="postdata(GATEWAYUSERID, GATEWAYPASSWORD, SMSSENDAPI, CHECKBALANCEAPI)">
+                                <button class="btn btn-primary " ng-show="btnSave" ng-click="postdata(GATEWAYUSERID, GATEWAYPASSWORD, SMSSENDAPI, CHECKBALANCEAPI)" value="{{btnValue}}"  ng-disabled="disableBtn">
                                     <i class="fa fa-database"> </i>  Save
                                 </button>
 
-                                <button class="btn btn-primary" ng-show="btnUpdate" ng-click="Update(GATEWAYUSERID,GATEWAYPASSWORD,SMSSENDAPI,CHECKBALANCEAPI,SETTINGID)">
+                                <button class="btn btn-primary" ng-show="btnUpdate" ng-click="Update(GATEWAYUSERID,GATEWAYPASSWORD,SMSSENDAPI,CHECKBALANCEAPI,SETTINGID)" value="{{btnValue}}"  ng-disabled="disableBtn">
                                     <i class="fa fa-database"> </i> Update
                                 </button>
 
                                 <button class="btn default" ng-click="Cancel()">
                                     <i class="fa fa-times"> </i> Cancel
                                 </button>
-
+                                <p ng-hide="isCheck">
+                                    <img src="{{ myText }}" width="220px" height="15px" alt="images" />
+                                </p>
 
                             </div>
                         </div>

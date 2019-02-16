@@ -1,13 +1,15 @@
 ﻿angular.module('GR').controller('GrievanceController', GrievanceController);
 
-function GrievanceController($scope, Service, DTOptionsBuilder) {
+function GrievanceController($scope, Service, DTOptionsBuilder, $timeout) {
 
     var form = $(".m-form m-form--fit m-form--label-align-right");
     var form1 = $("#frmCRUD");
     $scope.ViewGrievanceList = {};
     $scope.UserCredentialModel = {};
     $scope.dtOptions = {};
-   
+    $scope.myText = "/Content/assets/images/ajax-loader.gif";
+    $scope.isCheck = true;
+    $scope.btnValue = "SAVE";
 
     $scope.Initialize = function () {
         debugger;
@@ -130,25 +132,34 @@ function GrievanceController($scope, Service, DTOptionsBuilder) {
             Expr1: Expr1
         };
         if (form1.valid()) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
 
-       
-        Service.Post("api/Grievance/UpdateGrievanceAllocation", JSON.stringify(data)).then(function (response) {
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+
+                Service.Post("api/Grievance/UpdateGrievanceAllocation", JSON.stringify(data)).then(function (response) {
 
 
-            if (response.data.IsSucess) {
-                debugger;
-                CustomizeApp.UpdateMessage();
-                $scope.btnUpdate = false;
-                $scope.IsVisible = false;
-                $scope.Initialize();
-            }
-            else {
-                ShowMessage(0, response.data.Message);
-                //$scope.clear();
-                //window.location = "./PostGrievance"
-            }
-         
-            });
+                    if (response.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.UpdateMessage();
+                        $scope.btnUpdate = false;
+                        $scope.IsVisible = false;
+                        $scope.Initialize();
+                    }
+                    else {
+                        ShowMessage(0, response.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+
+                });
+            }, 3000);
         }
     }
 

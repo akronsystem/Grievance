@@ -1,6 +1,6 @@
 ﻿angular.module('GR').controller('ClassYearController', ClassYearController);
 
-function ClassYearController($scope, Service) {
+function ClassYearController($scope, Service, $timeout) {
 
     var form = $(".m-form m-form--fit m-form--label");
     var form1 = $("#frmCRUD");
@@ -8,6 +8,9 @@ function ClassYearController($scope, Service) {
     $scope.ViewGetCourseInfoes = {};
     $scope.ViewGetClassLists = {};
     $scope.chartContainer = {};
+    $scope.myText = "/Content/assets/images/ajax-loader.gif";
+    $scope.isCheck = true;
+    $scope.btnValue = "SAVE";
 
 
     $scope.UserCredentialModel = {};
@@ -95,24 +98,34 @@ function ClassYearController($scope, Service) {
             return false;
         }
         if (form1.valid()) {
-            Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
-                debugger;
-                if (result.data.IsSucess) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
+
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+                Service.Post("api/Register/SaveRegistration", JSON.stringify(Employee)).then(function (result) {
                     debugger;
-                    CustomizeApp.AddMessage();
-                    window.location = "./Index"
-                    //console.log(result.data);
-                    // window.location = "./ParentGrievance"
-                }
-                else {
-                    ShowMessage(0, result.data.Message);
-                    //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
-                // $scope.ParamUserLogin.Name = result.data.Name
+                    if (result.data.IsSucess) {
+                        debugger;
+                        CustomizeApp.AddMessage();
+                        window.location = "./Index"
+                        //console.log(result.data);
+                        // window.location = "./ParentGrievance"
+                    }
+                    else {
+                        ShowMessage(0, result.data.Message);
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
+                    // $scope.ParamUserLogin.Name = result.data.Name
 
 
-            })
+                })
+            }, 3000);
         }
 
     }
@@ -131,21 +144,33 @@ function ClassYearController($scope, Service) {
 
 
         if (form1.valid()) {
-            Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
+
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+                Service.Post("api/Course/CreateCourse", JSON.stringify(Course)).then(function (result) {
 
 
-                // $scope.ParamUserLogin.Name = result.data.Name
-                if (result.data.IsSucess) {
-                    CustomizeApp.AddMessage();
-                    $scope.Initialize();
-                }
-                else {
-                    ShowMessage(0, result.data.Message);
-                    $scope.Initialize();
-                    //$scope.clear();
-                }
+                    // $scope.ParamUserLogin.Name = result.data.Name
+                    if (result.data.IsSucess) {
+                        CustomizeApp.AddMessage();
+                        $scope.GetData();
+                        $scope.GetInfo();
+                    }
+                    else {
+                        ShowMessage(0, result.data.Message);
+                        $scope.GetData();
+                        $scope.GetInfo();
+                        //$scope.clear();
+                    }
 
-            })
+                })
+            }, 3000);
         }
     }
 
@@ -162,21 +187,35 @@ function ClassYearController($scope, Service) {
             ShowMessage(0, 'Reqired Class Name');
         }
         else {
-            Service.Post("api/ClassYear/CreateClass", JSON.stringify(Class)).then(function (result) {
+            $scope.disableBtn = true;
+            $scope.isCheck = false;
+            $scope.btnValue = "SAVING.........";
+
+            $timeout(function () {
+                $scope.isCheck = true;
+                $scope.disableBtn = false;
+                $scope.btnValue = "SAVE";
+                $scope.btnStyle = "";
+                Service.Post("api/ClassYear/CreateClass", JSON.stringify(Class)).then(function (result) {
 
 
-                // $scope.ParamUserLogin.Name = result.data.Name
-                if (result.data.IsSucess) {
-                    CustomizeApp.AddMessage();
-                    $scope.Close();
-                }
-                else {
-                    ShowMessage(0, result.data.Message);
-                    //$scope.clear();
-                    //window.location = "./PostGrievance"
-                }
+                    // $scope.ParamUserLogin.Name = result.data.Name
+                    if (result.data.IsSucess) {
+                        CustomizeApp.AddMessage();
+                        $scope.GetData();
+                        $scope.GetInfo();
+                        $scope.Close();
+                    }
+                    else {
+                        ShowMessage(0, result.data.Message);
+                        $scope.GetData();
+                        $scope.GetInfo();
+                        //$scope.clear();
+                        //window.location = "./PostGrievance"
+                    }
 
-            })
+                })
+            }, 3000);
 
         }
 
