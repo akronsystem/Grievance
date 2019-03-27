@@ -11,7 +11,7 @@ function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
     $scope.btnValue = "SAVE";
 
     $scope.Initialize = function () {
-        debugger;
+        //debugger;
         
         if (!$scope.dtOptions)
         $scope.dtOptions = DTOptionsBuilder.newOptions()
@@ -46,7 +46,7 @@ function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
             $scope.Student = result.data.ResultData;
             console.log(result.data);
             if (result.data.IsSucess) {
-                debugger;
+                //debugger;
                 console.log(result.data);
 
             }
@@ -69,9 +69,7 @@ function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
         };
 
         Service.Post("api/Users/GetSingleStaff", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
-
-
-            debugger;
+            //debugger;
             $scope.ViewGetStudentInfoes = result.data;
             $scope.NameOfTheStaff = result.data.name;
             $scope.EmployeeCode = result.data.code;
@@ -89,7 +87,7 @@ function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
     }
 
     $scope.Delete = function (UserId, Type) {
-        debugger;
+        //debugger;
         var data = {
 
             UserId: UserId,
@@ -106,9 +104,7 @@ function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
         }
         if (confirm == true) {
             Service.Post("api/Register/DeleteStaffInformation", JSON.stringify(data)).then(function (response) {
-                debugger;
-
-
+                //debugger;
                 if (deactivestatus == 0) {
                     window.alert('Entry Deactive Successfully!')
 
@@ -117,9 +113,7 @@ function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
                     window.alert('Entry Active Successfully!')
 
                 }
-
-
-                debugger;
+                //debugger;
                 $scope.Clear();
                 $scope.IsVisible = false;
                 $scope.Initialize();
@@ -134,7 +128,7 @@ function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
 
 
     $scope.Clear = function () {
-        debugger;
+        //debugger;
         $scope.ViewGetStudentInfoes = null;
         $scope.NameOfTheStaff = null;
         $scope.StudentCode = null;

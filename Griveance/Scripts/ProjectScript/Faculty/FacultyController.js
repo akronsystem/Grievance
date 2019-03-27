@@ -7,6 +7,9 @@ function UsersController($scope, Service, DTOptionsBuilder, $timeout) {
     $scope.UserCredentialModel = {};
     $scope.btnUpdate = false;
     $scope.IsVisible = false;
+    $scope.myText = "/Content/assets/images/ajax-loader.gif";
+    $scope.isCheck = true;
+    $scope.btnValue = "SAVE";
     $scope.dtOptions = {};
 
 

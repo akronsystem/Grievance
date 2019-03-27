@@ -63,7 +63,7 @@
                                         @*<input type="button" class="btn btn-accent" value="NEW" ng-click="Show()" />*@
                                     </li>
 
-
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -84,13 +84,13 @@
 
                                 <div class="form-group m-form__group">
                                     <label for="exampleInputName">Name</label>
-                                    <input type="text" class="form-control m-input" id="exampleInputName" name="name" value="{{NAME}}" placeholder="Name" ng-model="NAME" pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" title="Name Should be Alphabate only" required />
+                                    <input type="text" class="form-control m-input" id="exampleInputName" name="name" value="{{NAME}}" placeholder="Name" ng-model="NAME" pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" title="Name Should be Alphabate only" autocomplete="off" required />
                                    
                                 </div>
 
                                 <div class="form-group m-form__group">
                                     <label for="exampleInputEmpCode">Employee Code</label> 
-                                    <input type="text" class="form-control m-input" id="exampleInputEmpCode" value="{{EMPLOYEECODE}}" ng-disabled="empcode" placeholder="Employee Code" ng-model="EMPLOYEECODE"  pattern="[a-zA-Z0-9 ]+" title="Employee Code Should be Alphanumeric only" required />
+                                    <input type="text" class="form-control m-input" id="exampleInputEmpCode" value="{{EMPLOYEECODE}}" ng-disabled="empcode" placeholder="Employee Code" ng-model="EMPLOYEECODE"  pattern="[a-zA-Z0-9 ]+" title="Employee Code Should be Alphanumeric only" autocomplete="off" required />
                                   
                                 </div>
                                 <div class="form-group m-form__group">
@@ -110,23 +110,33 @@
                                         var email = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
                                     }
                                     <label for="exampleInputEmail">Email address</label>
-                                    <input type="email" class="form-control" id="Email" name="Email" value="{{EMAILID}}"  placeholder="Enter email" ng-model="EMAILID"  pattern="@email"  title="Please Enter Valid Email"  required />
+                                    <input type="email" class="form-control" id="Email" name="Email" value="{{EMAILID}}"  placeholder="Enter email" ng-model="EMAILID"  pattern="@email"  title="Please Enter Valid Email" autocomplete="off" required />
                                  
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="exampleInputNumber">Mobile Number</label>
-                                    <input type="number" class="form-control m-input" id="mobileno" value="{{MOBILENO}}" placeholder="Mobile Number" ng-model="MOBILENO"  pattern="[0-9]{10}" title="Only 10 Digit Number"  required />
+                                    <input type="number" class="form-control m-input" id="mobileno" value="{{MOBILENO}}" placeholder="Mobile Number" ng-model="MOBILENO"  pattern="[0-9]{10}" title="Only 10 Digit Number" autocomplete="off" required />
                                   
                                 </div>
                                 <div class="form-group m-form__group">
                                     <label for="exampleInputDesignation">Designation</label>
-                                    <input type="text" class="form-control m-input" id="exampleInputDesignation" value="{{DESIGNATION}}" placeholder="Designation" ng-model="DESIGNATION" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" title="Designation Should be Alphabates" required />
+                                    <input type="text" class="form-control m-input" id="exampleInputDesignation" value="{{DESIGNATION}}" placeholder="Designation" ng-model="DESIGNATION" pattern="^[a-zA-Z]+(\s[a-zA-Z]+)?$" title="Designation Should be Alphabates" autocomplete="off" required />
                                     
                                 </div>
-                                <div class="form-group m-form__group" ng-init="GetInfo()">
+                                <div class="form-group m-form__group">
+                                    <label for="exampleInputDesignation">Grievance Type</label>
+                                    <input type="text" class="form-control m-input" id="exampleInputDesignation" value="{{griType}}"  disabled required />
+
+                                </div>
+                                <label class="m-checkbox">
+                                    Update Grievance Type
+                                    <input type="checkbox" ng-change="ShowDiv()" ng-model="Selected" ng-selected="true">
+                                    <span></span>
+                                </label>
+                                <div ng-show="ISGrievance" class="form-group m-form__group" ng-init="GetInfo()">
                                     <label for="exampleGrievance">Grievance Type</label>
                                     <select class="form-control m-input" id="ddlGrtype" value="{{griType}}" ng-model="GRIEVANCETYPE" title="Select Grievance Type" required>
-                                        <option ng-repeat="s in Grievance" ng-selected="true" value="{{s.grivance_name}}">{{s.grivance_name}}</option>
+                                        <option ng-repeat="s in Grievance" ng-selected="griType==s.grivance_name" value="{{s.grivance_name}}">{{s.grivance_name}}</option>
                                        
                                     </select>
                                   
@@ -140,7 +150,7 @@
                                 </div>
                                 <div class="form-group m-form__group" ng-show="txtCONFIRMPASSWORD">
                                     <label for="exampleInputCPassword1">Confirm Password</label>
-                                    <input type="password" class="form-control m-input" id="exampleInputCPassword1" placeholder="Confirm Password" ng-model="confirmpass"  ng-pattern="{{Password}}" title="Please Check Confirm Password" required />
+                                    <input type="password" class="form-control m-input" id="exampleInputCPassword1" placeholder="Confirm Password" ng-model="confirmpass"  ng-pattern="{{Password}}" title="Please Check Confirm Password" autocomplete="off" required />
                                 </div>
 
                                 <div class="m-portlet__foot m-portlet__foot--fit">

@@ -92,7 +92,7 @@ namespace Griveance.BusinessLayer
 			objuser.contact = Convert.ToInt64(obj.MobileNo);
 			objuser.password = CryptIt.Encrypt(obj.Password);
 			objuser.status = 1;
-			objuser.Islive = 0;
+			objuser.Islive = 1;
 			objuser.Display = 1;
 			objuser.created_date = DateTime.Now;
 

@@ -51,7 +51,7 @@ namespace Griveance.Models
         public virtual DbSet<View_ForMemberName> View_ForMemberName { get; set; }
         public virtual DbSet<View_ReportViewGrievanceList> View_ReportViewGrievanceList { get; set; }
         public virtual DbSet<View_DetailedReport> View_DetailedReport { get; set; }
-
+        public virtual DbSet<View_UpdateMember> View_UpdateMember { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{ 
 
