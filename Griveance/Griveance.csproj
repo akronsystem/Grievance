@@ -735,6 +735,7 @@
     <Compile Include="Models\View_ForMemberName.cs" />
     <Compile Include="Models\View_MemberAllocation.cs" />
     <Compile Include="Models\View_ReportViewGrievanceList.cs" />
+    <Compile Include="Models\View_UpdateMember.cs" />
     <Compile Include="Models\View_UsersGrievance.cs" />
     <Compile Include="Models\Vw_GetEmail.cs" />
     <Compile Include="Models\Vw_GetSingleFaculty.cs" />
