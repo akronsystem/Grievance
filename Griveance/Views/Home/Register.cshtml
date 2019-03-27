@@ -72,7 +72,7 @@
 
 
                 <!--begin::Form-->
-                <form name="form" id="frmCRUD" class="m-form m-form--fit m-form--label" ng-init="Initialize()">
+                <form id="frmCRUD" name="form" class="m-form m-form--fit m-form--label-align-right student-admission-wrapper" ng-init="Initialize()">
                     <div class="form-body">
                         <div class="m-portlet__body">
                             <div class="form-group m-form__group">
@@ -146,7 +146,7 @@
                                 <label>Student/Employee Code</label>
                                 <div class="m-input-icon m-input-icon--left">
 
-                                    <input type="text" id="empcode" class="form-control m-input" placeholder="Student/Employee Code" ng-model="code" pattern="[a-zA-Z0-9 ]+" title="Employee/Student Code Should be Alphanumeric only" required>
+                                    <input type="text" id="empcode" class="form-control m-input" placeholder="Student/Employee Code" ng-model="code" autocomplete="off" pattern="[a-zA-Z0-9 ]+" title="Employee/Student Code Should be Alphanumeric only" required>
                                     <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-pencil"></i></span></span>
 
 

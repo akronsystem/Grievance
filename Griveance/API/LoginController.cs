@@ -1,6 +1,7 @@
 ﻿using Griveance.BusinessLayer;
 using Griveance.Models;
 using Griveance.ParamModel;
+using Griveance.ResultModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,10 +89,12 @@ namespace Griveance.Controllers
                     //IsDelete = objSMS.SMSSend(MobNo, res);
                     IsDelete = objemail.SendEmail(user.email, res, "Forgot Password", "", "", "", "");
                     res = "User Name and Password Is Send On Your Registred Email ID. ";
+                    return new Result() { IsSucess = true, ResultData =res };
                 }
                 else
                 {
                     res = "Sorry we didn't find your Email ID in our system.";
+                    //return new Error() { IsError = true, Message = res };
                 }
                 return res;
             }

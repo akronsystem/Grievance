@@ -10,6 +10,7 @@ function MemberController($scope, Service, DTOptionsBuilder, $timeout) {
     $scope.myText = "/Content/assets/images/ajax-loader.gif";
     $scope.isCheck = true;
     $scope.btnValue = "SAVE";
+    $scope.ISGrievance = false;
     $scope.Initialize = function () {
         debugger;
        
@@ -39,7 +40,7 @@ function MemberController($scope, Service, DTOptionsBuilder, $timeout) {
             EmailId: $scope.EMAILID,
             Name: $scope.NAME,
             Code: $scope.EMPLOYEECODE,
-            Type: $scope.TYPE,
+            //Type: $scope.TYPE,
             GriType: $scope.GRIEVANCETYPE,
             Gender: $scope.GENDER,
             MobileNo: $scope.MOBILENO,
@@ -311,6 +312,20 @@ function MemberController($scope, Service, DTOptionsBuilder, $timeout) {
                                         $scope.DESIGNATION = null;
                                         $scope.GRIEVANCETYPE = null;
                                         $scope.USERID = null;
+                                        $scope.Selected = null;
+    }
+    $scope.ShowDiv = function ()
+    {
+        debugger;
+        alert('Hii');
+        if ($scope.Selected == true)
+        {
+            $scope.ISGrievance = true;
+        }
+        else if ($scope.Selected == false)
+        {
+            $scope.ISGrievance = false;
+        }
     }
 
   

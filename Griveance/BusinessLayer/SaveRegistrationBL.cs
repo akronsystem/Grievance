@@ -16,11 +16,16 @@ namespace Griveance.BusinessLayer
         {
             try
             {
-                var usercode = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
-                if (usercode != null)
+                if(PR.Type!= "Parent")
                 {
-                    return new Error() { IsError = true, Message = "User Code Already Exists." };
+                    var usercode = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
+                    if (usercode != null)
+                    {
+                        return new Error() { IsError = true, Message = "User Code Already Exists." };
+                    }
                 }
+
+               
                 tbl_user objuser = new tbl_user();
 
                 objuser.name = PR.Name;
@@ -75,7 +80,7 @@ namespace Griveance.BusinessLayer
                     objparent.relationship = PR.Relationship;
                     tbl_user obstudent = db.tbl_user.Where(r => r.code == PR.code).FirstOrDefault();
                     objparent.UserId = obstudent.UserId;
-                    objparent.code = PR.code;
+                    objparent.code = Convert.ToInt32(obstudent.code);
                     objparent.Display = 1;
                     objparent.created_date = DateTime.Now;
                     db.tbl_parent.Add(objparent);
