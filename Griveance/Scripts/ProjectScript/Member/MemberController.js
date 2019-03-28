@@ -11,6 +11,7 @@ function MemberController($scope, Service, DTOptionsBuilder, $timeout) {
     $scope.isCheck = true;
     $scope.btnValue = "SAVE";
     $scope.ISGrievance = false;
+    $scope.ShowLabel = false;
     $scope.Initialize = function () {
         debugger;
        
@@ -90,6 +91,8 @@ function MemberController($scope, Service, DTOptionsBuilder, $timeout) {
         $scope.btnUpdate = false;
         $scope.btnSave = true;
         $scope.empcode = false;
+        $scope.ISGrievance = false;
+        $scope.ShowLabel = false;
         $scope.Clear();
         $scope.msg = "";
         $scope.Initialize();
@@ -109,7 +112,7 @@ function MemberController($scope, Service, DTOptionsBuilder, $timeout) {
         Service.Post("api/Grievance/GetSingleGrievance", JSON.stringify(data), $scope.UserCredentialModel).then(function (result) {
             $scope.txtPASSSOWRD = false;
             $scope.txtCONFIRMPASSWORD = false;
-
+            $scope.ShowLabel = true;
           
 
             $scope.IsVisible = true;
@@ -317,7 +320,7 @@ function MemberController($scope, Service, DTOptionsBuilder, $timeout) {
     $scope.ShowDiv = function ()
     {
         debugger;
-        alert('Hii');
+        
         if ($scope.Selected == true)
         {
             $scope.ISGrievance = true;
